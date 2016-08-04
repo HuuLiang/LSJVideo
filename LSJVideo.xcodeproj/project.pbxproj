@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0054B3A0FFA3FC3E745FAFAA /* libPods-LSJVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B6181CA870EEDBDDFDE826 /* libPods-LSJVideo.a */; };
+		EC1990EE1D52EC22001B4F52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990ED1D52EC22001B4F52 /* main.m */; };
+		EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990F01D52EC22001B4F52 /* AppDelegate.m */; };
+		EC1990F41D52EC22001B4F52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990F31D52EC22001B4F52 /* ViewController.m */; };
+		EC1990F71D52EC22001B4F52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1990F51D52EC22001B4F52 /* Main.storyboard */; };
+		EC1990F91D52EC22001B4F52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1990F81D52EC22001B4F52 /* Assets.xcassets */; };
+		EC1990FC1D52EC22001B4F52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1990FA1D52EC22001B4F52 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		23B6181CA870EEDBDDFDE826 /* libPods-LSJVideo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LSJVideo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7623508634401CB8DF1A56E3 /* Pods-LSJVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSJVideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo.release.xcconfig"; sourceTree = "<group>"; };
+		B17949AE67F4498DA858110A /* Pods-LSJVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSJVideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo.debug.xcconfig"; sourceTree = "<group>"; };
+		EC1990E91D52EC22001B4F52 /* LSJVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSJVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC1990ED1D52EC22001B4F52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EC1990EF1D52EC22001B4F52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC1990F01D52EC22001B4F52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC1990F21D52EC22001B4F52 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EC1990F31D52EC22001B4F52 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EC1990F61D52EC22001B4F52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC1990F81D52EC22001B4F52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EC1990FB1D52EC22001B4F52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EC1990FD1D52EC22001B4F52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC1990E61D52EC22001B4F52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0054B3A0FFA3FC3E745FAFAA /* libPods-LSJVideo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10077654D1E370E26AA43AB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23B6181CA870EEDBDDFDE826 /* libPods-LSJVideo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39E3D4A8C8AEF9D171AD9467 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B17949AE67F4498DA858110A /* Pods-LSJVideo.debug.xcconfig */,
+				7623508634401CB8DF1A56E3 /* Pods-LSJVideo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC1990E01D52EC21001B4F52 = {
+			isa = PBXGroup;
+			children = (
+				EC1990EB1D52EC22001B4F52 /* LSJVideo */,
+				EC1990EA1D52EC22001B4F52 /* Products */,
+				39E3D4A8C8AEF9D171AD9467 /* Pods */,
+				10077654D1E370E26AA43AB9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EC1990EA1D52EC22001B4F52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC1990E91D52EC22001B4F52 /* LSJVideo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC1990EB1D52EC22001B4F52 /* LSJVideo */ = {
+			isa = PBXGroup;
+			children = (
+				EC1990EF1D52EC22001B4F52 /* AppDelegate.h */,
+				EC1990F01D52EC22001B4F52 /* AppDelegate.m */,
+				EC1990F21D52EC22001B4F52 /* ViewController.h */,
+				EC1990F31D52EC22001B4F52 /* ViewController.m */,
+				EC1990F51D52EC22001B4F52 /* Main.storyboard */,
+				EC1990F81D52EC22001B4F52 /* Assets.xcassets */,
+				EC1990FA1D52EC22001B4F52 /* LaunchScreen.storyboard */,
+				EC1990FD1D52EC22001B4F52 /* Info.plist */,
+				EC1990EC1D52EC22001B4F52 /* Supporting Files */,
+			);
+			path = LSJVideo;
+			sourceTree = "<group>";
+		};
+		EC1990EC1D52EC22001B4F52 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC1990ED1D52EC22001B4F52 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC1990E81D52EC22001B4F52 /* LSJVideo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC1991001D52EC22001B4F52 /* Build configuration list for PBXNativeTarget "LSJVideo" */;
+			buildPhases = (
+				732CFB49312294A65AE0ADEE /* [CP] Check Pods Manifest.lock */,
+				EC1990E51D52EC22001B4F52 /* Sources */,
+				EC1990E61D52EC22001B4F52 /* Frameworks */,
+				EC1990E71D52EC22001B4F52 /* Resources */,
+				97F0208CEBFB3D0FF69790FE /* [CP] Embed Pods Frameworks */,
+				14050D936F8766439DFDB1D6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LSJVideo;
+			productName = LSJVideo;
+			productReference = EC1990E91D52EC22001B4F52 /* LSJVideo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC1990E11D52EC22001B4F52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = iqu8;
+				TargetAttributes = {
+					EC1990E81D52EC22001B4F52 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = EC1990E41D52EC22001B4F52 /* Build configuration list for PBXProject "LSJVideo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC1990E01D52EC21001B4F52;
+			productRefGroup = EC1990EA1D52EC22001B4F52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC1990E81D52EC22001B4F52 /* LSJVideo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC1990E71D52EC22001B4F52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC1990FC1D52EC22001B4F52 /* LaunchScreen.storyboard in Resources */,
+				EC1990F91D52EC22001B4F52 /* Assets.xcassets in Resources */,
+				EC1990F71D52EC22001B4F52 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14050D936F8766439DFDB1D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		732CFB49312294A65AE0ADEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		97F0208CEBFB3D0FF69790FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC1990E51D52EC22001B4F52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC1990F41D52EC22001B4F52 /* ViewController.m in Sources */,
+				EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */,
+				EC1990EE1D52EC22001B4F52 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EC1990F51D52EC22001B4F52 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC1990F61D52EC22001B4F52 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EC1990FA1D52EC22001B4F52 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC1990FB1D52EC22001B4F52 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC1990FE1D52EC22001B4F52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC1990FF1D52EC22001B4F52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC1991011D52EC22001B4F52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B17949AE67F4498DA858110A /* Pods-LSJVideo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LSJVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LSJVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC1991021D52EC22001B4F52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7623508634401CB8DF1A56E3 /* Pods-LSJVideo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LSJVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LSJVideo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC1990E41D52EC22001B4F52 /* Build configuration list for PBXProject "LSJVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC1990FE1D52EC22001B4F52 /* Debug */,
+				EC1990FF1D52EC22001B4F52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC1991001D52EC22001B4F52 /* Build configuration list for PBXNativeTarget "LSJVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC1991011D52EC22001B4F52 /* Debug */,
+				EC1991021D52EC22001B4F52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC1990E11D52EC22001B4F52 /* Project object */;
+}
