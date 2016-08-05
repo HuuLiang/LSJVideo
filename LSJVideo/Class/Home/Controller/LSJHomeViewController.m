@@ -7,6 +7,7 @@
 //
 
 #import "LSJHomeViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface LSJHomeViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor redColor];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -153,6 +153,9 @@
         
     }];
     
+    LSJTabBarViewController *tabBarVC = [[LSJTabBarViewController alloc] init];
+    self.window.rootViewController = tabBarVC;
+    [self.window makeKeyAndVisible];
     
     
     return YES;

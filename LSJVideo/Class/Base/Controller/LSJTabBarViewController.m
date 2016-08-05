@@ -7,6 +7,7 @@
 //
 
 #import "LSJTabBarViewController.h"
+#import "LSJHomeViewController.h"
 
 @interface LSJTabBarViewController ()
 
@@ -18,9 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    LTHomeViewController *homeVC = [[LTHomeViewController alloc] initWithTitle:@"推荐"];
-//    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:homeVC];
-//    
+    LSJHomeViewController *homeVC = [[LSJHomeViewController alloc] initWithTitle:@"推荐"];
+    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:homeVC];
+//
 //    homeNav.tabBarItem = [[UITabBarItem alloc] init];
 //    homeNav.tabBarItem.title = homeVC.title;
 //    homeNav.tabBarItem.image = [[UIImage imageNamed:@"tabbar_home_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -43,6 +44,7 @@
 //    mineNav.tabBarItem.title = mineVC.title;
 //    mineNav.tabBarItem.image = [[UIImage imageNamed:@"tabbar_mine_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
+    self.viewControllers = @[homeNav];
 }
 
 - (void)didReceiveMemoryWarning {

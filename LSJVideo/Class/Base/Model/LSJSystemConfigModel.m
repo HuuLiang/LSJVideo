@@ -56,8 +56,8 @@
                         if (handler) {
                             handler(respStatus == LSJURLResponseSuccess);
                         }
-                        
                     }];
     return success;
     
-}@end
+}
+@end
