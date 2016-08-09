@@ -33,14 +33,14 @@
 }
 
 - (void)setupCommonStyles {
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#ec407a"]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#212121"]];
     [[UITabBar appearance] setTintColor:[UIColor redColor]];
     [[UITabBar appearance] setBarStyle:UIBarStyleBlack];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateSelected];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#ec407a"]];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:kScreenHeight*36/1334.],
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#212121"]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:kWidth(40)],
                                                            NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [UIViewController aspect_hookSelector:@selector(viewDidLoad)

@@ -8,6 +8,10 @@
 
 #import "LSJTabBarViewController.h"
 #import "LSJHomeViewController.h"
+#import "LSJWelfareViewController.h"
+#import "LSJHotViewController.h"
+#import "LSJLechersViewController.h"
+#import "LSJMineViewController.h"
 
 @interface LSJTabBarViewController ()
 
@@ -19,32 +23,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    LSJHomeViewController *homeVC = [[LSJHomeViewController alloc] initWithTitle:@"推荐"];
-    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:homeVC];
-//
-//    homeNav.tabBarItem = [[UITabBarItem alloc] init];
-//    homeNav.tabBarItem.title = homeVC.title;
-//    homeNav.tabBarItem.image = [[UIImage imageNamed:@"tabbar_home_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    
-//    LTCommunityViewController *communityVC = [[LTCommunityViewController alloc] initWithTitle:@"社区"];
-//    UINavigationController *communityNav = [[UINavigationController alloc] initWithRootViewController:communityVC];
-//    communityNav.tabBarItem = [[UITabBarItem alloc] init];
-//    communityNav.tabBarItem.title = communityNav.title;
-//    communityNav.tabBarItem.image = [[UIImage imageNamed:@"tabbar_community_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    
-//    LTMoreViewController *moreVC = [[LTMoreViewController alloc] initWithTitle:@"精品"];
-//    UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:moreVC];
-//    moreNav.tabBarItem = [[UITabBarItem alloc] init];
-//    moreNav.tabBarItem.title = moreVC.title;
-//    moreNav.tabBarItem.image = [[UIImage imageNamed:@"tabbar_more_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    
-//    LTMineViewController *mineVC = [[LTMineViewController alloc] initWithTitle:@"我"];
-//    UINavigationController *mineNav = [[UINavigationController alloc] initWithRootViewController:mineVC];
-//    mineNav.tabBarItem = [[UITabBarItem alloc] init];
-//    mineNav.tabBarItem.title = mineVC.title;
-//    mineNav.tabBarItem.image = [[UIImage imageNamed:@"tabbar_mine_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    LSJHomeViewController *homeVC = [[LSJHomeViewController alloc] initWithTitle:@"首页"];
+    UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    homeNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:homeVC.title
+                                                       image:[UIImage imageNamed:@"tabbar_home_selected"]
+                                               selectedImage:[[UIImage imageNamed:@"tabbar_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-    self.viewControllers = @[homeNav];
+    LSJWelfareViewController *welfareVC = [[LSJWelfareViewController alloc] initWithTitle:@"福利"];
+    UINavigationController *welfareNC = [[UINavigationController alloc] initWithRootViewController:welfareVC];
+    welfareNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:welfareVC.title
+                                                       image:[UIImage imageNamed:@"tabbar_welfare_normal"]
+                                               selectedImage:[[UIImage imageNamed:@"tabbar_welfare_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    LSJHotViewController *hotVC = [[LSJHotViewController alloc] initWithTitle:@"热搜"];
+    UINavigationController *hotNC = [[UINavigationController alloc] initWithRootViewController:hotVC];
+    hotNC.tabBarItem = [[UITabBarItem alloc] init];
+    hotNC.tabBarItem.imageInsets = UIEdgeInsetsMake(-5.5, 0, 5.5, 0);
+    hotNC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_hot_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    hotNC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_hot_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    LSJLechersViewController *lecherVC = [[LSJLechersViewController alloc] initWithTitle:@"狼友圈"];
+    UINavigationController *lecherNC = [[UINavigationController alloc] initWithRootViewController:lecherVC];
+    lecherNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:lecherVC.title
+                                                       image:[UIImage imageNamed:@"tabbar_lecher_normal"]
+                                               selectedImage:[[UIImage imageNamed:@"tabbar_lecher_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    LSJMineViewController *mineVC = [[LSJMineViewController alloc] initWithTitle:@"我的"];
+    UINavigationController *mineNC = [[UINavigationController alloc] initWithRootViewController:mineVC];
+    mineNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:mineVC.title
+                                                       image:[UIImage imageNamed:@"tabbar_mine_normal"]
+                                               selectedImage:[[UIImage imageNamed:@"tabbar_mine_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    
+    
+    self.viewControllers = @[homeNC,welfareNC,hotNC,lecherNC,mineNC];
+    self.tabBar.translucent = NO;
 }
 
 - (void)didReceiveMemoryWarning {

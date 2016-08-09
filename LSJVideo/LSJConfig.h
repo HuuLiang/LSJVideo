@@ -9,24 +9,27 @@
 #ifndef LSJConfig_h
 #define LSJConfig_h
 
-#define LSJ_CHANNEL_NO               @"QUBA_IOS_TUIGUANG9_0000001" //@"QB_MFW_IOS_TEST_0000001" //
-#define LSJ_REST_APPID               @"QUBA_2023"
+#define LSJ_CHANNEL_NO               @"QUBA_IOS_LAOSIJI_0000001" //@"QB_MFW_IOS_TEST_0000001" //
+#define LSJ_REST_APPID               @"QUBA_2024"
 #define LSJ_REST_PV                  @"100"
-#define LSJ_PAYMENT_PV               @"101"
+#define LSJ_PAYMENT_PV               @"100"
 #define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., LSJd."
 
 #define LSJ_REST_APP_VERSION     ((NSString *)([NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]))
 #define LSJ_PAYMENT_RESERVE_DATA [NSString stringWithFormat:@"%@$%@", LSJ_REST_APPID, LSJ_CHANNEL_NO]
 
-#define LSJ_BASE_URL                    @"http://iv.zcqcmj.com"//@"http://120.24.252.114:8093"//////@"http://192.168.1.123:8094/"
+#define LSJ_BASE_URL                    @"http://120.24.252.114:8093"//@"http://iv.zcqcmj.com"//////@"http://192.168.1.123:8094/"
+#define LSJ_HOME_URL                    @"/iosvideo/channelRanking.htm"
+#define LSJ_WELFARE_URL                 @"/iosvideo/channel.htm"
+#define LSJ_LECHERS_URL                 @"/iosvideo/forum.htm"
+#define LSJ_HOT_URL                     @"/iosvideo/hotSearch.htm"
+#define LSJ_COLUMNID_URL                @"/iosvideo/program.htm"
+#define LSJ_PROGRAM_URL                 @"/iosvideo/columnProgram.htm"
+#define LSJ_DETAIL_URL                  @"/iosvideo/detailsg.htm"
+#define LSJ_APPSPREAD_URL               @"/iosvideo/appSpreadList.htm"
 #define LSJ_ACTIVATION_URL              @"/iosvideo/activat.htm"
 #define LSJ_ACCESS_URL                  @"/iosvideo/userAccess.htm"
 #define LSJ_SYSTEM_CONFIG_URL           @"/iosvideo/systemConfig.htm"
-#define LSJ_HOME_URL                    @"/iosvideo/homePage.htm"
-#define LSJ_CHANNELRANKING_URL          @"/iosvideo/channelRanking.htm"
-#define LSJ_PROGRAM_URL                 @"/iosvideo/program.htm"
-#define LSJ_DETAIL_URL                  @"/iosvideo/detailsg.htm"
-#define LSJ_APPSPREAD_URL               @"/iosvideo/appSpreadList.htm"
 
 #define LSJ_STATS_BASE_URL              @"http://stats.iqu8.cn"//@"http://120.24.252.114"//
 #define LSJ_STATS_CPC_URL               @"/stats/cpcs.service"
@@ -44,7 +47,7 @@
 
 #define LSJ_DEFAULSJ_PHOTOSERVER_URL     @"http://7xpobi.com2.z0.glb.qiniucdn.com"
 
-#define LSJ_PROTOCOL_URL                @"http://iv.ihuiyx.com/iosvideo/av-agreement.html"
+#define LSJ_PROTOCOL_URL                @"http://120.24.252.114:8093/iosvideo/laosiji-agreement.html"
 
 #define LSJ_KSCRASH_APP_ID              @""
 
