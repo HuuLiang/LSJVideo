@@ -14,7 +14,7 @@ static NSString *const cellIdentifier = @"selectorCell";
 @interface SDCursorView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
-@property (nonatomic, strong) UIScrollView *rootScrollView;
+
 @property (nonatomic, strong) NSMutableArray *sizeArray;
 @end
 
@@ -42,7 +42,9 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 -(UIScrollView*)rootScrollView
 {
     if (!_rootScrollView) {
-        _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), self.contentViewHeight)];
+        DLog(@"%@",NSStringFromCGRect(self.bounds));
+        
+        _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+20, CGRectGetWidth(self.bounds), self.contentViewHeight)];
         _rootScrollView.backgroundColor = [UIColor whiteColor];
         _rootScrollView.pagingEnabled = YES;
         _rootScrollView.delegate = self;
@@ -56,8 +58,21 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         NSAssert(self.parentViewController, @"self.parentViewController must has a value");
         
     }
+    
+//    [_rootScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    
     return _rootScrollView;
 }
+
+//- (void)dealloc {
+//    [_rootScrollView removeObserver:self forKeyPath:@"contentOffset"];
+//}
+
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+//    if ([keyPath isEqualToString:@"contentOffset"]) {
+//        DLog(@"%@",change);
+//    }
+//}
 
 -(UIView*)lineView
 {

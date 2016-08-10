@@ -11,7 +11,7 @@
 
 @implementation UIScrollView (Refresh)
 
-- (void)JF_addPullToRefreshWithHandler:(void (^)(void))handler {
+- (void)LSJ_addPullToRefreshWithHandler:(void (^)(void))handler {
     if (!self.header) {
         MJRefreshNormalHeader *refreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:handler];
         refreshHeader.lastUpdatedTimeLabel.hidden = YES;
@@ -19,27 +19,27 @@
     }
 }
 
-- (void)JF_triggerPullToRefresh {
+- (void)LSJ_triggerPullToRefresh {
     [self.header beginRefreshing];
 }
 
-- (void)JF_endPullToRefresh {
+- (void)LSJ_endPullToRefresh {
     [self.header endRefreshing];
     [self.footer resetNoMoreData];
 }
 
-- (void)JF_addPagingRefreshWithHandler:(void (^)(void))handler {
+- (void)LSJ_addPagingRefreshWithHandler:(void (^)(void))handler {
     if (!self.footer) {
         MJRefreshAutoNormalFooter *refreshFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:handler];
         self.footer = refreshFooter;
     }
 }
 
-- (void)JF_pagingRefreshNoMoreData {
+- (void)LSJ_pagingRefreshNoMoreData {
     [self.footer endRefreshingWithNoMoreData];
 }
 
-- (void)JF_addIsRefreshing {
+- (void)LSJ_addIsRefreshing {
     if (!self.header) {
         MJRefreshNormalHeader *refreshHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:nil];
         [refreshHeader setTitle:@"正在刷新中" forState:MJRefreshStateRefreshing];
@@ -47,7 +47,7 @@
     }
 }
 
-- (void)JF_addVIPNotiRefreshWithHandler:(void (^)(void))handler {
+- (void)LSJ_addVIPNotiRefreshWithHandler:(void (^)(void))handler {
     if (!self.footer) {
         MJRefreshAutoNormalFooter *refreshFooter = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:handler];
         [refreshFooter setTitle:@"点击成为VIP可观看更多" forState:MJRefreshStateIdle];

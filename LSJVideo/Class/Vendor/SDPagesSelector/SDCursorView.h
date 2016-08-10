@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface SDCursorView : UIView
+
+@property (nonatomic, strong) UIScrollView *rootScrollView;
+
 /**
  *  底部标识线
  */

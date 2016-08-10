@@ -33,7 +33,6 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.hidden = YES;
     self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
     
     [self.homeModel fetchHomeInfoWithCompletionHandler:^(BOOL success, id obj) {
@@ -42,9 +41,6 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
             [self create];
         }
     }];
-    
-    
-    
 }
 
 - (void)create {
@@ -55,7 +51,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     _cursorView = [[SDCursorView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     //设置子页面容器的高度
-    _cursorView.contentViewHeight = kScreenHeight - 44-49;
+    _cursorView.contentViewHeight = kScreenHeight - 44 - 49 - 20;
     _cursorView.cursorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     //设置控件所在controller
     _cursorView.parentViewController = self;
@@ -63,17 +59,17 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     //设置所有子controller
     NSMutableArray *contrors = [NSMutableArray array];
-    for (NSString *title in titles) {
-        if ([title isEqualToString:@"日狗"]) {
+    for (LSJHomeColumnModel *columnModel in _dataSource) {
+        if ([columnModel.name isEqualToString:@"日狗"]) {
             LSJHomeDayVC *dayVC = [[LSJHomeDayVC alloc] init];
             [contrors addObject:dayVC];
-        } else if ([title isEqualToString:@"推荐"]) {
-            LSJHomeRecommdVC *recommdVC = [[LSJHomeRecommdVC alloc] init];
+        } else if ([columnModel.name isEqualToString:@"推荐"]) {
+            LSJHomeRecommdVC *recommdVC = [[LSJHomeRecommdVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:recommdVC];
-        } else if ([title isEqualToString:@"分类"]) {
+        } else if ([columnModel.name isEqualToString:@"分类"]) {
             LSJHomeCategoryVC *cateVC = [[LSJHomeCategoryVC alloc] init];
             [contrors addObject:cateVC];
-        } else if ([title isEqualToString:@"排行"]) {
+        } else if ([columnModel.name isEqualToString:@"排行"]) {
             LSJHomeRankVC *rankVC = [[LSJHomeRankVC alloc] init];
             [contrors addObject:rankVC];
         }
@@ -96,6 +92,13 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [_cursorView reloadPages];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

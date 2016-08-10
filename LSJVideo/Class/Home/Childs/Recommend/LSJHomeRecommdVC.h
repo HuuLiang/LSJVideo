@@ -10,4 +10,6 @@
 
 @interface LSJHomeRecommdVC : LSJBaseViewController
 
+- (instancetype)initWithColumnId:(NSInteger)columnId;
+
 @end
