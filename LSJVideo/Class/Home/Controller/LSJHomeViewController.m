@@ -55,7 +55,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     _cursorView = [[SDCursorView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     //设置子页面容器的高度
-    _cursorView.contentViewHeight = kScreenHeight - 44;
+    _cursorView.contentViewHeight = kScreenHeight - 44-49;
     _cursorView.cursorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     //设置控件所在controller
     _cursorView.parentViewController = self;
@@ -84,22 +84,18 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     _cursorView.normalFont = [UIFont systemFontOfSize:kWidth(36.)];
     
     _cursorView.selectedColor = [UIColor colorWithHexString:@"#222222"];
-    _cursorView.selectedFont = [UIFont systemFontOfSize:kWidth(36.)];
+    _cursorView.selectedFont = [UIFont systemFontOfSize:kWidth(40.)];
     _cursorView.backgroundColor = [UIColor clearColor];
     
     _cursorView.lineView.backgroundColor = [UIColor colorWithHexString:@"#222222"];
     _cursorView.lineEdgeInsets = UIEdgeInsetsMake(kWidth(2.), 3, 2, 3);
     
     [self.view addSubview:_cursorView];
-    _cursorView.currentIndex = 0;
+    _cursorView.currentIndex = 1;
     //属性设置完成后，调用此方法绘制界面
     [_cursorView reloadPages];
-//    _cursorView.currentIndex = 1;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

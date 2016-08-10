@@ -15,10 +15,11 @@ static NSString *const cellIdentifier = @"selectorCell";
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) UIScrollView *rootScrollView;
-
+@property (nonatomic, strong) NSMutableArray *sizeArray;
 @end
 
 @implementation SDCursorView
+DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -81,7 +82,7 @@ static NSString *const cellIdentifier = @"selectorCell";
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
-        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[SDSelectorCell class] forCellWithReuseIdentifier:cellIdentifier];
@@ -90,9 +91,16 @@ static NSString *const cellIdentifier = @"selectorCell";
     return _collectionView;
 }
 
-
 -(void)reloadPages
 {
+    CGFloat width = 0.0f;
+    for (NSString *title in _titles) {
+        CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
+        width = width+ size.width+kWidth(30);
+        [self.sizeArray addObject:@(size.width+kWidth(30))];
+    }
+    _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
+    
     NSAssert(_titles.count == _controllers.count, @"titles' count is not equal to controllerNames' count");
     [self.collectionView reloadData];
     
@@ -287,11 +295,9 @@ static NSString *const cellIdentifier = @"selectorCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = _titles[indexPath.item];
-    CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
-//    CGSize size = [comment.content sizeWithFont:[UIFont systemFontOfSize:kWidth(36.)] maxSize:CGSizeMake(MAXFLOAT, )].width
-    size = CGSizeMake(size.width+36, CGRectGetHeight(self.bounds));
-    
+//    NSString *title = _titles[indexPath.item];
+//    CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
+    CGSize size = CGSizeMake([_sizeArray[indexPath.item] floatValue], CGRectGetHeight(self.bounds));
     return size;
 }
 
