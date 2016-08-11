@@ -9,12 +9,13 @@
 #import "LSJHomeRecommdVC.h"
 
 #import "LSJHomeSectionHeaderView.h"
+#import "LSJRecommdCell.h"
 
 #import "LSJHomeProgramModel.h"
 
 #import <SDCycleScrollView.h>
 
-static NSString *const kHomeCellReusableIdentifier = @"HomeCellReusableIdentifier";
+static NSString *const kRecommendCellReusableIdentifier = @"RecommendCellReusableIdentifier";
 static NSString *const kHomeBigCellReusableIdentifier = @"HomeBigCellReusableIdentifier";
 
 static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdentifier";
@@ -80,7 +81,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     _layoutCollectionView.delegate = self;
     _layoutCollectionView.dataSource = self;
     _layoutCollectionView.showsVerticalScrollIndicator = NO;
-//    [_layoutCollectionView registerClass:[LTHomeCell class] forCellWithReuseIdentifier:kHomeCellReusableIdentifier];
+    [_layoutCollectionView registerClass:[LSJRecommdCell class] forCellWithReuseIdentifier:kRecommendCellReusableIdentifier];
 //    [_layoutCollectionView registerClass:[LTHomeBigCell class] forCellWithReuseIdentifier:kHomeBigCellReusableIdentifier];
     [_layoutCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kBannerCellReusableIdentifier];
     [_layoutCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kFreeCellReusableIdentifier];
@@ -160,34 +161,40 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     LSJHomeProgramListModel *model = self.dataSource[section];
-    if (model.type == 4) {
+//    if (model.type == 4) {
+//        return 1;
+//    } else if (model.type == 1){
+//        return model.programList.count;
+//    } else if (model.type == 3) {
+//        if ([LSJUtil isVip]) {
+//            return 1;
+//        } else {
+//            return 0;
+//        }
+//    } else if (model.type == 5) {
+//        if ([LSJUtil isVip]) {
+//            return 0;
+//        } else {
+//            return model.programList.count;
+//        }
+//    } else {
+//        return 0;
+//    }
+    if (model.type == 4 || model.type == 3 || model.type == 5) {
         return 1;
-    } else if (model.type == 1){
+    } else if (model.type == 1) {
         return model.programList.count;
-    } else if (model.type == 3) {
-        if ([LSJUtil isVip]) {
-            return 1;
-        } else {
-            return 0;
-        }
-    } else if (model.type == 5) {
-        if ([LSJUtil isVip]) {
-            return 0;
-        } else {
-            return model.programList.count;
-        }
     } else {
         return 0;
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    LSJRecommdCell *recommendCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRecommendCellReusableIdentifier forIndexPath:indexPath];
+    //    LTHomeBigCell *bCell = [collectionView dequeueReusableCellWithReuseIdentifier:kHomeBigCellReusableIdentifier forIndexPath:indexPath];
+    LSJHomeProgramListModel *column = _dataSource[indexPath.section];
+    LSJProgramModel *program = column.programList[indexPath.item];
     if (collectionView == _layoutCollectionView) {
-        //    LTHomeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kHomeCellReusableIdentifier forIndexPath:indexPath];
-        //    LTHomeBigCell *bCell = [collectionView dequeueReusableCellWithReuseIdentifier:kHomeBigCellReusableIdentifier forIndexPath:indexPath];
-        LSJHomeProgramListModel *column = _dataSource[indexPath.section];
-        LSJProgramModel *program = column.programList[indexPath.item];
-        
         if (column.type == 4) {
             if (!_bannerCell) {
                 _bannerCell = [collectionView dequeueReusableCellWithReuseIdentifier:kBannerCellReusableIdentifier forIndexPath:indexPath];
@@ -211,8 +218,14 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
             }
             return _freeCell;
         } else {
-            return nil;
+            recommendCell.title = program.title;
+            recommendCell.imgUrl = program.coverImg;
+            return recommendCell;
         }
+    } else if (collectionView == _freeCollectionView) {
+        recommendCell.title = program.title;
+        recommendCell.imgUrl = program.coverImg;
+        return recommendCell;
     } else {
         return nil;
     }
@@ -238,7 +251,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    const CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
+    const CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
 //    if (indexPath.section == 0 && indexPath.item == 0) {
 //        return CGSizeMake(fullWidth, fullWidth/2);
 //    } else if (indexPath.section == 1) {
@@ -250,20 +263,79 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 //    } else {
 //        return CGSizeMake(fullWidth-20, (fullWidth-20)/2);
 //    }
-    return CGSizeZero;
+//    return CGSizeZero;
+    LSJHomeProgramListModel *column = _dataSource[indexPath.section];
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionViewLayout;
+    UIEdgeInsets insets = [self collectionView:collectionView layout:layout insetForSectionAtIndex:indexPath.section];
+    CGFloat width;
+    CGFloat height;
+    
+    if (column.type == 4 || (column.type == 3 && [LSJUtil isVip])) {
+        return CGSizeMake(fullWidth, fullWidth/2.);
+    } else if (column.type == 1 && column.showMode == 1) {
+        if (indexPath.item == 0) {
+            width = fullWidth - insets.left - insets.right;
+            height = width / 3 + kWidth(30);
+            return CGSizeMake(width, height);
+        } else {
+            width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing) / 2;
+            height = width * 0.6 + kWidth(30);
+            return CGSizeMake(width, height);
+        }
+    } else if (column.type == 1 && column.showMode == 2) {
+        width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 3;
+        height = width * 9 / 7 + kWidth(30);
+        return CGSizeMake(width, height);
+    } else if (column.type == 5 && ![LSJUtil isVip]) {
+        width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 2.5;
+        height = width * 9 /7 + kWidth(30);
+        return CGSizeMake(width, height);8
+    } else {
+        return CGSizeZero;
+    }
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return section == 0 ? UIEdgeInsetsMake(0,0,5,0) : UIEdgeInsetsMake(5, 10, 5, 10);
+    LSJHomeProgramListModel *column = _dataSource[section];
+    if (column.type == 4) {
+        return UIEdgeInsetsMake(0, 0, 5, 0);
+    } else if (column.type == 1 || (column.type == 3 && [LSJUtil isVip]) || (column.type == 5 && ![LSJUtil isVip])) {
+        return UIEdgeInsetsMake(5, 10, 3, 10);
+    } else {
+        return UIEdgeInsetsZero;
+    }
+    
+//    return section == 0 ? UIEdgeInsetsMake(0,0,5,0) : UIEdgeInsetsMake(5, 10, 5, 10);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
+    LSJHomeProgramListModel *column = _dataSource[section];
+//    if (column.type == 4) {
+//        return CGSizeZero;
+//    } else if (column.type == 5) {
+//        if ([LSJUtil isVip]) {
+//            return CGSizeZero;
+//        } else {
+//            UIEdgeInsets insets = [self collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
+//            return CGSizeMake(CGRectGetWidth(collectionView.bounds)-insets.left-insets.right, 30);
+//        }
+//    } else if (column.type == 3) {
+//        if ([LSJUtil isVip]) {
+//            UIEdgeInsets insets = [self collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
+//            return CGSizeMake(CGRectGetWidth(collectionView.bounds)-insets.left-insets.right, 30);
+//        } else {
+//            return CGSizeZero;
+//        }
+//    } else {
+//        return CGSizeZero;
+//    }
+    
+    if ((column.type == 5 && ![LSJUtil isVip]) || (column.type == 3 && [LSJUtil isVip]) || column.type == 1) {
+        UIEdgeInsets insets = [self collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
+        return CGSizeMake(CGRectGetWidth(collectionView.bounds)-insets.left-insets.right, 30);
+    } else {
         return CGSizeZero;
     }
-    
-    UIEdgeInsets insets = [self collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
-    return CGSizeMake(CGRectGetWidth(collectionView.bounds)-insets.left-insets.right, 30);
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {

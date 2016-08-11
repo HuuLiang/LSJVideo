@@ -20,6 +20,7 @@
 @property (nonatomic) NSInteger showNumber;
 @property (nonatomic) NSString *spreadUrl;
 @property (nonatomic) NSInteger type;
+@property (nonatomic) NSInteger showMode;
 @end
 
 
