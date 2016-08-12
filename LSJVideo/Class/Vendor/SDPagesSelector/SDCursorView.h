@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-
+typedef void(^collectionViewWidth)(CGFloat width);
 
 @interface SDCursorView : UIView
+
+@property (nonatomic) collectionViewWidth collectionViewWidth;
 
 @property (nonatomic, strong) UIScrollView *rootScrollView;
 

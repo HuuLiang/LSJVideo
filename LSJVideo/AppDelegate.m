@@ -33,6 +33,7 @@
 }
 
 - (void)setupCommonStyles {
+    
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#212121"]];
     [[UITabBar appearance] setTintColor:[UIColor redColor]];
     [[UITabBar appearance] setBarStyle:UIBarStyleBlack];

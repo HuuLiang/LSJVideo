@@ -45,7 +45,7 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         DLog(@"%@",NSStringFromCGRect(self.bounds));
         
         _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+20, CGRectGetWidth(self.bounds), self.contentViewHeight)];
-        _rootScrollView.backgroundColor = [UIColor whiteColor];
+        _rootScrollView.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
         _rootScrollView.pagingEnabled = YES;
         _rootScrollView.delegate = self;
         _rootScrollView.alwaysBounceHorizontal = YES;
@@ -114,6 +114,8 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         width = width+ size.width+kWidth(30);
         [self.sizeArray addObject:@(size.width+kWidth(30))];
     }
+    _collectionViewWidth(width);
+    
     _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
     
     NSAssert(_titles.count == _controllers.count, @"titles' count is not equal to controllerNames' count");

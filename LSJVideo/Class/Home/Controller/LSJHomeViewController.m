@@ -33,7 +33,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+    self.view.backgroundColor = [[UIColor colorWithHexString:@"#000000"] colorWithAlphaComponent:0.99];
     
     [self.homeModel fetchHomeInfoWithCompletionHandler:^(BOOL success, id obj) {
         if (success) {
@@ -90,6 +90,9 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     _cursorView.currentIndex = 1;
     //属性设置完成后，调用此方法绘制界面
     [_cursorView reloadPages];
+    
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
