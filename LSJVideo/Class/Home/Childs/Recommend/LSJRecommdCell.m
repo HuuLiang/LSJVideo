@@ -22,6 +22,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.backgroundColor = [UIColor redColor];
+        
         _bgImgV = [[UIImageView alloc] init];
         _bgImgV.layer.cornerRadius = kWidth(4);
         _bgImgV.layer.masksToBounds = YES;
@@ -33,6 +35,17 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_titleLabel];
         
+        {
+            [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.bottom.right.equalTo(self);
+                make.height.mas_equalTo(kWidth(21));
+            }];
+            
+            [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.top.right.equalTo(self);
+                make.bottom.equalTo(_titleLabel.mas_top);
+            }];
+        }
     }
     return self;
 }
