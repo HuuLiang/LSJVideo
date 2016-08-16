@@ -32,8 +32,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [[UIColor colorWithHexString:@"#000000"] colorWithAlphaComponent:0.99];
+    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
     
     [self.homeModel fetchHomeInfoWithCompletionHandler:^(BOOL success, id obj) {
         if (success) {
@@ -61,26 +60,26 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     NSMutableArray *contrors = [NSMutableArray array];
     for (LSJHomeColumnModel *columnModel in _dataSource) {
         if ([columnModel.name isEqualToString:@"日狗"]) {
-            LSJHomeDayVC *dayVC = [[LSJHomeDayVC alloc] init];
+            LSJHomeDayVC *dayVC = [[LSJHomeDayVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:dayVC];
         } else if ([columnModel.name isEqualToString:@"推荐"]) {
             LSJHomeRecommdVC *recommdVC = [[LSJHomeRecommdVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:recommdVC];
         } else if ([columnModel.name isEqualToString:@"分类"]) {
-            LSJHomeCategoryVC *cateVC = [[LSJHomeCategoryVC alloc] init];
+            LSJHomeCategoryVC *cateVC = [[LSJHomeCategoryVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:cateVC];
         } else if ([columnModel.name isEqualToString:@"排行"]) {
-            LSJHomeRankVC *rankVC = [[LSJHomeRankVC alloc] init];
+            LSJHomeRankVC *rankVC = [[LSJHomeRankVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:rankVC];
         }
     }
     _cursorView.controllers = [contrors copy];
     //设置字体和颜色
     _cursorView.normalColor = [UIColor colorWithHexString:@"#555555"];
-    _cursorView.normalFont = [UIFont systemFontOfSize:kWidth(36.)];
+    _cursorView.normalFont = [UIFont systemFontOfSize:kWidth(34.)];
     
     _cursorView.selectedColor = [UIColor colorWithHexString:@"#222222"];
-    _cursorView.selectedFont = [UIFont systemFontOfSize:kWidth(40.)];
+    _cursorView.selectedFont = [UIFont systemFontOfSize:kWidth(38.)];
     _cursorView.backgroundColor = [UIColor clearColor];
     
     _cursorView.lineView.backgroundColor = [UIColor colorWithHexString:@"#222222"];
@@ -89,14 +88,43 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [self.view addSubview:_cursorView];
     _cursorView.currentIndex = 1;
     //属性设置完成后，调用此方法绘制界面
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - 100, 20, 100, 44)];
+    view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
+    [self.view addSubview:view];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"精品专区" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:kWidth(24.)];
+    btn.layer.cornerRadius = kWidth(26.);
+    btn.layer.masksToBounds = YES;
+    btn.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+    [btn setTitleColor:[UIColor colorWithHexString:@"#555555"] forState:UIControlStateNormal];
+    [view addSubview:btn];
+    
+    [btn bk_addEventHandler:^(id sender) {
+        LSJHomeAppVC *appVC = [[LSJHomeAppVC alloc] initWithTitle:@"精品专区"];
+        [self.navigationController pushViewController:appVC animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    _cursorView.collectionViewWidth = ^(CGFloat width) {
+        view.frame = CGRectMake(width, 20, kScreenWidth - width, 44);
+        
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(view);
+            make.right.equalTo(view).offset(-kWidth(14.));
+            make.size.mas_equalTo(CGSizeMake(kWidth(128.), kWidth(52.)));
+        }];
+    };
+    
     [_cursorView reloadPages];
-    
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

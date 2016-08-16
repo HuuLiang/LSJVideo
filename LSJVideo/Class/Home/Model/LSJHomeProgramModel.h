@@ -18,6 +18,7 @@
 @property (nonatomic) NSArray <LSJProgramModel *> *programList;
 @property (nonatomic) NSInteger realColumnId;
 @property (nonatomic) NSInteger showNumber;
+@property (nonatomic) NSString * spare;
 @property (nonatomic) NSString *spreadUrl;
 @property (nonatomic) NSInteger type;
 @property (nonatomic) NSInteger showMode;

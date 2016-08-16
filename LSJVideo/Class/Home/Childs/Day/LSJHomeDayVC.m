@@ -9,10 +9,21 @@
 #import "LSJHomeDayVC.h"
 
 @interface LSJHomeDayVC ()
-
+{
+    NSInteger _columnId;
+}
 @end
 
 @implementation LSJHomeDayVC
+
+- (instancetype)initWithColumnId:(NSInteger)columnId
+{
+    self = [super init];
+    if (self) {
+        _columnId = columnId;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

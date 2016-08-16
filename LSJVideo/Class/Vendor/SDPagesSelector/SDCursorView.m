@@ -114,7 +114,9 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         width = width+ size.width+kWidth(30);
         [self.sizeArray addObject:@(size.width+kWidth(30))];
     }
-    _collectionViewWidth(width);
+    if (self.collectionViewWidth) {
+        self.collectionViewWidth(width);
+    }
     
     _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
     

@@ -29,9 +29,17 @@
 
 - (BOOL)fetchHomeInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler {
     @weakify(self);
-    NSDictionary *params = @{@"columnId":@(columnId),
-                             @"isProgram":@(isProgram)};
-    BOOL success = [self requestURLPath:LSJ_PROGRAM_URL
+    NSDictionary *params = nil;
+    NSString *urlStr = nil;
+    if (columnId != 0) {
+        urlStr = LSJ_PROGRAM_URL;
+        params = @{@"columnId":@(columnId),
+                   @"isProgram":@(isProgram)};
+    } else {
+        urlStr = LSJ_APPSPREAD_URL;
+    }
+    
+    BOOL success = [self requestURLPath:urlStr
                              withParams:params
                         responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
                     {
@@ -42,7 +50,7 @@
                         }
                         
                         if (handler) {
-                            handler(respStatus==LSJURLResponseSuccess, resp.columnList);
+                            handler(respStatus == LSJURLResponseSuccess, resp.columnList);
                         }
                     }];
     

@@ -10,4 +10,6 @@
 
 @interface LSJHomeCategoryVC : LSJBaseViewController
 
+- (instancetype)initWithColumnId:(NSInteger)columnId;
+
 @end

@@ -289,7 +289,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         LSJHomeProgramListModel *column = _dataSource[section];
         if (column.type == 4) {
             return UIEdgeInsetsMake(0., 0., 5., 0.);
-        } else if (column.type == 1 || (column.type == 3 && [LSJUtil isVip]) || (column.type == 5 && ![LSJUtil isVip])) {
+        } else if (column.type == 1) {
             return UIEdgeInsetsMake(5., 10., 5., 10.);
         } else {
             return UIEdgeInsetsZero;

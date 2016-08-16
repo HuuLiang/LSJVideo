@@ -10,4 +10,6 @@
 
 @interface LSJHomeDayVC : LSJBaseViewController
 
+- (instancetype)initWithColumnId:(NSInteger)columnId;
+
 @end
