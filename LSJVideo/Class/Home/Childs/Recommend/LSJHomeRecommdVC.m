@@ -11,7 +11,7 @@
 #import "LSJHomeSectionHeaderView.h"
 #import "LSJRecommdCell.h"
 
-#import "LSJHomeProgramModel.h"
+#import "LSJHomeColumnModel.h"
 
 #import <SDCycleScrollView.h>
 
@@ -33,11 +33,11 @@ static NSString *const kHomeSectionHeaderReusableIdentifier = @"HomeSectionHeade
 
 }
 @property (nonatomic) NSMutableArray *dataSource;
-@property (nonatomic) LSJHomeProgramModel *programModel;
+@property (nonatomic) LSJHomeColumnModel *programModel;
 @end
 
 @implementation LSJHomeRecommdVC
-DefineLazyPropertyInitialization(LSJHomeProgramModel, programModel)
+DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
@@ -60,7 +60,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     _bannerView.titleLabelBackgroundColor = [UIColor clearColor];
     _bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _bannerView.delegate = self;
-    _bannerView.backgroundColor = [UIColor whiteColor];
+    _bannerView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     
     
     UICollectionViewFlowLayout *freeLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -68,7 +68,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     freeLayout.minimumInteritemSpacing = 5;
     [freeLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     _freeCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:freeLayout];
-    _freeCollectionView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+    _freeCollectionView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     _freeCollectionView.delegate = self;
     _freeCollectionView.dataSource = self;
     _freeCollectionView.showsVerticalScrollIndicator = NO;
@@ -80,7 +80,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     mainLayout.minimumLineSpacing = 5;
     mainLayout.minimumInteritemSpacing = 5;
     _layoutCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:mainLayout];
-    _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+    _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     _layoutCollectionView.delegate = self;
     _layoutCollectionView.dataSource = self;
     _layoutCollectionView.showsVerticalScrollIndicator = NO;
@@ -111,7 +111,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [self.dataSource removeAllObjects];
-            for (LSJHomeProgramListModel *model in obj) {
+            for (LSJColumnModel *model in obj) {
                 if (model.showNumber == 6) {
                     model.showMode = 1;
                 } else if (model.showNumber == 10) {
@@ -132,7 +132,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     NSMutableArray *imageUrlGroup = [NSMutableArray array];
     NSMutableArray *titlesGroup = [NSMutableArray array];
     
-    for (LSJHomeProgramListModel *column in self.dataSource) {
+    for (LSJColumnModel *column in self.dataSource) {
         if (column.type == 4) {
             for (LSJProgramModel *program in column.programList) {
                 [imageUrlGroup addObject:program.coverImg];
@@ -159,7 +159,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == _layoutCollectionView) {
-        LSJHomeProgramListModel *model = self.dataSource[section];
+        LSJColumnModel *model = self.dataSource[section];
         if (model.type == 4 || model.type == 3 || model.type == 5) {
             return 1;
         } else if (model.type == 1) {
@@ -168,7 +168,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
             return 0;
         }
     } else if (collectionView == _freeCollectionView) {
-        for (LSJHomeProgramListModel * model in self.dataSource) {
+        for (LSJColumnModel * model in self.dataSource) {
             if (model.type == 5) {
                 return model.programList.count;
             }
@@ -183,7 +183,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     LSJRecommdCell *recommendCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRecommendCellReusableIdentifier forIndexPath:indexPath];
     
-    LSJHomeProgramListModel *column = _dataSource[indexPath.section];
+    LSJColumnModel *column = _dataSource[indexPath.section];
     
     LSJProgramModel *program = column.programList[indexPath.item];
     if (collectionView == _layoutCollectionView) {
@@ -227,7 +227,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == _layoutCollectionView) {
         LSJHomeSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kHomeSectionHeaderReusableIdentifier forIndexPath:indexPath];
-        LSJHomeProgramListModel *column = _dataSource[indexPath.section];
+        LSJColumnModel *column = _dataSource[indexPath.section];
         headerView.titleStr = column.name;
         return headerView;
     } else {
@@ -242,7 +242,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView == _layoutCollectionView) {
         CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
-        LSJHomeProgramListModel *column = _dataSource[indexPath.section];
+        LSJColumnModel *column = _dataSource[indexPath.section];
         UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionViewLayout;
         UIEdgeInsets insets = [self collectionView:collectionView layout:layout insetForSectionAtIndex:indexPath.section];
         CGFloat width;
@@ -286,11 +286,11 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     if (collectionView == _layoutCollectionView) {
-        LSJHomeProgramListModel *column = _dataSource[section];
+        LSJColumnModel *column = _dataSource[section];
         if (column.type == 4) {
-            return UIEdgeInsetsMake(0., 0., 5., 0.);
+            return UIEdgeInsetsMake(0., 0., 0, 0.);
         } else if (column.type == 1) {
-            return UIEdgeInsetsMake(5., 10., 5., 10.);
+            return UIEdgeInsetsMake(0, 10., 5., 10.);
         } else {
             return UIEdgeInsetsZero;
         }
@@ -303,11 +303,11 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     if (collectionView == _layoutCollectionView) {
-        LSJHomeProgramListModel *column = _dataSource[section];
+        LSJColumnModel *column = _dataSource[section];
         
         if ((column.type == 5 && ![LSJUtil isVip]) || column.type == 1) {
             UIEdgeInsets insets = [self collectionView:collectionView layout:collectionViewLayout insetForSectionAtIndex:section];
-            return CGSizeMake(CGRectGetWidth(collectionView.bounds)-insets.left-insets.right, 30);
+            return CGSizeMake(CGRectGetWidth(collectionView.bounds)-insets.left-insets.right, kWidth(100));
         } else {
             return CGSizeMake(0, 0);
         }

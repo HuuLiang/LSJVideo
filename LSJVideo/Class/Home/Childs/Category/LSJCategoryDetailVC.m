@@ -15,15 +15,17 @@ static NSString *const kCategoryDetailsCellReusableIdentifier = @"categoryDetail
 @interface LSJCategoryDetailVC () <UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSInteger _columnId;
+    NSString *_colorHexStr;
     UICollectionView *_layoutCollectionView;
 }
 @property (nonatomic) LSJHomeProgramModel *programModel;
-@property (nonatomic) NSMutableArray *dataSource;
+@property (nonatomic) LSJColumnModel *response;
 
 @end
 
 @implementation LSJCategoryDetailVC
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+DefineLazyPropertyInitialization(LSJHomeProgramModel, programModel)
+DefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -38,11 +40,10 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [super viewDidLoad];
     
     UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
-    mainLayout.minimumLineSpacing = 5;
-    mainLayout.minimumInteritemSpacing = 5;
-    mainLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
+    mainLayout.minimumLineSpacing = 0;
+    mainLayout.minimumInteritemSpacing = kWidth(10);
     _layoutCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:mainLayout];
-    _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+    _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     _layoutCollectionView.delegate = self;
     _layoutCollectionView.dataSource = self;
     _layoutCollectionView.showsVerticalScrollIndicator = NO;
@@ -62,12 +63,19 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [_layoutCollectionView LSJ_triggerPullToRefresh];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+}
+
 - (void)loadData {
-    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
+    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, LSJColumnModel * obj) {
         if (success) {
-            [self.dataSource removeAllObjects];
             [_layoutCollectionView LSJ_endPullToRefresh];
-            [self.dataSource addObjectsFromArray:obj];
+            self.response = obj;
+            self.title = self.response.name;
             [_layoutCollectionView reloadData];
         }
     }];
@@ -84,19 +92,18 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return self.response.programList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    LSJCategoryDetailCell *categoryCell = [collectionView dequeueReusableCellWithReuseIdentifier:kCategoryDetailsCellReusableIdentifier forIndexPath:indexPath];
-    LSJHomeProgramListModel *column = _dataSource[indexPath.item];
-    //    LSJProgramModel *program = column.programList[indexPath.item];
-    if (indexPath.item < self.dataSource.count) {
-//        categoryCell.title = column.name;
-//        categoryCell.imgUrl = column.columnImg;
-//        categoryCell.colorHexStr = column.spare;
-        return categoryCell;
+    LSJCategoryDetailCell *categoryDetailCell = [collectionView dequeueReusableCellWithReuseIdentifier:kCategoryDetailsCellReusableIdentifier forIndexPath:indexPath];
+    if (indexPath.item < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.item];
+        categoryDetailCell.titleStr = program.title;
+        categoryDetailCell.imgUrlStr = program.coverImg;
+        categoryDetailCell.tagHexStr = self.response.spare;
+        categoryDetailCell.tagTitleStr = self.response.name;
+        return categoryDetailCell;
     } else {
         return nil;
     }
@@ -111,12 +118,12 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     UIEdgeInsets insets = [self collectionView:collectionView layout:layout insetForSectionAtIndex:indexPath.section];
     const CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
     const CGFloat width = (fullWidth - layout.minimumInteritemSpacing - insets.left - insets.right)/2;
-    const CGFloat height = width * 458 / 353.;
-    return CGSizeMake(width, height);
+    const CGFloat height = width * 0.6+kWidth(60);
+    return CGSizeMake((long)width, (long)height);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(5, 5, 5, 5);
+    return UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10));
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {

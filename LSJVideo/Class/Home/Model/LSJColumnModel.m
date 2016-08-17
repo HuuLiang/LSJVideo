@@ -10,4 +10,8 @@
 
 @implementation LSJColumnModel
 
+- (Class)programListElementClass {
+    return [LSJProgramModel class];
+}
+
 @end

@@ -1,31 +1,32 @@
 //
-//  LSJHomeCategoryVC.m
+//  LSJRankDetailVC.m
 //  LSJVideo
 //
-//  Created by Liang on 16/8/9.
+//  Created by Liang on 16/8/17.
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJHomeCategoryVC.h"
-#import "LSJHomeColumnModel.h"
-#import "LSJCategoryCell.h"
-#import "LSJCategoryDetailVC.h"
+#import "LSJRankDetailVC.h"
+#import "LSJHomeProgramModel.h"
+#import "LSJRankDetailCell.h"
+#import "LSJColumnModel.h"
 
-static NSString *const kCategoryCellReusableIdentifier = @"categoryCellReusableIdentifier";
+static NSString *const kRankDetailCellReusableIdentifier = @"RankDetailCellReusableIdentifier";
 
-
-@interface LSJHomeCategoryVC () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface LSJRankDetailVC () <UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSInteger _columnId;
     UICollectionView *_layoutCollectionView;
 }
-@property (nonatomic) LSJHomeColumnModel *programModel;
+@property (nonatomic) LSJHomeProgramModel *programModel;
 @property (nonatomic) NSMutableArray *dataSource;
+@property (nonatomic) LSJColumnModel *response;
 @end
 
-@implementation LSJHomeCategoryVC
-DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
+@implementation LSJRankDetailVC
+DefineLazyPropertyInitialization(LSJHomeProgramModel, programModel)
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+DefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -40,15 +41,14 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [super viewDidLoad];
     
     UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
-    mainLayout.minimumLineSpacing = 5;
-    mainLayout.minimumInteritemSpacing = 5;
-    mainLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
+    mainLayout.minimumLineSpacing = kWidth(30);
+    mainLayout.minimumInteritemSpacing = kWidth(20);
     _layoutCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:mainLayout];
     _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     _layoutCollectionView.delegate = self;
     _layoutCollectionView.dataSource = self;
     _layoutCollectionView.showsVerticalScrollIndicator = NO;
-    [_layoutCollectionView registerClass:[LSJCategoryCell class] forCellWithReuseIdentifier:kCategoryCellReusableIdentifier];
+    [_layoutCollectionView registerClass:[LSJRankDetailCell class] forCellWithReuseIdentifier:kRankDetailCellReusableIdentifier];
     [self.view addSubview:_layoutCollectionView];
     {
         [_layoutCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -62,17 +62,15 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         [self loadData];
     }];
     [_layoutCollectionView LSJ_triggerPullToRefresh];
-    
-    
-    
 }
 
 - (void)loadData {
-    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
+    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, LSJColumnModel * obj) {
         if (success) {
             [self.dataSource removeAllObjects];
             [_layoutCollectionView LSJ_endPullToRefresh];
-            [self.dataSource addObjectsFromArray:obj];
+            self.response = obj;
+            self.title = self.response.name;
             [_layoutCollectionView reloadData];
         }
     }];
@@ -89,45 +87,41 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataSource.count;
+    return self.response.programList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    LSJCategoryCell *categoryCell = [collectionView dequeueReusableCellWithReuseIdentifier:kCategoryCellReusableIdentifier forIndexPath:indexPath];
-    LSJColumnModel *column = _dataSource[indexPath.item];
-//    LSJProgramModel *program = column.programList[indexPath.item];
-    if (indexPath.item < self.dataSource.count) {
-        categoryCell.title = column.name;
-        categoryCell.imgUrl = column.columnImg;
-        categoryCell.colorHexStr = column.spare;
-        return categoryCell;
+    LSJRankDetailCell *rankDetailCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRankDetailCellReusableIdentifier forIndexPath:indexPath];
+    if (indexPath.item < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.item];
+//        rankDetailCell.imgUrl = column.columnImg;
+//        rankDetailCell.titleStr = column.name;
+//        rankDetailCell.rank = indexPath.item;
+//        rankDetailCell.hotCount = [column.spare integerValue];
+        return rankDetailCell;
     } else {
         return nil;
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    LSJColumnModel *column = _dataSource[indexPath.item];
-    LSJCategoryDetailVC *cateDetailVC = [[LSJCategoryDetailVC alloc] initWithColumnId:column.columnId];
-    [self.navigationController pushViewController:cateDetailVC animated:YES];
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionViewLayout;
     UIEdgeInsets insets = [self collectionView:collectionView layout:layout insetForSectionAtIndex:indexPath.section];
     const CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
-    const CGFloat width = (fullWidth - layout.minimumInteritemSpacing - insets.left - insets.right)/2;
-    const CGFloat height = width * 458 / 353.;
+    const CGFloat width = (fullWidth - layout.minimumInteritemSpacing - insets.left - insets.right)/3;
+    const CGFloat height = width * 9 / 7.;
     return CGSizeMake(width, height);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(5, 5, 5, 5);
+    return UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10));
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     //[[LTStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LTUtils currentSubTabPageIndex] forSlideCount:1];
 }
-
 @end

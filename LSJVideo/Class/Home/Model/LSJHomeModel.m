@@ -8,7 +8,7 @@
 
 #import "LSJHomeModel.h"
 
-@implementation LSJHomeColumnModel
+@implementation LSJHomeColumnsModel
 - (Class)columnListElementClass {
     return [LSJColumnModel class];
 }
@@ -17,7 +17,7 @@
 
 @implementation LSJHomeModelResponse
 - (Class)columnListElementClass {
-    return [LSJHomeColumnModel class];
+    return [LSJHomeColumnsModel class];
 }
 @end
 

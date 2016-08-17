@@ -9,7 +9,7 @@
 #import "LSJEncryptedURLRequest.h"
 #import "LSJColumnModel.h"
 
-@interface LSJHomeColumnModel : LSJURLResponse
+@interface LSJHomeColumnsModel : LSJURLResponse
 @property (nonatomic) NSString *columnDesc;
 @property (nonatomic) NSInteger columnId;
 @property (nonatomic) NSString *columnImg;
@@ -23,7 +23,7 @@
 @end
 
 @interface LSJHomeModelResponse : LSJURLResponse
-@property (nonatomic) NSArray <LSJHomeColumnModel *> *columnList;
+@property (nonatomic) NSArray <LSJHomeColumnsModel *> *columnList;
 @end
 
 @interface LSJHomeModel : LSJEncryptedURLRequest

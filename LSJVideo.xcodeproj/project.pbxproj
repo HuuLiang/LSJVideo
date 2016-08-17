@@ -25,6 +25,11 @@
 		EC66EC701D62E84000ECAC57 /* LSJRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC6F1D62E84000ECAC57 /* LSJRankCell.m */; };
 		EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */; };
 		EC66EC761D63145500ECAC57 /* LSJCategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */; };
+		EC66EC791D631B0600ECAC57 /* LSJHomeColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC781D631B0600ECAC57 /* LSJHomeColumnModel.m */; };
+		EC66EC7C1D631E3F00ECAC57 /* LSJHomeProgramModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC7B1D631E3F00ECAC57 /* LSJHomeProgramModel.m */; };
+		EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A21D64097700AC3708 /* LSJWelfareModel.m */; };
+		EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */; };
+		EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */; };
 		ECD70CDC1D531F6B006929B1 /* JFLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70BFA1D531F6A006929B1 /* JFLaunchView.m */; };
 		ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C4F1D531F6B006929B1 /* DBHandler.m */; };
 		ECD70CFD1D531F6B006929B1 /* DBPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C521D531F6B006929B1 /* DBPersistence.m */; };
@@ -119,7 +124,6 @@
 		ECF00E291D5B49E900FBF1D2 /* LSJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E171D5B49E900FBF1D2 /* LSJHomeViewController.m */; };
 		ECF00E2A1D5B49E900FBF1D2 /* LSJColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E1A1D5B49E900FBF1D2 /* LSJColumnModel.m */; };
 		ECF00E2B1D5B49E900FBF1D2 /* LSJHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E1C1D5B49E900FBF1D2 /* LSJHomeModel.m */; };
-		ECF00E2C1D5B49E900FBF1D2 /* LSJHomeProgramModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E1E1D5B49E900FBF1D2 /* LSJHomeProgramModel.m */; };
 		ECF00E2D1D5B49E900FBF1D2 /* LSJProgramModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E201D5B49E900FBF1D2 /* LSJProgramModel.m */; };
 		ECF00E2E1D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E231D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m */; };
 /* End PBXBuildFile section */
@@ -160,6 +164,16 @@
 		EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryDetailVC.m; sourceTree = "<group>"; };
 		EC66EC741D63145500ECAC57 /* LSJCategoryDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCategoryDetailCell.h; sourceTree = "<group>"; };
 		EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryDetailCell.m; sourceTree = "<group>"; };
+		EC66EC771D631B0600ECAC57 /* LSJHomeColumnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeColumnModel.h; sourceTree = "<group>"; };
+		EC66EC781D631B0600ECAC57 /* LSJHomeColumnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHomeColumnModel.m; sourceTree = "<group>"; };
+		EC66EC7A1D631E3F00ECAC57 /* LSJHomeProgramModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeProgramModel.h; sourceTree = "<group>"; };
+		EC66EC7B1D631E3F00ECAC57 /* LSJHomeProgramModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHomeProgramModel.m; sourceTree = "<group>"; };
+		EC7684A11D64097700AC3708 /* LSJWelfareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJWelfareModel.h; sourceTree = "<group>"; };
+		EC7684A21D64097700AC3708 /* LSJWelfareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJWelfareModel.m; sourceTree = "<group>"; };
+		EC7684A41D64175C00AC3708 /* LSJRankDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankDetailVC.h; sourceTree = "<group>"; };
+		EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankDetailVC.m; sourceTree = "<group>"; };
+		EC7684A71D64185500AC3708 /* LSJRankDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankDetailCell.h; sourceTree = "<group>"; };
+		EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankDetailCell.m; sourceTree = "<group>"; };
 		ECD70BCC1D531CCA006929B1 /* LSJPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPrefixHeader.pch; sourceTree = "<group>"; };
 		ECD70BCE1D531D1A006929B1 /* LSJConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJConfig.h; sourceTree = "<group>"; };
 		ECD70BCF1D531D71006929B1 /* LSJCommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCommonDef.h; sourceTree = "<group>"; };
@@ -336,8 +350,6 @@
 		ECF00E1A1D5B49E900FBF1D2 /* LSJColumnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJColumnModel.m; sourceTree = "<group>"; };
 		ECF00E1B1D5B49E900FBF1D2 /* LSJHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeModel.h; sourceTree = "<group>"; };
 		ECF00E1C1D5B49E900FBF1D2 /* LSJHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHomeModel.m; sourceTree = "<group>"; };
-		ECF00E1D1D5B49E900FBF1D2 /* LSJHomeProgramModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeProgramModel.h; sourceTree = "<group>"; };
-		ECF00E1E1D5B49E900FBF1D2 /* LSJHomeProgramModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHomeProgramModel.m; sourceTree = "<group>"; };
 		ECF00E1F1D5B49E900FBF1D2 /* LSJProgramModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJProgramModel.h; sourceTree = "<group>"; };
 		ECF00E201D5B49E900FBF1D2 /* LSJProgramModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJProgramModel.m; sourceTree = "<group>"; };
 		ECF00E221D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeSectionHeaderView.h; sourceTree = "<group>"; };
@@ -866,6 +878,8 @@
 		ECD70D701D5328CB006929B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC7684A11D64097700AC3708 /* LSJWelfareModel.h */,
+				EC7684A21D64097700AC3708 /* LSJWelfareModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -964,6 +978,10 @@
 				ECF00E111D5B49E900FBF1D2 /* LSJHomeRankVC.m */,
 				EC66EC6E1D62E84000ECAC57 /* LSJRankCell.h */,
 				EC66EC6F1D62E84000ECAC57 /* LSJRankCell.m */,
+				EC7684A41D64175C00AC3708 /* LSJRankDetailVC.h */,
+				EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */,
+				EC7684A71D64185500AC3708 /* LSJRankDetailCell.h */,
+				EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */,
 			);
 			path = Rank;
 			sourceTree = "<group>";
@@ -993,8 +1011,10 @@
 			children = (
 				ECF00E1B1D5B49E900FBF1D2 /* LSJHomeModel.h */,
 				ECF00E1C1D5B49E900FBF1D2 /* LSJHomeModel.m */,
-				ECF00E1D1D5B49E900FBF1D2 /* LSJHomeProgramModel.h */,
-				ECF00E1E1D5B49E900FBF1D2 /* LSJHomeProgramModel.m */,
+				EC66EC771D631B0600ECAC57 /* LSJHomeColumnModel.h */,
+				EC66EC781D631B0600ECAC57 /* LSJHomeColumnModel.m */,
+				EC66EC7A1D631E3F00ECAC57 /* LSJHomeProgramModel.h */,
+				EC66EC7B1D631E3F00ECAC57 /* LSJHomeProgramModel.m */,
 				ECF00E191D5B49E900FBF1D2 /* LSJColumnModel.h */,
 				ECF00E1A1D5B49E900FBF1D2 /* LSJColumnModel.m */,
 				ECF00E1F1D5B49E900FBF1D2 /* LSJProgramModel.h */,
@@ -1176,7 +1196,6 @@
 				ECD70D921D532C45006929B1 /* LSJMessageCenter.m in Sources */,
 				EC1F936D1D59BE8B00E0B1F4 /* LSJLechersViewController.m in Sources */,
 				ECD70D191D531F6B006929B1 /* RACEXTRuntimeExtensions.m in Sources */,
-				ECF00E2C1D5B49E900FBF1D2 /* LSJHomeProgramModel.m in Sources */,
 				EC1F93671D59BE4F00E0B1F4 /* LSJWelfareViewController.m in Sources */,
 				ECF00E2A1D5B49E900FBF1D2 /* LSJColumnModel.m in Sources */,
 				ECD70D4B1D53262F006929B1 /* LSJTabBarViewController.m in Sources */,
@@ -1200,6 +1219,7 @@
 				ECD70D051D531F6B006929B1 /* NSString+StringHeight.m in Sources */,
 				ECD70D091D531F6B006929B1 /* UIImage+Utilities.m in Sources */,
 				ECD70DA41D533127006929B1 /* LSJPaymentConfig.m in Sources */,
+				EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */,
 				ECD70D061D531F6B006929B1 /* UIBarButtonItem+Badge.m in Sources */,
 				ECD70D031D531F6B006929B1 /* NSObject+PropertyAccessInspecting.m in Sources */,
 				ECD70D301D531F6B006929B1 /* base64.m in Sources */,
@@ -1211,14 +1231,17 @@
 				ECD70D441D53212B006929B1 /* LSJBaseViewController.m in Sources */,
 				ECD70DB91D53450C006929B1 /* LSJPaymentManager.m in Sources */,
 				EC1F93641D59BC2E00E0B1F4 /* SDSelectorCell.m in Sources */,
+				EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */,
 				ECD70DB31D533EF8006929B1 /* LSJSystemConfig.m in Sources */,
 				ECD70D041D531F6B006929B1 /* NSString+crypt.m in Sources */,
 				EC1990EE1D52EC22001B4F52 /* main.m in Sources */,
 				ECD70D331D531F6B006929B1 /* MD5DataSigner.m in Sources */,
 				ECD70D3E1D531FC7006929B1 /* JQKApplicationManager.m in Sources */,
+				EC66EC791D631B0600ECAC57 /* LSJHomeColumnModel.m in Sources */,
 				ECD70DA11D5330AD006929B1 /* LSJEncryptedURLRequest.m in Sources */,
 				ECD70D891D532A62006929B1 /* LSJURLResponse.m in Sources */,
 				EC1F936A1D59BE6F00E0B1F4 /* LSJHotViewController.m in Sources */,
+				EC66EC7C1D631E3F00ECAC57 /* LSJHomeProgramModel.m in Sources */,
 				ECD70D3D1D531FC7006929B1 /* JQKApplication.m in Sources */,
 				ECF00E2D1D5B49E900FBF1D2 /* LSJProgramModel.m in Sources */,
 				ECD70DCE1D534912006929B1 /* LSJTableViewCell.m in Sources */,
@@ -1233,6 +1256,7 @@
 				ECD70DB61D533F46006929B1 /* LSJSystemConfigModel.m in Sources */,
 				ECD70D321D531F6B006929B1 /* DataVerifier.m in Sources */,
 				ECD70D0A1D531F6B006929B1 /* UIImageView+YPBAnimation.m in Sources */,
+				EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */,
 				ECD70DC51D534771006929B1 /* LSJPaymentModel.m in Sources */,
 				EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */,
 			);

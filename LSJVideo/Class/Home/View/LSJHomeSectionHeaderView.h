@@ -10,5 +10,5 @@
 
 @interface LSJHomeSectionHeaderView : UICollectionReusableView
 @property (nonatomic) NSString *titleStr;
-@property (nonatomic) NSInteger section;
+//@property (nonatomic) NSInteger section;
 @end

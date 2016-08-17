@@ -44,7 +44,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)create {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
-    for (LSJHomeColumnModel *columnModel in _dataSource) {
+    for (LSJHomeColumnsModel *columnModel in _dataSource) {
         [titles addObject:columnModel.name];
     }
     
@@ -58,7 +58,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     //设置所有子controller
     NSMutableArray *contrors = [NSMutableArray array];
-    for (LSJHomeColumnModel *columnModel in _dataSource) {
+    for (LSJHomeColumnsModel *columnModel in _dataSource) {
         if ([columnModel.name isEqualToString:@"日狗"]) {
             LSJHomeDayVC *dayVC = [[LSJHomeDayVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:dayVC];
@@ -124,7 +124,6 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

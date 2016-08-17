@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor clearColor];
         
         _bgImgV = [[UIImageView alloc] init];
         _bgImgV.layer.cornerRadius = kWidth(4);
@@ -30,7 +30,7 @@
         [self addSubview:_bgImgV];
         
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:kWidth(15)];
+        _titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
         _titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
         _titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_titleLabel];
@@ -38,7 +38,7 @@
         {
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.bottom.right.equalTo(self);
-                make.height.mas_equalTo(kWidth(21));
+                make.height.mas_equalTo(kWidth(60));
             }];
             
             [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {

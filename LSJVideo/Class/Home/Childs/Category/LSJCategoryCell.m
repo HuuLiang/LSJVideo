@@ -95,7 +95,7 @@
 }
 
 - (void)setColorHexStr:(NSString *)colorHexStr {
-    _tagView.backgroundColor = [[UIColor colorWithHexString:[NSString stringWithFormat:@"%@",colorHexStr]] colorWithAlphaComponent:0.65];
+    _tagView.backgroundColor = [[UIColor colorWithHexString:colorHexStr] colorWithAlphaComponent:0.65];
 }
 
 @end

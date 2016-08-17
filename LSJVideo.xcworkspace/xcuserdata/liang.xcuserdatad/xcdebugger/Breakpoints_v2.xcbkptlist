@@ -9,12 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LSJVideo/Class/Home/Childs/Category/LSJCategoryDetailVC.m"
-            timestampString = "493032913.00745"
+            filePath = "LSJVideo/Class/Home/Childs/Rank/LSJRankDetailVC.m"
+            timestampString = "493112467.487074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-loadData"
             landmarkType = "5">
          </BreakpointContent>
@@ -25,12 +25,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LSJVideo/Class/Home/Childs/Category/LSJCategoryDetailVC.m"
-            timestampString = "493032913.631992"
+            filePath = "LSJVideo/Class/Home/Childs/Rank/LSJRankDetailVC.m"
+            timestampString = "493112469.50633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-loadData"
             landmarkType = "5">
          </BreakpointContent>

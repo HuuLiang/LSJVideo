@@ -8,7 +8,8 @@
 
 #import "LSJHomeRankVC.h"
 #import "LSJRankCell.h"
-#import "LSJHomeProgramModel.h"
+#import "LSJHomeColumnModel.h"
+#import "LSJRankDetailVC.h"
 
 static NSString *const kRankCellReusableIdentifier = @"RankCellReusableIdentifier";
 
@@ -17,13 +18,13 @@ static NSString *const kRankCellReusableIdentifier = @"RankCellReusableIdentifie
     NSInteger _columnId;
     UICollectionView *_layoutCollectionView;
 }
-@property (nonatomic) LSJHomeProgramModel *programModel;
+@property (nonatomic) LSJHomeColumnModel *programModel;
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) NSMutableArray *widthSource;
 @end
 
 @implementation LSJHomeRankVC
-DefineLazyPropertyInitialization(LSJHomeProgramModel, programModel)
+DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 DefineLazyPropertyInitialization(NSMutableArray, widthSource)
 
@@ -70,7 +71,7 @@ DefineLazyPropertyInitialization(NSMutableArray, widthSource)
             [self.dataSource removeAllObjects];
             [self.widthSource removeAllObjects];
             [_layoutCollectionView LSJ_endPullToRefresh];
-            for (LSJHomeProgramListModel *column in obj) {
+            for (LSJColumnModel *column in obj) {
                 CGSize size = [column.name sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kWidth(30)]}];
                 [self.widthSource addObject:@(size.width)];
                 [self.dataSource addObject:column];
@@ -97,7 +98,7 @@ DefineLazyPropertyInitialization(NSMutableArray, widthSource)
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LSJRankCell *rankCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRankCellReusableIdentifier forIndexPath:indexPath];
-    LSJHomeProgramListModel *column = _dataSource[indexPath.item];
+    LSJColumnModel *column = _dataSource[indexPath.item];
     if (indexPath.item < self.dataSource.count) {
         rankCell.imgUrl = column.columnImg;
         rankCell.titleStr = column.name;
@@ -111,7 +112,9 @@ DefineLazyPropertyInitialization(NSMutableArray, widthSource)
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    LSJColumnModel *column = self.dataSource[indexPath.item];
+    LSJRankDetailVC *rankDetailVC = [[LSJRankDetailVC alloc] initWithColumnId:column.columnId];
+    [self.navigationController pushViewController:rankDetailVC animated:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

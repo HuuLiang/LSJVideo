@@ -8,7 +8,7 @@
 
 #import "LSJHomeAppVC.h"
 #import "LSJAppCell.h"
-#import "LSJHomeProgramModel.h"
+#import "LSJHomeColumnModel.h"
 #import <SDCycleScrollView.h>
 
 static NSString *const kAppCellReusableIdentifier = @"AppCellReusableIdentifier";
@@ -21,12 +21,12 @@ static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdent
     SDCycleScrollView *_bannerView;
 }
 @property (nonatomic) NSMutableArray *dataSource;
-@property (nonatomic) LSJHomeProgramModel *programModel;
+@property (nonatomic) LSJHomeColumnModel *programModel;
 @end
 
 @implementation LSJHomeAppVC
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
-DefineLazyPropertyInitialization(LSJHomeProgramModel, programModel)
+DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
