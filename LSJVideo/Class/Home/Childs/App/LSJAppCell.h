@@ -10,4 +10,12 @@
 
 @interface LSJAppCell : UITableViewCell
 
+//- (instancetype)initWithFrame:(CGRect)frame;
+
+@property (nonatomic) NSString *imgUrlStr;
+@property (nonatomic) NSString *titleStr;
+@property (nonatomic) NSString *sizeStr;
+@property (nonatomic) NSString *countStr;
+@property (nonatomic) NSString *detalStr;
+
 @end

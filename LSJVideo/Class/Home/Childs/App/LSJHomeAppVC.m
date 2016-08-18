@@ -41,11 +41,8 @@ DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
     _bannerView.delegate = self;
     _bannerView.backgroundColor = [UIColor whiteColor];
     
-    
-    UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
-    mainLayout.minimumLineSpacing = 5;
-    mainLayout.minimumInteritemSpacing = 5;
     _layoutTableView = [[UITableView alloc] initWithFrame:CGRectZero];
+    [_layoutTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     _layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     _layoutTableView.delegate = self;
     _layoutTableView.dataSource = self;
@@ -70,8 +67,29 @@ DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
 
 - (void)loadData {
     [self.programModel fetchHomeInfoWithColumnId:0 IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
-        
+        if (success) {
+            [_layoutTableView LSJ_endPullToRefresh];
+            [self.dataSource addObjectsFromArray:obj];
+            [self refreshBannerView];
+            [_layoutTableView reloadData];
+        }
     }];
+}
+
+- (void)refreshBannerView {
+    NSMutableArray *imageUrlGroup = [NSMutableArray array];
+    NSMutableArray *titlesGroup = [NSMutableArray array];
+    
+    for (LSJColumnModel *column in _dataSource) {
+        if (column.type == 4) {
+            for (LSJProgramModel *program in column.programList) {
+                [imageUrlGroup addObject:program.coverImg];
+                [titlesGroup addObject:program.title];
+            }
+            _bannerView.imageURLStringsGroup = imageUrlGroup;
+            _bannerView.titlesGroup = titlesGroup;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,12 +106,12 @@ DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
     if (section == 0) {
         return 1;
     } else {
-        return _dataSource.count;
+        LSJColumnModel *column = _dataSource[section];
+        return column.programList.count;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.section == 0) {
         if (!_bannerCell) {
             _bannerCell = [tableView dequeueReusableCellWithIdentifier:kBannerCellReusableIdentifier forIndexPath:indexPath];
@@ -107,12 +125,24 @@ DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
         return _bannerCell;
     } else {
         LSJAppCell *appCell = [tableView dequeueReusableCellWithIdentifier:kAppCellReusableIdentifier forIndexPath:indexPath];
-        
+        LSJColumnModel *column = _dataSource[indexPath.section];
+        LSJProgramModel *program = column.programList[indexPath.row];
+        appCell.imgUrlStr = program.coverImg;
+        appCell.titleStr = program.title;
+        NSArray *array = [program.spare componentsSeparatedByString:@"|"];
+        appCell.sizeStr = array[0];
+        appCell.countStr = array[1];
+        appCell.detalStr = array[2];
         return appCell;
     }
+}
 
-    
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return kScreenWidth/2.;
+    } else {
+        return kScreenWidth * 0.4;
+    }
 }
 
 

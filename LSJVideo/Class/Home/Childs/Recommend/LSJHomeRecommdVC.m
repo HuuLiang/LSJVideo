@@ -77,8 +77,8 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [_freeCollectionView registerClass:[LSJHomeSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kHomeSectionHeaderReusableIdentifier];
     
     UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
-    mainLayout.minimumLineSpacing = 5;
-    mainLayout.minimumInteritemSpacing = 5;
+    mainLayout.minimumLineSpacing = 0;
+    mainLayout.minimumInteritemSpacing = kWidth(5);
     _layoutCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:mainLayout];
     _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     _layoutCollectionView.delegate = self;
@@ -252,21 +252,21 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         } else if (column.type == 1 && column.showMode == 1) {
             if (indexPath.item == 0) {
                 width = fullWidth - insets.left - insets.right;
-                height = width / 3 + kWidth(30);
-                return CGSizeMake(width, height);
+                height = width / 3 + kWidth(60);
+                return CGSizeMake((long)width, (long)height);
             } else {
                 width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing) / 2;
-                height = width * 0.6 + kWidth(30);
-                return CGSizeMake(width, height);
+                height = width * 0.6 + kWidth(60);
+                return CGSizeMake((long)width, (long)height);
             }
         } else if (column.type == 1 && column.showMode == 2) {
             width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 3;
-            height = width * 9 / 7. + kWidth(30);
-            return CGSizeMake(width, height);
+            height = width * 9 / 7. + kWidth(60);
+            return CGSizeMake((long)width, (long)height);
         } else if (column.type == 5 && ![LSJUtil isVip]) {
             width = fullWidth;
-            height = (fullWidth / 2.5) * 9 /7 + kWidth(30);
-            return CGSizeMake(width, height);
+            height = (fullWidth / 2.5) * 9 /7 + kWidth(60);
+            return CGSizeMake((long)width, (long)height);
         } else {
             return CGSizeZero;
         }
@@ -277,8 +277,8 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         CGFloat width;
         CGFloat height;
         width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 2.5;
-        height = width * 9 /7 + kWidth(30);
-        return CGSizeMake(width, height);
+        height = width * 9 /7 + kWidth(60);
+        return CGSizeMake((long)width, (long)height);
     } else {
         return CGSizeZero;
     }
@@ -290,7 +290,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         if (column.type == 4) {
             return UIEdgeInsetsMake(0., 0., 0, 0.);
         } else if (column.type == 1) {
-            return UIEdgeInsetsMake(0, 10., 5., 10.);
+            return UIEdgeInsetsMake(kWidth(5), kWidth(5), kWidth(5), kWidth(5));
         } else {
             return UIEdgeInsetsZero;
         }

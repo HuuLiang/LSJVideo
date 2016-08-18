@@ -37,7 +37,7 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     
     UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
     mainLayout.minimumLineSpacing = 0;

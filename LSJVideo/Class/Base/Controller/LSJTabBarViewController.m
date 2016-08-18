@@ -38,6 +38,7 @@
     LSJHotViewController *hotVC = [[LSJHotViewController alloc] initWithTitle:@"热搜"];
     UINavigationController *hotNC = [[UINavigationController alloc] initWithRootViewController:hotVC];
     hotNC.tabBarItem = [[UITabBarItem alloc] init];
+    hotNC.tabBarItem.title = @"热搜";
     hotNC.tabBarItem.imageInsets = UIEdgeInsetsMake(-5.5, 0, 5.5, 0);
     hotNC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_hot_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     hotNC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_hot_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];

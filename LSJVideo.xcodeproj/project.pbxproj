@@ -463,8 +463,8 @@
 				ECD70D6A1D5328CB006929B1 /* Welfare */,
 				ECD70C351D531F6A006929B1 /* Hot */,
 				ECD70D831D5329AB006929B1 /* Lechers */,
-				ECD70C401D531F6B006929B1 /* Mine */,
 				ECD70C151D531F6A006929B1 /* Detail */,
+				ECD70C401D531F6B006929B1 /* Mine */,
 			);
 			path = Class;
 			sourceTree = "<group>";

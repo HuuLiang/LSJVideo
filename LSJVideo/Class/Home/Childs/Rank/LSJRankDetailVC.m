@@ -41,10 +41,10 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
     [super viewDidLoad];
     
     UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
-    mainLayout.minimumLineSpacing = kWidth(30);
-    mainLayout.minimumInteritemSpacing = kWidth(20);
+    mainLayout.minimumLineSpacing = 0;
+    mainLayout.minimumInteritemSpacing = kWidth(10);
     _layoutCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:mainLayout];
-    _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+    _layoutCollectionView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     _layoutCollectionView.delegate = self;
     _layoutCollectionView.dataSource = self;
     _layoutCollectionView.showsVerticalScrollIndicator = NO;
@@ -94,10 +94,8 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
     LSJRankDetailCell *rankDetailCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRankDetailCellReusableIdentifier forIndexPath:indexPath];
     if (indexPath.item < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.item];
-//        rankDetailCell.imgUrl = column.columnImg;
-//        rankDetailCell.titleStr = column.name;
-//        rankDetailCell.rank = indexPath.item;
-//        rankDetailCell.hotCount = [column.spare integerValue];
+        rankDetailCell.imgUrlStr = program.coverImg;
+        rankDetailCell.titleStr = program.title;
         return rankDetailCell;
     } else {
         return nil;
@@ -112,9 +110,9 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)collectionViewLayout;
     UIEdgeInsets insets = [self collectionView:collectionView layout:layout insetForSectionAtIndex:indexPath.section];
     const CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
-    const CGFloat width = (fullWidth - layout.minimumInteritemSpacing - insets.left - insets.right)/3;
-    const CGFloat height = width * 9 / 7.;
-    return CGSizeMake(width, height);
+    const CGFloat width = (fullWidth - layout.minimumInteritemSpacing * 2 - insets.left - insets.right)/3;
+    const CGFloat height = width * 9 / 7.+kWidth(60);
+    return CGSizeMake((long)width, (long)height);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -124,4 +122,5 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     //[[LTStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LTUtils currentSubTabPageIndex] forSlideCount:1];
 }
+
 @end

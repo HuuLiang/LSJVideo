@@ -14,7 +14,7 @@
 - (BOOL)fetchWelfareInfoWithCompletionHandler:(LSJCompletionHandler)handler {
     @weakify(self);
     BOOL success = [self requestURLPath:LSJ_WELFARE_URL
-                             withParams:nil
+                             withParams:@{@"isProgram":@(YES)}
                         responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);

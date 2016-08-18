@@ -48,6 +48,7 @@
 #define LSJ_DEFAULSJ_PHOTOSERVER_URL     @"http://7xpobi.com2.z0.glb.qiniucdn.com"
 
 #define LSJ_PROTOCOL_URL                @"http://120.24.252.114:8093/iosvideo/laosiji-agreement.html"
+#define LSJ_STATEMENT_URL               @""
 
 #define LSJ_KSCRASH_APP_ID              @""
 
