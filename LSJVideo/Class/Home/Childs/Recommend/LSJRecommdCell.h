@@ -10,8 +10,6 @@
 
 @interface LSJRecommdCell : UICollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame;
-
 @property (nonatomic) NSString *imgUrl;
 @property (nonatomic) NSString *title;
 

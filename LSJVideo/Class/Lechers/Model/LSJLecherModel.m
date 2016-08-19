@@ -1,27 +1,35 @@
 //
-//  LSJWelfareModel.m
+//  LSJLecherModel.m
 //  LSJVideo
 //
-//  Created by Liang on 16/8/17.
+//  Created by Liang on 16/8/19.
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJWelfareModel.h"
+#import "LSJLecherModel.h"
 
-@implementation LSJWelfareModel
+@implementation LSJLecherColumnResponse
 
-+ (Class)responseClass {
+- (Class)columnListElementClass {
     return [LSJColumnModel class];
 }
+@end
 
-- (BOOL)fetchWelfareInfoWithCompletionHandler:(LSJCompletionHandler)handler {
+
+@implementation LSJLecherModel
+
++ (Class)responseClass {
+    return [LSJLecherColumnResponse class];
+}
+
+- (BOOL)fetchLechersInfoWithCompletionHandler:(LSJCompletionHandler)handler {
     @weakify(self);
-    BOOL success = [self requestURLPath:LSJ_WELFARE_URL
-                             withParams:@{@"isProgram":@(YES)}
+    BOOL success = [self requestURLPath:LSJ_LECHERS_URL
+                             withParams:nil
                         responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);
-                        LSJColumnModel *resp = nil;
+                        LSJLecherColumnResponse *resp = nil;
                         if (respStatus == LSJURLResponseSuccess) {
                             resp = self.response;
                         }
@@ -30,7 +38,6 @@
                             handler(respStatus==LSJURLResponseSuccess, resp);
                         }
                     }];
-    
     return success;
 }
 

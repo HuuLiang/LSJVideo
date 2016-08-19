@@ -7,31 +7,73 @@
 //
 
 #import "LSJLechersViewController.h"
+#import "LSJLecherModel.h"
+#import "LSJLechersListCell.h"
 
-@interface LSJLechersViewController ()
+static  NSString *const kLechersListCellReusableIdentifier = @"kLechersListCellReuseableIdentifier";
 
+@interface LSJLechersViewController () <UITableViewDelegate,UITableViewDataSource>
+{
+    UITableView *_layoutTableView;
+}
+@property (nonatomic) LSJLecherModel *lecherModel;
+@property (nonatomic) NSMutableArray *dataSource;
 @end
 
 @implementation LSJLechersViewController
+DefineLazyPropertyInitialization(LSJLecherModel, lecherModel)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _layoutTableView = [[UITableView alloc] init];
+    [_layoutTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    _layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+    _layoutTableView.delegate = self;
+    _layoutTableView.dataSource = self;
+    [_layoutTableView registerClass:[LSJLechersListCell class] forCellReuseIdentifier:kLechersListCellReusableIdentifier];
+    
+    [_layoutTableView LSJ_addPullToRefreshWithHandler:^{
+        [self loadData];
+    }];
+    [_layoutTableView LSJ_triggerPullToRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)loadData {
+    [self.lecherModel fetchLechersInfoWithCompletionHandler:^(BOOL success, id obj) {
+        if (success) {
+            [self.dataSource removeAllObjects];
+            [_layoutTableView LSJ_endPullToRefresh];
+            [self.dataSource addObjectsFromArray:obj];
+            [_layoutTableView reloadData];
+        }
+    }];
 }
-*/
+
+#pragma mark - UITableViewDelegate,UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _dataSource.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    LSJLechersListCell *cell = [tableView dequeueReusableCellWithIdentifier:kLechersListCellReusableIdentifier forIndexPath:indexPath];
+    if (indexPath.row < _dataSource.count) {
+        return cell;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 @end

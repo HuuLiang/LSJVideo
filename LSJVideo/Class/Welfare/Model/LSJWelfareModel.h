@@ -7,6 +7,7 @@
 //
 
 #import "LSJEncryptedURLRequest.h"
+#import "LSJColumnModel.h"
 
 @interface LSJWelfareModel : LSJEncryptedURLRequest
 - (BOOL)fetchWelfareInfoWithCompletionHandler:(LSJCompletionHandler)handler;

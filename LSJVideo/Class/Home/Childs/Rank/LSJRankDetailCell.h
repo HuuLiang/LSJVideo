@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LSJRankDetailCell : UICollectionViewCell
-- (instancetype)initWithFrame:(CGRect)frame;
 
 @property (nonatomic) NSString *imgUrlStr;
 @property (nonatomic) NSString *titleStr;

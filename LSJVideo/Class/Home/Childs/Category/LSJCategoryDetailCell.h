@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LSJCategoryDetailCell : UICollectionViewCell
-- (instancetype)initWithFrame:(CGRect)frame;
+
 @property (nonatomic) NSString *titleStr;
 @property (nonatomic) NSString *imgUrlStr;
 @property (nonatomic) NSString *tagHexStr;
 @property (nonatomic) NSString *tagTitleStr;
+
 @end

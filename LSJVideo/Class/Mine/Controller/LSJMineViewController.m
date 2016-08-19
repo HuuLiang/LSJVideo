@@ -25,10 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#303030"];
+    self.layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     
-    self.layoutTableView.hasRowSeparator = NO;
     self.layoutTableView.hasSectionBorder = NO;
+//    self.layoutTableView.hasRowSeparator = NO;
+    
+//    [self.layoutTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [self.layoutTableView setSeparatorInset:UIEdgeInsetsMake(0, kWidth(30), 0, kWidth(30))];
     
     {
         [self.layoutTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,40 +77,32 @@
     
     _bannerCell = [[LSJTableViewCell alloc] init];
     _bannerCell.accessoryType = UITableViewCellAccessoryNone;
-    _bannerCell.backgroundColor = [UIColor colorWithHexString:@"#464646"];
-    _bannerCell.backgroundImageView.image = [UIImage imageNamed:@"setting_banner.jpg"];
+    _bannerCell.backgroundColor = [UIColor colorWithHexString:@"#d8d8d8"];
+    _bannerCell.backgroundImageView.image = [UIImage imageNamed:@""];
     [self setLayoutCell:_bannerCell cellHeight:kScreenWidth*0.4 inRow:0 andSection:section++];
     
-    if (![LSJUtil isVip]) {
-        _vipCell = [[LSJTableViewCell alloc] initWithImage:nil title:@"开通VIP"];
-        _vipCell.titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
-        _vipCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        _vipCell.backgroundColor = [UIColor colorWithHexString:@"#464646"];
-        [self setLayoutCell:_vipCell cellHeight:44 inRow:0 andSection:section++];
-    }
+//    [self setHeaderHeight:10 inSection:section];
     
-    [self setHeaderHeight:10 inSection:section];
+    _statementCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_statement"] title:@"免责声明"];
+    _statementCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    _statementCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+    [self setLayoutCell:_statementCell cellHeight:44 inRow:0 andSection:section];
     
-    _protocolCell = [[LSJTableViewCell alloc] initWithImage:nil title:@"免责声明"];
+    _protocolCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_protocol"] title:@"用户协议"];
     _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#464646"];
-    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section++];
+    _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+    [self setLayoutCell:_protocolCell cellHeight:44 inRow:1 andSection:section];
     
-    _protocolCell = [[LSJTableViewCell alloc] initWithImage:nil title:@"用户协议"];
-    _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#464646"];
-    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section++];
+//    UITableViewCell *lineCell = [[UITableViewCell alloc] init];
+//    lineCell.backgroundColor = [UIColor colorWithHexString:@"#575757"];
+//    [self setLayoutCell:lineCell cellHeight:0.5 inRow:0 andSection:section++];
     
-    UITableViewCell *lineCell = [[UITableViewCell alloc] init];
-    lineCell.backgroundColor = [UIColor colorWithHexString:@"#575757"];
-    [self setLayoutCell:lineCell cellHeight:0.5 inRow:0 andSection:section++];
-    
-    if ([LSJUtil isVip]) {
-        _telCell = [[LSJTableViewCell alloc] initWithImage:nil title:@"客服热线"];
+//    if ([LSJUtil isVip]) {
+        _telCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_tel"] title:@"客服热线"];
         _telCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        _telCell.backgroundColor = [UIColor colorWithHexString:@"#464646"];
-        [self setLayoutCell:_telCell cellHeight:44 inRow:0 andSection:section++];
-    }
+        _telCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+        [self setLayoutCell:_telCell cellHeight:44 inRow:2 andSection:section];
+//    }
     
     [self.layoutTableView reloadData];
     [self.layoutTableView LSJ_endPullToRefresh];

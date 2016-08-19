@@ -10,8 +10,6 @@
 
 @interface LSJRankCell : UICollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame;
-
 @property (nonatomic) NSString *imgUrl;
 @property (nonatomic) NSString *titleStr;
 @property (nonatomic) NSInteger hotCount;

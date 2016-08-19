@@ -22,6 +22,7 @@
 		EC3190431D5C134A00B8E646 /* LSJRecommdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3190421D5C134A00B8E646 /* LSJRecommdCell.m */; };
 		EC3456BB1D61A55D00C45F19 /* LSJAppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3456BA1D61A55D00C45F19 /* LSJAppCell.m */; };
 		EC3456BE1D61AE6D00C45F19 /* LSJCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3456BD1D61AE6D00C45F19 /* LSJCategoryCell.m */; };
+		EC51BDF51D66A93500B79805 /* LSJWelfareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC51BDF41D66A93500B79805 /* LSJWelfareCell.m */; };
 		EC66EC701D62E84000ECAC57 /* LSJRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC6F1D62E84000ECAC57 /* LSJRankCell.m */; };
 		EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */; };
 		EC66EC761D63145500ECAC57 /* LSJCategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */; };
@@ -30,6 +31,8 @@
 		EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A21D64097700AC3708 /* LSJWelfareModel.m */; };
 		EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */; };
 		EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */; };
+		ECAD1A751D66F6A50048727A /* LSJLecherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD1A741D66F6A50048727A /* LSJLecherModel.m */; };
+		ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD1A771D66FCE50048727A /* LSJLechersListCell.m */; };
 		ECD70CDC1D531F6B006929B1 /* JFLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70BFA1D531F6A006929B1 /* JFLaunchView.m */; };
 		ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C4F1D531F6B006929B1 /* DBHandler.m */; };
 		ECD70CFD1D531F6B006929B1 /* DBPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C521D531F6B006929B1 /* DBPersistence.m */; };
@@ -158,6 +161,8 @@
 		EC3456BA1D61A55D00C45F19 /* LSJAppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJAppCell.m; sourceTree = "<group>"; };
 		EC3456BC1D61AE6D00C45F19 /* LSJCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCategoryCell.h; sourceTree = "<group>"; };
 		EC3456BD1D61AE6D00C45F19 /* LSJCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryCell.m; sourceTree = "<group>"; };
+		EC51BDF31D66A93500B79805 /* LSJWelfareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJWelfareCell.h; sourceTree = "<group>"; };
+		EC51BDF41D66A93500B79805 /* LSJWelfareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJWelfareCell.m; sourceTree = "<group>"; };
 		EC66EC6E1D62E84000ECAC57 /* LSJRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankCell.h; sourceTree = "<group>"; };
 		EC66EC6F1D62E84000ECAC57 /* LSJRankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankCell.m; sourceTree = "<group>"; };
 		EC66EC711D630C8600ECAC57 /* LSJCategoryDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCategoryDetailVC.h; sourceTree = "<group>"; };
@@ -174,6 +179,10 @@
 		EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankDetailVC.m; sourceTree = "<group>"; };
 		EC7684A71D64185500AC3708 /* LSJRankDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankDetailCell.h; sourceTree = "<group>"; };
 		EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankDetailCell.m; sourceTree = "<group>"; };
+		ECAD1A731D66F6A50048727A /* LSJLecherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJLecherModel.h; sourceTree = "<group>"; };
+		ECAD1A741D66F6A50048727A /* LSJLecherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLecherModel.m; sourceTree = "<group>"; };
+		ECAD1A761D66FCE50048727A /* LSJLechersListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJLechersListCell.h; sourceTree = "<group>"; };
+		ECAD1A771D66FCE50048727A /* LSJLechersListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLechersListCell.m; sourceTree = "<group>"; };
 		ECD70BCC1D531CCA006929B1 /* LSJPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPrefixHeader.pch; sourceTree = "<group>"; };
 		ECD70BCE1D531D1A006929B1 /* LSJConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJConfig.h; sourceTree = "<group>"; };
 		ECD70BCF1D531D71006929B1 /* LSJCommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCommonDef.h; sourceTree = "<group>"; };
@@ -887,6 +896,8 @@
 		ECD70D771D5328CB006929B1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC51BDF31D66A93500B79805 /* LSJWelfareCell.h */,
+				EC51BDF41D66A93500B79805 /* LSJWelfareCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -913,6 +924,8 @@
 		ECD70D851D5329AB006929B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ECAD1A731D66F6A50048727A /* LSJLecherModel.h */,
+				ECAD1A741D66F6A50048727A /* LSJLecherModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -920,6 +933,8 @@
 		ECD70D861D5329AB006929B1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ECAD1A761D66FCE50048727A /* LSJLechersListCell.h */,
+				ECAD1A771D66FCE50048727A /* LSJLechersListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1198,6 +1213,8 @@
 				ECD70D191D531F6B006929B1 /* RACEXTRuntimeExtensions.m in Sources */,
 				EC1F93671D59BE4F00E0B1F4 /* LSJWelfareViewController.m in Sources */,
 				ECF00E2A1D5B49E900FBF1D2 /* LSJColumnModel.m in Sources */,
+				EC51BDF51D66A93500B79805 /* LSJWelfareCell.m in Sources */,
+				ECAD1A751D66F6A50048727A /* LSJLecherModel.m in Sources */,
 				ECD70D4B1D53262F006929B1 /* LSJTabBarViewController.m in Sources */,
 				ECD70D8C1D532ABD006929B1 /* LSJURLRequest.m in Sources */,
 				ECD70CFD1D531F6B006929B1 /* DBPersistence.m in Sources */,
@@ -1254,6 +1271,7 @@
 				ECD70D071D531F6B006929B1 /* UIColor+hexColor.m in Sources */,
 				ECF00E291D5B49E900FBF1D2 /* LSJHomeViewController.m in Sources */,
 				ECD70DB61D533F46006929B1 /* LSJSystemConfigModel.m in Sources */,
+				ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */,
 				ECD70D321D531F6B006929B1 /* DataVerifier.m in Sources */,
 				ECD70D0A1D531F6B006929B1 /* UIImageView+YPBAnimation.m in Sources */,
 				EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */,
