@@ -8,7 +8,7 @@
 
 #import "LSJHomeAppVC.h"
 #import "LSJAppCell.h"
-#import "LSJHomeColumnModel.h"
+#import "LSJColumnConfigModel.h"
 #import <SDCycleScrollView.h>
 
 static NSString *const kAppCellReusableIdentifier = @"AppCellReusableIdentifier";
@@ -21,12 +21,12 @@ static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdent
     SDCycleScrollView *_bannerView;
 }
 @property (nonatomic) NSMutableArray *dataSource;
-@property (nonatomic) LSJHomeColumnModel *programModel;
+@property (nonatomic) LSJColumnConfigModel *programModel;
 @end
 
 @implementation LSJHomeAppVC
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
-DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
+DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,7 +66,7 @@ DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
 }
 
 - (void)loadData {
-    [self.programModel fetchHomeInfoWithColumnId:0 IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
+    [self.programModel fetchColumnsInfoWithColumnId:0 IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [_layoutTableView LSJ_endPullToRefresh];
             [self.dataSource addObjectsFromArray:obj];

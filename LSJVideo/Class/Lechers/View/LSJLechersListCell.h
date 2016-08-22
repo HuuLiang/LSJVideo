@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#define kImageWidth (kScreenWidth - kWidth(40))/2.5
+#import "LSJColumnModel.h"
+#define kImageWidth (kScreenWidth - kWidth(40) - kWidth(20))/2.5
 #define kCellHeight kImageWidth * 9 / 7 + kWidth(140)
 
 @interface LSJLechersListCell : UITableViewCell
-
-
-
+@property (nonatomic) NSString *titleStr;
+@property (nonatomic) NSArray <LSJColumnModel *>*dataArr;
+@property (nonatomic) LSJAction action;
 @end

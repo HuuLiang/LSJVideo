@@ -1,27 +1,26 @@
 //
-//  LSJHomeColumnModel.m
+//  LSJColumnConfigModel.m
 //  LSJVideo
 //
-//  Created by Liang on 16/8/16.
+//  Created by Liang on 16/8/20.
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJHomeColumnModel.h"
+#import "LSJColumnConfigModel.h"
 
-
-@implementation LSJHomeColumnResponse
+@implementation LSJColumnConfigResponse
 - (Class)columnListElementClass {
     return [LSJColumnModel class];
 }
 @end
 
 
-@implementation LSJHomeColumnModel
+@implementation LSJColumnConfigModel
 +(Class)responseClass {
-    return [LSJHomeColumnResponse class];
+    return [LSJColumnConfigResponse class];
 }
 
-- (BOOL)fetchHomeInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler {
+- (BOOL)fetchColumnsInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler {
     @weakify(self);
     NSDictionary *params = nil;
     NSString *urlStr = nil;
@@ -38,7 +37,7 @@
                         responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);
-                        LSJHomeColumnResponse *resp = nil;
+                        LSJColumnConfigResponse *resp = nil;
                         if (respStatus == LSJURLResponseSuccess) {
                             resp = self.response;
                         }
@@ -49,4 +48,5 @@
                     }];
     
     return success;
-}@end
+}
+@end

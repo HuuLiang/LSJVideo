@@ -49,6 +49,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     }
     
     _cursorView = [[SDCursorView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+    _cursorView.isHomeView = YES;
     //设置子页面容器的高度
     _cursorView.contentViewHeight = kScreenHeight - 44 - 49 - 20;
     _cursorView.cursorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);

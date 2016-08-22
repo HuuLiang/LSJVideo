@@ -13,6 +13,7 @@ typedef void(^collectionViewWidth)(CGFloat width);
 @interface SDCursorView : UIView
 
 @property (nonatomic) collectionViewWidth collectionViewWidth;
+@property (nonatomic) BOOL isHomeView;
 
 @property (nonatomic, strong) UIScrollView *rootScrollView;
 

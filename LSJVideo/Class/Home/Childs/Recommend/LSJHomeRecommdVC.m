@@ -11,7 +11,7 @@
 #import "LSJHomeSectionHeaderView.h"
 #import "LSJRecommdCell.h"
 
-#import "LSJHomeColumnModel.h"
+#import "LSJColumnConfigModel.h"
 
 #import <SDCycleScrollView.h>
 
@@ -33,11 +33,11 @@ static NSString *const kHomeSectionHeaderReusableIdentifier = @"HomeSectionHeade
 
 }
 @property (nonatomic) NSMutableArray *dataSource;
-@property (nonatomic) LSJHomeColumnModel *programModel;
+@property (nonatomic) LSJColumnConfigModel *programModel;
 @end
 
 @implementation LSJHomeRecommdVC
-DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
+DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
@@ -108,7 +108,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)loadChannels {
-    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
+    [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [self.dataSource removeAllObjects];
             for (LSJColumnModel *model in obj) {

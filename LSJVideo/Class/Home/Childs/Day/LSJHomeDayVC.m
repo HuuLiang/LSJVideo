@@ -7,18 +7,18 @@
 //
 
 #import "LSJHomeDayVC.h"
-#import "LSJHomeColumnModel.h"
+#import "LSJColumnConfigModel.h"
 
 @interface LSJHomeDayVC ()
 {
     NSInteger _columnId;
     UICollectionView *_layoutCollectionView;
 }
-@property (nonatomic)LSJHomeColumnModel *columnModel;
+@property (nonatomic)LSJColumnConfigModel *columnModel;
 @end
 
 @implementation LSJHomeDayVC
-DefineLazyPropertyInitialization(LSJHomeColumnModel, columnModel)
+DefineLazyPropertyInitialization(LSJColumnConfigModel, columnModel)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -41,7 +41,7 @@ DefineLazyPropertyInitialization(LSJHomeColumnModel, columnModel)
 }
 
 - (void)loadData {
-    [self.columnModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
+    [self.columnModel fetchColumnsInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
         
     }];
 }

@@ -7,7 +7,7 @@
 //
 
 #import "LSJCategoryDetailVC.h"
-#import "LSJHomeProgramModel.h"
+#import "LSJProgramConfigModel.h"
 #import "LSJCategoryDetailCell.h"
 
 static NSString *const kCategoryDetailsCellReusableIdentifier = @"categoryDetailCellReusableIdentifier";
@@ -18,13 +18,13 @@ static NSString *const kCategoryDetailsCellReusableIdentifier = @"categoryDetail
     NSString *_colorHexStr;
     UICollectionView *_layoutCollectionView;
 }
-@property (nonatomic) LSJHomeProgramModel *programModel;
+@property (nonatomic) LSJProgramConfigModel *programModel;
 @property (nonatomic) LSJColumnModel *response;
 
 @end
 
 @implementation LSJCategoryDetailVC
-DefineLazyPropertyInitialization(LSJHomeProgramModel, programModel)
+DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 DefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
@@ -71,7 +71,7 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 }
 
 - (void)loadData {
-    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, LSJColumnModel * obj) {
+    [self.programModel fetchProgramsInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, LSJColumnModel * obj) {
         if (success) {
             [_layoutCollectionView LSJ_endPullToRefresh];
             self.response = obj;

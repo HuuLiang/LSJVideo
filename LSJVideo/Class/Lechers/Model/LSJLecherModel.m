@@ -8,18 +8,28 @@
 
 #import "LSJLecherModel.h"
 
-@implementation LSJLecherColumnResponse
+@implementation LSJLecherColumnsModel
 
 - (Class)columnListElementClass {
     return [LSJColumnModel class];
 }
+
+@end
+
+
+@implementation LSJLecherModelResponse
+
+- (Class)columnListElementClass {
+    return [LSJLecherColumnsModel class];
+}
+
 @end
 
 
 @implementation LSJLecherModel
 
 + (Class)responseClass {
-    return [LSJLecherColumnResponse class];
+    return [LSJLecherModelResponse class];
 }
 
 - (BOOL)fetchLechersInfoWithCompletionHandler:(LSJCompletionHandler)handler {
@@ -29,13 +39,13 @@
                         responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);
-                        LSJLecherColumnResponse *resp = nil;
+                        LSJLecherModelResponse *resp = nil;
                         if (respStatus == LSJURLResponseSuccess) {
                             resp = self.response;
                         }
                         
                         if (handler) {
-                            handler(respStatus==LSJURLResponseSuccess, resp);
+                            handler(respStatus==LSJURLResponseSuccess, resp.columnList);
                         }
                     }];
     return success;

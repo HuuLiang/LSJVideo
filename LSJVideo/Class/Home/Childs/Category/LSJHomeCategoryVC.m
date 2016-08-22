@@ -7,7 +7,7 @@
 //
 
 #import "LSJHomeCategoryVC.h"
-#import "LSJHomeColumnModel.h"
+#import "LSJColumnConfigModel.h"
 #import "LSJCategoryCell.h"
 #import "LSJCategoryDetailVC.h"
 
@@ -19,12 +19,12 @@ static NSString *const kCategoryCellReusableIdentifier = @"categoryCellReusableI
     NSInteger _columnId;
     UICollectionView *_layoutCollectionView;
 }
-@property (nonatomic) LSJHomeColumnModel *programModel;
+@property (nonatomic) LSJColumnConfigModel *programModel;
 @property (nonatomic) NSMutableArray *dataSource;
 @end
 
 @implementation LSJHomeCategoryVC
-DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
+DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
@@ -68,7 +68,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)loadData {
-    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
+    [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [self.dataSource removeAllObjects];
             [_layoutCollectionView LSJ_endPullToRefresh];

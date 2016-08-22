@@ -8,7 +8,7 @@
 
 #import "LSJHomeRankVC.h"
 #import "LSJRankCell.h"
-#import "LSJHomeColumnModel.h"
+#import "LSJColumnConfigModel.h"
 #import "LSJRankDetailVC.h"
 
 static NSString *const kRankCellReusableIdentifier = @"RankCellReusableIdentifier";
@@ -18,13 +18,13 @@ static NSString *const kRankCellReusableIdentifier = @"RankCellReusableIdentifie
     NSInteger _columnId;
     UICollectionView *_layoutCollectionView;
 }
-@property (nonatomic) LSJHomeColumnModel *programModel;
+@property (nonatomic) LSJColumnConfigModel *programModel;
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) NSMutableArray *widthSource;
 @end
 
 @implementation LSJHomeRankVC
-DefineLazyPropertyInitialization(LSJHomeColumnModel, programModel)
+DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
 DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 DefineLazyPropertyInitialization(NSMutableArray, widthSource)
 
@@ -66,7 +66,7 @@ DefineLazyPropertyInitialization(NSMutableArray, widthSource)
 }
 
 - (void)loadData {
-    [self.programModel fetchHomeInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
+    [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [self.dataSource removeAllObjects];
             [self.widthSource removeAllObjects];

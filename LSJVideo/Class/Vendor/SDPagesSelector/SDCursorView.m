@@ -44,8 +44,11 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     if (!_rootScrollView) {
         DLog(@"%@",NSStringFromCGRect(self.bounds));
         
-        _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+20, CGRectGetWidth(self.bounds), self.contentViewHeight)];
+        _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+ (_isHomeView ? 20 :0), CGRectGetWidth(self.bounds), self.contentViewHeight)];
         _rootScrollView.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+        if (!_isHomeView) {
+            _rootScrollView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+        }
         _rootScrollView.pagingEnabled = YES;
         _rootScrollView.delegate = self;
         _rootScrollView.alwaysBounceHorizontal = YES;
@@ -98,6 +101,9 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         _collectionView.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+        if (!_isHomeView) {
+            _collectionView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+        }
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         [_collectionView registerClass:[SDSelectorCell class] forCellWithReuseIdentifier:cellIdentifier];
@@ -114,11 +120,12 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         width = width+ size.width+kWidth(30);
         [self.sizeArray addObject:@(size.width+kWidth(30))];
     }
-    if (self.collectionViewWidth) {
+    if (self.collectionViewWidth && _isHomeView) {
         self.collectionViewWidth(width);
+         _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
     }
     
-    _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
+   
     
     NSAssert(_titles.count == _controllers.count, @"titles' count is not equal to controllerNames' count");
     [self.collectionView reloadData];
@@ -314,10 +321,14 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *title = _titles[indexPath.item];
-//    CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
-    CGSize size = CGSizeMake([_sizeArray[indexPath.item] floatValue], CGRectGetHeight(self.bounds));
-    return size;
+    if (_isHomeView) {
+        CGSize size = CGSizeMake([_sizeArray[indexPath.item] floatValue], CGRectGetHeight(self.bounds));
+        return size;
+    } else {
+        NSString *title = _titles[indexPath.item];
+        CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
+        return CGSizeMake(kScreenWidth / 4, size.height);
+    }
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

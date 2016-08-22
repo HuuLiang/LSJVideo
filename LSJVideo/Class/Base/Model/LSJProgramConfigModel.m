@@ -1,23 +1,23 @@
 //
-//  LSJHomeProgramModel.m
+//  LSJProgramConfigModel.m
 //  LSJVideo
 //
-//  Created by Liang on 16/8/10.
+//  Created by Liang on 16/8/20.
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJHomeProgramModel.h"
+#import "LSJProgramConfigModel.h"
 
-@implementation LSJHomeProgramModel
+@implementation LSJProgramConfigModel
 +(Class)responseClass {
     return [LSJColumnModel class];
 }
 
-- (BOOL)fetchHomeInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler {
+- (BOOL)fetchProgramsInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler {
     @weakify(self);
     NSDictionary *params = @{@"columnId":@(columnId),
-                            @"isProgram":@(isProgram)};
-
+                             @"isProgram":@(isProgram)};
+    
     BOOL success = [self requestURLPath:LSJ_PROGRAM_URL
                              withParams:params
                         responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
