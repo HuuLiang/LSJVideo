@@ -99,11 +99,13 @@ DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == _columnModel.programList.count) {
-        return kWidth(210);
-    } else {
+//    if (indexPath.row == _columnModel.programList.count - 1) {
+//        DLog(@"%ld %@",indexPath.row ,@210);
+//        return kWidth(210);
+//    } else {
+//        DLog(@"%ld %@",indexPath.row ,@226);
         return kWidth(226);
-    }
+//    }
 }
 
 @end

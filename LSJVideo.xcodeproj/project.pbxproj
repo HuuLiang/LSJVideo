@@ -30,6 +30,9 @@
 		EC3190431D5C134A00B8E646 /* LSJRecommdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3190421D5C134A00B8E646 /* LSJRecommdCell.m */; };
 		EC3456BB1D61A55D00C45F19 /* LSJAppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3456BA1D61A55D00C45F19 /* LSJAppCell.m */; };
 		EC3456BE1D61AE6D00C45F19 /* LSJCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3456BD1D61AE6D00C45F19 /* LSJCategoryCell.m */; };
+		EC42585A1D6C35C80066C638 /* LSJHotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4258591D6C35C80066C638 /* LSJHotModel.m */; };
+		EC42585D1D6C40730066C638 /* LSJHotTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC42585C1D6C40730066C638 /* LSJHotTitleCell.m */; };
+		EC4258651D6C4D620066C638 /* LSJBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4258641D6C4D620066C638 /* LSJBtnView.m */; };
 		EC51BDF51D66A93500B79805 /* LSJWelfareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC51BDF41D66A93500B79805 /* LSJWelfareCell.m */; };
 		EC66EC701D62E84000ECAC57 /* LSJRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC6F1D62E84000ECAC57 /* LSJRankCell.m */; };
 		EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */; };
@@ -181,6 +184,12 @@
 		EC3456BA1D61A55D00C45F19 /* LSJAppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJAppCell.m; sourceTree = "<group>"; };
 		EC3456BC1D61AE6D00C45F19 /* LSJCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCategoryCell.h; sourceTree = "<group>"; };
 		EC3456BD1D61AE6D00C45F19 /* LSJCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryCell.m; sourceTree = "<group>"; };
+		EC4258581D6C35C80066C638 /* LSJHotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHotModel.h; sourceTree = "<group>"; };
+		EC4258591D6C35C80066C638 /* LSJHotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHotModel.m; sourceTree = "<group>"; };
+		EC42585B1D6C40730066C638 /* LSJHotTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHotTitleCell.h; sourceTree = "<group>"; };
+		EC42585C1D6C40730066C638 /* LSJHotTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHotTitleCell.m; sourceTree = "<group>"; };
+		EC4258631D6C4D620066C638 /* LSJBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJBtnView.h; sourceTree = "<group>"; };
+		EC4258641D6C4D620066C638 /* LSJBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJBtnView.m; sourceTree = "<group>"; };
 		EC51BDF31D66A93500B79805 /* LSJWelfareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJWelfareCell.h; sourceTree = "<group>"; };
 		EC51BDF41D66A93500B79805 /* LSJWelfareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJWelfareCell.m; sourceTree = "<group>"; };
 		EC66EC6E1D62E84000ECAC57 /* LSJRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankCell.h; sourceTree = "<group>"; };
@@ -563,6 +572,8 @@
 				ECD70DD01D5352B2006929B1 /* LSJPaymentTypeCell.m */,
 				ECD70DC91D5348B6006929B1 /* LSJVideoPlayer.h */,
 				ECD70DCA1D5348B6006929B1 /* LSJVideoPlayer.m */,
+				EC4258631D6C4D620066C638 /* LSJBtnView.h */,
+				EC4258641D6C4D620066C638 /* LSJBtnView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -631,6 +642,8 @@
 		ECD70C391D531F6A006929B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC4258581D6C35C80066C638 /* LSJHotModel.h */,
+				EC4258591D6C35C80066C638 /* LSJHotModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -638,6 +651,8 @@
 		ECD70C3A1D531F6A006929B1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC42585B1D6C40730066C638 /* LSJHotTitleCell.h */,
+				EC42585C1D6C40730066C638 /* LSJHotTitleCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1222,6 +1237,7 @@
 				ECD70D0D1D531F6B006929B1 /* UIView+Loading.m in Sources */,
 				ECD70D471D5321EE006929B1 /* LSJLayoutViewController.m in Sources */,
 				ECD70D311D531F6B006929B1 /* DataSigner.m in Sources */,
+				EC4258651D6C4D620066C638 /* LSJBtnView.m in Sources */,
 				ECD70D081D531F6B006929B1 /* UIImage+color.m in Sources */,
 				ECD70DCB1D5348B6006929B1 /* LSJVideoPlayer.m in Sources */,
 				ECD70D951D532D51006929B1 /* LSJHudManager.m in Sources */,
@@ -1239,8 +1255,10 @@
 				ECD70D8C1D532ABD006929B1 /* LSJURLRequest.m in Sources */,
 				ECD70CFD1D531F6B006929B1 /* DBPersistence.m in Sources */,
 				ECD70CFE1D531F6B006929B1 /* DBTableVersion.m in Sources */,
+				EC42585D1D6C40730066C638 /* LSJHotTitleCell.m in Sources */,
 				ECD70D341D531F6B006929B1 /* NSDataEx.m in Sources */,
 				EC1F93701D59BEA700E0B1F4 /* LSJMineViewController.m in Sources */,
+				EC42585A1D6C35C80066C638 /* LSJHotModel.m in Sources */,
 				ECD70D1D1D531F6B006929B1 /* IappPayMananger.m in Sources */,
 				EC25CA7B1D6AF72300F350D7 /* LSJLecherProgramCell.m in Sources */,
 				ECD70D8F1D532BDB006929B1 /* LSJErrorHandler.m in Sources */,

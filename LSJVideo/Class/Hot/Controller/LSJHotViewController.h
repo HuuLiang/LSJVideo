@@ -6,8 +6,8 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJBaseViewController.h"
+#import "LSJLayoutViewController.h"
 
-@interface LSJHotViewController : LSJBaseViewController
+@interface LSJHotViewController : LSJLayoutViewController
 
 @end

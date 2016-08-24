@@ -45,7 +45,7 @@ DefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
     _cursorView = [[SDCursorView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kWidth(70))];
     _cursorView.isHomeView = NO;
     //设置子页面容器的高度
-    _cursorView.contentViewHeight = kScreenHeight - kWidth(70);
+    _cursorView.contentViewHeight = kScreenHeight - kWidth(70) - 64;
     _cursorView.cursorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     //设置控件所在controller
     _cursorView.parentViewController = self;

@@ -57,8 +57,9 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     _bannerView = [[SDCycleScrollView alloc] init];
     _bannerView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
     _bannerView.autoScrollTimeInterval = 3;
-    _bannerView.titleLabelBackgroundColor = [UIColor clearColor];
-    _bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+    _bannerView.titleLabelBackgroundColor = [[UIColor colorWithHexString:@"#000000"] colorWithAlphaComponent:0.3];
+    _bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    _bannerView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     _bannerView.delegate = self;
     _bannerView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     

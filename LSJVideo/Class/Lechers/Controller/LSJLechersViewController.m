@@ -56,9 +56,9 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [self.lecherModel fetchLechersInfoWithCompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [self.dataSource removeAllObjects];
-            [_layoutTableView LSJ_endPullToRefresh];
             [self.dataSource addObjectsFromArray:obj];
             [_layoutTableView reloadData];
+            [_layoutTableView LSJ_endPullToRefresh];
         }
     }];
 }

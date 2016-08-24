@@ -26,6 +26,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        self.backgroundColor = [UIColor clearColor];
+        
         UIView *_bgView = [[UIView alloc] init];
         _bgView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
         [self addSubview:_bgView];
@@ -74,7 +76,7 @@
         
         {
             [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.top.right.equalTo(self);
+                make.left.bottom.right.equalTo(self);
                 make.height.mas_equalTo(kWidth(210));
             }];
             

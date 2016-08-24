@@ -91,8 +91,11 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     //属性设置完成后，调用此方法绘制界面
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - 100, 20, 100, 44)];
+    view.userInteractionEnabled = YES;
     view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
     [self.view addSubview:view];
+    
+
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"精品专区" forState:UIControlStateNormal];
@@ -103,9 +106,12 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [btn setTitleColor:[UIColor colorWithHexString:@"#555555"] forState:UIControlStateNormal];
     [view addSubview:btn];
     
+    [view bk_whenTapped:^{
+        [self skipAppSpreadView];
+    }];
+    
     [btn bk_addEventHandler:^(id sender) {
-        LSJHomeAppVC *appVC = [[LSJHomeAppVC alloc] initWithTitle:@"精品专区"];
-        [self.navigationController pushViewController:appVC animated:YES];
+        [self skipAppSpreadView];
     } forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -120,6 +126,11 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     };
     
     [_cursorView reloadPages];
+}
+
+- (void)skipAppSpreadView {
+    LSJHomeAppVC *appVC = [[LSJHomeAppVC alloc] initWithTitle:@"精品专区"];
+    [self.navigationController pushViewController:appVC animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

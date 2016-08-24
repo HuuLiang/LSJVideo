@@ -8,11 +8,12 @@
 
 #import "LSJLechersListCell.h"
 #import "LSJLechersCollectionView.h"
+#import "LSJBtnView.h"
 
 @interface LSJLechersListCell () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
     UILabel *_titleLabel;
-    UIButton *_moreBtn;
+    LSJBtnView *_moreView;
     LSJLechersCollectionView *_layoutCollectionView;
 }
 @end
@@ -39,18 +40,27 @@
         _titleLabel.font = [UIFont systemFontOfSize:kWidth(32)];
         [bgView addSubview:_titleLabel];
         
-        _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_moreBtn setTitle:@"更多" forState:UIControlStateNormal];
-        _moreBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(24)];
-        [_moreBtn setTitleColor:[UIColor colorWithHexString:@"#222222"] forState:UIControlStateNormal];
-        [_moreBtn setImage:[UIImage imageNamed:@"lecher_into"] forState:UIControlStateNormal];
-        _moreBtn.layer.cornerRadius = kWidth(18);
-        _moreBtn.layer.borderColor = [UIColor colorWithHexString:@"#666666"].CGColor;
-        _moreBtn.layer.borderWidth = kWidth(2);
-        _moreBtn.layer.masksToBounds = YES;
-//        [_moreBtn layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleRight imageTitleSpace:kWidth(25)];
-        [bgView addSubview:_moreBtn];
         
+        
+        _moreView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:nil];
+        _moreView.userInteractionEnabled = YES;
+        _moreView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+        _moreView.layer.cornerRadius = kWidth(18);
+        _moreView.layer.borderColor = [UIColor colorWithHexString:@"#666666"].CGColor;
+        _moreView.layer.borderWidth = kWidth(2);
+        _moreView.layer.masksToBounds = YES;
+        
+        _moreView.titleFont = [UIFont systemFontOfSize:kWidth(24)];
+        _moreView.titleColor = [UIColor colorWithHexString:@"#222222"];
+        _moreView.space = kWidth(6);
+        
+        @weakify(self);
+        _moreView.action = ^{
+            @strongify(self);
+            self.action(@(0));
+        };
+        
+        [bgView addSubview:_moreView];
 
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.minimumLineSpacing = kWidth(10);
@@ -81,12 +91,12 @@
                 make.height.mas_equalTo(kWidth(44));
             }];
             
-            [_moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            [_moreView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(_titleLabel);
                 make.right.equalTo(bgView.mas_right).offset(-kWidth(10));
                 make.size.mas_equalTo(CGSizeMake(kWidth(94), kWidth(36)));
             }];
-            
+
             [_layoutCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_titleLabel.mas_bottom).offset(kWidth(15));
                 make.left.right.equalTo(bgView);
@@ -96,16 +106,6 @@
         
     }
     return self;
-}
-
-- (void)layoutSubviews {
-    CGRect titleRect = _moreBtn.titleLabel.frame;
-    CGRect imageRect = _moreBtn.imageView.frame;
-    
-    titleRect.origin.x = _moreBtn.imageView.frame.origin.x;
-    _moreBtn.titleLabel.frame = titleRect;
-    imageRect.origin.x = CGRectGetMaxX(_moreBtn.titleLabel.frame);
-    _moreBtn.imageView.frame = imageRect;
 }
 
 - (void)setTitleStr:(NSString *)titleStr {
@@ -145,7 +145,6 @@
     @weakify(self);
     if (indexPath.item < _dataArr.count) {
         @strongify(self);
-//        LSJColumnModel *column = _dataArr[indexPath.item];
         self.action(@(indexPath.item));
     }
 }
