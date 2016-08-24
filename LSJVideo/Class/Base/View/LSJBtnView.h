@@ -50,5 +50,9 @@ typedef void(^touchAction)(void);
  */
 @property (nonatomic) BOOL isSelected;
 
+/**
+ *  选中状态下的文字标题
+ */
+@property (nonatomic) NSString *selectedTitle;
 
 @end

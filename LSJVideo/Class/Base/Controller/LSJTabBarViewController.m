@@ -26,7 +26,7 @@
     LSJHomeViewController *homeVC = [[LSJHomeViewController alloc] initWithTitle:@"首页"];
     UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController:homeVC];
     homeNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:homeVC.title
-                                                       image:[UIImage imageNamed:@"tabbar_home_selected"]
+                                                       image:[UIImage imageNamed:@"tabbar_home_normal"]
                                                selectedImage:[[UIImage imageNamed:@"tabbar_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     LSJWelfareViewController *welfareVC = [[LSJWelfareViewController alloc] initWithTitle:@"福利"];

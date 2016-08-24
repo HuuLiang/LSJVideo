@@ -128,6 +128,9 @@
 		ECD70DD51D535485006929B1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70DD41D535485006929B1 /* libsqlite3.tbd */; };
 		ECD70DD71D5354B0006929B1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70DD61D5354B0006929B1 /* libc++.tbd */; };
 		ECD70DD91D5354C0006929B1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70DD81D5354C0006929B1 /* CoreMotion.framework */; };
+		ECDD6B311D6D7468001F08DD /* LSJHotContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD6B301D6D7468001F08DD /* LSJHotContentCell.m */; };
+		ECDD6B341D6D771C001F08DD /* LSJDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD6B331D6D771C001F08DD /* LSJDayCell.m */; };
+		ECDD6B371D6D84B1001F08DD /* LSJDayTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDD6B361D6D84B1001F08DD /* LSJDayTableView.m */; };
 		ECF00E241D5B49E900FBF1D2 /* LSJHomeAppVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E081D5B49E900FBF1D2 /* LSJHomeAppVC.m */; };
 		ECF00E251D5B49E900FBF1D2 /* LSJHomeCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E0B1D5B49E900FBF1D2 /* LSJHomeCategoryVC.m */; };
 		ECF00E261D5B49E900FBF1D2 /* LSJHomeDayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E0E1D5B49E900FBF1D2 /* LSJHomeDayVC.m */; };
@@ -368,6 +371,12 @@
 		ECD70DD41D535485006929B1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		ECD70DD61D5354B0006929B1 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		ECD70DD81D5354C0006929B1 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		ECDD6B2F1D6D7468001F08DD /* LSJHotContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHotContentCell.h; sourceTree = "<group>"; };
+		ECDD6B301D6D7468001F08DD /* LSJHotContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHotContentCell.m; sourceTree = "<group>"; };
+		ECDD6B321D6D771C001F08DD /* LSJDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJDayCell.h; sourceTree = "<group>"; };
+		ECDD6B331D6D771C001F08DD /* LSJDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJDayCell.m; sourceTree = "<group>"; };
+		ECDD6B351D6D84B1001F08DD /* LSJDayTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJDayTableView.h; sourceTree = "<group>"; };
+		ECDD6B361D6D84B1001F08DD /* LSJDayTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJDayTableView.m; sourceTree = "<group>"; };
 		ECF00E071D5B49E900FBF1D2 /* LSJHomeAppVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeAppVC.h; sourceTree = "<group>"; };
 		ECF00E081D5B49E900FBF1D2 /* LSJHomeAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHomeAppVC.m; sourceTree = "<group>"; };
 		ECF00E0A1D5B49E900FBF1D2 /* LSJHomeCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJHomeCategoryVC.h; sourceTree = "<group>"; };
@@ -653,6 +662,8 @@
 			children = (
 				EC42585B1D6C40730066C638 /* LSJHotTitleCell.h */,
 				EC42585C1D6C40730066C638 /* LSJHotTitleCell.m */,
+				ECDD6B2F1D6D7468001F08DD /* LSJHotContentCell.h */,
+				ECDD6B301D6D7468001F08DD /* LSJHotContentCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1025,6 +1036,10 @@
 			children = (
 				ECF00E0D1D5B49E900FBF1D2 /* LSJHomeDayVC.h */,
 				ECF00E0E1D5B49E900FBF1D2 /* LSJHomeDayVC.m */,
+				ECDD6B321D6D771C001F08DD /* LSJDayCell.h */,
+				ECDD6B331D6D771C001F08DD /* LSJDayCell.m */,
+				ECDD6B351D6D84B1001F08DD /* LSJDayTableView.h */,
+				ECDD6B361D6D84B1001F08DD /* LSJDayTableView.m */,
 			);
 			path = Day;
 			sourceTree = "<group>";
@@ -1257,6 +1272,7 @@
 				ECD70CFE1D531F6B006929B1 /* DBTableVersion.m in Sources */,
 				EC42585D1D6C40730066C638 /* LSJHotTitleCell.m in Sources */,
 				ECD70D341D531F6B006929B1 /* NSDataEx.m in Sources */,
+				ECDD6B311D6D7468001F08DD /* LSJHotContentCell.m in Sources */,
 				EC1F93701D59BEA700E0B1F4 /* LSJMineViewController.m in Sources */,
 				EC42585A1D6C35C80066C638 /* LSJHotModel.m in Sources */,
 				ECD70D1D1D531F6B006929B1 /* IappPayMananger.m in Sources */,
@@ -1271,6 +1287,7 @@
 				ECF00E271D5B49E900FBF1D2 /* LSJHomeRankVC.m in Sources */,
 				ECF00E281D5B49E900FBF1D2 /* LSJHomeRecommdVC.m in Sources */,
 				ECF00E251D5B49E900FBF1D2 /* LSJHomeCategoryVC.m in Sources */,
+				ECDD6B371D6D84B1001F08DD /* LSJDayTableView.m in Sources */,
 				ECD70DAD1D533BB3006929B1 /* LSJActivateModel.m in Sources */,
 				ECD70DBF1D5346A3006929B1 /* LSJVideoViewController.m in Sources */,
 				ECD70D051D531F6B006929B1 /* NSString+StringHeight.m in Sources */,
@@ -1288,6 +1305,7 @@
 				ECD70D441D53212B006929B1 /* LSJBaseViewController.m in Sources */,
 				ECD70DB91D53450C006929B1 /* LSJPaymentManager.m in Sources */,
 				EC2F0BA71D68571D00DE2B7F /* LSJLechersListVC.m in Sources */,
+				ECDD6B341D6D771C001F08DD /* LSJDayCell.m in Sources */,
 				EC1F93641D59BC2E00E0B1F4 /* SDSelectorCell.m in Sources */,
 				EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */,
 				ECD70DB31D533EF8006929B1 /* LSJSystemConfig.m in Sources */,

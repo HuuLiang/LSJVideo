@@ -46,7 +46,7 @@
         _titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
     } else {
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.textColor = [UIColor colorWithHexString:@"#222222 "];
+        _titleLabel.textColor = [UIColor colorWithHexString:@"#222222"];
         _titleLabel.layer.borderColor = [UIColor colorWithHexString:@"#999999"].CGColor;
     }
 }

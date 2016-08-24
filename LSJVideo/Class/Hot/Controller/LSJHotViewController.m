@@ -10,7 +10,7 @@
 #import "LSJHotModel.h"
 #import "LSJProgramConfigModel.h"
 #import "LSJHotTitleCell.h"
-#import "LSJRankDetailCell.h"
+#import "LSJHotContentCell.h"
 #import "LSJBtnView.h"
 
 
@@ -131,14 +131,14 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
     for (NSInteger i = 0; i < array.count ; i++) {
         LSJColumnModel *columnModel = array[i];
         if (i == 0) {
-            currentWidth = [columnModel.name sizeWithFont:[UIFont systemFontOfSize:kScreenWidth*26/750.] maxSize:CGSizeMake(MAXFLOAT, kScreenWidth * 48 / 750.)].width + 30.;
+            currentWidth = [columnModel.name sizeWithFont:[UIFont systemFontOfSize:kWidth(26)] maxSize:CGSizeMake(MAXFLOAT, kWidth(48))].width + 30.;
         } else {
             currentWidth = nextWidth;
         }
         
         if (i + 1 < array.count) {
             columnModel = array[i + 1];
-            nextWidth = [columnModel.name sizeWithFont:[UIFont systemFontOfSize:kScreenWidth*26/750.] maxSize:CGSizeMake(MAXFLOAT, kScreenWidth * 48 / 750.)].width + 30.;
+            nextWidth = [columnModel.name sizeWithFont:[UIFont systemFontOfSize:kWidth(26)] maxSize:CGSizeMake(MAXFLOAT, kWidth(48))].width + 30.;
             if (rowWidth - currentWidth - INTERITEMSPACING >= nextWidth && count < 3) {
                 count++;
                 rowWidth = rowWidth - currentWidth - INTERITEMSPACING;
@@ -187,8 +187,9 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
     [_titleCell addSubview:_layoutTitleCollectionView];
     
     _btnView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"hot_more_icon"] selectedImage:[UIImage imageNamed:@"hot_less_icon"]];
-    _btnView.backgroundColor = [UIColor cyanColor];
+//    _btnView.backgroundColor = [UIColor cyanColor];
     _btnView.titleFont = [UIFont systemFontOfSize:kWidth(30)];
+    _btnView.selectedTitle = @"收起 ";
     _btnView.space = kWidth(10);
     [_titleCell addSubview:_btnView];
     
@@ -224,49 +225,6 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
         
     };
     
-    
-//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btn.backgroundColor = [UIColor redColor];
-//    btn.titleLabel.font = [UIFont systemFontOfSize:kScreenWidth * 30 / 750.];
-//    [btn setTitle:@"更多" forState:UIControlStateNormal];
-//    [btn setImage:[UIImage imageNamed:@"hot_more_icon"] forState:UIControlStateNormal];
-//    [btn setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
-//    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 25/375.*kScreenWidth)];
-//    [btn setImageEdgeInsets:UIEdgeInsetsMake(5, 40/375.*kScreenWidth, 5,5)];
-//    [_titleCell addSubview:btn];
-//    
-//    
-//    [btn bk_addEventHandler:^(id sender) {
-//        if ([btn.titleLabel.text isEqualToString:@"更多"]) {
-//            [btn setTitle:@"收起" forState:UIControlStateNormal];
-//            [btn setImage:[UIImage imageNamed:@"hot_less_icon"] forState:UIControlStateNormal];
-//            _layoutTitleCollectionView.scrollEnabled = YES;
-//            _layoutTitleCollectionView.showsVerticalScrollIndicator = YES;
-//            [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-//                _titleCell.frame = CGRectMake(0, 0, kScreenWidth, titleCellHeight + 2.5 * kScreenWidth * 48/750. +  LINESPACING * 2);
-//                _headerCell.transform = CGAffineTransformMakeTranslation(0, 2.5 * kScreenWidth * 48/750. +  LINESPACING * 2);
-//                _detailCell.transform = CGAffineTransformMakeTranslation(0, 2.5 * kScreenWidth * 48/750. +  LINESPACING * 2);
-//            } completion:^(BOOL finished) {
-//                [self setLayoutCell:_titleCell cellHeight:titleCellHeight + 2.5 * kScreenWidth * 48/750. +  LINESPACING * 2 inRow:0 andSection:0];
-//                [self.layoutTableView reloadData];
-//            }];
-//        } else {
-//            [btn setTitle:@"更多" forState:UIControlStateNormal];
-//            [btn setImage:[UIImage imageNamed:@"hot_more_icon"] forState:UIControlStateNormal];
-//            _layoutTitleCollectionView.scrollEnabled = NO;
-//            [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-//                _titleCell.frame = CGRectMake(0, 0, kScreenWidth, titleCellHeight);
-//                _headerCell.transform = CGAffineTransformMakeTranslation(0, 0);
-//                _detailCell.transform = CGAffineTransformMakeTranslation(0, 0);
-//            } completion:^(BOOL finished) {
-//                [self setLayoutCell:_titleCell cellHeight:titleCellHeight inRow:0 andSection:0];
-//                [self.layoutTableView reloadData];
-//            }];
-//            
-//            [_layoutTitleCollectionView scrollToItemAtIndexPath:_selectecIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-//        }
-//    } forControlEvents:UIControlEventTouchUpInside];
-    
     {
         [_layoutTitleCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(_titleCell);
@@ -275,7 +233,6 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
         
         [_btnView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(_titleCell).offset(0);
-//            make.right.equalTo(_titleCell).offset(-5/375.*kScreenWidth);
             make.centerX.equalTo(_titleCell);
             make.size.mas_equalTo(CGSizeMake(68/375.*kScreenWidth,kScreenWidth * 24 /375. + LINESPACING));
         }];
@@ -288,27 +245,29 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
 - (void)initHeaderCell:(NSUInteger)section column:(LSJColumnModel *)column {
     _headerCell = [[UITableViewCell alloc] init];
     _headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    _headerCell.backgroundColor = [UIColor clearColor];
+    _headerCell.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     
     _label = [[UILabel alloc] init];
-    _label.textColor = [[UIColor colorWithHexString:@"#ffffff"] colorWithAlphaComponent:0.54];
-    _label.font = [UIFont systemFontOfSize:kScreenWidth * 30 /750.];
+    _label.textColor = [[UIColor colorWithHexString:@"#222222"] colorWithAlphaComponent:0.54];
+    _label.font = [UIFont systemFontOfSize:kWidth(30)];
     _label.text = [NSString stringWithFormat:@"共搜索到%ld部\"%@\"的作品",_detailArray.count,column.name];
+    _label.textAlignment = NSTextAlignmentCenter;
+    _label.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     [_headerCell addSubview:_label];
     {
         [_label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_headerCell).offset(kScreenWidth * 2 / 750.);
-            make.left.equalTo(_headerCell).offset(15);
-            make.right.equalTo(_headerCell);
-            make.height.mas_equalTo(kScreenWidth * 30 / 750.);
+            make.bottom.equalTo(_headerCell.mas_bottom);
+            make.left.right.equalTo(_headerCell);
+            make.height.mas_equalTo(kWidth(60));
         }];
     }
-    [self setLayoutCell:_headerCell cellHeight:kScreenWidth * 50 / 750. inRow:0 andSection:section++];
+    [self setLayoutCell:_headerCell cellHeight:kWidth(80) inRow:0 andSection:section++];
 }
 - (void)initDetailCell:(NSUInteger)section column:(LSJColumnModel *)column {
     _detailCell = [[UITableViewCell alloc] init];
     _detailCell.selectionStyle = UITableViewCellSelectionStyleNone;
     _detailCell.backgroundColor = [UIColor clearColor];
+    
     _label.text = [NSString stringWithFormat:@"共搜索到%ld部\"%@\"的作品",_detailArray.count,column.name];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -319,7 +278,7 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
     _layoutDetailCollectionView.delegate = self;
     _layoutDetailCollectionView.dataSource = self;
     _layoutDetailCollectionView.showsVerticalScrollIndicator = NO;
-    [_layoutDetailCollectionView registerClass:[LSJRankDetailCell class] forCellWithReuseIdentifier:kDetailProgramCellReusableIdentifier];
+    [_layoutDetailCollectionView registerClass:[LSJHotContentCell class] forCellWithReuseIdentifier:kDetailProgramCellReusableIdentifier];
     _layoutDetailCollectionView.scrollEnabled = NO;
     [_detailCell addSubview:_layoutDetailCollectionView];
     {
@@ -362,7 +321,7 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
             return cell;
         }
     } else if (collectionView == _layoutDetailCollectionView) {
-        LSJRankDetailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDetailProgramCellReusableIdentifier forIndexPath:indexPath];
+        LSJHotContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDetailProgramCellReusableIdentifier forIndexPath:indexPath];
         if (indexPath.item < self.detailArray.count) {
             LSJProgramModel *program = self.detailArray[indexPath.item];
             cell.titleStr = program.title;

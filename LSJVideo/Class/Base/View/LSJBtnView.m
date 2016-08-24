@@ -19,6 +19,9 @@
     
     CGSize _normalImageSize;
     CGSize _selectedImageSize;
+    
+    NSString *_normalTitleStr;
+    NSString *_selectedTitleStr;
 }
 @end
 
@@ -40,6 +43,7 @@
         if (normalImage) {
             _normalImage = normalImage;
             _normalImageSize = normalImage.size;
+            _normalTitleStr = title;
             _imgV = [[UIImageView alloc] initWithImage:normalImage];
             [self addSubview:_imgV];
         }
@@ -93,10 +97,15 @@
     }
 }
 
+- (void)setSelectedTitle:(NSString *)selectedTitle {
+    _selectedTitleStr = selectedTitle;
+}
+
 - (void)setIsSelected:(BOOL)isSelected {
     _isSelected = isSelected;
     if (isSelected && _selectedImage) {
         _imgV.image = _selectedImage;
+        _titleLabel.text = _selectedTitleStr;
         {
             [_imgV mas_updateConstraints:^(MASConstraintMaker *make) {
                make.size.mas_equalTo(CGSizeMake(kWidth(_selectedImageSize.width * 2), kWidth(_selectedImageSize.height * 2)));
@@ -106,6 +115,7 @@
         
     } else {
         _imgV.image = _normalImage;
+        _titleLabel.text = _normalTitleStr;
         {
             [_imgV mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.size.mas_equalTo(CGSizeMake(kWidth(_normalImageSize.width * 2), kWidth(_normalImageSize.height * 2)));
