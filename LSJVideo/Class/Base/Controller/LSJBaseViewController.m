@@ -7,6 +7,7 @@
 //
 
 #import "LSJBaseViewController.h"
+#import "LSJDetailVideoVC.h"
 
 @interface LSJBaseViewController ()
 
@@ -41,6 +42,11 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)pushToDetailVideoWithController:(UIViewController *)VC programId:(NSInteger )programId {
+    LSJDetailVideoVC *detailVC = [[LSJDetailVideoVC alloc] initWithProgram:programId];
+    [VC.navigationController pushViewController:detailVC animated:YES];
 }
 
 @end

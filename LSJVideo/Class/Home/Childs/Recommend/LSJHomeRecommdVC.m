@@ -51,7 +51,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor cyanColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     
     _bannerView = [[SDCycleScrollView alloc] init];
@@ -238,6 +238,13 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section < _dataSource.count) {
+        LSJColumnModel *column = _dataSource[indexPath.section];
+        if (indexPath.item < column.programList.count) {
+            LSJProgramModel *program = column.programList[indexPath.item];
+            [self pushToDetailVideoWithController:self programId:program.programId];
+        }
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -320,16 +327,12 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-//    for (LTColumnModel *column in _dataSource) {
-//        if (column.type == 4) {
-//            LTProgramModel *program = column.programList[index];
-//            LTDetailController *detailVC = [[LTDetailController alloc] initWithColumnId:[NSString stringWithFormat:@"%lu",column.columnId] ProgramId:[NSString stringWithFormat:@"%lu",program.programId] type:[NSString stringWithFormat:@"%ld",column.type]];
-//            detailVC.channel = (LTChannel *)column;
-//            detailVC.programType = program.type;
-//            [self.navigationController pushViewController:detailVC animated:YES];
-//            [[LTStatsManager sharedManager] statsCPCWithProgram:(LTProgram *)program programLocation:index inChannel:(LTChannel*)column andTabIndex:self.tabBarController.selectedIndex subTabIndex:[LTUtils currentSubTabPageIndex]];
-//        }
-//    }
+    for (LSJColumnModel *column in _dataSource) {
+        if (column.type == 4 && index < column.programList.count) {
+            LSJProgramModel *program = column.programList[index];
+            [self pushToDetailVideoWithController:self programId:program.programId];
+        }
+    }
 }
 
 

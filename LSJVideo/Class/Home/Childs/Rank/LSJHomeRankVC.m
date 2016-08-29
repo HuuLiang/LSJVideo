@@ -40,6 +40,8 @@ DefineLazyPropertyInitialization(NSMutableArray, widthSource)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     UICollectionViewFlowLayout *mainLayout = [[UICollectionViewFlowLayout alloc] init];
     mainLayout.minimumLineSpacing = kWidth(30);
     mainLayout.minimumInteritemSpacing = kWidth(20);

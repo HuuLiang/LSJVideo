@@ -108,4 +108,11 @@ DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 //    }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < _columnModel.programList.count) {
+        LSJProgramModel * program = _columnModel.programList[indexPath.row];
+        [self pushToDetailVideoWithController:self programId:program.programId];
+    }
+}
+
 @end

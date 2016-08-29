@@ -12,4 +12,6 @@
 
 - (instancetype)initWithTitle:(NSString *)title;
 
+- (void)pushToDetailVideoWithController:(UIViewController *)VC programId:(NSInteger )programId;
+
 @end

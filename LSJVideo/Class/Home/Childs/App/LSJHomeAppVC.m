@@ -145,5 +145,15 @@ DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section < _dataSource.count) {
+        LSJColumnModel *column = _dataSource[indexPath.section];
+        if (indexPath.row < column.programList.count) {
+            LSJProgramModel * program = column.programList[indexPath.item];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
+        }
+    }
+}
+
 
 @end

@@ -45,7 +45,8 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         DLog(@"%@",NSStringFromCGRect(self.bounds));
         
         _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+ (_isHomeView ? 20 :0), CGRectGetWidth(self.bounds), self.contentViewHeight)];
-        _rootScrollView.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+        _rootScrollView.backgroundColor = [[UIColor colorWithHexString:@"#efefef"] colorWithAlphaComponent:0.99];
+//        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imagee.jpg"]];
         if (!_isHomeView) {
             _rootScrollView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
         }
@@ -67,15 +68,6 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     return _rootScrollView;
 }
 
-//- (void)dealloc {
-//    [_rootScrollView removeObserver:self forKeyPath:@"contentOffset"];
-//}
-
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-//    if ([keyPath isEqualToString:@"contentOffset"]) {
-//        DLog(@"%@",change);
-//    }
-//}
 
 -(UIView*)lineView
 {

@@ -103,7 +103,10 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.item < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.item];
+        [self pushToDetailVideoWithController:self programId:program.programId];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

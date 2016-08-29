@@ -110,11 +110,15 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 9) {
+    if (indexPath.row == 10) {
         return kScreenWidth * 14 / 15 - kWidth(20);
     } else {
         return kScreenWidth * 14 / 15;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 

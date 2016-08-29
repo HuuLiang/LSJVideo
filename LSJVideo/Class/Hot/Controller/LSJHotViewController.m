@@ -349,7 +349,10 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
 //            [[JFStatsManager sharedManager] statsCPCWithBeseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
         }
     } else if (collectionView == _layoutDetailCollectionView) {
-        LSJProgramModel *program = self.detailArray[indexPath.item];
+        if (indexPath.item < self.detailArray.count) {
+            LSJProgramModel *program = self.detailArray[indexPath.item];
+            [self pushToDetailVideoWithController:self programId:program.programId];
+        }
 //        JFBaseModel *baseModel = [[JFBaseModel alloc] init];
 //        baseModel.realColumnId = @(column.realColumnId);
 //        baseModel.channelType = @(column.type);

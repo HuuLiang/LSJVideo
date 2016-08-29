@@ -29,7 +29,7 @@
         self.backgroundColor = [UIColor clearColor];
         _start = NO;
         
-        _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        _currentIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
         
         UIView *bgView = [[UIView alloc] init];
         bgView.backgroundColor = [UIColor whiteColor];
@@ -151,16 +151,16 @@
         return;
     }
     
-    NSIndexPath *indexPath = _currentIndexPath;
-    DLog(@"%@",indexPath)    ;
-    if (indexPath.row == _userContacts.count - 1) {
-        _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    if (_currentIndexPath.row == _userContacts.count - 1) {
         _currentIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        _currentIndexPath = [NSIndexPath indexPathForRow:_currentIndexPath.row + 1 inSection:0];
+        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     } else {
-        _currentIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0];
-        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        _currentIndexPath = [NSIndexPath indexPathForRow:_currentIndexPath.row + 1 inSection:0];
+        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+//    DLog(@"currentIndexPath:%ld",_currentIndexPath.row);
     if (_start) {
         [self performSelector:@selector(scrollTitle) withObject:nil afterDelay:1];
     }
@@ -170,6 +170,7 @@
     DLog(@"%@",NSStringFromCGRect(_titleLabel.frame));
     
     CAShapeLayer *line = [CAShapeLayer layer];
+    
     CGMutablePathRef linePath = CGPathCreateMutable();
     [line setFillColor:[[UIColor clearColor] CGColor]];
     [line setStrokeColor:[[UIColor colorWithHexString:@"#dcdcdc"] CGColor]];
@@ -188,6 +189,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    DLog(@"indexPath:%ld",indexPath.row);
     LSJDayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDayTableViewCellReusableIdentifier forIndexPath:indexPath];
     if (indexPath.row < _userContacts.count) {
         cell.userStr = _userContacts[indexPath.row];
@@ -199,5 +201,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return _dayTableView.frame.size.height / 3;
 }
+
 
 @end
