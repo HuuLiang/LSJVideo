@@ -10,7 +10,7 @@
 #define LSJConfig_h
 
 #define LSJ_CHANNEL_NO               @"QUBA_IOS_LAOSIJI_0000001" //@"QB_MFW_IOS_TEST_0000001" //
-#define LSJ_REST_APPID               @"QUBA_2024"
+#define LSJ_REST_APPID               @"QUBA_2025"
 #define LSJ_REST_PV                  @"100"
 #define LSJ_PAYMENT_PV               @"100"
 #define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., LSJd."
@@ -37,7 +37,7 @@
 #define LSJ_STATS_PAY_URL               @"/stats/payRes.service"
 
 
-#define LSJ_PAYMENT_CONFIG_URL           @"http://pay.zcqcmj.com/paycenter/payConfig.json"//@"http://120.24.252.114:8084/paycenter/payConfig.json"
+#define LSJ_PAYMENT_CONFIG_URL           @"http://120.24.252.114:8084/paycenter/appPayConfig.json"//@"http://pay.zcqcmj.com/paycenter/appPayConfig.json"
 #define LSJ_PAYMENT_COMMIT_URL           @"http://pay.zcqcmj.com/paycenter/qubaPr.json"//@"http://120.24.252.114:8084/paycenter/qubaPr.json"
 #define LSJ_STANDBY_PAYMENT_CONFIG_URL  @"http://appcdn.mqu8.com/static/iosvideo/payConfig_%@.json"
 
@@ -50,7 +50,7 @@
 #define LSJ_PROTOCOL_URL                @"http://120.24.252.114:8093/iosvideo/laosiji-agreement.html"
 #define LSJ_STATEMENT_URL               @""
 
-#define LSJ_KSCRASH_APP_ID              @""
+#define LSJ_KSCRASH_APP_ID              @"866b5d57e592c42ca988943a6124238e"
 
 #define LSJ_DB_VERSION                  (1)
 

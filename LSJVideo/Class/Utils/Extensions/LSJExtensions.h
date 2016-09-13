@@ -26,5 +26,6 @@
 #import "NSObject+PropertyAccessInspecting.h"
 #import "UIImage+color.h"
 #import "UIImageView+YPBAnimation.h"
+#import "NSObject+DictionaryRepresentation.h"
 
 #endif /* LSJExtensions_h */

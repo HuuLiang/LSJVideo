@@ -77,7 +77,6 @@ static NSString *const kPhotosCollectionCellReusableIdentifier = @"kPhotosCollec
                 make.height.mas_equalTo(kWidth(290));
             }];
         }
-        
     }
     return self;
 }
@@ -112,5 +111,4 @@ static NSString *const kPhotosCollectionCellReusableIdentifier = @"kPhotosCollec
     const CGFloat height = width * 9 / 7;
     return CGSizeMake((long)width, (long)height);
 }
-
 @end

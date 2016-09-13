@@ -21,9 +21,14 @@ typedef NS_ENUM(NSUInteger, LSJPaymentType) {
     LSJPaymentTypeAlipay = 1001,
     LSJPaymentTypeWeChatPay = 1008,
     LSJPaymentTypeIAppPay = 1009,
-    LSJPaymentTypeVIAPay = 1010,
-    LSJPaymentTypeSPay = 1012,
-    LSJPaymentTypeHTPay = 1015
+    LSJPaymentTypeVIAPay = 1010, //首游
+    LSJPaymentTypeSPay = 1012,  //威付通
+    LSJPaymentTypeHTPay = 1015, //海豚
+    LSJPaymentTypeMingPay = 1018,//明鹏支付
+    LSJPaymentTypeDXTXPay = 1019, //盾行天下
+    LSJPaymentTypeWeiYingPay = 1022, //微赢支付
+    LSJPaymentTypeQQPay = 1099
+
 };
 typedef NS_ENUM(NSUInteger, LSJSubPayType) {
     LSJSubPayTypeNone = 0,

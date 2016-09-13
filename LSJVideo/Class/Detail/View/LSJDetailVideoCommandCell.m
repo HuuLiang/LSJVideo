@@ -19,7 +19,7 @@
 
 @implementation LSJDetailVideoCommandCell
 
-- (instancetype)initWithHeight:(CGFloat)height {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _userImgV = [[UIImageView alloc] init];

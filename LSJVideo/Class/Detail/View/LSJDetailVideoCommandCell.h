@@ -10,7 +10,7 @@
 
 @interface LSJDetailVideoCommandCell : UITableViewCell
 
-- (instancetype)initWithHeight:(CGFloat)height;
+//- (instancetype)initWithHeight:(CGFloat)height;
 
 @property (nonatomic) NSString *userImgUrlStr;
 @property (nonatomic) NSString *timeStr;

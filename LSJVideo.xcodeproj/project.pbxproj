@@ -37,6 +37,52 @@
 		EC66EC701D62E84000ECAC57 /* LSJRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC6F1D62E84000ECAC57 /* LSJRankCell.m */; };
 		EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */; };
 		EC66EC761D63145500ECAC57 /* LSJCategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */; };
+		EC74E31E1D87958A00DEB3F3 /* LSJPaymentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3151D87958A00DEB3F3 /* LSJPaymentConfig.m */; };
+		EC74E31F1D87958A00DEB3F3 /* LSJPaymentConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3171D87958A00DEB3F3 /* LSJPaymentConfigModel.m */; };
+		EC74E3201D87958A00DEB3F3 /* LSJPaymentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3191D87958A00DEB3F3 /* LSJPaymentInfo.m */; };
+		EC74E3211D87958A00DEB3F3 /* LSJPaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E31B1D87958A00DEB3F3 /* LSJPaymentManager.m */; };
+		EC74E3221D87958A00DEB3F3 /* LSJPaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E31D1D87958A00DEB3F3 /* LSJPaymentModel.m */; };
+		EC74E3321D87963F00DEB3F3 /* LSJActivateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3251D87963F00DEB3F3 /* LSJActivateModel.m */; };
+		EC74E3331D87963F00DEB3F3 /* LSJEncryptedURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3271D87963F00DEB3F3 /* LSJEncryptedURLRequest.m */; };
+		EC74E3341D87963F00DEB3F3 /* LSJSystemConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3291D87963F00DEB3F3 /* LSJSystemConfig.m */; };
+		EC74E3351D87963F00DEB3F3 /* LSJSystemConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E32B1D87963F00DEB3F3 /* LSJSystemConfigModel.m */; };
+		EC74E3361D87963F00DEB3F3 /* LSJURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E32D1D87963F00DEB3F3 /* LSJURLRequest.m */; };
+		EC74E3371D87963F00DEB3F3 /* LSJURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E32F1D87963F00DEB3F3 /* LSJURLResponse.m */; };
+		EC74E3381D87963F00DEB3F3 /* LSJUserAccessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3311D87963F00DEB3F3 /* LSJUserAccessModel.m */; };
+		EC74E33B1D87976E00DEB3F3 /* LSJPaymentConfigSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E33A1D87976E00DEB3F3 /* LSJPaymentConfigSummary.m */; };
+		EC74E33E1D87981400DEB3F3 /* LSJPaymentConfigDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E33D1D87981400DEB3F3 /* LSJPaymentConfigDetail.m */; };
+		EC74E3411D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3401D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.m */; };
+		EC74E3691D879A3700DEB3F3 /* IapppayAlphaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC74E3431D879A3700DEB3F3 /* IapppayAlphaKit.framework */; };
+		EC74E36A1D879A3700DEB3F3 /* IapppayAlphaResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3441D879A3700DEB3F3 /* IapppayAlphaResource.bundle */; };
+		EC74E36B1D879A3700DEB3F3 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3471D879A3700DEB3F3 /* btn1.png */; };
+		EC74E36C1D879A3700DEB3F3 /* btn10.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3481D879A3700DEB3F3 /* btn10.png */; };
+		EC74E36D1D879A3700DEB3F3 /* btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3491D879A3700DEB3F3 /* btn2.png */; };
+		EC74E36E1D879A3700DEB3F3 /* btn3.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E34A1D879A3700DEB3F3 /* btn3.png */; };
+		EC74E36F1D879A3700DEB3F3 /* btn5.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E34B1D879A3700DEB3F3 /* btn5.png */; };
+		EC74E3701D879A3700DEB3F3 /* btn6.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E34C1D879A3700DEB3F3 /* btn6.png */; };
+		EC74E3711D879A3700DEB3F3 /* btn7.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E34D1D879A3700DEB3F3 /* btn7.png */; };
+		EC74E3721D879A3700DEB3F3 /* btn8.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E34E1D879A3700DEB3F3 /* btn8.png */; };
+		EC74E3731D879A3700DEB3F3 /* btn9.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E34F1D879A3700DEB3F3 /* btn9.png */; };
+		EC74E3741D879A3700DEB3F3 /* seperator.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3501D879A3700DEB3F3 /* seperator.png */; };
+		EC74E3751D879A3700DEB3F3 /* unicom_back.png in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3511D879A3700DEB3F3 /* unicom_back.png */; };
+		EC74E3761D879A3700DEB3F3 /* Config.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3521D879A3700DEB3F3 /* Config.txt */; };
+		EC74E3771D879A3700DEB3F3 /* PayUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC74E3531D879A3700DEB3F3 /* PayUtil.framework */; };
+		EC74E3781D879A3700DEB3F3 /* private_key.p12 in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3541D879A3700DEB3F3 /* private_key.p12 */; };
+		EC74E3791D879A3700DEB3F3 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3551D879A3700DEB3F3 /* public_key.der */; };
+		EC74E37A1D879A3700DEB3F3 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3581D879A3700DEB3F3 /* base64.m */; };
+		EC74E37B1D879A3700DEB3F3 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E35B1D879A3700DEB3F3 /* DataSigner.m */; };
+		EC74E37C1D879A3700DEB3F3 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E35D1D879A3700DEB3F3 /* DataVerifier.m */; };
+		EC74E37D1D879A3700DEB3F3 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E35F1D879A3700DEB3F3 /* MD5DataSigner.m */; };
+		EC74E37E1D879A3700DEB3F3 /* NSDataEx.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3611D879A3700DEB3F3 /* NSDataEx.m */; };
+		EC74E37F1D879A3700DEB3F3 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3631D879A3700DEB3F3 /* openssl_wrapper.m */; };
+		EC74E3801D879A3700DEB3F3 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3651D879A3700DEB3F3 /* RSADataSigner.m */; };
+		EC74E3811D879A3700DEB3F3 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3671D879A3700DEB3F3 /* RSADataVerifier.m */; };
+		EC74E3821D879A3700DEB3F3 /* VIASDKVERSION.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3681D879A3700DEB3F3 /* VIASDKVERSION.txt */; };
+		EC74E38A1D879A6500DEB3F3 /* DXTXPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3851D879A6500DEB3F3 /* DXTXPayManager.m */; };
+		EC74E38B1D879A6500DEB3F3 /* libDXTXPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC74E3881D879A6500DEB3F3 /* libDXTXPaySDK.a */; };
+		EC74E38C1D879A6500DEB3F3 /* SPaySDKResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC74E3891D879A6500DEB3F3 /* SPaySDKResource.bundle */; };
+		EC74E38F1D879A7F00DEB3F3 /* IappPayMananger.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E38E1D879A7F00DEB3F3 /* IappPayMananger.m */; };
+		EC74E3941D87AE7300DEB3F3 /* KSCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC74E3931D87AE7300DEB3F3 /* KSCrash.framework */; };
 		EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A21D64097700AC3708 /* LSJWelfareModel.m */; };
 		EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */; };
 		EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */; };
@@ -70,61 +116,22 @@
 		ECD70D191D531F6B006929B1 /* RACEXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C8F1D531F6B006929B1 /* RACEXTRuntimeExtensions.m */; };
 		ECD70D1A1D531F6B006929B1 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ECD70C941D531F6B006929B1 /* AlipaySDK.bundle */; };
 		ECD70D1B1D531F6B006929B1 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70C951D531F6B006929B1 /* AlipaySDK.framework */; };
-		ECD70D1C1D531F6B006929B1 /* IapppayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70C971D531F6B006929B1 /* IapppayKit.framework */; };
-		ECD70D1D1D531F6B006929B1 /* IappPayMananger.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C991D531F6B006929B1 /* IappPayMananger.m */; };
-		ECD70D1E1D531F6B006929B1 /* IapppayResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ECD70C9A1D531F6B006929B1 /* IapppayResource.bundle */; };
 		ECD70D201D531F6B006929B1 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70C9F1D531F6B006929B1 /* libMobClickLibrary.a */; };
-		ECD70D211D531F6B006929B1 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CA41D531F6B006929B1 /* btn1.png */; };
-		ECD70D221D531F6B006929B1 /* btn10.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CA51D531F6B006929B1 /* btn10.png */; };
-		ECD70D231D531F6B006929B1 /* btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CA61D531F6B006929B1 /* btn2.png */; };
-		ECD70D241D531F6B006929B1 /* btn3.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CA71D531F6B006929B1 /* btn3.png */; };
-		ECD70D251D531F6B006929B1 /* btn5.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CA81D531F6B006929B1 /* btn5.png */; };
-		ECD70D261D531F6B006929B1 /* btn6.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CA91D531F6B006929B1 /* btn6.png */; };
-		ECD70D271D531F6B006929B1 /* btn7.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CAA1D531F6B006929B1 /* btn7.png */; };
-		ECD70D281D531F6B006929B1 /* btn8.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CAB1D531F6B006929B1 /* btn8.png */; };
-		ECD70D291D531F6B006929B1 /* btn9.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CAC1D531F6B006929B1 /* btn9.png */; };
-		ECD70D2A1D531F6B006929B1 /* seperator.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CAD1D531F6B006929B1 /* seperator.png */; };
-		ECD70D2B1D531F6B006929B1 /* unicom_back.png in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CAE1D531F6B006929B1 /* unicom_back.png */; };
-		ECD70D2C1D531F6B006929B1 /* Config.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CAF1D531F6B006929B1 /* Config.txt */; };
-		ECD70D2D1D531F6B006929B1 /* PayUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70CB01D531F6B006929B1 /* PayUtil.framework */; };
-		ECD70D2E1D531F6B006929B1 /* private_key.p12 in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CB11D531F6B006929B1 /* private_key.p12 */; };
-		ECD70D2F1D531F6B006929B1 /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CB21D531F6B006929B1 /* public_key.der */; };
-		ECD70D301D531F6B006929B1 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CB51D531F6B006929B1 /* base64.m */; };
-		ECD70D311D531F6B006929B1 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CB81D531F6B006929B1 /* DataSigner.m */; };
-		ECD70D321D531F6B006929B1 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CBA1D531F6B006929B1 /* DataVerifier.m */; };
-		ECD70D331D531F6B006929B1 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CBC1D531F6B006929B1 /* MD5DataSigner.m */; };
-		ECD70D341D531F6B006929B1 /* NSDataEx.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CBE1D531F6B006929B1 /* NSDataEx.m */; };
-		ECD70D351D531F6B006929B1 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CC01D531F6B006929B1 /* openssl_wrapper.m */; };
-		ECD70D361D531F6B006929B1 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CC21D531F6B006929B1 /* RSADataSigner.m */; };
-		ECD70D371D531F6B006929B1 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70CC41D531F6B006929B1 /* RSADataVerifier.m */; };
-		ECD70D381D531F6B006929B1 /* VIASDKVERSION.txt in Resources */ = {isa = PBXBuildFile; fileRef = ECD70CC51D531F6B006929B1 /* VIASDKVERSION.txt */; };
 		ECD70D391D531F6B006929B1 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD70CC71D531F6B006929B1 /* libWeChatSDK.a */; };
 		ECD70D3D1D531FC7006929B1 /* JQKApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D3A1D531FC7006929B1 /* JQKApplication.m */; };
 		ECD70D3E1D531FC7006929B1 /* JQKApplicationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D3C1D531FC7006929B1 /* JQKApplicationManager.m */; };
 		ECD70D441D53212B006929B1 /* LSJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D431D53212B006929B1 /* LSJBaseViewController.m */; };
 		ECD70D471D5321EE006929B1 /* LSJLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D461D5321EE006929B1 /* LSJLayoutViewController.m */; };
 		ECD70D4B1D53262F006929B1 /* LSJTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D4A1D53262F006929B1 /* LSJTabBarViewController.m */; };
-		ECD70D891D532A62006929B1 /* LSJURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D881D532A62006929B1 /* LSJURLResponse.m */; };
-		ECD70D8C1D532ABD006929B1 /* LSJURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D8B1D532ABD006929B1 /* LSJURLRequest.m */; };
 		ECD70D8F1D532BDB006929B1 /* LSJErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D8E1D532BDB006929B1 /* LSJErrorHandler.m */; };
 		ECD70D921D532C45006929B1 /* LSJMessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D911D532C45006929B1 /* LSJMessageCenter.m */; };
 		ECD70D951D532D51006929B1 /* LSJHudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D941D532D51006929B1 /* LSJHudManager.m */; };
 		ECD70D981D532E33006929B1 /* LSJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D971D532E33006929B1 /* LSJUtil.m */; };
 		ECD70D9B1D532ED5006929B1 /* LSJNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D9A1D532ED5006929B1 /* LSJNetworkInfo.m */; };
-		ECD70D9E1D532FB9006929B1 /* LSJPaymentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70D9D1D532FB9006929B1 /* LSJPaymentInfo.m */; };
-		ECD70DA11D5330AD006929B1 /* LSJEncryptedURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DA01D5330AD006929B1 /* LSJEncryptedURLRequest.m */; };
-		ECD70DA41D533127006929B1 /* LSJPaymentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DA31D533127006929B1 /* LSJPaymentConfig.m */; };
-		ECD70DA71D533542006929B1 /* LSJPaymentConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DA61D533542006929B1 /* LSJPaymentConfigModel.m */; };
-		ECD70DAA1D533B39006929B1 /* LSJUserAccessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DA91D533B39006929B1 /* LSJUserAccessModel.m */; };
-		ECD70DAD1D533BB3006929B1 /* LSJActivateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DAC1D533BB3006929B1 /* LSJActivateModel.m */; };
 		ECD70DB01D533DF3006929B1 /* LSJBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DAF1D533DF3006929B1 /* LSJBaseModel.m */; };
-		ECD70DB31D533EF8006929B1 /* LSJSystemConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DB21D533EF8006929B1 /* LSJSystemConfig.m */; };
-		ECD70DB61D533F46006929B1 /* LSJSystemConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DB51D533F46006929B1 /* LSJSystemConfigModel.m */; };
-		ECD70DB91D53450C006929B1 /* LSJPaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DB81D53450C006929B1 /* LSJPaymentManager.m */; };
 		ECD70DBC1D534663006929B1 /* LSJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DBB1D534663006929B1 /* LSJWebViewController.m */; };
 		ECD70DBF1D5346A3006929B1 /* LSJVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DBE1D5346A3006929B1 /* LSJVideoViewController.m */; };
 		ECD70DC21D534706006929B1 /* LSJPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DC11D534706006929B1 /* LSJPaymentViewController.m */; };
-		ECD70DC51D534771006929B1 /* LSJPaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DC41D534771006929B1 /* LSJPaymentModel.m */; };
 		ECD70DC81D534859006929B1 /* LSJPaymentPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DC71D534859006929B1 /* LSJPaymentPopView.m */; };
 		ECD70DCB1D5348B6006929B1 /* LSJVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DCA1D5348B6006929B1 /* LSJVideoPlayer.m */; };
 		ECD70DCE1D534912006929B1 /* LSJTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70DCD1D534912006929B1 /* LSJTableViewCell.m */; };
@@ -207,6 +214,79 @@
 		EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryDetailVC.m; sourceTree = "<group>"; };
 		EC66EC741D63145500ECAC57 /* LSJCategoryDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCategoryDetailCell.h; sourceTree = "<group>"; };
 		EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryDetailCell.m; sourceTree = "<group>"; };
+		EC74E3141D87958A00DEB3F3 /* LSJPaymentConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentConfig.h; sourceTree = "<group>"; };
+		EC74E3151D87958A00DEB3F3 /* LSJPaymentConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentConfig.m; sourceTree = "<group>"; };
+		EC74E3161D87958A00DEB3F3 /* LSJPaymentConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentConfigModel.h; sourceTree = "<group>"; };
+		EC74E3171D87958A00DEB3F3 /* LSJPaymentConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentConfigModel.m; sourceTree = "<group>"; };
+		EC74E3181D87958A00DEB3F3 /* LSJPaymentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentInfo.h; sourceTree = "<group>"; };
+		EC74E3191D87958A00DEB3F3 /* LSJPaymentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentInfo.m; sourceTree = "<group>"; };
+		EC74E31A1D87958A00DEB3F3 /* LSJPaymentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentManager.h; sourceTree = "<group>"; };
+		EC74E31B1D87958A00DEB3F3 /* LSJPaymentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentManager.m; sourceTree = "<group>"; };
+		EC74E31C1D87958A00DEB3F3 /* LSJPaymentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentModel.h; sourceTree = "<group>"; };
+		EC74E31D1D87958A00DEB3F3 /* LSJPaymentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentModel.m; sourceTree = "<group>"; };
+		EC74E3241D87963F00DEB3F3 /* LSJActivateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJActivateModel.h; sourceTree = "<group>"; };
+		EC74E3251D87963F00DEB3F3 /* LSJActivateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJActivateModel.m; sourceTree = "<group>"; };
+		EC74E3261D87963F00DEB3F3 /* LSJEncryptedURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJEncryptedURLRequest.h; sourceTree = "<group>"; };
+		EC74E3271D87963F00DEB3F3 /* LSJEncryptedURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJEncryptedURLRequest.m; sourceTree = "<group>"; };
+		EC74E3281D87963F00DEB3F3 /* LSJSystemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJSystemConfig.h; sourceTree = "<group>"; };
+		EC74E3291D87963F00DEB3F3 /* LSJSystemConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJSystemConfig.m; sourceTree = "<group>"; };
+		EC74E32A1D87963F00DEB3F3 /* LSJSystemConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJSystemConfigModel.h; sourceTree = "<group>"; };
+		EC74E32B1D87963F00DEB3F3 /* LSJSystemConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJSystemConfigModel.m; sourceTree = "<group>"; };
+		EC74E32C1D87963F00DEB3F3 /* LSJURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJURLRequest.h; sourceTree = "<group>"; };
+		EC74E32D1D87963F00DEB3F3 /* LSJURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJURLRequest.m; sourceTree = "<group>"; };
+		EC74E32E1D87963F00DEB3F3 /* LSJURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJURLResponse.h; sourceTree = "<group>"; };
+		EC74E32F1D87963F00DEB3F3 /* LSJURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJURLResponse.m; sourceTree = "<group>"; };
+		EC74E3301D87963F00DEB3F3 /* LSJUserAccessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJUserAccessModel.h; sourceTree = "<group>"; };
+		EC74E3311D87963F00DEB3F3 /* LSJUserAccessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJUserAccessModel.m; sourceTree = "<group>"; };
+		EC74E3391D87976E00DEB3F3 /* LSJPaymentConfigSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentConfigSummary.h; sourceTree = "<group>"; };
+		EC74E33A1D87976E00DEB3F3 /* LSJPaymentConfigSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentConfigSummary.m; sourceTree = "<group>"; };
+		EC74E33C1D87981400DEB3F3 /* LSJPaymentConfigDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentConfigDetail.h; sourceTree = "<group>"; };
+		EC74E33D1D87981400DEB3F3 /* LSJPaymentConfigDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentConfigDetail.m; sourceTree = "<group>"; };
+		EC74E33F1D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DictionaryRepresentation.h"; sourceTree = "<group>"; };
+		EC74E3401D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DictionaryRepresentation.m"; sourceTree = "<group>"; };
+		EC74E3431D879A3700DEB3F3 /* IapppayAlphaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IapppayAlphaKit.framework; sourceTree = "<group>"; };
+		EC74E3441D879A3700DEB3F3 /* IapppayAlphaResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IapppayAlphaResource.bundle; sourceTree = "<group>"; };
+		EC74E3471D879A3700DEB3F3 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
+		EC74E3481D879A3700DEB3F3 /* btn10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn10.png; sourceTree = "<group>"; };
+		EC74E3491D879A3700DEB3F3 /* btn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn2.png; sourceTree = "<group>"; };
+		EC74E34A1D879A3700DEB3F3 /* btn3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn3.png; sourceTree = "<group>"; };
+		EC74E34B1D879A3700DEB3F3 /* btn5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn5.png; sourceTree = "<group>"; };
+		EC74E34C1D879A3700DEB3F3 /* btn6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn6.png; sourceTree = "<group>"; };
+		EC74E34D1D879A3700DEB3F3 /* btn7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn7.png; sourceTree = "<group>"; };
+		EC74E34E1D879A3700DEB3F3 /* btn8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn8.png; sourceTree = "<group>"; };
+		EC74E34F1D879A3700DEB3F3 /* btn9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn9.png; sourceTree = "<group>"; };
+		EC74E3501D879A3700DEB3F3 /* seperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seperator.png; sourceTree = "<group>"; };
+		EC74E3511D879A3700DEB3F3 /* unicom_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unicom_back.png; sourceTree = "<group>"; };
+		EC74E3521D879A3700DEB3F3 /* Config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Config.txt; sourceTree = "<group>"; };
+		EC74E3531D879A3700DEB3F3 /* PayUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PayUtil.framework; sourceTree = "<group>"; };
+		EC74E3541D879A3700DEB3F3 /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
+		EC74E3551D879A3700DEB3F3 /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
+		EC74E3571D879A3700DEB3F3 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		EC74E3581D879A3700DEB3F3 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
+		EC74E3591D879A3700DEB3F3 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		EC74E35A1D879A3700DEB3F3 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		EC74E35B1D879A3700DEB3F3 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
+		EC74E35C1D879A3700DEB3F3 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		EC74E35D1D879A3700DEB3F3 /* DataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataVerifier.m; sourceTree = "<group>"; };
+		EC74E35E1D879A3700DEB3F3 /* MD5DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5DataSigner.h; sourceTree = "<group>"; };
+		EC74E35F1D879A3700DEB3F3 /* MD5DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5DataSigner.m; sourceTree = "<group>"; };
+		EC74E3601D879A3700DEB3F3 /* NSDataEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataEx.h; sourceTree = "<group>"; };
+		EC74E3611D879A3700DEB3F3 /* NSDataEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataEx.m; sourceTree = "<group>"; };
+		EC74E3621D879A3700DEB3F3 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
+		EC74E3631D879A3700DEB3F3 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
+		EC74E3641D879A3700DEB3F3 /* RSADataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataSigner.h; sourceTree = "<group>"; };
+		EC74E3651D879A3700DEB3F3 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
+		EC74E3661D879A3700DEB3F3 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
+		EC74E3671D879A3700DEB3F3 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		EC74E3681D879A3700DEB3F3 /* VIASDKVERSION.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VIASDKVERSION.txt; sourceTree = "<group>"; };
+		EC74E3841D879A6500DEB3F3 /* DXTXPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXTXPayManager.h; sourceTree = "<group>"; };
+		EC74E3851D879A6500DEB3F3 /* DXTXPayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXTXPayManager.m; sourceTree = "<group>"; };
+		EC74E3871D879A6500DEB3F3 /* PayuPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayuPlugin.h; sourceTree = "<group>"; };
+		EC74E3881D879A6500DEB3F3 /* libDXTXPaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDXTXPaySDK.a; sourceTree = "<group>"; };
+		EC74E3891D879A6500DEB3F3 /* SPaySDKResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SPaySDKResource.bundle; sourceTree = "<group>"; };
+		EC74E38D1D879A7F00DEB3F3 /* IappPayMananger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IappPayMananger.h; sourceTree = "<group>"; };
+		EC74E38E1D879A7F00DEB3F3 /* IappPayMananger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IappPayMananger.m; sourceTree = "<group>"; };
+		EC74E3931D87AE7300DEB3F3 /* KSCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KSCrash.framework; sourceTree = "<group>"; };
 		EC7684A11D64097700AC3708 /* LSJWelfareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJWelfareModel.h; sourceTree = "<group>"; };
 		EC7684A21D64097700AC3708 /* LSJWelfareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJWelfareModel.m; sourceTree = "<group>"; };
 		EC7684A41D64175C00AC3708 /* LSJRankDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankDetailVC.h; sourceTree = "<group>"; };
@@ -279,46 +359,9 @@
 		ECD70C911D531F6B006929B1 /* RACmetamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACmetamacros.h; sourceTree = "<group>"; };
 		ECD70C941D531F6B006929B1 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		ECD70C951D531F6B006929B1 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		ECD70C971D531F6B006929B1 /* IapppayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IapppayKit.framework; sourceTree = "<group>"; };
-		ECD70C981D531F6B006929B1 /* IappPayMananger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IappPayMananger.h; sourceTree = "<group>"; };
-		ECD70C991D531F6B006929B1 /* IappPayMananger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IappPayMananger.m; sourceTree = "<group>"; };
-		ECD70C9A1D531F6B006929B1 /* IapppayResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IapppayResource.bundle; sourceTree = "<group>"; };
 		ECD70C9F1D531F6B006929B1 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		ECD70CA01D531F6B006929B1 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		ECD70CA11D531F6B006929B1 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
-		ECD70CA41D531F6B006929B1 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
-		ECD70CA51D531F6B006929B1 /* btn10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn10.png; sourceTree = "<group>"; };
-		ECD70CA61D531F6B006929B1 /* btn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn2.png; sourceTree = "<group>"; };
-		ECD70CA71D531F6B006929B1 /* btn3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn3.png; sourceTree = "<group>"; };
-		ECD70CA81D531F6B006929B1 /* btn5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn5.png; sourceTree = "<group>"; };
-		ECD70CA91D531F6B006929B1 /* btn6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn6.png; sourceTree = "<group>"; };
-		ECD70CAA1D531F6B006929B1 /* btn7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn7.png; sourceTree = "<group>"; };
-		ECD70CAB1D531F6B006929B1 /* btn8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn8.png; sourceTree = "<group>"; };
-		ECD70CAC1D531F6B006929B1 /* btn9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn9.png; sourceTree = "<group>"; };
-		ECD70CAD1D531F6B006929B1 /* seperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seperator.png; sourceTree = "<group>"; };
-		ECD70CAE1D531F6B006929B1 /* unicom_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unicom_back.png; sourceTree = "<group>"; };
-		ECD70CAF1D531F6B006929B1 /* Config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Config.txt; sourceTree = "<group>"; };
-		ECD70CB01D531F6B006929B1 /* PayUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PayUtil.framework; sourceTree = "<group>"; };
-		ECD70CB11D531F6B006929B1 /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
-		ECD70CB21D531F6B006929B1 /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
-		ECD70CB41D531F6B006929B1 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		ECD70CB51D531F6B006929B1 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
-		ECD70CB61D531F6B006929B1 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		ECD70CB71D531F6B006929B1 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
-		ECD70CB81D531F6B006929B1 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
-		ECD70CB91D531F6B006929B1 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
-		ECD70CBA1D531F6B006929B1 /* DataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataVerifier.m; sourceTree = "<group>"; };
-		ECD70CBB1D531F6B006929B1 /* MD5DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5DataSigner.h; sourceTree = "<group>"; };
-		ECD70CBC1D531F6B006929B1 /* MD5DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5DataSigner.m; sourceTree = "<group>"; };
-		ECD70CBD1D531F6B006929B1 /* NSDataEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataEx.h; sourceTree = "<group>"; };
-		ECD70CBE1D531F6B006929B1 /* NSDataEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataEx.m; sourceTree = "<group>"; };
-		ECD70CBF1D531F6B006929B1 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
-		ECD70CC01D531F6B006929B1 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
-		ECD70CC11D531F6B006929B1 /* RSADataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataSigner.h; sourceTree = "<group>"; };
-		ECD70CC21D531F6B006929B1 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
-		ECD70CC31D531F6B006929B1 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
-		ECD70CC41D531F6B006929B1 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
-		ECD70CC51D531F6B006929B1 /* VIASDKVERSION.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VIASDKVERSION.txt; sourceTree = "<group>"; };
 		ECD70CC71D531F6B006929B1 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		ECD70CC81D531F6B006929B1 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		ECD70CC91D531F6B006929B1 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -333,10 +376,6 @@
 		ECD70D481D53232C006929B1 /* LSJExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJExtensions.h; sourceTree = "<group>"; };
 		ECD70D491D53262F006929B1 /* LSJTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJTabBarViewController.h; sourceTree = "<group>"; };
 		ECD70D4A1D53262F006929B1 /* LSJTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJTabBarViewController.m; sourceTree = "<group>"; };
-		ECD70D871D532A62006929B1 /* LSJURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJURLResponse.h; sourceTree = "<group>"; };
-		ECD70D881D532A62006929B1 /* LSJURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJURLResponse.m; sourceTree = "<group>"; };
-		ECD70D8A1D532ABD006929B1 /* LSJURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJURLRequest.h; sourceTree = "<group>"; };
-		ECD70D8B1D532ABD006929B1 /* LSJURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJURLRequest.m; sourceTree = "<group>"; };
 		ECD70D8D1D532BDB006929B1 /* LSJErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJErrorHandler.h; sourceTree = "<group>"; };
 		ECD70D8E1D532BDB006929B1 /* LSJErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJErrorHandler.m; sourceTree = "<group>"; };
 		ECD70D901D532C45006929B1 /* LSJMessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJMessageCenter.h; sourceTree = "<group>"; };
@@ -347,34 +386,14 @@
 		ECD70D971D532E33006929B1 /* LSJUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJUtil.m; sourceTree = "<group>"; };
 		ECD70D991D532ED5006929B1 /* LSJNetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJNetworkInfo.h; sourceTree = "<group>"; };
 		ECD70D9A1D532ED5006929B1 /* LSJNetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJNetworkInfo.m; sourceTree = "<group>"; };
-		ECD70D9C1D532FB9006929B1 /* LSJPaymentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentInfo.h; sourceTree = "<group>"; };
-		ECD70D9D1D532FB9006929B1 /* LSJPaymentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentInfo.m; sourceTree = "<group>"; };
-		ECD70D9F1D5330AD006929B1 /* LSJEncryptedURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJEncryptedURLRequest.h; sourceTree = "<group>"; };
-		ECD70DA01D5330AD006929B1 /* LSJEncryptedURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJEncryptedURLRequest.m; sourceTree = "<group>"; };
-		ECD70DA21D533127006929B1 /* LSJPaymentConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentConfig.h; sourceTree = "<group>"; };
-		ECD70DA31D533127006929B1 /* LSJPaymentConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentConfig.m; sourceTree = "<group>"; };
-		ECD70DA51D533542006929B1 /* LSJPaymentConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentConfigModel.h; sourceTree = "<group>"; };
-		ECD70DA61D533542006929B1 /* LSJPaymentConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentConfigModel.m; sourceTree = "<group>"; };
-		ECD70DA81D533B39006929B1 /* LSJUserAccessModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJUserAccessModel.h; sourceTree = "<group>"; };
-		ECD70DA91D533B39006929B1 /* LSJUserAccessModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJUserAccessModel.m; sourceTree = "<group>"; };
-		ECD70DAB1D533BB3006929B1 /* LSJActivateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJActivateModel.h; sourceTree = "<group>"; };
-		ECD70DAC1D533BB3006929B1 /* LSJActivateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJActivateModel.m; sourceTree = "<group>"; };
 		ECD70DAE1D533DF3006929B1 /* LSJBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJBaseModel.h; sourceTree = "<group>"; };
 		ECD70DAF1D533DF3006929B1 /* LSJBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJBaseModel.m; sourceTree = "<group>"; };
-		ECD70DB11D533EF8006929B1 /* LSJSystemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJSystemConfig.h; sourceTree = "<group>"; };
-		ECD70DB21D533EF8006929B1 /* LSJSystemConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJSystemConfig.m; sourceTree = "<group>"; };
-		ECD70DB41D533F46006929B1 /* LSJSystemConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJSystemConfigModel.h; sourceTree = "<group>"; };
-		ECD70DB51D533F46006929B1 /* LSJSystemConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJSystemConfigModel.m; sourceTree = "<group>"; };
-		ECD70DB71D53450C006929B1 /* LSJPaymentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentManager.h; sourceTree = "<group>"; };
-		ECD70DB81D53450C006929B1 /* LSJPaymentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentManager.m; sourceTree = "<group>"; };
 		ECD70DBA1D534663006929B1 /* LSJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJWebViewController.h; sourceTree = "<group>"; };
 		ECD70DBB1D534663006929B1 /* LSJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJWebViewController.m; sourceTree = "<group>"; };
 		ECD70DBD1D5346A3006929B1 /* LSJVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVideoViewController.h; sourceTree = "<group>"; };
 		ECD70DBE1D5346A3006929B1 /* LSJVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJVideoViewController.m; sourceTree = "<group>"; };
 		ECD70DC01D534706006929B1 /* LSJPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentViewController.h; sourceTree = "<group>"; };
 		ECD70DC11D534706006929B1 /* LSJPaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentViewController.m; sourceTree = "<group>"; };
-		ECD70DC31D534771006929B1 /* LSJPaymentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentModel.h; sourceTree = "<group>"; };
-		ECD70DC41D534771006929B1 /* LSJPaymentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentModel.m; sourceTree = "<group>"; };
 		ECD70DC61D534859006929B1 /* LSJPaymentPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPaymentPopView.h; sourceTree = "<group>"; };
 		ECD70DC71D534859006929B1 /* LSJPaymentPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPaymentPopView.m; sourceTree = "<group>"; };
 		ECD70DC91D5348B6006929B1 /* LSJVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVideoPlayer.h; sourceTree = "<group>"; };
@@ -418,16 +437,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC74E3941D87AE7300DEB3F3 /* KSCrash.framework in Frameworks */,
+				EC74E38B1D879A6500DEB3F3 /* libDXTXPaySDK.a in Frameworks */,
 				ECD70DD91D5354C0006929B1 /* CoreMotion.framework in Frameworks */,
+				EC74E3691D879A3700DEB3F3 /* IapppayAlphaKit.framework in Frameworks */,
 				ECD70DD71D5354B0006929B1 /* libc++.tbd in Frameworks */,
 				ECD70DD51D535485006929B1 /* libsqlite3.tbd in Frameworks */,
 				ECD70DD31D535472006929B1 /* libz.tbd in Frameworks */,
 				0054B3A0FFA3FC3E745FAFAA /* libPods-LSJVideo.a in Frameworks */,
-				ECD70D1C1D531F6B006929B1 /* IapppayKit.framework in Frameworks */,
 				ECD70D391D531F6B006929B1 /* libWeChatSDK.a in Frameworks */,
 				ECD70D1B1D531F6B006929B1 /* AlipaySDK.framework in Frameworks */,
 				ECD70D201D531F6B006929B1 /* libMobClickLibrary.a in Frameworks */,
-				ECD70D2D1D531F6B006929B1 /* PayUtil.framework in Frameworks */,
+				EC74E3771D879A3700DEB3F3 /* PayUtil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +531,143 @@
 			path = SDPagesSelector;
 			sourceTree = "<group>";
 		};
+		EC74E3131D87958A00DEB3F3 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3181D87958A00DEB3F3 /* LSJPaymentInfo.h */,
+				EC74E3191D87958A00DEB3F3 /* LSJPaymentInfo.m */,
+				EC74E3141D87958A00DEB3F3 /* LSJPaymentConfig.h */,
+				EC74E3151D87958A00DEB3F3 /* LSJPaymentConfig.m */,
+				EC74E3161D87958A00DEB3F3 /* LSJPaymentConfigModel.h */,
+				EC74E3171D87958A00DEB3F3 /* LSJPaymentConfigModel.m */,
+				EC74E3391D87976E00DEB3F3 /* LSJPaymentConfigSummary.h */,
+				EC74E33A1D87976E00DEB3F3 /* LSJPaymentConfigSummary.m */,
+				EC74E33C1D87981400DEB3F3 /* LSJPaymentConfigDetail.h */,
+				EC74E33D1D87981400DEB3F3 /* LSJPaymentConfigDetail.m */,
+				EC74E31A1D87958A00DEB3F3 /* LSJPaymentManager.h */,
+				EC74E31B1D87958A00DEB3F3 /* LSJPaymentManager.m */,
+				EC74E31C1D87958A00DEB3F3 /* LSJPaymentModel.h */,
+				EC74E31D1D87958A00DEB3F3 /* LSJPaymentModel.m */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
+		EC74E3231D87963F00DEB3F3 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3241D87963F00DEB3F3 /* LSJActivateModel.h */,
+				EC74E3251D87963F00DEB3F3 /* LSJActivateModel.m */,
+				EC74E3281D87963F00DEB3F3 /* LSJSystemConfig.h */,
+				EC74E3291D87963F00DEB3F3 /* LSJSystemConfig.m */,
+				EC74E32A1D87963F00DEB3F3 /* LSJSystemConfigModel.h */,
+				EC74E32B1D87963F00DEB3F3 /* LSJSystemConfigModel.m */,
+				EC74E32C1D87963F00DEB3F3 /* LSJURLRequest.h */,
+				EC74E32D1D87963F00DEB3F3 /* LSJURLRequest.m */,
+				EC74E32E1D87963F00DEB3F3 /* LSJURLResponse.h */,
+				EC74E32F1D87963F00DEB3F3 /* LSJURLResponse.m */,
+				EC74E3261D87963F00DEB3F3 /* LSJEncryptedURLRequest.h */,
+				EC74E3271D87963F00DEB3F3 /* LSJEncryptedURLRequest.m */,
+				EC74E3301D87963F00DEB3F3 /* LSJUserAccessModel.h */,
+				EC74E3311D87963F00DEB3F3 /* LSJUserAccessModel.m */,
+			);
+			path = system;
+			sourceTree = "<group>";
+		};
+		EC74E3421D879A3700DEB3F3 /* iAppPay */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E38D1D879A7F00DEB3F3 /* IappPayMananger.h */,
+				EC74E38E1D879A7F00DEB3F3 /* IappPayMananger.m */,
+				EC74E3431D879A3700DEB3F3 /* IapppayAlphaKit.framework */,
+				EC74E3441D879A3700DEB3F3 /* IapppayAlphaResource.bundle */,
+			);
+			path = iAppPay;
+			sourceTree = "<group>";
+		};
+		EC74E3451D879A3700DEB3F3 /* VIAPay */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3461D879A3700DEB3F3 /* assert */,
+				EC74E3521D879A3700DEB3F3 /* Config.txt */,
+				EC74E3531D879A3700DEB3F3 /* PayUtil.framework */,
+				EC74E3541D879A3700DEB3F3 /* private_key.p12 */,
+				EC74E3551D879A3700DEB3F3 /* public_key.der */,
+				EC74E3561D879A3700DEB3F3 /* Util */,
+				EC74E3681D879A3700DEB3F3 /* VIASDKVERSION.txt */,
+			);
+			path = VIAPay;
+			sourceTree = "<group>";
+		};
+		EC74E3461D879A3700DEB3F3 /* assert */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3471D879A3700DEB3F3 /* btn1.png */,
+				EC74E3481D879A3700DEB3F3 /* btn10.png */,
+				EC74E3491D879A3700DEB3F3 /* btn2.png */,
+				EC74E34A1D879A3700DEB3F3 /* btn3.png */,
+				EC74E34B1D879A3700DEB3F3 /* btn5.png */,
+				EC74E34C1D879A3700DEB3F3 /* btn6.png */,
+				EC74E34D1D879A3700DEB3F3 /* btn7.png */,
+				EC74E34E1D879A3700DEB3F3 /* btn8.png */,
+				EC74E34F1D879A3700DEB3F3 /* btn9.png */,
+				EC74E3501D879A3700DEB3F3 /* seperator.png */,
+				EC74E3511D879A3700DEB3F3 /* unicom_back.png */,
+			);
+			path = assert;
+			sourceTree = "<group>";
+		};
+		EC74E3561D879A3700DEB3F3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3571D879A3700DEB3F3 /* base64.h */,
+				EC74E3581D879A3700DEB3F3 /* base64.m */,
+				EC74E3591D879A3700DEB3F3 /* config.h */,
+				EC74E35A1D879A3700DEB3F3 /* DataSigner.h */,
+				EC74E35B1D879A3700DEB3F3 /* DataSigner.m */,
+				EC74E35C1D879A3700DEB3F3 /* DataVerifier.h */,
+				EC74E35D1D879A3700DEB3F3 /* DataVerifier.m */,
+				EC74E35E1D879A3700DEB3F3 /* MD5DataSigner.h */,
+				EC74E35F1D879A3700DEB3F3 /* MD5DataSigner.m */,
+				EC74E3601D879A3700DEB3F3 /* NSDataEx.h */,
+				EC74E3611D879A3700DEB3F3 /* NSDataEx.m */,
+				EC74E3621D879A3700DEB3F3 /* openssl_wrapper.h */,
+				EC74E3631D879A3700DEB3F3 /* openssl_wrapper.m */,
+				EC74E3641D879A3700DEB3F3 /* RSADataSigner.h */,
+				EC74E3651D879A3700DEB3F3 /* RSADataSigner.m */,
+				EC74E3661D879A3700DEB3F3 /* RSADataVerifier.h */,
+				EC74E3671D879A3700DEB3F3 /* RSADataVerifier.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		EC74E3831D879A6500DEB3F3 /* DunXingTianXia */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3841D879A6500DEB3F3 /* DXTXPayManager.h */,
+				EC74E3851D879A6500DEB3F3 /* DXTXPayManager.m */,
+				EC74E3861D879A6500DEB3F3 /* include */,
+				EC74E3881D879A6500DEB3F3 /* libDXTXPaySDK.a */,
+				EC74E3891D879A6500DEB3F3 /* SPaySDKResource.bundle */,
+			);
+			path = DunXingTianXia;
+			sourceTree = "<group>";
+		};
+		EC74E3861D879A6500DEB3F3 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3871D879A6500DEB3F3 /* PayuPlugin.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EC74E3921D87AE7300DEB3F3 /* KSCrash */ = {
+			isa = PBXGroup;
+			children = (
+				EC74E3931D87AE7300DEB3F3 /* KSCrash.framework */,
+			);
+			path = KSCrash;
+			sourceTree = "<group>";
+		};
 		ECD70BD01D531F6A006929B1 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,22 +716,8 @@
 		ECD70BDD1D531F6A006929B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ECD70DAB1D533BB3006929B1 /* LSJActivateModel.h */,
-				ECD70DAC1D533BB3006929B1 /* LSJActivateModel.m */,
 				ECD70DAE1D533DF3006929B1 /* LSJBaseModel.h */,
 				ECD70DAF1D533DF3006929B1 /* LSJBaseModel.m */,
-				ECD70DB11D533EF8006929B1 /* LSJSystemConfig.h */,
-				ECD70DB21D533EF8006929B1 /* LSJSystemConfig.m */,
-				ECD70DB41D533F46006929B1 /* LSJSystemConfigModel.h */,
-				ECD70DB51D533F46006929B1 /* LSJSystemConfigModel.m */,
-				ECD70D8A1D532ABD006929B1 /* LSJURLRequest.h */,
-				ECD70D8B1D532ABD006929B1 /* LSJURLRequest.m */,
-				ECD70D871D532A62006929B1 /* LSJURLResponse.h */,
-				ECD70D881D532A62006929B1 /* LSJURLResponse.m */,
-				ECD70D9F1D5330AD006929B1 /* LSJEncryptedURLRequest.h */,
-				ECD70DA01D5330AD006929B1 /* LSJEncryptedURLRequest.m */,
-				ECD70DA81D533B39006929B1 /* LSJUserAccessModel.h */,
-				ECD70DA91D533B39006929B1 /* LSJUserAccessModel.m */,
 				EC2F0BAB1D685E1500DE2B7F /* LSJColumnModel.h */,
 				EC2F0BAC1D685E1500DE2B7F /* LSJColumnModel.m */,
 				EC2F0BAD1D685E1500DE2B7F /* LSJProgramModel.h */,
@@ -734,6 +878,8 @@
 		ECD70C4A1D531F6B006929B1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EC74E3231D87963F00DEB3F3 /* system */,
+				EC74E3131D87958A00DEB3F3 /* payment */,
 				ECD70C8C1D531F6B006929B1 /* rac_extobjc */,
 				ECD70C4D1D531F6B006929B1 /* DataBase */,
 				ECD70C551D531F6B006929B1 /* Extensions */,
@@ -747,16 +893,6 @@
 				ECD70D911D532C45006929B1 /* LSJMessageCenter.m */,
 				ECD70D991D532ED5006929B1 /* LSJNetworkInfo.h */,
 				ECD70D9A1D532ED5006929B1 /* LSJNetworkInfo.m */,
-				ECD70DA21D533127006929B1 /* LSJPaymentConfig.h */,
-				ECD70DA31D533127006929B1 /* LSJPaymentConfig.m */,
-				ECD70DA51D533542006929B1 /* LSJPaymentConfigModel.h */,
-				ECD70DA61D533542006929B1 /* LSJPaymentConfigModel.m */,
-				ECD70D9C1D532FB9006929B1 /* LSJPaymentInfo.h */,
-				ECD70D9D1D532FB9006929B1 /* LSJPaymentInfo.m */,
-				ECD70DB71D53450C006929B1 /* LSJPaymentManager.h */,
-				ECD70DB81D53450C006929B1 /* LSJPaymentManager.m */,
-				ECD70DC31D534771006929B1 /* LSJPaymentModel.h */,
-				ECD70DC41D534771006929B1 /* LSJPaymentModel.m */,
 				ECD70C8B1D531F6B006929B1 /* JQKApplication.h */,
 				ECD70D3A1D531FC7006929B1 /* JQKApplication.m */,
 				ECD70D3B1D531FC7006929B1 /* JQKApplicationManager.h */,
@@ -793,6 +929,8 @@
 				ECD70C5E1D531F6B006929B1 /* NSObject+Properties.m */,
 				ECD70C5F1D531F6B006929B1 /* NSObject+PropertyAccessInspecting.h */,
 				ECD70C601D531F6B006929B1 /* NSObject+PropertyAccessInspecting.m */,
+				EC74E33F1D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.h */,
+				EC74E3401D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.m */,
 				ECD70C611D531F6B006929B1 /* NSString+crypt.h */,
 				ECD70C621D531F6B006929B1 /* NSString+crypt.m */,
 				ECD70C631D531F6B006929B1 /* NSString+StringHeight.h */,
@@ -834,11 +972,13 @@
 		ECD70C921D531F6B006929B1 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				EC74E3921D87AE7300DEB3F3 /* KSCrash */,
+				EC74E3831D879A6500DEB3F3 /* DunXingTianXia */,
+				EC74E3421D879A3700DEB3F3 /* iAppPay */,
+				EC74E3451D879A3700DEB3F3 /* VIAPay */,
 				EC1F935E1D59BC2E00E0B1F4 /* SDPagesSelector */,
 				ECD70C931D531F6B006929B1 /* AlipaySDK */,
-				ECD70C961D531F6B006929B1 /* IAppPay */,
 				ECD70C9E1D531F6B006929B1 /* Umeng */,
-				ECD70CA21D531F6B006929B1 /* VIAPay */,
 				ECD70CC61D531F6B006929B1 /* WeChatSDK */,
 			);
 			path = Vendor;
@@ -853,17 +993,6 @@
 			path = AlipaySDK;
 			sourceTree = "<group>";
 		};
-		ECD70C961D531F6B006929B1 /* IAppPay */ = {
-			isa = PBXGroup;
-			children = (
-				ECD70C971D531F6B006929B1 /* IapppayKit.framework */,
-				ECD70C981D531F6B006929B1 /* IappPayMananger.h */,
-				ECD70C991D531F6B006929B1 /* IappPayMananger.m */,
-				ECD70C9A1D531F6B006929B1 /* IapppayResource.bundle */,
-			);
-			path = IAppPay;
-			sourceTree = "<group>";
-		};
 		ECD70C9E1D531F6B006929B1 /* Umeng */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,62 +1001,6 @@
 				ECD70CA11D531F6B006929B1 /* MobClickSocialAnalytics.h */,
 			);
 			path = Umeng;
-			sourceTree = "<group>";
-		};
-		ECD70CA21D531F6B006929B1 /* VIAPay */ = {
-			isa = PBXGroup;
-			children = (
-				ECD70CA31D531F6B006929B1 /* assert */,
-				ECD70CAF1D531F6B006929B1 /* Config.txt */,
-				ECD70CB01D531F6B006929B1 /* PayUtil.framework */,
-				ECD70CB11D531F6B006929B1 /* private_key.p12 */,
-				ECD70CB21D531F6B006929B1 /* public_key.der */,
-				ECD70CB31D531F6B006929B1 /* Util */,
-				ECD70CC51D531F6B006929B1 /* VIASDKVERSION.txt */,
-			);
-			path = VIAPay;
-			sourceTree = "<group>";
-		};
-		ECD70CA31D531F6B006929B1 /* assert */ = {
-			isa = PBXGroup;
-			children = (
-				ECD70CA41D531F6B006929B1 /* btn1.png */,
-				ECD70CA51D531F6B006929B1 /* btn10.png */,
-				ECD70CA61D531F6B006929B1 /* btn2.png */,
-				ECD70CA71D531F6B006929B1 /* btn3.png */,
-				ECD70CA81D531F6B006929B1 /* btn5.png */,
-				ECD70CA91D531F6B006929B1 /* btn6.png */,
-				ECD70CAA1D531F6B006929B1 /* btn7.png */,
-				ECD70CAB1D531F6B006929B1 /* btn8.png */,
-				ECD70CAC1D531F6B006929B1 /* btn9.png */,
-				ECD70CAD1D531F6B006929B1 /* seperator.png */,
-				ECD70CAE1D531F6B006929B1 /* unicom_back.png */,
-			);
-			path = assert;
-			sourceTree = "<group>";
-		};
-		ECD70CB31D531F6B006929B1 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				ECD70CB41D531F6B006929B1 /* base64.h */,
-				ECD70CB51D531F6B006929B1 /* base64.m */,
-				ECD70CB61D531F6B006929B1 /* config.h */,
-				ECD70CB71D531F6B006929B1 /* DataSigner.h */,
-				ECD70CB81D531F6B006929B1 /* DataSigner.m */,
-				ECD70CB91D531F6B006929B1 /* DataVerifier.h */,
-				ECD70CBA1D531F6B006929B1 /* DataVerifier.m */,
-				ECD70CBB1D531F6B006929B1 /* MD5DataSigner.h */,
-				ECD70CBC1D531F6B006929B1 /* MD5DataSigner.m */,
-				ECD70CBD1D531F6B006929B1 /* NSDataEx.h */,
-				ECD70CBE1D531F6B006929B1 /* NSDataEx.m */,
-				ECD70CBF1D531F6B006929B1 /* openssl_wrapper.h */,
-				ECD70CC01D531F6B006929B1 /* openssl_wrapper.m */,
-				ECD70CC11D531F6B006929B1 /* RSADataSigner.h */,
-				ECD70CC21D531F6B006929B1 /* RSADataSigner.m */,
-				ECD70CC31D531F6B006929B1 /* RSADataVerifier.h */,
-				ECD70CC41D531F6B006929B1 /* RSADataVerifier.m */,
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		ECD70CC61D531F6B006929B1 /* WeChatSDK */ = {
@@ -1187,26 +1260,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC74E36A1D879A3700DEB3F3 /* IapppayAlphaResource.bundle in Resources */,
+				EC74E36D1D879A3700DEB3F3 /* btn2.png in Resources */,
+				EC74E3711D879A3700DEB3F3 /* btn7.png in Resources */,
+				EC74E36E1D879A3700DEB3F3 /* btn3.png in Resources */,
+				EC74E3741D879A3700DEB3F3 /* seperator.png in Resources */,
+				EC74E3791D879A3700DEB3F3 /* public_key.der in Resources */,
+				EC74E36C1D879A3700DEB3F3 /* btn10.png in Resources */,
+				EC74E38C1D879A6500DEB3F3 /* SPaySDKResource.bundle in Resources */,
+				EC74E3821D879A3700DEB3F3 /* VIASDKVERSION.txt in Resources */,
+				EC74E3701D879A3700DEB3F3 /* btn6.png in Resources */,
+				EC74E3731D879A3700DEB3F3 /* btn9.png in Resources */,
 				EC1990FC1D52EC22001B4F52 /* LaunchScreen.storyboard in Resources */,
-				ECD70D231D531F6B006929B1 /* btn2.png in Resources */,
-				ECD70D271D531F6B006929B1 /* btn7.png in Resources */,
-				ECD70D241D531F6B006929B1 /* btn3.png in Resources */,
-				ECD70D2A1D531F6B006929B1 /* seperator.png in Resources */,
-				ECD70D2F1D531F6B006929B1 /* public_key.der in Resources */,
-				ECD70D221D531F6B006929B1 /* btn10.png in Resources */,
-				ECD70D381D531F6B006929B1 /* VIASDKVERSION.txt in Resources */,
-				ECD70D261D531F6B006929B1 /* btn6.png in Resources */,
-				ECD70D291D531F6B006929B1 /* btn9.png in Resources */,
+				EC74E36B1D879A3700DEB3F3 /* btn1.png in Resources */,
+				EC74E36F1D879A3700DEB3F3 /* btn5.png in Resources */,
+				EC74E3781D879A3700DEB3F3 /* private_key.p12 in Resources */,
 				EC1990F91D52EC22001B4F52 /* Assets.xcassets in Resources */,
-				ECD70D211D531F6B006929B1 /* btn1.png in Resources */,
-				ECD70D251D531F6B006929B1 /* btn5.png in Resources */,
-				ECD70D2E1D531F6B006929B1 /* private_key.p12 in Resources */,
 				ECD70D1A1D531F6B006929B1 /* AlipaySDK.bundle in Resources */,
+				EC74E3751D879A3700DEB3F3 /* unicom_back.png in Resources */,
+				EC74E3761D879A3700DEB3F3 /* Config.txt in Resources */,
 				EC1990F71D52EC22001B4F52 /* Main.storyboard in Resources */,
-				ECD70D2B1D531F6B006929B1 /* unicom_back.png in Resources */,
-				ECD70D2C1D531F6B006929B1 /* Config.txt in Resources */,
-				ECD70D1E1D531F6B006929B1 /* IapppayResource.bundle in Resources */,
-				ECD70D281D531F6B006929B1 /* btn8.png in Resources */,
+				EC74E3721D879A3700DEB3F3 /* btn8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1265,6 +1339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC74E37D1D879A3700DEB3F3 /* MD5DataSigner.m in Sources */,
 				ECF00E2B1D5B49E900FBF1D2 /* LSJHomeModel.m in Sources */,
 				ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */,
 				ECD70D001D531F6B006929B1 /* NSDictionary+LTSign.m in Sources */,
@@ -1273,25 +1348,29 @@
 				ECD70D0C1D531F6B006929B1 /* UITableView+Separator.m in Sources */,
 				ECF00E2E1D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m in Sources */,
 				EC66EC701D62E84000ECAC57 /* LSJRankCell.m in Sources */,
+				EC74E38F1D879A7F00DEB3F3 /* IappPayMananger.m in Sources */,
 				EC85475E1D705CFE00B0F815 /* LSJDetailVideoCommandCell.m in Sources */,
+				EC74E37B1D879A3700DEB3F3 /* DataSigner.m in Sources */,
+				EC74E3351D87963F00DEB3F3 /* LSJSystemConfigModel.m in Sources */,
 				EC3456BB1D61A55D00C45F19 /* LSJAppCell.m in Sources */,
-				ECD70D371D531F6B006929B1 /* RSADataVerifier.m in Sources */,
-				ECD70DAA1D533B39006929B1 /* LSJUserAccessModel.m in Sources */,
+				EC74E31F1D87958A00DEB3F3 /* LSJPaymentConfigModel.m in Sources */,
+				EC74E33E1D87981400DEB3F3 /* LSJPaymentConfigDetail.m in Sources */,
 				EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */,
 				ECD70DD11D5352B2006929B1 /* LSJPaymentTypeCell.m in Sources */,
 				EC3190431D5C134A00B8E646 /* LSJRecommdCell.m in Sources */,
 				ECD70D0D1D531F6B006929B1 /* UIView+Loading.m in Sources */,
+				EC74E3321D87963F00DEB3F3 /* LSJActivateModel.m in Sources */,
 				EC8547551D702BB200B0F815 /* LSJDetailVideoHeaderCell.m in Sources */,
 				ECD70D471D5321EE006929B1 /* LSJLayoutViewController.m in Sources */,
-				ECD70D311D531F6B006929B1 /* DataSigner.m in Sources */,
+				EC74E3211D87958A00DEB3F3 /* LSJPaymentManager.m in Sources */,
 				EC4258651D6C4D620066C638 /* LSJBtnView.m in Sources */,
 				ECD70D081D531F6B006929B1 /* UIImage+color.m in Sources */,
 				ECD70DCB1D5348B6006929B1 /* LSJVideoPlayer.m in Sources */,
 				ECD70D951D532D51006929B1 /* LSJHudManager.m in Sources */,
 				ECD70DC21D534706006929B1 /* LSJPaymentViewController.m in Sources */,
 				EC1F93631D59BC2E00E0B1F4 /* SDCursorView.m in Sources */,
-				ECD70D361D531F6B006929B1 /* RSADataSigner.m in Sources */,
 				ECD70D921D532C45006929B1 /* LSJMessageCenter.m in Sources */,
+				EC74E33B1D87976E00DEB3F3 /* LSJPaymentConfigSummary.m in Sources */,
 				EC2F0BA41D68300D00DE2B7F /* LSJLechersCollectionView.m in Sources */,
 				EC1F936D1D59BE8B00E0B1F4 /* LSJLechersViewController.m in Sources */,
 				ECD70D191D531F6B006929B1 /* RACEXTRuntimeExtensions.m in Sources */,
@@ -1300,76 +1379,75 @@
 				EC8547581D70325200B0F815 /* LSJDetailVideoDescCell.m in Sources */,
 				ECAD1A751D66F6A50048727A /* LSJLecherModel.m in Sources */,
 				ECD70D4B1D53262F006929B1 /* LSJTabBarViewController.m in Sources */,
-				ECD70D8C1D532ABD006929B1 /* LSJURLRequest.m in Sources */,
 				ECD70CFD1D531F6B006929B1 /* DBPersistence.m in Sources */,
 				ECD70CFE1D531F6B006929B1 /* DBTableVersion.m in Sources */,
 				EC42585D1D6C40730066C638 /* LSJHotTitleCell.m in Sources */,
-				ECD70D341D531F6B006929B1 /* NSDataEx.m in Sources */,
 				ECDD6B311D6D7468001F08DD /* LSJHotContentCell.m in Sources */,
 				EC1F93701D59BEA700E0B1F4 /* LSJMineViewController.m in Sources */,
 				EC42585A1D6C35C80066C638 /* LSJHotModel.m in Sources */,
-				ECD70D1D1D531F6B006929B1 /* IappPayMananger.m in Sources */,
+				EC74E3381D87963F00DEB3F3 /* LSJUserAccessModel.m in Sources */,
 				EC25CA7B1D6AF72300F350D7 /* LSJLecherProgramCell.m in Sources */,
+				EC74E3201D87958A00DEB3F3 /* LSJPaymentInfo.m in Sources */,
 				ECD70D8F1D532BDB006929B1 /* LSJErrorHandler.m in Sources */,
 				ECD70D021D531F6B006929B1 /* NSObject+Properties.m in Sources */,
 				ECD70CFF1D531F6B006929B1 /* NSDate+Utilities.m in Sources */,
 				EC2F0BAA1D685B9000DE2B7F /* LSJLechersDetailVC.m in Sources */,
+				EC74E37A1D879A3700DEB3F3 /* base64.m in Sources */,
 				ECD70D0B1D531F6B006929B1 /* UIScrollView+Refresh.m in Sources */,
 				EC3456BE1D61AE6D00C45F19 /* LSJCategoryCell.m in Sources */,
 				EC66EC761D63145500ECAC57 /* LSJCategoryDetailCell.m in Sources */,
+				EC74E3801D879A3700DEB3F3 /* RSADataSigner.m in Sources */,
 				ECF00E271D5B49E900FBF1D2 /* LSJHomeRankVC.m in Sources */,
 				ECF00E281D5B49E900FBF1D2 /* LSJHomeRecommdVC.m in Sources */,
 				ECF00E251D5B49E900FBF1D2 /* LSJHomeCategoryVC.m in Sources */,
+				EC74E3811D879A3700DEB3F3 /* RSADataVerifier.m in Sources */,
 				ECDD6B371D6D84B1001F08DD /* LSJDayTableView.m in Sources */,
-				ECD70DAD1D533BB3006929B1 /* LSJActivateModel.m in Sources */,
 				ECD70DBF1D5346A3006929B1 /* LSJVideoViewController.m in Sources */,
 				ECD70D051D531F6B006929B1 /* NSString+StringHeight.m in Sources */,
 				EC8547521D70210E00B0F815 /* LSJDetailModel.m in Sources */,
 				ECD70D091D531F6B006929B1 /* UIImage+Utilities.m in Sources */,
-				ECD70DA41D533127006929B1 /* LSJPaymentConfig.m in Sources */,
 				EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */,
 				ECD70D061D531F6B006929B1 /* UIBarButtonItem+Badge.m in Sources */,
 				ECD70D031D531F6B006929B1 /* NSObject+PropertyAccessInspecting.m in Sources */,
-				ECD70D301D531F6B006929B1 /* base64.m in Sources */,
-				ECD70DA71D533542006929B1 /* LSJPaymentConfigModel.m in Sources */,
+				EC74E3361D87963F00DEB3F3 /* LSJURLRequest.m in Sources */,
 				ECD70DC81D534859006929B1 /* LSJPaymentPopView.m in Sources */,
 				ECD70D011D531F6B006929B1 /* NSMutableDictionary+Safety.m in Sources */,
-				ECD70D351D531F6B006929B1 /* openssl_wrapper.m in Sources */,
-				ECD70D9E1D532FB9006929B1 /* LSJPaymentInfo.m in Sources */,
 				ECD70D441D53212B006929B1 /* LSJBaseViewController.m in Sources */,
-				ECD70DB91D53450C006929B1 /* LSJPaymentManager.m in Sources */,
 				EC2F0BA71D68571D00DE2B7F /* LSJLechersListVC.m in Sources */,
 				ECF3AC361D6EE50D009E7A54 /* LSJDetailVideoVC.m in Sources */,
 				ECDD6B341D6D771C001F08DD /* LSJDayCell.m in Sources */,
+				EC74E38A1D879A6500DEB3F3 /* DXTXPayManager.m in Sources */,
 				EC1F93641D59BC2E00E0B1F4 /* SDSelectorCell.m in Sources */,
+				EC74E3221D87958A00DEB3F3 /* LSJPaymentModel.m in Sources */,
+				EC74E37E1D879A3700DEB3F3 /* NSDataEx.m in Sources */,
 				EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */,
-				ECD70DB31D533EF8006929B1 /* LSJSystemConfig.m in Sources */,
 				ECD70D041D531F6B006929B1 /* NSString+crypt.m in Sources */,
 				EC1990EE1D52EC22001B4F52 /* main.m in Sources */,
-				ECD70D331D531F6B006929B1 /* MD5DataSigner.m in Sources */,
 				ECD70D3E1D531FC7006929B1 /* JQKApplicationManager.m in Sources */,
+				EC74E3341D87963F00DEB3F3 /* LSJSystemConfig.m in Sources */,
 				EC2F0BAF1D685E1500DE2B7F /* LSJColumnModel.m in Sources */,
-				ECD70DA11D5330AD006929B1 /* LSJEncryptedURLRequest.m in Sources */,
-				ECD70D891D532A62006929B1 /* LSJURLResponse.m in Sources */,
 				EC1F936A1D59BE6F00E0B1F4 /* LSJHotViewController.m in Sources */,
 				EC2F0BB61D685E6900DE2B7F /* LSJProgramConfigModel.m in Sources */,
 				ECD70D3D1D531FC7006929B1 /* JQKApplication.m in Sources */,
+				EC74E3411D87997E00DEB3F3 /* NSObject+DictionaryRepresentation.m in Sources */,
 				ECD70DCE1D534912006929B1 /* LSJTableViewCell.m in Sources */,
 				ECD70CDC1D531F6B006929B1 /* JFLaunchView.m in Sources */,
 				ECD70D0E1D531F6B006929B1 /* UIView+YPBMask.m in Sources */,
 				ECF00E241D5B49E900FBF1D2 /* LSJHomeAppVC.m in Sources */,
 				ECD70DBC1D534663006929B1 /* LSJWebViewController.m in Sources */,
+				EC74E37F1D879A3700DEB3F3 /* openssl_wrapper.m in Sources */,
+				EC74E37C1D879A3700DEB3F3 /* DataVerifier.m in Sources */,
 				ECD70D9B1D532ED5006929B1 /* LSJNetworkInfo.m in Sources */,
 				ECF00E261D5B49E900FBF1D2 /* LSJHomeDayVC.m in Sources */,
 				ECD70D071D531F6B006929B1 /* UIColor+hexColor.m in Sources */,
 				ECF00E291D5B49E900FBF1D2 /* LSJHomeViewController.m in Sources */,
 				EC2F0BB31D685E5600DE2B7F /* LSJColumnConfigModel.m in Sources */,
-				ECD70DB61D533F46006929B1 /* LSJSystemConfigModel.m in Sources */,
+				EC74E3331D87963F00DEB3F3 /* LSJEncryptedURLRequest.m in Sources */,
 				ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */,
-				ECD70D321D531F6B006929B1 /* DataVerifier.m in Sources */,
+				EC74E31E1D87958A00DEB3F3 /* LSJPaymentConfig.m in Sources */,
 				ECD70D0A1D531F6B006929B1 /* UIImageView+YPBAnimation.m in Sources */,
 				EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */,
-				ECD70DC51D534771006929B1 /* LSJPaymentModel.m in Sources */,
+				EC74E3371D87963F00DEB3F3 /* LSJURLResponse.m in Sources */,
 				EC85475B1D70486100B0F815 /* LSJDetailVideoPhotosCell.m in Sources */,
 				EC2F0BB01D685E1500DE2B7F /* LSJProgramModel.m in Sources */,
 				EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */,
@@ -1494,6 +1572,9 @@
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/AlipaySDK",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/IAppPay",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/VIAPay",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/iAppPay",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/KSCrash",
 				);
 				GCC_PREFIX_HEADER = LSJVideo/LSJPrefixHeader.pch;
 				INFOPLIST_FILE = LSJVideo/Info.plist;
@@ -1503,6 +1584,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/Umeng",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/WeChatSDK",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/DunXingTianXia",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boboyingyuan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1523,6 +1605,9 @@
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/AlipaySDK",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/IAppPay",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/VIAPay",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/iAppPay",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/KSCrash",
 				);
 				GCC_PREFIX_HEADER = LSJVideo/LSJPrefixHeader.pch;
 				INFOPLIST_FILE = LSJVideo/Info.plist;
@@ -1532,6 +1617,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/Umeng",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/WeChatSDK",
+					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/DunXingTianXia",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boboyingyuan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";

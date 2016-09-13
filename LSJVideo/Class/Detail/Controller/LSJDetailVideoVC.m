@@ -96,16 +96,12 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     }
     [self setHeaderHeight:kWidth(20) inSection:section];
     
+    
     [self initCommandCellInSection:section++];
-    
-    
-//    for (NSUInteger count = 0 ; count < 10; ) {
-//        <#statements#>
-//    }
-    
-    
-    
-    [self initCommandDetailsInSection:section++];
+
+    for (NSUInteger count = 0 ; count < 10; count++) {
+        [self initCommandDetailsInSection:section++];
+    }
     
     [self.layoutTableView reloadData];
 }
@@ -160,7 +156,6 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
         }];
     }
     
-    
     [self setLayoutCell:cell cellHeight:kWidth(72) inRow:0 andSection:section];
 }
 
@@ -169,7 +164,7 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     NSString *str = @"超级美少妇无码中出超级美少妇无码中出超级美少妇无码中出超级美";
     CGFloat height = [str sizeWithFont:[UIFont systemFontOfSize:kWidth(30)] maxSize:CGSizeMake(kScreenWidth - kWidth(60), MAXFLOAT)].height;
     
-    _commandCell = [[LSJDetailVideoCommandCell alloc] initWithHeight:height];
+    _commandCell = [[LSJDetailVideoCommandCell alloc] init];
     _commandCell.userImgUrlStr = @"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg";
     _commandCell.userNameStr = @"花式撸炮";
     _commandCell.timeStr = @"asdasd";
@@ -177,5 +172,4 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     
     [self setLayoutCell:_commandCell cellHeight:kWidth(140)+height inRow:0 andSection:section];
 }
-
 @end
