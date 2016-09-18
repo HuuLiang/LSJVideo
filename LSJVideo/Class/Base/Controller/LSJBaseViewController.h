@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LSJBaseModel.h"
 
 @interface LSJBaseViewController : UIViewController
 
 - (instancetype)initWithTitle:(NSString *)title;
 
 - (void)pushToDetailVideoWithController:(UIViewController *)VC programId:(NSInteger )programId;
+
+- (void)playPhotoUrlWithInfo:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index;
 
 @end

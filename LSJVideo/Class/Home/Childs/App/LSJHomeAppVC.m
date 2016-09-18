@@ -9,7 +9,7 @@
 #import "LSJHomeAppVC.h"
 #import "LSJAppCell.h"
 #import "LSJColumnConfigModel.h"
-#import <SDCycleScrollView.h>
+#import "SDCycleScrollView.h"
 
 static NSString *const kAppCellReusableIdentifier = @"AppCellReusableIdentifier";
 static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdentifier";

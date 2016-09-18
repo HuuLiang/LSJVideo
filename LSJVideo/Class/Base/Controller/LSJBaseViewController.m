@@ -8,9 +8,12 @@
 
 #import "LSJBaseViewController.h"
 #import "LSJDetailVideoVC.h"
+#import "LSJPhotoBrowseView.h"
 
 @interface LSJBaseViewController ()
-
+{
+    LSJPhotoBrowseView *_photoBrowseView;
+}
 @end
 
 @implementation LSJBaseViewController
@@ -48,5 +51,33 @@
     LSJDetailVideoVC *detailVC = [[LSJDetailVideoVC alloc] initWithProgram:programId];
     [VC.navigationController pushViewController:detailVC animated:YES];
 }
+
+- (void)playPhotoUrlWithInfo:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index {
+    if ([LSJUtil isVip]) {
+        [UIAlertView bk_showAlertViewWithTitle:@"非VIP用户只能浏览小图哦" message:@"开通VIP,高清大图即刻欣赏" cancelButtonTitle:@"再考虑看看" otherButtonTitles:@[@"立即开通"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                //支付弹窗
+            }
+        }];
+    } else {
+        _photoBrowseView = [[LSJPhotoBrowseView alloc] initWithUrlsArray:urlArray andIndex:index];
+        UIViewController *vc = (UIViewController *)[LSJUtil currentVisibleViewController];
+        [vc.view addSubview:_photoBrowseView];
+        {
+            [_photoBrowseView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(vc.view);
+            }];
+        }
+        
+        @weakify(self);
+        _photoBrowseView.closePhotoBrowse = ^ {
+            @strongify(self);
+            [self->_photoBrowseView removeFromSuperview];
+            self->_photoBrowseView = nil;
+        };
+        
+    }
+}
+
 
 @end

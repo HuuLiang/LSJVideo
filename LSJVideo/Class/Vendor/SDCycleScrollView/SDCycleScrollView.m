@@ -444,6 +444,36 @@ NSString * const ID = @"cycleCell";
     return MAX(0, index);
 }
 
+- (void)setCurrentPage:(NSInteger)currentPage {
+    if (currentPage >= self.imagePathsGroup.count) {
+        return ;
+    }
+    
+    if (_flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        _mainView.contentOffset = CGPointMake(CGRectGetWidth(_mainView.bounds) * currentPage, _mainView.contentOffset.y);
+    } else {
+        _mainView.contentOffset = CGPointMake(_mainView.contentOffset.x, _flowLayout.itemSize.height * currentPage);
+    }
+    
+    if ([self.pageControl isKindOfClass:[TAPageControl class]]) {
+        TAPageControl *pageControl = (TAPageControl *)_pageControl;
+        pageControl.currentPage = currentPage;
+    } else {
+        UIPageControl *pageControl = (UIPageControl *)_pageControl;
+        pageControl.currentPage = currentPage;
+    }
+}
+
+- (NSInteger)currentPage {
+    if (!self.imagePathsGroup.count) return 0;
+    int itemIndex = [self currentIndex];
+    return itemIndex % self.imagePathsGroup.count;
+}
+
+
+
+
+
 - (void)clearCache
 {
     [[self class] clearImagesCache];

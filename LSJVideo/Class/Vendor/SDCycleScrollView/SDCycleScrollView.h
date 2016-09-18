@@ -177,4 +177,7 @@ typedef enum {
 /** 清除图片缓存（兼容旧版本方法） */
 - (void)clearCache;
 
+/**设置图片轮播的index */
+@property (nonatomic) NSInteger currentPage;
+
 @end

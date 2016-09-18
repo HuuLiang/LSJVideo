@@ -13,7 +13,7 @@
 
 #import "LSJColumnConfigModel.h"
 
-#import <SDCycleScrollView.h>
+#import "SDCycleScrollView.h"
 
 static NSString *const kRecommendCellReusableIdentifier = @"RecommendCellReusableIdentifier";
 static NSString *const kHomeBigCellReusableIdentifier = @"HomeBigCellReusableIdentifier";

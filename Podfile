@@ -11,7 +11,7 @@ target 'LSJVideo' do
     pod 'ActionSheetPicker-3.0', '~> 2.0.3'
     pod 'MBProgressHUD', '~> 0.9.2'
     pod 'DACircularProgress', '~> 2.3.1'
-    pod 'SDCycleScrollView', '~> 1.3'
+    #pod 'SDCycleScrollView', '~> 1.3'
     pod 'TSMessages', '~> 0.9.12'
     pod 'FMDB', '~> 2.6.2'
     pod 'SFHFKeychainUtils', '~> 0.0.1'

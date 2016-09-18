@@ -125,7 +125,14 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
 
 - (void)initPhotosCellInSection:(NSUInteger)section {
     _photosCell = [[LSJDetailVideoPhotosCell alloc] init];
-    _photosCell.dataSource = @[@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg"];
+    NSArray *array = @[@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg"];
+    _photosCell.dataSource = array;
+    @weakify(self);
+    _photosCell.selectedIndex = ^(NSNumber *index) {
+        @strongify(self);
+        [self playPhotoUrlWithInfo:nil urlArray:array index:[index integerValue]];
+    };
+    
     [self setLayoutCell:_photosCell cellHeight:kWidth(290) inRow:0 andSection:section];
 }
 

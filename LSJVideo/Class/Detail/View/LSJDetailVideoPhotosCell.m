@@ -111,4 +111,9 @@ static NSString *const kPhotosCollectionCellReusableIdentifier = @"kPhotosCollec
     const CGFloat height = width * 9 / 7;
     return CGSizeMake((long)width, (long)height);
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    _selectedIndex(@(indexPath.item));
+}
+
 @end

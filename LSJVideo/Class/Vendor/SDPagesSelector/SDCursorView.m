@@ -117,12 +117,11 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
          _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
     }
     
-   
-    
     NSAssert(_titles.count == _controllers.count, @"titles' count is not equal to controllerNames' count");
     [self.collectionView reloadData];
     
     [self addChildViewController];
+//    [self selectItemAtIndex:_currentIndex];
 }
 
 -(void)setTitles:(NSArray *)titles
@@ -151,6 +150,8 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 
     [self.rootScrollView setContentOffset:CGPointMake(startX, 0) animated:NO];
     
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+
 }
 
 /**
@@ -218,6 +219,8 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 -(void)selectItemAtIndexPath:(NSIndexPath*)indexPath
 {
     SDSelectorCell *cell = (SDSelectorCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    
+    
     cell.selected = YES;
     CGRect rect = cell.frame;
     if (!cell) {
@@ -319,7 +322,7 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     } else {
         NSString *title = _titles[indexPath.item];
         CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
-        return CGSizeMake(kScreenWidth / 4, size.height);
+        return CGSizeMake(kScreenWidth / 4, CGRectGetHeight(self.bounds));
     }
 }
 
@@ -327,6 +330,5 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 {
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
-
 
 @end

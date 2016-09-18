@@ -17,6 +17,8 @@ typedef void(^collectionViewWidth)(CGFloat width);
 
 @property (nonatomic, strong) UIScrollView *rootScrollView;
 
+-(void)selectItemAtIndex:(NSInteger)index;
+
 /**
  *  底部标识线
  */

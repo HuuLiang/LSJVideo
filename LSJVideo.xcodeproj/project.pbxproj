@@ -86,6 +86,14 @@
 		EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A21D64097700AC3708 /* LSJWelfareModel.m */; };
 		EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */; };
 		EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */; };
+		EC80DE3C1D8E92B800EF943E /* LSJPhotoBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE3B1D8E92B800EF943E /* LSJPhotoBrowseView.m */; };
+		EC80DE4D1D8E99AB00EF943E /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE401D8E99AB00EF943E /* TAAbstractDotView.m */; };
+		EC80DE4E1D8E99AB00EF943E /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE421D8E99AB00EF943E /* TAAnimatedDotView.m */; };
+		EC80DE4F1D8E99AB00EF943E /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE441D8E99AB00EF943E /* TADotView.m */; };
+		EC80DE501D8E99AB00EF943E /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE461D8E99AB00EF943E /* TAPageControl.m */; };
+		EC80DE511D8E99AB00EF943E /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE481D8E99AB00EF943E /* SDCollectionViewCell.m */; };
+		EC80DE521D8E99AB00EF943E /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE4A1D8E99AB00EF943E /* SDCycleScrollView.m */; };
+		EC80DE531D8E99AB00EF943E /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EC80DE4C1D8E99AB00EF943E /* UIView+SDExtension.m */; };
 		EC8547521D70210E00B0F815 /* LSJDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8547511D70210E00B0F815 /* LSJDetailModel.m */; };
 		EC8547551D702BB200B0F815 /* LSJDetailVideoHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8547541D702BB200B0F815 /* LSJDetailVideoHeaderCell.m */; };
 		EC8547581D70325200B0F815 /* LSJDetailVideoDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8547571D70325200B0F815 /* LSJDetailVideoDescCell.m */; };
@@ -293,6 +301,22 @@
 		EC7684A51D64175C00AC3708 /* LSJRankDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankDetailVC.m; sourceTree = "<group>"; };
 		EC7684A71D64185500AC3708 /* LSJRankDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJRankDetailCell.h; sourceTree = "<group>"; };
 		EC7684A81D64185500AC3708 /* LSJRankDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJRankDetailCell.m; sourceTree = "<group>"; };
+		EC80DE3A1D8E92B800EF943E /* LSJPhotoBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPhotoBrowseView.h; sourceTree = "<group>"; };
+		EC80DE3B1D8E92B800EF943E /* LSJPhotoBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPhotoBrowseView.m; sourceTree = "<group>"; };
+		EC80DE3F1D8E99AB00EF943E /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		EC80DE401D8E99AB00EF943E /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		EC80DE411D8E99AB00EF943E /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		EC80DE421D8E99AB00EF943E /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		EC80DE431D8E99AB00EF943E /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		EC80DE441D8E99AB00EF943E /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		EC80DE451D8E99AB00EF943E /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		EC80DE461D8E99AB00EF943E /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		EC80DE471D8E99AB00EF943E /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		EC80DE481D8E99AB00EF943E /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		EC80DE491D8E99AB00EF943E /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		EC80DE4A1D8E99AB00EF943E /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		EC80DE4B1D8E99AB00EF943E /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		EC80DE4C1D8E99AB00EF943E /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		EC8547501D70210E00B0F815 /* LSJDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJDetailModel.h; sourceTree = "<group>"; };
 		EC8547511D70210E00B0F815 /* LSJDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJDetailModel.m; sourceTree = "<group>"; };
 		EC8547531D702BB200B0F815 /* LSJDetailVideoHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJDetailVideoHeaderCell.h; sourceTree = "<group>"; };
@@ -668,6 +692,35 @@
 			path = KSCrash;
 			sourceTree = "<group>";
 		};
+		EC80DE3D1D8E99AB00EF943E /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				EC80DE3E1D8E99AB00EF943E /* PageControl */,
+				EC80DE471D8E99AB00EF943E /* SDCollectionViewCell.h */,
+				EC80DE481D8E99AB00EF943E /* SDCollectionViewCell.m */,
+				EC80DE491D8E99AB00EF943E /* SDCycleScrollView.h */,
+				EC80DE4A1D8E99AB00EF943E /* SDCycleScrollView.m */,
+				EC80DE4B1D8E99AB00EF943E /* UIView+SDExtension.h */,
+				EC80DE4C1D8E99AB00EF943E /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		EC80DE3E1D8E99AB00EF943E /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				EC80DE3F1D8E99AB00EF943E /* TAAbstractDotView.h */,
+				EC80DE401D8E99AB00EF943E /* TAAbstractDotView.m */,
+				EC80DE411D8E99AB00EF943E /* TAAnimatedDotView.h */,
+				EC80DE421D8E99AB00EF943E /* TAAnimatedDotView.m */,
+				EC80DE431D8E99AB00EF943E /* TADotView.h */,
+				EC80DE441D8E99AB00EF943E /* TADotView.m */,
+				EC80DE451D8E99AB00EF943E /* TAPageControl.h */,
+				EC80DE461D8E99AB00EF943E /* TAPageControl.m */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
 		ECD70BD01D531F6A006929B1 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,6 +798,8 @@
 				ECD70DCA1D5348B6006929B1 /* LSJVideoPlayer.m */,
 				EC4258631D6C4D620066C638 /* LSJBtnView.h */,
 				EC4258641D6C4D620066C638 /* LSJBtnView.m */,
+				EC80DE3A1D8E92B800EF943E /* LSJPhotoBrowseView.h */,
+				EC80DE3B1D8E92B800EF943E /* LSJPhotoBrowseView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -972,6 +1027,7 @@
 		ECD70C921D531F6B006929B1 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				EC80DE3D1D8E99AB00EF943E /* SDCycleScrollView */,
 				EC74E3921D87AE7300DEB3F3 /* KSCrash */,
 				EC74E3831D879A6500DEB3F3 /* DunXingTianXia */,
 				EC74E3421D879A3700DEB3F3 /* iAppPay */,
@@ -1357,8 +1413,11 @@
 				EC74E33E1D87981400DEB3F3 /* LSJPaymentConfigDetail.m in Sources */,
 				EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */,
 				ECD70DD11D5352B2006929B1 /* LSJPaymentTypeCell.m in Sources */,
+				EC80DE4E1D8E99AB00EF943E /* TAAnimatedDotView.m in Sources */,
 				EC3190431D5C134A00B8E646 /* LSJRecommdCell.m in Sources */,
 				ECD70D0D1D531F6B006929B1 /* UIView+Loading.m in Sources */,
+				EC80DE511D8E99AB00EF943E /* SDCollectionViewCell.m in Sources */,
+				EC80DE4F1D8E99AB00EF943E /* TADotView.m in Sources */,
 				EC74E3321D87963F00DEB3F3 /* LSJActivateModel.m in Sources */,
 				EC8547551D702BB200B0F815 /* LSJDetailVideoHeaderCell.m in Sources */,
 				ECD70D471D5321EE006929B1 /* LSJLayoutViewController.m in Sources */,
@@ -1386,6 +1445,7 @@
 				EC1F93701D59BEA700E0B1F4 /* LSJMineViewController.m in Sources */,
 				EC42585A1D6C35C80066C638 /* LSJHotModel.m in Sources */,
 				EC74E3381D87963F00DEB3F3 /* LSJUserAccessModel.m in Sources */,
+				EC80DE521D8E99AB00EF943E /* SDCycleScrollView.m in Sources */,
 				EC25CA7B1D6AF72300F350D7 /* LSJLecherProgramCell.m in Sources */,
 				EC74E3201D87958A00DEB3F3 /* LSJPaymentInfo.m in Sources */,
 				ECD70D8F1D532BDB006929B1 /* LSJErrorHandler.m in Sources */,
@@ -1400,6 +1460,7 @@
 				ECF00E271D5B49E900FBF1D2 /* LSJHomeRankVC.m in Sources */,
 				ECF00E281D5B49E900FBF1D2 /* LSJHomeRecommdVC.m in Sources */,
 				ECF00E251D5B49E900FBF1D2 /* LSJHomeCategoryVC.m in Sources */,
+				EC80DE4D1D8E99AB00EF943E /* TAAbstractDotView.m in Sources */,
 				EC74E3811D879A3700DEB3F3 /* RSADataVerifier.m in Sources */,
 				ECDD6B371D6D84B1001F08DD /* LSJDayTableView.m in Sources */,
 				ECD70DBF1D5346A3006929B1 /* LSJVideoViewController.m in Sources */,
@@ -1407,6 +1468,7 @@
 				EC8547521D70210E00B0F815 /* LSJDetailModel.m in Sources */,
 				ECD70D091D531F6B006929B1 /* UIImage+Utilities.m in Sources */,
 				EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */,
+				EC80DE501D8E99AB00EF943E /* TAPageControl.m in Sources */,
 				ECD70D061D531F6B006929B1 /* UIBarButtonItem+Badge.m in Sources */,
 				ECD70D031D531F6B006929B1 /* NSObject+PropertyAccessInspecting.m in Sources */,
 				EC74E3361D87963F00DEB3F3 /* LSJURLRequest.m in Sources */,
@@ -1436,6 +1498,7 @@
 				ECF00E241D5B49E900FBF1D2 /* LSJHomeAppVC.m in Sources */,
 				ECD70DBC1D534663006929B1 /* LSJWebViewController.m in Sources */,
 				EC74E37F1D879A3700DEB3F3 /* openssl_wrapper.m in Sources */,
+				EC80DE531D8E99AB00EF943E /* UIView+SDExtension.m in Sources */,
 				EC74E37C1D879A3700DEB3F3 /* DataVerifier.m in Sources */,
 				ECD70D9B1D532ED5006929B1 /* LSJNetworkInfo.m in Sources */,
 				ECF00E261D5B49E900FBF1D2 /* LSJHomeDayVC.m in Sources */,
@@ -1445,6 +1508,7 @@
 				EC74E3331D87963F00DEB3F3 /* LSJEncryptedURLRequest.m in Sources */,
 				ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */,
 				EC74E31E1D87958A00DEB3F3 /* LSJPaymentConfig.m in Sources */,
+				EC80DE3C1D8E92B800EF943E /* LSJPhotoBrowseView.m in Sources */,
 				ECD70D0A1D531F6B006929B1 /* UIImageView+YPBAnimation.m in Sources */,
 				EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */,
 				EC74E3371D87963F00DEB3F3 /* LSJURLResponse.m in Sources */,

@@ -109,6 +109,8 @@ DefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
 
 - (void)viewWillAppear:(BOOL)animated {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+//    [_cursorView selectItemAtIndex:_index];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
