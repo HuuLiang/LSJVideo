@@ -144,7 +144,7 @@ NSString * const ID = @"cycleCell";
     mainView.delegate = self;
     mainView.scrollsToTop = NO;
     [self addSubview:mainView];
-    _mainView = mainView;
+    self.mainView = mainView;
 }
 
 
@@ -449,6 +449,8 @@ NSString * const ID = @"cycleCell";
         return ;
     }
     
+//    [_mainView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    
     if (_flowLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
         _mainView.contentOffset = CGPointMake(CGRectGetWidth(_mainView.bounds) * currentPage, _mainView.contentOffset.y);
     } else {
@@ -464,15 +466,12 @@ NSString * const ID = @"cycleCell";
     }
 }
 
-- (NSInteger)currentPage {
-    if (!self.imagePathsGroup.count) return 0;
-    int itemIndex = [self currentIndex];
-    return itemIndex % self.imagePathsGroup.count;
-}
-
-
-
-
+//
+//- (NSInteger)currentPage {
+//    if (!self.imagePathsGroup.count) return 0;
+//    int itemIndex = [self currentIndex];
+//    return itemIndex % self.imagePathsGroup.count;
+//}
 
 - (void)clearCache
 {

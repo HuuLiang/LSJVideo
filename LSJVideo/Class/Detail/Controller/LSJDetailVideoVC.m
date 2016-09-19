@@ -13,6 +13,7 @@
 #import "LSJDetailVideoPhotosCell.h"
 #import "LSJDetailVideoCommandCell.h"
 
+#import "LSJReportView.h"
 
 @interface LSJDetailVideoVC ()
 {
@@ -22,6 +23,8 @@
     LSJDetailVideoDescCell  * _descCell;
     LSJDetailVideoPhotosCell *_photosCell;
     LSJDetailVideoCommandCell *_commandCell;
+    
+    LSJReportView *_reportView;
     
 }
 @property (nonatomic) LSJDetailModel *detailModel;
@@ -47,23 +50,42 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     self.layoutTableView.hasSectionBorder = NO;
     self.layoutTableView.hasRowSeparator = NO;
     
-//    [self.layoutTableView setSeparatorInset:UIEdgeInsetsMake(0, kWidth(30), 0, kWidth(30))];
+    
+    
+    _reportView = [[LSJReportView alloc] init];
+    
+    @weakify(self);
+    _reportView.popKeyboard = ^{
+        @strongify(self);
+        
+    };
+    
+    
+    [self.view addSubview:_reportView];
     
     {
         [self.layoutTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view);
+            make.left.top.right.equalTo(self.view);
+            make.height.mas_equalTo(kScreenHeight-80);
+        }];
+        
+        [_reportView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.view);
+            make.height.mas_equalTo(kWidth(80));
         }];
     }
+    
     
     [self.layoutTableView LSJ_addPullToRefreshWithHandler:^{
         [self loadData];
     }];
     [self.layoutTableView LSJ_triggerPullToRefresh];
     
-    @weakify(self);
     self.layoutTableViewAction = ^(NSIndexPath *indexPath, UITableViewCell *cell) {
         @strongify(self);
-        
+        if (cell == self->_headerCell) {
+            [self playVideoWithUrl:@""];
+        }
         
     };
 }

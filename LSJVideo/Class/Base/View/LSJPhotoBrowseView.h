@@ -12,7 +12,7 @@ typedef void(^closePhotoBrowse)(void);
 
 @interface LSJPhotoBrowseView : UIView
 
-- (instancetype)initWithUrlsArray:(NSArray *)array andIndex:(NSUInteger)index;
+- (instancetype)initWithUrlsArray:(NSArray *)array andIndex:(NSUInteger)index frame:(CGRect)frame;
 
 @property (nonatomic) closePhotoBrowse closePhotoBrowse;
 

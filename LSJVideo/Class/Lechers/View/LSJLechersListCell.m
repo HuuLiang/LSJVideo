@@ -42,7 +42,7 @@
         
         
         
-        _moreView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:nil];
+        _moreView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:nil isTitleFirst:YES];
         _moreView.userInteractionEnabled = YES;
         _moreView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
         _moreView.layer.cornerRadius = kWidth(18);

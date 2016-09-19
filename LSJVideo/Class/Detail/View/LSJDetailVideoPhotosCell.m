@@ -24,7 +24,7 @@ static NSString *const kPhotosCollectionCellReusableIdentifier = @"kPhotosCollec
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
         _imgV = [[UIImageView alloc] init];
         [self addSubview:_imgV];
         

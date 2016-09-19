@@ -15,10 +15,13 @@ typedef void(^touchAction)(void);
  *  @param title         标题
  *  @param normalImage   非选中状态图片  
  *  @param selectedImage 选中图片      可不传
+ *  @Param titleFitst    是否文字在左
  */
 - (instancetype)initWithTitle:(NSString *)title
                   normalImage:(UIImage *)normalImage
-                selectedImage:(UIImage *)selectedImage;
+                selectedImage:(UIImage *)selectedImage
+                 isTitleFirst:(BOOL)titleFirst;
+
 
 /**
  *  文字背景色  默认白色

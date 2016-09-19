@@ -9,6 +9,7 @@
 #import "LSJBaseViewController.h"
 #import "LSJDetailVideoVC.h"
 #import "LSJPhotoBrowseView.h"
+#import "LSJPaymentViewController.h"
 
 @interface LSJBaseViewController ()
 {
@@ -60,14 +61,9 @@
             }
         }];
     } else {
-        _photoBrowseView = [[LSJPhotoBrowseView alloc] initWithUrlsArray:urlArray andIndex:index];
+        _photoBrowseView = [[LSJPhotoBrowseView alloc] initWithUrlsArray:urlArray andIndex:index frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         UIViewController *vc = (UIViewController *)[LSJUtil currentVisibleViewController];
         [vc.view addSubview:_photoBrowseView];
-        {
-            [_photoBrowseView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo(vc.view);
-            }];
-        }
         
         @weakify(self);
         _photoBrowseView.closePhotoBrowse = ^ {
@@ -77,6 +73,18 @@
         };
         
     }
+}
+
+- (void)playVideoWithUrl:(NSString *)videoUrlStr {
+    if (![LSJUtil isVip]) {
+        [self payWithInfo:@"ddd"];
+    } else {
+        
+    }
+}
+
+- (void)payWithInfo:(NSString *)info {
+    [[LSJPaymentViewController sharedPaymentVC] popupPaymentInView:self.view.window baseModel:nil withCompletionHandler:nil];
 }
 
 

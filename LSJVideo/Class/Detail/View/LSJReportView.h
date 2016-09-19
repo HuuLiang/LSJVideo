@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LSJReportView : UIView
+typedef void(^popKeyboard)(void);
 
+
+@interface LSJMessageView : UIView
+@property (nonatomic) UIButton *sendBtn;
+@end
+
+
+
+@interface LSJReportView : UIView
+@property (nonatomic) popKeyboard popKeyboard;
 @end

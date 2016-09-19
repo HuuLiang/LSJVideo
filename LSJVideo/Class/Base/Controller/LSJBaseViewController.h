@@ -17,4 +17,6 @@
 
 - (void)playPhotoUrlWithInfo:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index;
 
+- (void)playVideoWithUrl:(NSString *)videoUrlStr;
+
 @end

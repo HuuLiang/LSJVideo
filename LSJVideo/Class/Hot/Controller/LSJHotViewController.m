@@ -186,7 +186,7 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
     [_layoutTitleCollectionView registerClass:[LSJHotTitleCell class] forCellWithReuseIdentifier:kHotTitleCellReusableIdentifier];
     [_titleCell addSubview:_layoutTitleCollectionView];
     
-    _btnView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"hot_more_icon"] selectedImage:[UIImage imageNamed:@"hot_less_icon"]];
+    _btnView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"hot_more_icon"] selectedImage:[UIImage imageNamed:@"hot_less_icon"] isTitleFirst:YES];
 //    _btnView.backgroundColor = [UIColor cyanColor];
     _btnView.titleFont = [UIFont systemFontOfSize:kWidth(30)];
     _btnView.selectedTitle = @"收起 ";

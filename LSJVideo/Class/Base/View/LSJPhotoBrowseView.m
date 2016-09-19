@@ -20,14 +20,20 @@
 
 @implementation LSJPhotoBrowseView
 
-- (instancetype)initWithUrlsArray:(NSArray *)array andIndex:(NSUInteger)index {
-    self = [super init];
+- (instancetype)initWithUrlsArray:(NSArray *)array andIndex:(NSUInteger)index frame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor redColor];
         
         _currentIndex = index;
         
-        _photoView = [[SDCycleScrollView alloc] init];
+        const CGFloat width = frame.size.width*0.8;
+        const CGFloat heigh = width*9/7;
+        const CGFloat pointX = frame.size.width*0.1;
+        const CGFloat pointY = (frame.size.height - width *9/7)/2;
+        
+        
+        _photoView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(pointX, pointY, width, heigh)];
         _photoView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
 //        _photoView.autoScrollTimeInterval = 0.1;
         _photoView.autoScroll = NO;
@@ -37,16 +43,11 @@
         _photoView.delegate = self;
         _photoView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
         
+        _photoView.imageURLStringsGroup = array;
+        
         [self addSubview:_photoView];
         
-        {
-            [_photoView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo(self);
-            }];
-        }
-        
-        _photoView.imageURLStringsGroup = array;
-        _photoView.currentPage = index;
+        [self setNeedsDisplay];
     }
     
     return self;
@@ -64,6 +65,10 @@
     self.closePhotoBrowse();
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _photoView.currentPage = _currentIndex;
+}
 
 
 @end

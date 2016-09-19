@@ -22,17 +22,23 @@
     
     NSString *_normalTitleStr;
     NSString *_selectedTitleStr;
+    
+    BOOL _titleFirst;
 }
 @end
 
 @implementation LSJBtnView
 
-- (instancetype)initWithTitle:(NSString *)title normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage
+- (instancetype)initWithTitle:(NSString *)title
+                  normalImage:(UIImage *)normalImage
+                selectedImage:(UIImage *)selectedImage
+                 isTitleFirst:(BOOL)titleFirst
 {
     self = [super init];
     if (self) {
         _isSelected = NO;
         _space = 0.0f;
+        _titleFirst = titleFirst;
 
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.text = title;
@@ -56,14 +62,20 @@
         {
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(self);
-                make.centerX.equalTo(self.mas_centerX).offset(-_normalImageSize.width / 2.);
+                make.centerX.equalTo(self.mas_centerX).offset(_normalImageSize.width / 2.* _titleFirst ? -1 : 1);
+
             }];
             
             if (_imgV) {
                 [_imgV mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.centerY.equalTo(self);
                     make.size.mas_equalTo(CGSizeMake(kWidth(_normalImageSize.width * 2), kWidth(_normalImageSize.height * 2)));
-                    make.left.equalTo(_titleLabel.mas_right).offset(0);
+                    if (_titleFirst) {
+                        make.left.equalTo(_titleLabel.mas_right).offset(0);
+                    } else {
+                        make.right.equalTo(_titleLabel.mas_left).offset(0);
+                    }
+                    
                 }];
             }
         }
@@ -92,7 +104,12 @@
     _space = space;
     if (_imgV) {
         [_imgV mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_titleLabel.mas_right).offset(space);
+            if (_titleFirst) {
+                make.left.equalTo(_titleLabel.mas_right).offset(space);
+            } else {
+                make.right.equalTo(_titleLabel.mas_left).offset(-space);
+            }
+            
         }];
     }
 }
@@ -108,8 +125,13 @@
         _titleLabel.text = _selectedTitleStr;
         {
             [_imgV mas_updateConstraints:^(MASConstraintMaker *make) {
-               make.size.mas_equalTo(CGSizeMake(kWidth(_selectedImageSize.width * 2), kWidth(_selectedImageSize.height * 2)));
-            make.left.equalTo(_titleLabel.mas_right).offset(_space);
+                make.size.mas_equalTo(CGSizeMake(kWidth(_selectedImageSize.width * 2), kWidth(_selectedImageSize.height * 2)));
+                if (_titleFirst) {
+                    make.left.equalTo(_titleLabel.mas_right).offset(_space);
+                } else {
+                    make.right.equalTo(_titleLabel.mas_left).offset(_space);
+                }
+                
             }];
         }
         
@@ -119,13 +141,15 @@
         {
             [_imgV mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.size.mas_equalTo(CGSizeMake(kWidth(_normalImageSize.width * 2), kWidth(_normalImageSize.height * 2)));
-                make.left.equalTo(_titleLabel.mas_right).offset(_space);
+                if (_titleFirst) {
+                    make.left.equalTo(_titleLabel.mas_right).offset(_space);
+                } else {
+                    make.right.equalTo(_titleLabel.mas_left).offset(_space);
+                }
+                
             }];
         }
     }
-    
-    
-    
 }
 
 

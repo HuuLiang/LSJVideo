@@ -69,7 +69,7 @@ DefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
     _cursorView.backgroundColor = [UIColor clearColor];
     
     _cursorView.lineView.backgroundColor = [UIColor colorWithHexString:@"#ff227a"];
-    _cursorView.lineEdgeInsets = UIEdgeInsetsMake(1, 10, -1, 2);
+    _cursorView.lineEdgeInsets = UIEdgeInsetsMake(1, kWidth(34), -1, 2);
     
     [self.view addSubview:_cursorView];
     _cursorView.currentIndex = _index;

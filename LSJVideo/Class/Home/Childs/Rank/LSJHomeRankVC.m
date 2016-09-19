@@ -125,7 +125,7 @@ DefineLazyPropertyInitialization(NSMutableArray, widthSource)
     const CGFloat fullWidth = CGRectGetWidth(collectionView.bounds);
     const CGFloat width = (fullWidth - layout.minimumInteritemSpacing - insets.left - insets.right)/2;
     const CGFloat height = width * 444 / 345.;
-    return CGSizeMake(width, height);
+    return CGSizeMake((long)width, (long)height);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
