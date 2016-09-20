@@ -11,9 +11,10 @@
 
 @interface LSJMessageView () <UITextFieldDelegate>
 {
-    UITextField *_textField;
+//    UITextField *_textField;
 //    UIButton *_sendBtn;
 }
+
 @end
 
 @implementation LSJMessageView
@@ -22,6 +23,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.backgroundColor = [UIColor cyanColor];
         
         _textField = [[UITextField alloc] init];
         _textField.returnKeyType = UIReturnKeyDone;
@@ -57,19 +60,15 @@
 
 - (void)handleKeyBoardAction:(NSNotification *)notification {
     NSLog(@"%@",notification);
-    //1、计算动画前后的差值
+
     CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
     
-    //2、根据差值更改_textView的高度
-    UIView *superView = (UIView *)[self superview];
-    
-    
     CGFloat frame = self.frame.origin.y;
-//    frame += detalY;
-//    self.views.frame = CGRectMake(0, frame, self.view.frame.size.width, 40);
+    frame += detalY;
+    self.frame = CGRectMake(0, frame, self.frame.size.width, 40);
 }
 
 - (void)dealloc {
@@ -91,14 +90,15 @@
 @interface LSJReportView ()
 {
     LSJBtnView *_btnView;
+    LSJMessageView *_messageView;
 }
 @end
 
 @implementation LSJReportView
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
         
         self.backgroundColor = [UIColor colorWithHexString:@"#ffe203"];
@@ -108,6 +108,7 @@
         _btnView.titleFont = [UIFont systemFontOfSize:kWidth(32)];
         _btnView.space = kWidth(20);
         [self addSubview:_btnView];
+        
         {
             [_btnView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(self).offset(kWidth(20));
@@ -120,6 +121,11 @@
             @strongify(self);
             self.popKeyboard();
         };
+        
+        [self bk_whenTapped:^{
+            @strongify(self);
+            self.popKeyboard();
+        }];
     }
     return self;
 }

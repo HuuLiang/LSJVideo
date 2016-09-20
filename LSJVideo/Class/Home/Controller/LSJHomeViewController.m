@@ -32,7 +32,21 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+    self.view.backgroundColor = [[UIColor colorWithHexString:@"#efefef"] colorWithAlphaComponent:0.99];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+    view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
+    [self.view addSubview:view];
+    
+//    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
+//    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
+//    [self.view addSubview:imgV];
+//    {
+//        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.center.equalTo(self.view);
+//            make.size.mas_equalTo(CGSizeMake(kScreenWidth*0.8, kScreenWidth*0.8*bgImg.size.height/bgImg.size.width));
+//        }];
+//    }
     
     [self.homeModel fetchHomeInfoWithCompletionHandler:^(BOOL success, id obj) {
         if (success) {

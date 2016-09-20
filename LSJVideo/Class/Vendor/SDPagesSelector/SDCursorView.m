@@ -33,6 +33,9 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         _lineEdgeInsets = UIEdgeInsetsMake(0, 3, 2, 3);
         _cursorEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
         
+//        UIViewController *VC = self.parentViewController;
+
+        
     }
     return self;
 }
@@ -44,12 +47,26 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     if (!_rootScrollView) {
         DLog(@"%@",NSStringFromCGRect(self.bounds));
         
-        _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+ (_isHomeView ? 20 :0), CGRectGetWidth(self.bounds), self.contentViewHeight)];
-        _rootScrollView.backgroundColor = [[UIColor colorWithHexString:@"#efefef"] colorWithAlphaComponent:0.99];
-//        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imagee.jpg"]];
-        if (!_isHomeView) {
-            _rootScrollView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+        UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
+        UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
+        [self.parentViewController.view addSubview:imgV];
+        {
+            [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(self.parentViewController.view);
+                make.centerY.equalTo(self.parentViewController.view).offset(kWidth(50));
+                make.size.mas_equalTo(CGSizeMake(kScreenWidth*0.6, kScreenWidth*0.6*bgImg.size.height/bgImg.size.width));
+            }];
         }
+        
+        
+        _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+ (_isHomeView ? 20 :0), CGRectGetWidth(self.bounds), self.contentViewHeight)];
+////        _rootScrollView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.99];
+////        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app_bg"]];
+//        if (!_isHomeView) {
+////            _rootScrollView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+//        }
+        _rootScrollView.backgroundColor = [UIColor clearColor];
+//        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app_bg"]];
         _rootScrollView.pagingEnabled = YES;
         _rootScrollView.delegate = self;
         _rootScrollView.alwaysBounceHorizontal = YES;
@@ -58,6 +75,8 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         _rootScrollView.scrollsToTop = NO;
         _rootScrollView.bounces = YES;
         [self.parentViewController.view addSubview:_rootScrollView];
+        
+
         
         NSAssert(self.parentViewController, @"self.parentViewController must has a value");
         

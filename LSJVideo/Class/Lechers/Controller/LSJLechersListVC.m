@@ -35,8 +35,18 @@ DefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+//    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
 
+//    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
+//    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
+//    [self.view addSubview:imgV];
+//    {
+//        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.center.equalTo(self.view);
+//            make.size.mas_equalTo(CGSizeMake(kScreenWidth, kScreenWidth*bgImg.size.height/bgImg.size.width));
+//        }];
+//    }
+    
     [self create];
 }
 

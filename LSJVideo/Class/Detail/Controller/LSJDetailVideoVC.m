@@ -8,9 +8,13 @@
 
 #import "LSJDetailVideoVC.h"
 #import "LSJDetailModel.h"
+
 #import "LSJDetailVideoHeaderCell.h"
 #import "LSJDetailVideoDescCell.h"
 #import "LSJDetailVideoPhotosCell.h"
+
+#import "LSJDetailImgTextHeaderCell.h"
+
 #import "LSJDetailVideoCommandCell.h"
 
 #import "LSJReportView.h"
@@ -22,9 +26,13 @@
     LSJDetailVideoHeaderCell * _headerCell;
     LSJDetailVideoDescCell  * _descCell;
     LSJDetailVideoPhotosCell *_photosCell;
+    
+    LSJDetailImgTextHeaderCell *_imgTextCell;
+    
     LSJDetailVideoCommandCell *_commandCell;
     
     LSJReportView *_reportView;
+    LSJMessageView *_messageView;
     
 }
 @property (nonatomic) LSJDetailModel *detailModel;
@@ -51,16 +59,32 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     self.layoutTableView.hasRowSeparator = NO;
     
     
+    _messageView = [[LSJMessageView alloc] initWithFrame:CGRectMake(0, kScreenHeight-64-kWidth(80), kScreenWidth, kWidth(80))];
+    [self.view addSubview:_messageView];
+    
+    [_messageView.sendBtn bk_addEventHandler:^(id sender) {
+        [_messageView.textField becomeFirstResponder];
+        if ([LSJUtil isVip]) {
+            if (_messageView.textField.text.length < 1) {
+                [[CRKHudManager manager] showHudWithText:@"您输入的评论过短"];
+            }
+            [[CRKHudManager manager] showHudWithText:@"请等待审核"];
+            _messageView.textField.text = @"";
+        } else {
+            [[CRKHudManager manager] showHudWithText:@"非VIP用户不可发表评论"];
+            _messageView.textField.text = @"";
+            [_messageView.textField resignFirstResponder];
+            [self playVideoWithUrl:@""];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+    
     
     _reportView = [[LSJReportView alloc] init];
-    
     @weakify(self);
     _reportView.popKeyboard = ^{
         @strongify(self);
-        
+        [self->_messageView.textField becomeFirstResponder];
     };
-    
-    
     [self.view addSubview:_reportView];
     
     {
@@ -83,6 +107,10 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     
     self.layoutTableViewAction = ^(NSIndexPath *indexPath, UITableViewCell *cell) {
         @strongify(self);
+        if ([self->_messageView.textField isFirstResponder]) {
+            [self->_messageView.textField resignFirstResponder];
+            return ;
+        }
         if (cell == self->_headerCell) {
             [self playVideoWithUrl:@""];
         }
@@ -109,18 +137,21 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
 
 - (void)initCells {
     NSUInteger section = 0;
-    
-    [self initHeaderCellInSection:section++];
-    [self initDescCellInSection:section++];
-    if (1) {
-        [self setHeaderHeight:kWidth(1) inSection:section];
-        [self initPhotosCellInSection:section++];
+    NSInteger count = 1;
+    if (count == 2) {
+        [self initVideoHeaderCellInSection:section++];
+        [self initDescCellInSection:section++];
+        if (1) {
+            [self setHeaderHeight:kWidth(1) inSection:section];
+            [self initPhotosCellInSection:section++];
+        }
+    } else {
+        [self initImageTextCellInSection:section++];
+        
     }
-    [self setHeaderHeight:kWidth(20) inSection:section];
-    
-    
-    [self initCommandCellInSection:section++];
 
+    [self setHeaderHeight:kWidth(20) inSection:section];
+    [self initCommandCellInSection:section++];
     for (NSUInteger count = 0 ; count < 10; count++) {
         [self initCommandDetailsInSection:section++];
     }
@@ -128,7 +159,9 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     [self.layoutTableView reloadData];
 }
 
-- (void)initHeaderCellInSection:(NSUInteger)section {
+#pragma mark - videoDetail
+
+- (void)initVideoHeaderCellInSection:(NSUInteger)section {
     _headerCell = [[LSJDetailVideoHeaderCell alloc] init];
     _headerCell.imgUrlStr = @"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg";
     [self setLayoutCell:_headerCell cellHeight:kScreenWidth * 0.6 inRow:0 andSection:section];
@@ -152,11 +185,34 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     @weakify(self);
     _photosCell.selectedIndex = ^(NSNumber *index) {
         @strongify(self);
+        if ([self->_messageView.textField isFirstResponder]) {
+            [self->_messageView.textField resignFirstResponder];
+            return ;
+        }
         [self playPhotoUrlWithInfo:nil urlArray:array index:[index integerValue]];
     };
     
     [self setLayoutCell:_photosCell cellHeight:kWidth(290) inRow:0 andSection:section];
 }
+
+#pragma mark - image-text Detail
+
+- (void)initImageTextCellInSection:(NSUInteger)section {
+    _imgTextCell = [[LSJDetailImgTextHeaderCell alloc] init];
+    _imgTextCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSString *titlestr = @"asdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasd";
+    _imgTextCell.titleStr = @"asdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasd";
+    _imgTextCell.timeStr = @"asdfsdfsdf";
+    _imgTextCell.nameStr = @"asdfasdfsdf";
+    
+    CGFloat height = [titlestr sizeWithFont:[UIFont systemFontOfSize:kWidth(34)] maxSize:CGSizeMake(kScreenWidth - kWidth(64), MAXFLOAT)].height;
+    
+    [self setLayoutCell:_imgTextCell cellHeight:height + kWidth(90) inRow:0 andSection:section];
+}
+
+
+#pragma mark - common Detail
 
 - (void)initCommandCellInSection:(NSUInteger)section {
     UITableViewCell *cell = [[UITableViewCell alloc] init];

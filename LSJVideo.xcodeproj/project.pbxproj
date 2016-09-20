@@ -19,6 +19,7 @@
 		EC1F936A1D59BE6F00E0B1F4 /* LSJHotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1F93691D59BE6F00E0B1F4 /* LSJHotViewController.m */; };
 		EC1F936D1D59BE8B00E0B1F4 /* LSJLechersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1F936C1D59BE8B00E0B1F4 /* LSJLechersViewController.m */; };
 		EC1F93701D59BEA700E0B1F4 /* LSJMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1F936F1D59BEA700E0B1F4 /* LSJMineViewController.m */; };
+		EC20E99D1D91313B00568666 /* LSJDetailImgTextHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC20E99C1D91313B00568666 /* LSJDetailImgTextHeaderCell.m */; };
 		EC25CA7B1D6AF72300F350D7 /* LSJLecherProgramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC25CA7A1D6AF72300F350D7 /* LSJLecherProgramCell.m */; };
 		EC2F0BA41D68300D00DE2B7F /* LSJLechersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F0BA31D68300D00DE2B7F /* LSJLechersCollectionView.m */; };
 		EC2F0BA71D68571D00DE2B7F /* LSJLechersListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F0BA61D68571D00DE2B7F /* LSJLechersListVC.m */; };
@@ -187,6 +188,8 @@
 		EC1F936C1D59BE8B00E0B1F4 /* LSJLechersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLechersViewController.m; sourceTree = "<group>"; };
 		EC1F936E1D59BEA700E0B1F4 /* LSJMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJMineViewController.h; sourceTree = "<group>"; };
 		EC1F936F1D59BEA700E0B1F4 /* LSJMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJMineViewController.m; sourceTree = "<group>"; };
+		EC20E99B1D91313B00568666 /* LSJDetailImgTextHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJDetailImgTextHeaderCell.h; sourceTree = "<group>"; };
+		EC20E99C1D91313B00568666 /* LSJDetailImgTextHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJDetailImgTextHeaderCell.m; sourceTree = "<group>"; };
 		EC25CA791D6AF72300F350D7 /* LSJLecherProgramCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJLecherProgramCell.h; sourceTree = "<group>"; };
 		EC25CA7A1D6AF72300F350D7 /* LSJLecherProgramCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLecherProgramCell.m; sourceTree = "<group>"; };
 		EC2F0BA21D68300D00DE2B7F /* LSJLechersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJLechersCollectionView.h; sourceTree = "<group>"; };
@@ -844,6 +847,8 @@
 				EC8547571D70325200B0F815 /* LSJDetailVideoDescCell.m */,
 				EC8547591D70486100B0F815 /* LSJDetailVideoPhotosCell.h */,
 				EC85475A1D70486100B0F815 /* LSJDetailVideoPhotosCell.m */,
+				EC20E99B1D91313B00568666 /* LSJDetailImgTextHeaderCell.h */,
+				EC20E99C1D91313B00568666 /* LSJDetailImgTextHeaderCell.m */,
 				EC85475C1D705CFE00B0F815 /* LSJDetailVideoCommandCell.h */,
 				EC85475D1D705CFE00B0F815 /* LSJDetailVideoCommandCell.m */,
 				EC3B9A5D1D8FDD2300690332 /* LSJReportView.h */,
@@ -1404,6 +1409,7 @@
 				ECF00E2B1D5B49E900FBF1D2 /* LSJHomeModel.m in Sources */,
 				ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */,
 				ECD70D001D531F6B006929B1 /* NSDictionary+LTSign.m in Sources */,
+				EC20E99D1D91313B00568666 /* LSJDetailImgTextHeaderCell.m in Sources */,
 				ECD70D981D532E33006929B1 /* LSJUtil.m in Sources */,
 				ECD70DB01D533DF3006929B1 /* LSJBaseModel.m in Sources */,
 				ECD70D0C1D531F6B006929B1 /* UITableView+Separator.m in Sources */,
