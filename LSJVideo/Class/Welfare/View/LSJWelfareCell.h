@@ -19,7 +19,6 @@
 @property (nonatomic) NSString *imgBUrlStr;
 @property (nonatomic) NSString *imgCUrlStr;
 @property (nonatomic) NSString *timeStr;
-@property (nonatomic) NSString *countStr;
 @property (nonatomic) NSString *commandStr;
 
 @end

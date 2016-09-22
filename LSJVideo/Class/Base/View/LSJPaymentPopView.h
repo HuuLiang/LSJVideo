@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^LSJPaymentPopViewAction)(LSJPaymentType paymentType,LSJSubPayType subType);
+typedef void (^LSJPaymentPopViewAction)(QBPayType paymentType,QBPaySubType subType);
 
 @interface LSJPaymentPopView : UITableView
 
@@ -16,7 +16,7 @@ typedef void (^LSJPaymentPopViewAction)(LSJPaymentType paymentType,LSJSubPayType
 
 @property (nonatomic,copy) LSJPaymentPopViewAction paymentAction;
 
-@property (nonatomic,copy) LSJAction closeAction;
+@property (nonatomic,copy) QBAction closeAction;
 
 - (instancetype)initWithAvailablePaymentTypes:(NSArray *)availablePaymentTypes;
 

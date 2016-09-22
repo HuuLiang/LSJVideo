@@ -7,9 +7,10 @@
 //
 
 #import "LSJLayoutViewController.h"
+#import "LSJProgramModel.h"
 
 @interface LSJDetailVideoVC : LSJLayoutViewController
 
-- (instancetype)initWithProgram:(NSInteger)program;
+- (instancetype)initWithColumnId:(NSInteger)columnId Program:(LSJProgramModel *)program;
 
 @end

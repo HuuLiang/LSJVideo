@@ -54,7 +54,7 @@
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index {
-    DLog(@"%ld",index);
+    QBLog(@"%ld",index);
 //    if (index == _currentIndex) {
 //        _photoView.autoScroll = NO;
 //    }

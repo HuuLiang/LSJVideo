@@ -13,6 +13,7 @@
 @interface LSJDayTableViewCell ()
 {
     UILabel * _userLabel;
+    UILabel * _contentLabel;
 }
 @end
 
@@ -30,9 +31,19 @@
         _userLabel.font = [UIFont systemFontOfSize:kWidth(30)];
         [self addSubview:_userLabel];
         
+        _contentLabel = [[UILabel alloc] init];
+        _contentLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        _contentLabel.font = [UIFont systemFontOfSize:kWidth(30)];
+        [self addSubview:_contentLabel];
+        
         {
             [_userLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.top.bottom.equalTo(self);
+            }];
+            
+            [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_userLabel.mas_right);
+                make.top.right.bottom.equalTo(self);
             }];
         }
     }
@@ -40,7 +51,11 @@
 }
 
 - (void)setUserStr:(NSString *)userStr {
-    _userLabel.text = userStr;
+    _userLabel.text = [NSString stringWithFormat:@"%@:",userStr];
+}
+
+- (void)setContent:(NSString *)content {
+    _contentLabel.text = content;
 }
 
 @end

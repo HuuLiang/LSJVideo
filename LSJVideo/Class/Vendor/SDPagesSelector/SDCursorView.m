@@ -19,7 +19,7 @@ static NSString *const cellIdentifier = @"selectorCell";
 @end
 
 @implementation SDCursorView
-DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
+QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -45,7 +45,7 @@ DefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 -(UIScrollView*)rootScrollView
 {
     if (!_rootScrollView) {
-        DLog(@"%@",NSStringFromCGRect(self.bounds));
+        QBLog(@"%@",NSStringFromCGRect(self.bounds));
         
         UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
         UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];

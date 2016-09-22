@@ -8,6 +8,19 @@
 
 #import "LSJProgramModel.h"
 
+@implementation LSJCommentModel
+
+@end
+
+
 @implementation LSJProgramModel
+
+- (Class)commentsElementClass {
+    return [LSJCommentModel class];
+}
+
+- (Class)imgurlsElementClass {
+    return [LSJProgramModel class];
+}
 
 @end

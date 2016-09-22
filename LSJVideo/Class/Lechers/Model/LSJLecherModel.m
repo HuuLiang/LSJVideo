@@ -32,20 +32,20 @@
     return [LSJLecherModelResponse class];
 }
 
-- (BOOL)fetchLechersInfoWithCompletionHandler:(LSJCompletionHandler)handler {
+- (BOOL)fetchLechersInfoWithCompletionHandler:(QBCompletionHandler)handler {
     @weakify(self);
     BOOL success = [self requestURLPath:LSJ_LECHERS_URL
                              withParams:nil
-                        responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
+                        responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);
                         LSJLecherModelResponse *resp = nil;
-                        if (respStatus == LSJURLResponseSuccess) {
+                        if (respStatus == QBURLResponseSuccess) {
                             resp = self.response;
                         }
                         
                         if (handler) {
-                            handler(respStatus==LSJURLResponseSuccess, resp.columnList);
+                            handler(respStatus==QBURLResponseSuccess, resp.columnList);
                         }
                     }];
     return success;

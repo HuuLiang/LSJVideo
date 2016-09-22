@@ -8,14 +8,17 @@
 
 #import "AppDelegate.h"
 #import "LSJTabBarViewController.h"
-#import "LSJPaymentManager.h"
 #import "MobClick.h"
 #import "LSJActivateModel.h"
 #import "LSJUserAccessModel.h"
 #import "LSJSystemConfigModel.h"
-#import "LSJPaymentManager.h"
-#import "PayuPlugin.h"
 #import <KSCrash/KSCrashInstallationStandard.h>
+#import <QBPaymentManager.h>
+#import "QBNetworkingConfiguration.h"
+
+static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
+
+
 @interface AppDelegate ()
 
 @end
@@ -42,7 +45,7 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateSelected];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#ffe100"]];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:21.],
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:[LSJUtil isIpad] ? 21 : kWidth(36)],
                                                            NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#222222"]}];
     
     [UIViewController aspect_hookSelector:@selector(viewDidLoad)
@@ -142,13 +145,24 @@
 
 #pragma mark - AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [QBNetworkingConfiguration defaultConfiguration].RESTAppId = LSJ_REST_APPID;
+    [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);
+    [QBNetworkingConfiguration defaultConfiguration].channelNo = LSJ_CHANNEL_NO;
+    [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
+#ifdef DEBUG
+    [QBNetworkingConfiguration defaultConfiguration].logEnabled = YES;
+#endif
+    
+    
     [LSJUtil accumateLaunchSeq];
     [self setupCommonStyles];
     
-    [[LSJPaymentManager sharedManager] setup];
+    [[QBPaymentManager sharedManager] registerPaymentWithAppId:LSJ_REST_APPID paymentPv:@([LSJ_PAYMENT_PV integerValue]) channelNo:LSJ_CHANNEL_NO urlScheme:kIappPaySchemeUrl];
+    
     [self setupMobStatistics];
-    [[LSJNetworkInfo sharedInfo] startMonitoring];
+    [[QBNetworkInfo sharedInfo] startMonitoring];
     
     if (![LSJUtil isRegistered]) {
         [[LSJActivateModel sharedModel] activateWithCompletionHandler:^(BOOL success, NSString *userId) {
@@ -171,19 +185,31 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [[LSJPaymentManager sharedManager] handleOpenUrl:url];
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url {
+    [[QBPaymentManager sharedManager] handleOpenUrl:url];
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
-    [[LSJPaymentManager sharedManager] handleOpenUrl:url];
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    [[QBPaymentManager sharedManager] handleOpenUrl:url];
     return YES;
 }
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *,id> *)options {
+    [[QBPaymentManager sharedManager] handleOpenUrl:url];
+    return YES;
+}
+
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[PayuPlugin defaultPlugin] applicationWillEnterForeground:application];
+    [[QBPaymentManager sharedManager] applicationWillEnterForeground:application];
 }
+
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;

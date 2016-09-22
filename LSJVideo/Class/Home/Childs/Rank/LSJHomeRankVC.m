@@ -24,9 +24,9 @@ static NSString *const kRankCellReusableIdentifier = @"RankCellReusableIdentifie
 @end
 
 @implementation LSJHomeRankVC
-DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
-DefineLazyPropertyInitialization(NSMutableArray, widthSource)
+QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(NSMutableArray, widthSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {

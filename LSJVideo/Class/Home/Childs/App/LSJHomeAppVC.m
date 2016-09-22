@@ -25,8 +25,8 @@ static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdent
 @end
 
 @implementation LSJHomeAppVC
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
-DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
 
 - (void)viewDidLoad {
     [super viewDidLoad];

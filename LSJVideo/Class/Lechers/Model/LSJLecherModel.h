@@ -6,10 +6,10 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 #import "LSJColumnModel.h"
 
-@interface LSJLecherColumnsModel : LSJURLResponse
+@interface LSJLecherColumnsModel : QBURLResponse
 @property (nonatomic) NSString *columnDesc;
 @property (nonatomic) NSInteger columnId;
 @property (nonatomic) NSString *columnImg;
@@ -22,13 +22,13 @@
 @property (nonatomic) NSArray <LSJColumnModel *> *columnList;
 @end
 
-@interface LSJLecherModelResponse : LSJURLResponse
+@interface LSJLecherModelResponse : QBURLResponse
 @property (nonatomic) NSArray <LSJLecherColumnsModel *> *columnList;
 @end
 
 
-@interface LSJLecherModel : LSJEncryptedURLRequest
+@interface LSJLecherModel : QBEncryptedURLRequest
 
-- (BOOL)fetchLechersInfoWithCompletionHandler:(LSJCompletionHandler)handler;
+- (BOOL)fetchLechersInfoWithCompletionHandler:(QBCompletionHandler)handler;
 
 @end

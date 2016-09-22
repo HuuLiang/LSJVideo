@@ -6,10 +6,20 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
+#import "LSJProgramModel.h"
 
-@interface LSJDetailModel : LSJEncryptedURLRequest
+@interface LSJProgramUrlModel : NSObject
+@property (nonatomic) NSString *content;
+@property (nonatomic) NSInteger type;
+@end
 
-- (BOOL)fetchProgramDetailInfoWithProgramId:(NSInteger)programId CompletionHandler:(LSJCompletionHandler)handler;
+@interface LSJDetailResponse : QBURLResponse
+@property (nonatomic) NSArray <LSJCommentModel *>*comments;
+@property (nonatomic) LSJProgramModel *program;
+@property (nonatomic) NSArray <LSJProgramUrlModel *>*programUrlList;
+@end
 
+@interface LSJDetailModel : QBEncryptedURLRequest
+- (BOOL)fetchProgramDetailInfoWithColumnId:(NSInteger)columnId ProgramId:(NSInteger)programId isImageText:(BOOL)isImageText CompletionHandler:(QBCompletionHandler)handler;
 @end

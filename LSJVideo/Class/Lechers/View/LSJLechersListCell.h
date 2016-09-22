@@ -14,5 +14,5 @@
 @interface LSJLechersListCell : UITableViewCell
 @property (nonatomic) NSString *titleStr;
 @property (nonatomic) NSArray <LSJColumnModel *>*dataArr;
-@property (nonatomic) LSJAction action;
+@property (nonatomic) QBAction action;
 @end

@@ -40,7 +40,7 @@
         self.delegate = self;
         self.dataSource = self;
         self.scrollEnabled = NO;
-        self.layer.cornerRadius = lround(kScreenWidth*0.04);
+        self.layer.cornerRadius = [LSJUtil isIpad] ? 10 :lround(kScreenWidth*0.04);
         self.layer.masksToBounds = YES;
         [self setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 15)];
         self.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1];
@@ -187,12 +187,12 @@
         @weakify(self);
         for (NSInteger i  = 0; i < _availablePaymentTypes.count; i++) {
             NSDictionary *dict = _availablePaymentTypes[i];
-            LSJPaymentType type = [dict[@"type"] integerValue];
-            LSJSubPayType subType = [dict[@"subType"] integerValue];
+            QBPayType type = [dict[@"type"] integerValue];
+            QBPaySubType subType = [dict[@"subType"] integerValue];
             if (indexPath.row == i) {
                 
                 LSJPaymentTypeCell *cell = [[LSJPaymentTypeCell alloc]initWithPaymentType:type subType:subType];
-                cell.selectionAction = ^(LSJPaymentType paymentType){
+                cell.selectionAction = ^(QBPayType paymentType){
                     @strongify(self);
                     [self selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
                 };

@@ -6,9 +6,16 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "QBEncryptedURLRequest.h"
 
-@interface LSJProgramModel : NSObject
+@interface LSJCommentModel : NSObject
+@property (nonatomic) NSString *content;
+@property (nonatomic) NSString *createAt;
+@property (nonatomic) NSString *icon;
+@property (nonatomic) NSString *userName;
+@end
+
+@interface LSJProgramModel : QBURLResponse
 @property (nonatomic) NSString *coverImg;
 @property (nonatomic) NSString *detailsCoverImg;
 @property (nonatomic) NSString *offUrl;
@@ -21,4 +28,7 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *videoUrl;
 @property (nonatomic) NSInteger type;
+@property (nonatomic) NSArray <LSJCommentModel *> *comments;
+@property (nonatomic) NSArray *imgurls;
+@property (nonatomic) NSString *userName;
 @end

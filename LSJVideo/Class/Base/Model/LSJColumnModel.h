@@ -6,10 +6,10 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 #import "LSJProgramModel.h"
 
-@interface LSJColumnModel : LSJURLResponse
+@interface LSJColumnModel : QBURLResponse
 @property (nonatomic) NSString *columnDesc;
 @property (nonatomic) NSInteger columnId;
 @property (nonatomic) NSString *columnImg;

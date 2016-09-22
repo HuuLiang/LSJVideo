@@ -24,8 +24,8 @@ static NSString *const kCategoryCellReusableIdentifier = @"categoryCellReusableI
 @end
 
 @implementation LSJHomeCategoryVC
-DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {

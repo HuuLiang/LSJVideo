@@ -21,8 +21,8 @@ static NSString * const kLecherProgramCellReusableIdentifier = @"kLecherProgramC
 @end
 
 @implementation LSJLechersDetailVC
-DefineLazyPropertyInitialization(LSJColumnModel, columnModel)
-DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
+QBDefineLazyPropertyInitialization(LSJColumnModel, columnModel)
+QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 
 
 - (instancetype)initWithColumn:(LSJColumnModel *)column
@@ -111,7 +111,7 @@ DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < _columnModel.programList.count) {
         LSJProgramModel * program = _columnModel.programList[indexPath.row];
-        [self pushToDetailVideoWithController:self programId:program.programId];
+        [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId programId:program];
     }
 }
 

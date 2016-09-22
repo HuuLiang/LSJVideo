@@ -47,11 +47,11 @@ static NSString *const kSuccessResponse = @"SUCCESS";
                              @"appV":[LSJUtil appVersion],
                              @"appVN":@"",
                              @"ccn":LSJ_PACKAGE_CERTIFICATE,
-                             @"operator":[LSJNetworkInfo sharedInfo].carriarName ?: @""};
+                             @"operator":[QBNetworkInfo sharedInfo].carriarName ?: @""};
     
-    BOOL success = [self requestURLPath:LSJ_ACTIVATION_URL withParams:params responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage) {
+    BOOL success = [self requestURLPath:LSJ_ACTIVATION_URL withParams:params responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage) {
         NSString *userId;
-        if (respStatus == LSJURLResponseSuccess) {
+        if (respStatus == QBURLResponseSuccess) {
             NSString *resp = self.response;
             NSArray *resps = [resp componentsSeparatedByString:@";"];
             
@@ -62,7 +62,7 @@ static NSString *const kSuccessResponse = @"SUCCESS";
         }
         
         if (handler) {
-            handler(respStatus == LSJURLResponseSuccess && userId, userId);
+            handler(respStatus == QBURLResponseSuccess && userId, userId);
         }
     }];
     return success;

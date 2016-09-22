@@ -13,5 +13,5 @@
 - (instancetype)initWithVideoURL:(NSURL *)videoURL;
 - (void)startToPlay;
 - (void)pause;
-@property (nonatomic,copy) LSJAction endPlayAction;
+@property (nonatomic,copy) QBAction endPlayAction;
 @end

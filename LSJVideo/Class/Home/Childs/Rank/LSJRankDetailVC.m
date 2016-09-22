@@ -24,9 +24,9 @@ static NSString *const kRankDetailCellReusableIdentifier = @"RankDetailCellReusa
 @end
 
 @implementation LSJRankDetailVC
-DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
-DefineLazyPropertyInitialization(LSJColumnModel, response)
+QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -105,7 +105,7 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.item];
-        [self pushToDetailVideoWithController:self programId:program.programId];
+        [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
     }
 }
 

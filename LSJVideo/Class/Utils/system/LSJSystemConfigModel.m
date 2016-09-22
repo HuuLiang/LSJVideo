@@ -35,26 +35,34 @@
     @weakify(self);
     BOOL success = [self requestURLPath:LSJ_SYSTEM_CONFIG_URL
                              withParams:@{@"type":@([LSJUtil deviceType])}
-                        responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
+                        responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);
                         
-                        DLog("%ld %@",respStatus,errorMessage);
+                        QBLog("%ld %@",respStatus,errorMessage);
                         
-                        if (respStatus == LSJURLResponseSuccess) {
+                        if (respStatus == QBURLResponseSuccess) {
                             LSJSystemConfigResponse *resp = self.response;
                             
                             [resp.confis enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                 LSJSystemConfig *config = obj;
                                 
-                                if ([config.name isEqualToString:@"PAY_AMOUNT"]) {
+                                if ([config.name isEqualToString:LSJ_SYSTEM_PAY_AMOUNT]) {
                                     [LSJSystemConfigModel sharedModel].payAmount = [config.value integerValue];
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_SVIP_PAY_AMOUNT]) {
+                                    [LSJSystemConfigModel sharedModel].svipPayAmount = [config.value integerValue];
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_CONTACT_NAME]) {
+                                    [LSJSystemConfigModel sharedModel].contacName = config.value;
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_CONTACT_SCHEME]) {
+                                    [LSJSystemConfigModel sharedModel].contactScheme = config.value;
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_MINE_IMG]) {
+                                    [LSJSystemConfigModel sharedModel].mineImgUrl = config.value;
                                 }
                             }];
                         }
                         
                         if (handler) {
-                            handler(respStatus == LSJURLResponseSuccess);
+                            handler(respStatus == QBURLResponseSuccess);
                         }
                     }];
     return success;

@@ -10,14 +10,14 @@
 
 @interface LSJPaymentTypeCell : UITableViewCell
 
-- (instancetype)initWithPaymentType:(LSJPaymentType)paymentType subType:(LSJSubPayType)subType;
+- (instancetype)initWithPaymentType:(QBPayType)paymentType subType:(QBPaySubType)subType;
 
 @property (nonatomic,retain) NSArray *availablePaymentTypes;
 @property (nonatomic) UIButton *chooseBtn;
 
 @property (nonatomic,copy) LSJSelectionAction selectionAction;
 
-@property (nonatomic)LSJPaymentType payType;
-@property (nonatomic)LSJSubPayType subType;
+@property (nonatomic)QBPayType payType;
+@property (nonatomic)QBPaySubType subType;
 
 @end

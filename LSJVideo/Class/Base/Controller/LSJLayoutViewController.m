@@ -17,10 +17,10 @@
 @implementation LSJLayoutViewController
 @synthesize layoutTableView = _layoutTableView;
 
-DefineLazyPropertyInitialization(NSMutableDictionary, cells)
-DefineLazyPropertyInitialization(NSMutableDictionary, cellHeights)
-DefineLazyPropertyInitialization(NSMutableDictionary, headerHeights)
-DefineLazyPropertyInitialization(NSMutableDictionary, headerTitles)
+QBDefineLazyPropertyInitialization(NSMutableDictionary, cells)
+QBDefineLazyPropertyInitialization(NSMutableDictionary, cellHeights)
+QBDefineLazyPropertyInitialization(NSMutableDictionary, headerHeights)
+QBDefineLazyPropertyInitialization(NSMutableDictionary, headerTitles)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -168,6 +168,6 @@ DefineLazyPropertyInitialization(NSMutableDictionary, headerTitles)
     if (cell.selectionStyle != UITableViewCellSelectionStyleNone) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-    SafelyCallBlock2(self.layoutTableViewAction, indexPath, cell);
+    QBSafelyCallBlock(self.layoutTableViewAction, indexPath, cell);
 }
 @end

@@ -6,15 +6,15 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 #import "LSJColumnModel.h"
 
-@interface LSJHotModelResponse : LSJURLResponse
+@interface LSJHotModelResponse : QBURLResponse
 @property (nonatomic) NSArray <LSJColumnModel *> *columnList;
 @end
 
-@interface LSJHotModel : LSJEncryptedURLRequest
+@interface LSJHotModel : QBEncryptedURLRequest
 
-- (BOOL)fetchHotInfoWithCompletionHadler:(LSJCompletionHandler)handler;
+- (BOOL)fetchHotInfoWithCompletionHadler:(QBCompletionHandler)handler;
 
 @end

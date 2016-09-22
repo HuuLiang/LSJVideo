@@ -8,22 +8,49 @@
 
 #import "LSJDetailModel.h"
 
+@implementation LSJProgramUrlModel
+
+@end
+
+
+@implementation LSJDetailResponse
+
+- (Class)commentsElementClass {
+    return [LSJCommentModel class];
+}
+
+- (Class)programUrlListElementClass {
+    return [LSJProgramUrlModel class];
+}
+
+- (Class)programClass {
+    return [LSJProgramModel class];
+}
+
+@end
+
+
 @implementation LSJDetailModel
 
++ (Class)responseClass {
+    return [LSJDetailResponse class];
+}
 
-- (BOOL)fetchProgramDetailInfoWithProgramId:(NSInteger)programId CompletionHandler:(LSJCompletionHandler)handler {
-    NSDictionary *params = @{@"programId":@(programId)};
+- (BOOL)fetchProgramDetailInfoWithColumnId:(NSInteger)columnId ProgramId:(NSInteger)programId isImageText:(BOOL)isImageText CompletionHandler:(QBCompletionHandler)handler {
+    NSDictionary *params = @{@"columnId":@(columnId),
+                             @"programId":@(programId)};
     
-    BOOL success = [self requestURLPath:LSJ_DETAIL_URL
+    BOOL success = [self requestURLPath:isImageText ? LSJ_WELFAREDETAIL_URL : LSJ_DETAIL_URL
                              withParams:params
-                        responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
+                        responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
     {
-        if (respStatus == LSJURLResponseSuccess) {
-            
+        LSJDetailModel *resp = nil;
+        if (respStatus == QBURLResponseSuccess) {
+            resp = self.response;
         }
         
         if (handler) {
-            handler(respStatus == LSJURLResponseSuccess,nil);
+            handler(respStatus == QBURLResponseSuccess,resp);
         }
         
     }];

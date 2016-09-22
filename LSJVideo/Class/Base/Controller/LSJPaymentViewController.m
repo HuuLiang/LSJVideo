@@ -8,10 +8,8 @@
 
 #import "LSJPaymentViewController.h"
 #import "LSJPaymentPopView.h"
-#import "LSJPaymentManager.h"
-#import "LSJPaymentConfig.h"
-#import "LSJPaymentModel.h"
 #import "LSJSystemConfigModel.h"
+#import <QBPaymentManager.h>
 
 @interface LSJPaymentViewController ()
 @property (nonatomic) LSJPaymentPopView *popView;
@@ -20,7 +18,7 @@
 @end
 
 @implementation LSJPaymentViewController
-DefineLazyPropertyInitialization(LSJBaseModel, baseModel)
+QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
 
 + (instancetype)sharedPaymentVC {
     static LSJPaymentViewController *_sharedPaymentVC;
@@ -38,32 +36,31 @@ DefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     
     NSMutableArray *availablePaymentTypes = [NSMutableArray array];
     
-    DLog("%@",[LSJPaymentConfig sharedConfig]);
     
-    LSJPaymentType wechatPaymentType = [[LSJPaymentManager sharedManager] wechatPaymentType];
-    if (wechatPaymentType != LSJPaymentTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(LSJPaymentTypeVIAPay),@"subType" : @(LSJSubPayTypeWeChat)}];
+    QBPayType wechatPaymentType = [[QBPaymentManager sharedManager] wechatPaymentType];
+    if (wechatPaymentType != QBPayTypeNone) {
+        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeVIAPay),@"subType" : @(QBPaySubTypeWeChat)}];
     }
     
-    LSJPaymentType alipayPaymentType = [[LSJPaymentManager sharedManager] alipayPaymentType];
-    if (alipayPaymentType != LSJPaymentTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(LSJPaymentTypeVIAPay),@"subType" : @(LSJSubPayTypeAlipay)}];
+    QBPayType alipayPaymentType = [[QBPaymentManager sharedManager] alipayPaymentType];
+    if (alipayPaymentType != QBPayTypeNone) {
+        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeVIAPay),@"subType" : @(QBPaySubTypeAlipay)}];
     }
     
-    LSJPaymentType qqPaymentType = [[LSJPaymentManager sharedManager] qqPaymentType];
-    if (qqPaymentType != LSJPaymentTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(LSJPaymentTypeVIAPay),@"subType" : @(LSJSubPayTypeQQ)}];
+    QBPayType qqPaymentType = [[QBPaymentManager sharedManager] qqPaymentType];
+    if (qqPaymentType != QBPayTypeNone) {
+        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeVIAPay),@"subType" : @(QBPaySubTypeQQ)}];
         
     }
-    LSJPaymentType cardPaymentType = [[LSJPaymentManager sharedManager] cardPayPaymentType];
-    if (cardPaymentType != LSJPaymentTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(LSJPaymentTypeIAppPay),@"subType" : @(LSJSubPayTypeNone)}];
+    QBPayType cardPaymentType = [[QBPaymentManager sharedManager] cardPayPaymentType];
+    if (cardPaymentType != QBPayTypeNone) {
+        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeIAppPay),@"subType" : @(QBPaySubTypeNone)}];
     }
     
     
     _popView = [[LSJPaymentPopView alloc] initWithAvailablePaymentTypes:availablePaymentTypes];
     @weakify(self);
-    _popView.paymentAction = ^(LSJPaymentType payType,LSJSubPayType subType) {
+    _popView.paymentAction = ^(QBPayType payType,QBPaySubType subType) {
         @strongify(self);
         
         [self payForPaymentType:payType subPaymentType:subType];
@@ -86,23 +83,64 @@ DefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     return _popView;
 }
 
-- (void)payForPaymentType:(LSJPaymentType)paymentType subPaymentType:(LSJSubPayType)subPaymentType {
-    LSJPaymentInfo *paymentInfo = [[LSJPaymentManager sharedManager] startPaymentWithType:paymentType
-                                                                                subType:subPaymentType
-                                                                                  price:[LSJSystemConfigModel sharedModel].payAmount
-                                                                              baseModel:self.baseModel
-                                                                      completionHandler:^(PAYRESULT payResult, LSJPaymentInfo *paymentInfo)
-                                  {
-                                      [self notifyPaymentResult:payResult withPaymentInfo:paymentInfo];
-                                      
-                                  }];
+- (void)payForPaymentType:(QBPayType)paymentType subPaymentType:(QBPaySubType)subPaymentType {
     
-    DLog("%@",paymentInfo);
+    
+//    LSJPaymentInfo *paymentInfo = [[LSJPaymentManager sharedManager] startPaymentWithType:paymentType
+//                                                                                subType:subPaymentType
+//                                                                                  price:[LSJSystemConfigModel sharedModel].payAmount
+//                                                                              baseModel:self.baseModel
+//                                                                      completionHandler:^(PAYRESULT payResult, LSJPaymentInfo *paymentInfo)
+//                                  {
+//                                      [self notifyPaymentResult:payResult withPaymentInfo:paymentInfo];
+//                                      
+//                                  }];
+    
+    QBPaymentInfo *paymentInfo = [self createPaymentInfoWithPaymentType:paymentType subPaymentType:subPaymentType];
+    
+    [[QBPaymentManager sharedManager] startPaymentWithPaymentInfo:paymentInfo completionHandler:^(QBPayResult payResult, QBPaymentInfo *paymentInfo) {
+        
+        [self notifyPaymentResult:payResult withPaymentInfo:paymentInfo];
+        
+    }];
+    
     if (paymentInfo) {
 //        [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo forPayAction:LSJStatsPayActionGoToPay andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
     }
     
 }
+
+- (QBPaymentInfo *)createPaymentInfoWithPaymentType:(QBPayType)payType subPaymentType:(QBPaySubType)subPayType {
+    NSUInteger price = 0;
+    
+    price = [LSJSystemConfigModel sharedModel].payAmount;
+    
+    NSString *channelNo = LSJ_CHANNEL_NO;
+    channelNo = [channelNo substringFromIndex:channelNo.length-14];
+    NSString *uuid = [[NSUUID UUID].UUIDString.md5 substringWithRange:NSMakeRange(8, 16)];
+    NSString *orderNo = [NSString stringWithFormat:@"%@_%@", channelNo, uuid];
+    
+    QBPaymentInfo *paymentInfo = [[QBPaymentInfo alloc] init];
+    paymentInfo.orderId = orderNo;
+    paymentInfo.orderPrice = price;
+    paymentInfo.contentId = self.baseModel.programId;
+    paymentInfo.contentType = self.baseModel.programType;
+    paymentInfo.contentLocation = @(self.baseModel.programLocation + 1);
+    paymentInfo.columnId = self.baseModel.realColumnId;
+    paymentInfo.columnType = self.baseModel.channelType;
+    paymentInfo.payPointType = 1;
+    paymentInfo.paymentTime = [LSJUtil currentTimeString];
+    paymentInfo.paymentType = payType;
+    paymentInfo.paymentSubType = subPayType;
+    paymentInfo.paymentResult = QBPayResultUnknown;
+    paymentInfo.paymentStatus = QBPayStatusPaying;
+    paymentInfo.reservedData = [LSJUtil paymentReservedData];
+    paymentInfo.orderDescription = @"VIP";
+    paymentInfo.userId = [LSJUtil userId];
+    
+    return paymentInfo;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -171,30 +209,30 @@ DefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     }];
 }
 
-- (void)notifyPaymentResult:(PAYRESULT)result withPaymentInfo:(LSJPaymentInfo *)paymentInfo {
+- (void)notifyPaymentResult:(QBPayResult)result withPaymentInfo:(QBPaymentInfo *)paymentInfo {
     
-    NSDateFormatter *dateFormmater = [[NSDateFormatter alloc] init];
-    [dateFormmater setDateFormat:@"yyyyMMddHHmmss"];
+//    NSDateFormatter *dateFormmater = [[NSDateFormatter alloc] init];
+//    [dateFormmater setDateFormat:@"yyyyMMddHHmmss"];
     
-    paymentInfo.paymentResult = @(result);
-    paymentInfo.paymentStatus = @(LSJPaymentStatusNotProcessed);
-    paymentInfo.paymentTime = [dateFormmater stringFromDate:[NSDate date]];
-    [paymentInfo save];
+//    paymentInfo.paymentResult = @(result);
+//    paymentInfo.paymentStatus = @(LSJPaymentStatusNotProcessed);
+//    paymentInfo.paymentTime = [dateFormmater stringFromDate:[NSDate date]];
+//    [paymentInfo save];
     
-    if (result == PAYRESULT_SUCCESS) {
+    if (result == QBPayResultSuccess) {
         [LSJUtil registerVip];
         [self hidePayment];
         [[CRKHudManager manager] showHudWithText:@"支付成功"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPaidNotificationName object:paymentInfo];
         
         // [self.popView reloadData];
-    } else if (result == PAYRESULT_ABANDON) {
+    } else if (result == QBPayResultFailure) {
         [[CRKHudManager manager] showHudWithText:@"支付取消"];
     } else {
         [[CRKHudManager manager] showHudWithText:@"支付失败"];
     }
     
-    [[LSJPaymentModel sharedModel] commitPaymentInfo:paymentInfo];
+//    [[LSJPaymentModel sharedModel] commitPaymentInfo:paymentInfo];
 //    [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo
 //                                               forPayAction:LSJStatsPayActionPayBack
 //                                                andTabIndex:[LSJUtil currentTabPageIndex]

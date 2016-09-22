@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LSJPaymentInfo.h"
+#import "QBPaymentInfo.h"
 
 extern NSString *const kPaymentInfoKeyName;
 
@@ -22,18 +22,22 @@ extern NSString *const kPaymentInfoKeyName;
 + (NSString *)appVersion;
 + (LSJDeviceType)deviceType;
 
++ (BOOL)isIpad;
+
 + (void)registerVip;
++ (void)registerSVip;
 + (BOOL)isVip;
++ (BOOL)isSVip;
 
 + (NSUInteger)launchSeq;
 + (void)accumateLaunchSeq;
 
 + (void)checkAppInstalledWithBundleId:(NSString *)bundleId completionHandler:(void (^)(BOOL))handler;
 
-+ (NSArray<LSJPaymentInfo *> *)allPaymentInfos;
-+ (NSArray<LSJPaymentInfo *> *)payingPaymentInfos;
-+ (NSArray<LSJPaymentInfo *> *)paidNotProcessedPaymentInfos;
-+ (LSJPaymentInfo *)successfulPaymentInfo;
++ (NSArray<QBPaymentInfo *> *)allPaymentInfos;
++ (NSArray<QBPaymentInfo *> *)payingPaymentInfos;
++ (NSArray<QBPaymentInfo *> *)paidNotProcessedPaymentInfos;
++ (QBPaymentInfo *)successfulPaymentInfo;
 
 + (NSDate *)dateFromString:(NSString *)dateString;
 

@@ -17,4 +17,11 @@
 @property (nonatomic) NSInteger programLocation;
 @property (nonatomic) NSInteger spec;
 
++ (LSJBaseModel *)createModelWithProgramId:(NSNumber *)programId
+                               ProgramType:(NSNumber *)programType
+                              RealColumnId:(NSNumber *)realColumnId
+                               ChannelType:(NSNumber *)channelType
+                            PrgramLocation:(NSInteger)programLocation
+                                      Spec:(NSInteger)spec;
+
 @end

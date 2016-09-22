@@ -14,7 +14,6 @@
 #import "UIImage+Utilities.h"
 #import "NSMutableDictionary+Safety.h"
 #import "NSObject+Properties.h"
-#import "NSDictionary+LTSign.h"
 #import "NSString+crypt.h"
 #import "NSString+StringHeight.h"
 #import "UIView+Loading.h"
@@ -27,5 +26,8 @@
 #import "UIImage+color.h"
 #import "UIImageView+YPBAnimation.h"
 #import "NSObject+DictionaryRepresentation.h"
+
+#import <NSDictionary+QBSign.h>
+#import <NSString+md5.h>
 
 #endif /* LSJExtensions_h */

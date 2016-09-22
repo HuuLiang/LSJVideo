@@ -6,9 +6,9 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 #import "LSJColumnModel.h"
 
-@interface LSJWelfareModel : LSJEncryptedURLRequest
-- (BOOL)fetchWelfareInfoWithCompletionHandler:(LSJCompletionHandler)handler;
+@interface LSJWelfareModel : QBEncryptedURLRequest
+- (BOOL)fetchWelfareInfoWithCompletionHandler:(QBCompletionHandler)handler;
 @end

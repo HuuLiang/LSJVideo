@@ -17,9 +17,11 @@
     LSJDayTableView *_dayTableView;
     NSIndexPath * _currentIndexPath;
 }
+@property (nonatomic) NSMutableArray *userContacts;
 @end
 
 @implementation LSJDayCell
+QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -126,12 +128,26 @@
     _titleLabel.text = titleStr;
 }
 
-- (void)setContactCount:(NSInteger)contactCount {
-    _commandCountLabel.text = [NSString stringWithFormat:@"热门评论:%ld",contactCount];
+- (void)setContact:(NSString *)contact {
+    _commandCountLabel.text = contact;
 }
 
-- (void)setUserContacts:(NSArray *)userContacts {
-    _userContacts = userContacts;
+- (void)setUserComments:(NSArray<LSJCommentModel *> *)userComments {
+    [self.userContacts removeAllObjects];
+    [self.userContacts addObjectsFromArray:userComments];
+    
+    if (userComments.count > 3) {
+        if (userComments.count == 4) {
+            [self.userContacts addObject:userComments[0]];
+        } else if (userComments.count == 5) {
+            [self.userContacts addObject:userComments[0]];
+            [self.userContacts addObject:userComments[1]];
+        } else if (userComments.count >= 6) {
+            [self.userContacts addObject:userComments[0]];
+            [self.userContacts addObject:userComments[1]];
+            [self.userContacts addObject:userComments[2]];
+        }
+    }
     
     [_dayTableView reloadData];
 }
@@ -147,7 +163,7 @@
 }
 
 - (void)scrollTitle {
-    if (_userContacts.count <= 6 || !_start) {
+    if (_userContacts.count < 4 || !_start) {
         return;
     }
     
@@ -167,7 +183,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    DLog(@"%@",NSStringFromCGRect(_titleLabel.frame));
+    QBLog(@"%@",NSStringFromCGRect(_titleLabel.frame));
     
     CAShapeLayer *line = [CAShapeLayer layer];
     
@@ -192,7 +208,9 @@
 //    DLog(@"indexPath:%ld",indexPath.row);
     LSJDayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDayTableViewCellReusableIdentifier forIndexPath:indexPath];
     if (indexPath.row < _userContacts.count) {
-        cell.userStr = _userContacts[indexPath.row];
+        LSJCommentModel *comment = _userContacts[indexPath.row];
+        cell.userStr = comment.userName;
+        cell.content = comment.content;
         return cell;
     }
     return nil;

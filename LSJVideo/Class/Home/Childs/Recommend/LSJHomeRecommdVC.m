@@ -37,8 +37,8 @@ static NSString *const kHomeSectionHeaderReusableIdentifier = @"HomeSectionHeade
 @end
 
 @implementation LSJHomeRecommdVC
-DefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -242,7 +242,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         LSJColumnModel *column = _dataSource[indexPath.section];
         if (indexPath.item < column.programList.count) {
             LSJProgramModel *program = column.programList[indexPath.item];
-            [self pushToDetailVideoWithController:self programId:program.programId];
+            [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
         }
     }
 }
@@ -330,7 +330,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     for (LSJColumnModel *column in _dataSource) {
         if (column.type == 4 && index < column.programList.count) {
             LSJProgramModel *program = column.programList[index];
-            [self pushToDetailVideoWithController:self programId:program.programId];
+            [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
         }
     }
 }

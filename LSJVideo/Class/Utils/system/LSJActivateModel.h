@@ -6,11 +6,11 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 
 typedef void (^LSJActivateHandler)(BOOL success, NSString *userId);
 
-@interface LSJActivateModel : LSJEncryptedURLRequest
+@interface LSJActivateModel : QBEncryptedURLRequest
 
 + (instancetype)sharedModel;
 

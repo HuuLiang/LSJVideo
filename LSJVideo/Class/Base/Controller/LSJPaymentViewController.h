@@ -19,5 +19,5 @@
 
 - (void)hidePayment;
 
-- (void)notifyPaymentResult:(PAYRESULT)result withPaymentInfo:(LSJPaymentInfo *)paymentInfo;
+- (void)notifyPaymentResult:(QBPayResult)result withPaymentInfo:(QBPaymentInfo *)paymentInfo;
 @end

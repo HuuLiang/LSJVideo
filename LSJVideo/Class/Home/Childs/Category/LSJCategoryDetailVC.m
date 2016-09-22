@@ -24,8 +24,8 @@ static NSString *const kCategoryDetailsCellReusableIdentifier = @"categoryDetail
 @end
 
 @implementation LSJCategoryDetailVC
-DefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
-DefineLazyPropertyInitialization(LSJColumnModel, response)
+QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
+QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -112,7 +112,7 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.item];
-        [self pushToDetailVideoWithController:self programId:program.programId];
+        [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
     }
 }
 

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 #import "LSJColumnModel.h"
 
-@interface LSJProgramConfigModel : LSJEncryptedURLRequest
-- (BOOL)fetchProgramsInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler;
+@interface LSJProgramConfigModel : QBEncryptedURLRequest
+- (BOOL)fetchProgramsInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(QBCompletionHandler)handler;
 @end

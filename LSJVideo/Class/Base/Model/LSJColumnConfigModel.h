@@ -6,14 +6,20 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "LSJEncryptedURLRequest.h"
+#import "QBEncryptedURLRequest.h"
 #import "LSJColumnModel.h"
 
-@interface LSJColumnConfigResponse : LSJURLResponse
+
+@interface LSJColumnConfigResponse : QBURLResponse
 @property (nonatomic) NSArray <LSJColumnModel *> *columnList;
 @end
 
 
-@interface LSJColumnConfigModel : LSJEncryptedURLRequest
-- (BOOL)fetchColumnsInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(LSJCompletionHandler)handler;
+@interface LSJColumnConfigModel : QBEncryptedURLRequest
+- (BOOL)fetchColumnsInfoWithColumnId:(NSInteger)columnId IsProgram:(BOOL)isProgram CompletionHandler:(QBCompletionHandler)handler;
+@end
+
+
+@interface LSJColumnDayModel : QBEncryptedURLRequest
+- (BOOL)fetchDayInfoWithColumnId:(NSInteger)columnId CompletionHandler:(QBCompletionHandler)handler;
 @end

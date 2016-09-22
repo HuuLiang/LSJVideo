@@ -9,43 +9,6 @@
 #ifndef LSJCommonDef_h
 #define LSJCommonDef_h
 
-#ifdef  DEBUG
-#define DLog(fmt,...) {NSLog((@"%s [Line:%d]" fmt),__PRETTY_FUNCTION__,__LINE__,##__VA_ARGS__);}
-#else
-#define DLog(...)
-#endif
-
-
-typedef NS_ENUM(NSUInteger, LSJPaymentType) {
-    LSJPaymentTypeNone,
-    LSJPaymentTypeAlipay = 1001,
-    LSJPaymentTypeWeChatPay = 1008,
-    LSJPaymentTypeIAppPay = 1009,
-    LSJPaymentTypeVIAPay = 1010, //首游
-    LSJPaymentTypeSPay = 1012,  //威付通
-    LSJPaymentTypeHTPay = 1015, //海豚
-    LSJPaymentTypeMingPay = 1018,//明鹏支付
-    LSJPaymentTypeDXTXPay = 1019, //盾行天下
-    LSJPaymentTypeWeiYingPay = 1022, //微赢支付
-    LSJPaymentTypeQQPay = 1099
-
-};
-typedef NS_ENUM(NSUInteger, LSJSubPayType) {
-    LSJSubPayTypeNone = 0,
-    LSJSubPayTypeWeChat = 1 << 0,
-    LSJSubPayTypeAlipay = 1 << 1,
-    LSJSubPayUPPay = 1 << 2,
-    LSJSubPayTypeQQ = 1 << 3
-};
-
-typedef NS_ENUM(NSInteger, PAYRESULT)
-{
-    PAYRESULT_SUCCESS   = 0,
-    PAYRESULT_FAIL      = 1,
-    PAYRESULT_ABANDON   = 2,
-    PAYRESULT_UNKNOWN   = 3
-};
-
 typedef NS_ENUM(NSUInteger, LSJPaymentPopViewSection) {
     HeaderSection,
     PayPointSection,
@@ -70,26 +33,6 @@ typedef NS_ENUM(NSUInteger, LSJDeviceType) {
 };
 
 
-#define DefineLazyPropertyInitialization(propertyType, propertyName) \
--(propertyType *)propertyName { \
-if (_##propertyName) { \
-return _##propertyName; \
-} \
-_##propertyName = [[propertyType alloc] init]; \
-return _##propertyName; \
-}
-
-#define SafelyCallBlock(block) if (block) block();
-#define SafelyCallBlock1(block, arg) if (block) block(arg);
-#define SafelyCallBlock2(block, arg1, arg2) if (block) block(arg1, arg2);
-#define SafelyCallBlock3(block, arg1, arg2, arg3) if (block) block(arg1, arg2, arg3);
-#define SafelyCallBlock4(block,...) \
-if (block) block(__VA_ARGS__);
-
-
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight [[UIScreen mainScreen]bounds].size.height
-
 #define kDefaultTextColor [UIColor colorWithWhite:0.5 alpha:1]
 #define kDefaultBackgroundColor [UIColor colorWithWhite:0.97 alpha:1]
 #define kDefaultPhotoBlurRadius (5)
@@ -104,20 +47,17 @@ if (block) block(__VA_ARGS__);
 #define kHeight(height) kScreenHeight * height / 1334.
 
 
-#define IS_VIP         @"is_LSJ_vip"
+#define LSJ_VIP         @"IS_LSJ_VIP"
+#define LSJ_SVIP        @"IS_LSJ_SVIP"
 
-typedef void (^LSJAction)(id obj);
-typedef void (^LSJSelectionAction)(LSJPaymentType paymentType);
+typedef void (^LSJSelectionAction)(QBPayType paymentType);
 typedef void (^LSJProgressHandler)(double progress);
-typedef void (^LSJCompletionHandler)(BOOL success, id obj);
 
 
-@class LSJPaymentInfo;
-typedef void (^LSJPaymentCompletionHandler)(PAYRESULT payResult, LSJPaymentInfo *paymentInfo);
-
-//#define kBigFont  [UIFont systemFontOfSize:MIN(18,kScreenWidth*0.05)]
-//#define kMediumFont [UIFont systemFontOfSize:MIN(16, kScreenWidth*0.045)]
-//#define kSmallFont [UIFont systemFontOfSize:MIN(14, kScreenWidth*0.04)]
-//#define kExtraSmallFont [UIFont systemFontOfSize:MIN(12, kScreenWidth*0.035)]
+#define LSJ_SYSTEM_CONTACT_NAME     @"CONTACT_NAME"
+#define LSJ_SYSTEM_CONTACT_SCHEME   @"CONTACT_SCHEME"
+#define LSJ_SYSTEM_MINE_IMG                @"MINE_IMG"
+#define LSJ_SYSTEM_PAY_AMOUNT              @"PAY_AMOUNT"
+#define LSJ_SYSTEM_SVIP_PAY_AMOUNT         @"SVIP_PAY_AMOUNT"
 
 #endif /* LSJCommonDef_h */

@@ -15,7 +15,7 @@
     UIImageView *_imgVB;
     UIImageView *_imgVC;
     UILabel *_timeLabel;
-    UILabel *_countLabel;
+//    UILabel *_countLabel;
     UILabel *_commandLabel;
 }
 @end
@@ -41,15 +41,15 @@
         [bgView addSubview:_titleLabel];
         
         _imgVA = [[UIImageView alloc] init];
-        _imgVA.backgroundColor = [UIColor redColor];
+//        _imgVA.backgroundColor = [UIColor redColor];
         [bgView addSubview:_imgVA];
         
         _imgVB = [[UIImageView alloc] init];
-        _imgVB.backgroundColor = [UIColor redColor];
+//        _imgVB.backgroundColor = [UIColor redColor];
         [bgView addSubview:_imgVB];
         
         _imgVC = [[UIImageView alloc] init];
-        _imgVC.backgroundColor = [UIColor redColor];
+//        _imgVC.backgroundColor = [UIColor redColor];
         [bgView addSubview:_imgVC];
         
         _timeLabel = [[UILabel alloc] init];
@@ -58,12 +58,12 @@
         _timeLabel.backgroundColor = [UIColor cyanColor];
         [bgView addSubview:_timeLabel];
         
-        _countLabel = [[UILabel alloc] init];
-        _countLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-        _countLabel.font = [UIFont systemFontOfSize:kWidth(24)];
-        _countLabel.textAlignment = NSTextAlignmentRight;
-        _countLabel.backgroundColor = [UIColor blueColor];
-        [bgView addSubview:_countLabel];
+//        _countLabel = [[UILabel alloc] init];
+//        _countLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+//        _countLabel.font = [UIFont systemFontOfSize:kWidth(24)];
+//        _countLabel.textAlignment = NSTextAlignmentRight;
+//        _countLabel.backgroundColor = [UIColor blueColor];
+//        [bgView addSubview:_countLabel];
         
         _commandLabel = [[UILabel alloc] init];
         _commandLabel.textColor = [UIColor colorWithHexString:@"#666666"];
@@ -107,16 +107,16 @@
                 make.bottom.equalTo(bgView);
             }];
 
-            [_countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(_imgVC.mas_bottom);
-                make.bottom.equalTo(bgView);
-                make.right.equalTo(_imgVC.mas_centerX);
-            }];
+//            [_countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.top.equalTo(_imgVC.mas_bottom);
+//                make.bottom.equalTo(bgView);
+//                make.right.equalTo(_imgVC.mas_centerX);
+//            }];
             
             [_commandLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_imgVC.mas_bottom);
                 make.bottom.equalTo(bgView);
-                make.left.equalTo(_imgVC.mas_centerX);
+                make.right.equalTo(bgView).offset(-kWidth(15));
             }];
         }
     }
@@ -128,23 +128,19 @@
 }
 
 - (void)setImgAUrlStr:(NSString *)imgAUrlStr {
-    
+    [_imgVA sd_setImageWithURL:[NSURL URLWithString:imgAUrlStr]];
 }
 
 - (void)setImgBUrlStr:(NSString *)imgBUrlStr {
-    
+    [_imgVB sd_setImageWithURL:[NSURL URLWithString:imgBUrlStr]];
 }
 
 - (void)setImgCUrlStr:(NSString *)imgCUrlStr {
-    
+    [_imgVC sd_setImageWithURL:[NSURL URLWithString:imgCUrlStr]];
 }
 
 - (void)setTimeStr:(NSString *)timeStr {
     _timeLabel.text = timeStr;
-}
-
-- (void)setCountStr:(NSString *)countStr {
-    _countLabel.text = countStr;
 }
 
 - (void)setCommandStr:(NSString *)commandStr {

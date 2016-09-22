@@ -15,5 +15,5 @@
 @interface LSJDetailVideoPhotosCell : UITableViewCell
 @property (nonatomic) NSArray *dataSource;
 
-@property (nonatomic) LSJAction selectedIndex;
+@property (nonatomic) QBAction selectedIndex;
 @end

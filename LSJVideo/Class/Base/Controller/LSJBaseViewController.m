@@ -10,6 +10,10 @@
 #import "LSJDetailVideoVC.h"
 #import "LSJPhotoBrowseView.h"
 #import "LSJPaymentViewController.h"
+#import "LSJVideoPlayerController.h"
+#import <AVFoundation/AVPlayer.h>
+#import <AVKit/AVKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface LSJBaseViewController ()
 {
@@ -40,24 +44,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotate {
-    return NO;
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-- (void)pushToDetailVideoWithController:(UIViewController *)VC programId:(NSInteger )programId {
-    LSJDetailVideoVC *detailVC = [[LSJDetailVideoVC alloc] initWithProgram:programId];
+- (void)pushToDetailVideoWithController:(UIViewController *)VC ColumnId:(NSInteger)columnId programId:(LSJProgramModel *)program {
+    LSJDetailVideoVC *detailVC = [[LSJDetailVideoVC alloc] initWithColumnId:columnId Program:program];
     [VC.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (void)playPhotoUrlWithInfo:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index {
+- (void)playPhotoUrlWithModel:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index {
     if ([LSJUtil isVip]) {
         [UIAlertView bk_showAlertViewWithTitle:@"非VIP用户只能浏览小图哦" message:@"开通VIP,高清大图即刻欣赏" cancelButtonTitle:@"再考虑看看" otherButtonTitles:@[@"立即开通"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 //支付弹窗
+                [self payWithBaseModelInfo:model];
             }
         }];
     } else {
@@ -75,17 +72,62 @@
     }
 }
 
-- (void)playVideoWithUrl:(NSString *)videoUrlStr {
+- (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel {
     if (![LSJUtil isVip]) {
-        [self payWithInfo:@"ddd"];
+        [self payWithBaseModelInfo:baseModel];
     } else {
-        
+        if (baseModel.spec == 4) {
+            LSJVideoPlayerController *videoVC = [[LSJVideoPlayerController alloc] initWithVideo:videoUrlStr];
+            [self presentViewController:videoVC animated:YES completion:nil];
+        } else {
+            UIViewController *videoPlayVC = [self playerVCWithVideo:videoUrlStr];
+            videoPlayVC.hidesBottomBarWhenPushed = YES;
+            [self presentViewController:videoPlayVC animated:YES completion:nil];
+
+        }
+
     }
 }
 
-- (void)payWithInfo:(NSString *)info {
-    [[LSJPaymentViewController sharedPaymentVC] popupPaymentInView:self.view.window baseModel:nil withCompletionHandler:nil];
+- (UIViewController *)playerVCWithVideo:(NSString *)videoUrl {
+    UIViewController *retVC;
+    if (NSClassFromString(@"AVPlayerViewController")) {
+        AVPlayerViewController *playerVC = [[AVPlayerViewController alloc] init];
+        playerVC.player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:videoUrl]];
+        [playerVC aspect_hookSelector:@selector(viewDidAppear:)
+                          withOptions:AspectPositionAfter
+                           usingBlock:^(id<AspectInfo> aspectInfo){
+                               AVPlayerViewController *thisPlayerVC = [aspectInfo instance];
+                               [thisPlayerVC.player play];
+                           } error:nil];
+        
+        retVC = playerVC;
+    } else {
+        retVC = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:videoUrl]];
+    }
+    
+    [retVC aspect_hookSelector:@selector(supportedInterfaceOrientations) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo){
+        UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskAll;
+        [[aspectInfo originalInvocation] setReturnValue:&mask];
+    } error:nil];
+    
+    [retVC aspect_hookSelector:@selector(shouldAutorotate) withOptions:AspectPositionInstead usingBlock:^(id<AspectInfo> aspectInfo){
+        BOOL rotate = YES;
+        [[aspectInfo originalInvocation] setReturnValue:&rotate];
+    } error:nil];
+    return retVC;
 }
 
+- (void)payWithBaseModelInfo:(LSJBaseModel *)baseMdel {
+    [[LSJPaymentViewController sharedPaymentVC] popupPaymentInView:self.view.window baseModel:baseMdel withCompletionHandler:nil];
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 @end

@@ -9,10 +9,11 @@
 #import "LSJMineViewController.h"
 #import "LSJTableViewCell.h"
 #import "LSJWebViewController.h"
-
+#import "LSJBannerVipCell.h"
+#import "LSJSystemConfigModel.h"
 @interface LSJMineViewController ()
 {
-    LSJTableViewCell *_bannerCell;
+    LSJBannerVipCell *_bannerCell;
     LSJTableViewCell *_vipCell;
     LSJTableViewCell *_statementCell;
     LSJTableViewCell *_protocolCell;
@@ -48,7 +49,8 @@
     self.layoutTableViewAction = ^(NSIndexPath *indexPath, UITableViewCell *cell) {
         @strongify(self);
         if (cell == self->_vipCell || cell == self->_bannerCell) {
-            
+            LSJBaseModel *model = [[LSJBaseModel alloc] init];
+            [self payWithBaseModelInfo:model];
         } else if (cell == self->_statementCell) {
             LSJWebViewController *webVC = [[LSJWebViewController alloc] initWithURL:[NSURL URLWithString:LSJ_STATEMENT_URL]];
             webVC.title = @"免责声明";
@@ -65,7 +67,6 @@
             }];
         }
     };
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,10 +76,9 @@
 - (void)initCells {
     NSUInteger section = 0;
     
-    _bannerCell = [[LSJTableViewCell alloc] init];
+    _bannerCell = [[LSJBannerVipCell alloc] init];
     _bannerCell.accessoryType = UITableViewCellAccessoryNone;
-    _bannerCell.backgroundColor = [UIColor colorWithHexString:@"#d8d8d8"];
-    _bannerCell.backgroundImageView.image = [UIImage imageNamed:@""];
+    _bannerCell.bgUrl = [LSJSystemConfigModel sharedModel].mineImgUrl;
     [self setLayoutCell:_bannerCell cellHeight:kScreenWidth*0.4 inRow:0 andSection:section++];
     
 //    [self setHeaderHeight:10 inSection:section];

@@ -27,8 +27,8 @@
 @end
 
 @implementation LSJHomeViewController
-DefineLazyPropertyInitialization(LSJHomeModel, homeModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJHomeModel, homeModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,28 +73,31 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     //设置所有子controller
     NSMutableArray *contrors = [NSMutableArray array];
-    for (LSJHomeColumnsModel *columnModel in _dataSource) {
-        if ([columnModel.name isEqualToString:@"日狗"]) {
+    
+    for (NSInteger i = 0; i < 4; i++) {
+        LSJHomeColumnsModel *columnModel = _dataSource[i];
+        if (i == 0) {
             LSJHomeDayVC *dayVC = [[LSJHomeDayVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:dayVC];
-        } else if ([columnModel.name isEqualToString:@"推荐"]) {
+        } else if (i == 1) {
             LSJHomeRecommdVC *recommdVC = [[LSJHomeRecommdVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:recommdVC];
-        } else if ([columnModel.name isEqualToString:@"分类"]) {
+        } else if (i == 2) {
             LSJHomeCategoryVC *cateVC = [[LSJHomeCategoryVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:cateVC];
-        } else if ([columnModel.name isEqualToString:@"排行"]) {
+        } else if (i == 3) {
             LSJHomeRankVC *rankVC = [[LSJHomeRankVC alloc] initWithColumnId:columnModel.columnId];
             [contrors addObject:rankVC];
         }
     }
+
     _cursorView.controllers = [contrors copy];
     //设置字体和颜色
     _cursorView.normalColor = [UIColor colorWithHexString:@"#555555"];
-    _cursorView.normalFont = [UIFont systemFontOfSize:kWidth(34.)];
+    _cursorView.normalFont = [UIFont systemFontOfSize:[LSJUtil isIpad] ? 21 : kWidth(34)];
     
     _cursorView.selectedColor = [UIColor colorWithHexString:@"#222222"];
-    _cursorView.selectedFont = [UIFont systemFontOfSize:kWidth(38.)];
+    _cursorView.selectedFont = [UIFont systemFontOfSize:[LSJUtil isIpad] ? 23 : kWidth(38)];
     _cursorView.backgroundColor = [UIColor clearColor];
     
     _cursorView.lineView.backgroundColor = [UIColor colorWithHexString:@"#222222"];
@@ -113,8 +116,8 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"精品专区" forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:kWidth(24.)];
-    btn.layer.cornerRadius = kWidth(26.);
+    btn.titleLabel.font = [UIFont systemFontOfSize:[LSJUtil isIpad] ? 20 : kWidth(30)];
+    btn.layer.cornerRadius = [LSJUtil isIpad] ? 10 : kWidth(20);
     btn.layer.masksToBounds = YES;
     btn.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     [btn setTitleColor:[UIColor colorWithHexString:@"#555555"] forState:UIControlStateNormal];
@@ -134,8 +137,8 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
         
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(view);
-            make.right.equalTo(view).offset(-kWidth(14.));
-            make.size.mas_equalTo(CGSizeMake(kWidth(128.), kWidth(52.)));
+            make.right.equalTo(view).offset(-kWidth(20));
+            make.size.mas_equalTo([LSJUtil isIpad] ?CGSizeMake(110, 30) : CGSizeMake(kWidth(140), kWidth(60)));
         }];
     };
     

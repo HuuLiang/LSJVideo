@@ -17,13 +17,13 @@ static NSString *const kDayCellReusableIdentifier = @"kDayCellReusableIdentifier
     NSInteger _columnId;
     UITableView *_layoutTableView;
 }
-@property (nonatomic)LSJColumnConfigModel *columnModel;
+@property (nonatomic) LSJColumnDayModel * columnModel;
 @property (nonatomic)NSMutableArray *dataSource;
 @end
 
 @implementation LSJHomeDayVC
-DefineLazyPropertyInitialization(LSJColumnConfigModel, columnModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJColumnDayModel, columnModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -64,7 +64,7 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)loadData {
     @weakify(self);
-    [self.columnModel fetchColumnsInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
+    [self.columnModel fetchDayInfoWithColumnId:_columnId CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
         if (success) {
             [self.dataSource removeAllObjects];
@@ -78,14 +78,16 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return _dataSource.count;
-    return 10;
+    return _dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJDayCell *cell = [tableView dequeueReusableCellWithIdentifier:kDayCellReusableIdentifier forIndexPath:indexPath];
-    if (indexPath.row < 10) {
-
+    if (indexPath.row < _dataSource.count) {
+        LSJProgramModel *program = _dataSource[indexPath.row];
+        cell.imgUrlStr = program.coverImg;
+        cell.titleStr = program.title;
+        cell.contact = program.spare;
         return cell;
     }
     return nil;
@@ -93,24 +95,22 @@ DefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJDayCell * dayCell = (LSJDayCell *)cell;
-    if (indexPath.row < 10) {
-        dayCell.imgUrlStr = @"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg";
-        dayCell.titleStr = @"混血空姐与富二代男友久别激情";
-        dayCell.contactCount = 569;
-        dayCell.userContacts = @[@"11111",@"22222",@"33333",@"44444",@"55555",@"66666",@"77777",@"88888",@"11111",@"22222",@"33333"];
+    if (indexPath.row < _dataSource.count) {
+        LSJProgramModel *program = _dataSource[indexPath.row];
+        dayCell.userComments = program.comments;
         dayCell.start = YES;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJDayCell *dayCell = (LSJDayCell *)cell;
-    if (indexPath.row < 10) {
+    if (indexPath.row < _dataSource.count) {
         dayCell.start = NO;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 10) {
+    if (indexPath.row == _dataSource.count - 1) {
         return kScreenWidth * 14 / 15 - kWidth(20);
     } else {
         return kScreenWidth * 14 / 15;

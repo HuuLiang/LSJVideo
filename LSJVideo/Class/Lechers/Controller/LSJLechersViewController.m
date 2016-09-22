@@ -22,8 +22,8 @@ static  NSString *const kLechersListCellReusableIdentifier = @"kLechersListCellR
 @end
 
 @implementation LSJLechersViewController
-DefineLazyPropertyInitialization(LSJLecherModel, lecherModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJLecherModel, lecherModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidLoad {
     [super viewDidLoad];

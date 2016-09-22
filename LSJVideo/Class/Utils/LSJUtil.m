@@ -20,7 +20,8 @@ static NSString *const kRegisterKeyName         = @"LSJ_register_keyname";
 static NSString *const kUserAccessUsername      = @"LSJ_user_access_username";
 static NSString *const kUserAccessServicename   = @"LSJ_user_access_service";
 
-static NSString *const kVipUserKeyName          = @"LSJ_isvip_userkey";
+static NSString *const kVipUserKeyName          = @"LSJ_Vip_UserKey";
+static NSString *const kSVipUserKeyName         = @"LSJ_SVip_UserKey";
 
 @implementation LSJUtil
 
@@ -88,18 +89,30 @@ static NSString *const kVipUserKeyName          = @"LSJ_isvip_userkey";
     }
 }
 
++ (BOOL)isIpad {
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+}
 
 + (NSString *)appVersion {
     return [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
 }
 
 + (void)registerVip {
-    [[NSUserDefaults standardUserDefaults] setObject:IS_VIP forKey:kVipUserKeyName];
+    [[NSUserDefaults standardUserDefaults] setObject:LSJ_VIP forKey:kVipUserKeyName];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)registerSVip {
+    [[NSUserDefaults standardUserDefaults] setObject:LSJ_SVIP forKey:kSVipUserKeyName];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (BOOL)isVip {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:kVipUserKeyName] isEqualToString:IS_VIP];
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kVipUserKeyName] isEqualToString:LSJ_VIP];
+}
+
++ (BOOL)isSVip {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kSVipUserKeyName] isEqualToString:LSJ_SVIP];
 }
 
 + (NSUInteger)launchSeq {
@@ -125,35 +138,35 @@ static NSString *const kVipUserKeyName          = @"LSJ_isvip_userkey";
     });
 }
 
-+ (NSArray<LSJPaymentInfo *> *)allPaymentInfos {
-    NSArray<NSDictionary *> *paymentInfoArr = [[NSUserDefaults standardUserDefaults] objectForKey:kPaymentInfoKeyName];
-    
-    NSMutableArray *paymentInfos = [NSMutableArray array];
-    [paymentInfoArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        LSJPaymentInfo *paymentInfo = [LSJPaymentInfo paymentInfoFromDictionary:obj];
-        [paymentInfos addObject:paymentInfo];
-    }];
-    return paymentInfos;
++ (NSArray<QBPaymentInfo *> *)allPaymentInfos {
+//    NSArray<NSDictionary *> *paymentInfoArr = [[NSUserDefaults standardUserDefaults] objectForKey:kPaymentInfoKeyName];
+//    
+//    NSMutableArray *paymentInfos = [NSMutableArray array];
+//    [paymentInfoArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        QBPaymentInfo *paymentInfo = [QBPaymentInfo paymentInfoFromDictionary:obj];
+//        [paymentInfos addObject:paymentInfo];
+//    }];
+    return [QBPaymentInfo allPaymentInfos];
 }
 
-+ (NSArray<LSJPaymentInfo *> *)payingPaymentInfos {
++ (NSArray<QBPaymentInfo *> *)payingPaymentInfos {
     return [self.allPaymentInfos bk_select:^BOOL(id obj) {
-        LSJPaymentInfo *paymentInfo = obj;
-        return paymentInfo.paymentStatus.unsignedIntegerValue == LSJPaymentStatusPaying;
+        QBPaymentInfo *paymentInfo = obj;
+        return paymentInfo.paymentStatus == QBPayStatusPaying;
     }];
 }
 
-+ (NSArray<LSJPaymentInfo *> *)paidNotProcessedPaymentInfos {
++ (NSArray<QBPaymentInfo *> *)paidNotProcessedPaymentInfos {
     return [self.allPaymentInfos bk_select:^BOOL(id obj) {
-        LSJPaymentInfo *paymentInfo = obj;
-        return paymentInfo.paymentStatus.unsignedIntegerValue == LSJPaymentStatusNotProcessed;
+        QBPaymentInfo *paymentInfo = obj;
+        return paymentInfo.paymentStatus == QBPayStatusNotProcessed;
     }];
 }
 
-+ (LSJPaymentInfo *)successfulPaymentInfo {
++ (QBPaymentInfo *)successfulPaymentInfo {
     return [self.allPaymentInfos bk_match:^BOOL(id obj) {
-        LSJPaymentInfo *paymentInfo = obj;
-        if (paymentInfo.paymentResult.unsignedIntegerValue == PAYRESULT_SUCCESS) {
+        QBPaymentInfo *paymentInfo = obj;
+        if (paymentInfo.paymentResult == QBPayResultSuccess) {
             return YES;
         }
         return NO;

@@ -48,11 +48,11 @@ static NSString *const kDetailProgramCellReusableIdentifier = @"DetailProgramCel
 @end
 
 @implementation LSJHotViewController
-DefineLazyPropertyInitialization(LSJHotModel, hotModel)
-DefineLazyPropertyInitialization(LSJProgramConfigModel, programConfigModel)
-DefineLazyPropertyInitialization(NSMutableArray, dataSource)
-DefineLazyPropertyInitialization(NSMutableArray, titleWidthArray)
-DefineLazyPropertyInitialization(NSMutableArray, detailArray)
+QBDefineLazyPropertyInitialization(LSJHotModel, hotModel)
+QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programConfigModel)
+QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(NSMutableArray, titleWidthArray)
+QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -351,7 +351,7 @@ DefineLazyPropertyInitialization(NSMutableArray, detailArray)
     } else if (collectionView == _layoutDetailCollectionView) {
         if (indexPath.item < self.detailArray.count) {
             LSJProgramModel *program = self.detailArray[indexPath.item];
-            [self pushToDetailVideoWithController:self programId:program.programId];
+            [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
         }
 //        JFBaseModel *baseModel = [[JFBaseModel alloc] init];
 //        baseModel.realColumnId = @(column.realColumnId);

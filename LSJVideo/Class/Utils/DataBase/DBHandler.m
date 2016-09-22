@@ -232,17 +232,17 @@ static DBHandler *dbHandler = nil;
             [otDbQueue inDatabase:^(FMDatabase *db) {
                 @try {
                     if (![db open]) {
-                        DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                        QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                         return ;
                     }
                     NSString *createSQL = [DBHandler createTableSQLWithModel:(NSObject *)model inDb:db];
                     db.shouldCacheStatements = YES;
                     if (![db executeUpdate:createSQL]) {
-                        DLog(@"create DB fail - %@", createSQL);
+                        QBLog(@"create DB fail - %@", createSQL);
                     };
                 }
                 @catch (NSException *exception) {
-                    DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+                    QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
                 }
                 @finally {
                     [db close];
@@ -299,7 +299,7 @@ static DBHandler *dbHandler = nil;
         sqlString = [sqlString stringByAppendingString:@" = ?"];
     }
     else{
-        DLog(@"parameter error");
+        QBLog(@"parameter error");
         return NO;
     }
     
@@ -309,14 +309,14 @@ static DBHandler *dbHandler = nil;
         [otDbQueue inDatabase:^(FMDatabase *db) {
             @try {
                 if (![db open]) {
-                    DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                    QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                     return ;
                 }
-                DLog(@"executing insert sql - %@",sqlString);
+                QBLog(@"executing insert sql - %@",sqlString);
                 deleteRst = [db executeUpdate:sqlString, delMKeyValue];
             }
             @catch (NSException *exception) {
-                DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+                QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
             }
             @finally {
                 [db close];
@@ -361,7 +361,7 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             FMResultSet* result = [db executeQuery:sqlString,value];
@@ -374,7 +374,7 @@ static DBHandler *dbHandler = nil;
             }
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -391,13 +391,13 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             dropResult = [db executeUpdate:createTableSQL];
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -506,14 +506,14 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
-            DLog(@"executing insert sql - %@",sqlString);
+            QBLog(@"executing insert sql - %@",sqlString);
             insertResult = [db executeUpdate:sqlString withArgumentsInArray:arrOfValue];
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -548,16 +548,16 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             
-            DLog(@"executing insert sql - %@",sqlString);
+            QBLog(@"executing insert sql - %@",sqlString);
             insertResult = [db executeUpdate:sqlString withArgumentsInArray:arrOfValue];
             // do we need to close FMResultSet? or DB close is sufficient?
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -682,7 +682,7 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             FMResultSet * resultSet =  [db executeQuery:checkSql];
@@ -691,7 +691,7 @@ static DBHandler *dbHandler = nil;
             }
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -710,7 +710,7 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             [db executeStatements:schemaSql withResultBlock:^int(NSDictionary *resultsDictionary) {
@@ -719,7 +719,7 @@ static DBHandler *dbHandler = nil;
             }];
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -738,17 +738,17 @@ static DBHandler *dbHandler = nil;
         [otDbQueue inDatabase:^(FMDatabase *db) {
             @try {
                 if (![db open]) {
-                    DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                    QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                     return ;
                 }
                 NSString *createSQL = [DBHandler createTableSQLWithModel:(NSObject *)[[DBTableVersion alloc]init] inDb:db];
                 db.shouldCacheStatements = YES;
                 if (![db executeUpdate:createSQL]) {
-                    DLog(@"create DB fail - %@", createSQL);
+                    QBLog(@"create DB fail - %@", createSQL);
                 };
             }
             @catch (NSException *exception) {
-                DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+                QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
             }
             @finally {
                 [db close];
@@ -858,7 +858,7 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             FMResultSet* result = [db executeQuery:queryString];
@@ -889,7 +889,7 @@ static DBHandler *dbHandler = nil;
             }
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];
@@ -904,16 +904,16 @@ static DBHandler *dbHandler = nil;
     [otDbQueue inDatabase:^(FMDatabase *db) {
         @try {
             if (![db open]) {
-                DLog(@"%@",LocalizedStr(@"DB_ERROR"));
+                QBLog(@"%@",LocalizedStr(@"DB_ERROR"));
                 return ;
             }
             db.shouldCacheStatements = YES;
             if (![db executeUpdate:createTableSQL]) {
-                DLog(@"create DB fail - %@", createTableSQL);
+                QBLog(@"create DB fail - %@", createTableSQL);
             };
         }
         @catch (NSException *exception) {
-            DLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
+            QBLog(@"%@%@",LocalizedStr(@"DB_EXCEPTION"),exception.userInfo.description);
         }
         @finally {
             [db close];

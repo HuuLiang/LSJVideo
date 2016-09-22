@@ -36,16 +36,16 @@
     @weakify(self);
     BOOL ret = [super requestURLPath:LSJ_ACCESS_URL
                           withParams:@{@"userId":userId,@"accessId":[LSJUtil accessId]}
-                     responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
+                     responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                 {
                     @strongify(self);
                     
                     BOOL success = NO;
-                    if (respStatus == LSJURLResponseSuccess) {
+                    if (respStatus == QBURLResponseSuccess) {
                         NSString *resp = self.response;
                         success = [resp isEqualToString:@"SUCCESS"];
                         if (success) {
-                            DLog(@"Record user access!");
+                            QBLog(@"Record user access!");
                         }
                     }
                 }];

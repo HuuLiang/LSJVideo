@@ -12,6 +12,7 @@ static NSString *const kDayTableViewCellReusableIdentifier = @"kDayTableViewCell
 
 @interface LSJDayTableViewCell : UITableViewCell
 @property (nonatomic) NSString *userStr;
+@property (nonatomic) NSString *content;
 @end
 
 @interface LSJDayTableView : UITableView

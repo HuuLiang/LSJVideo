@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "LSJBaseModel.h"
+#import "LSJProgramModel.h"
 
 @interface LSJBaseViewController : UIViewController
 
 - (instancetype)initWithTitle:(NSString *)title;
 
-- (void)pushToDetailVideoWithController:(UIViewController *)VC programId:(NSInteger )programId;
+- (void)pushToDetailVideoWithController:(UIViewController *)VC ColumnId:(NSInteger)columnId programId:(LSJProgramModel *)program;
 
-- (void)playPhotoUrlWithInfo:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index;
+- (void)playPhotoUrlWithModel:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index;
 
-- (void)playVideoWithUrl:(NSString *)videoUrlStr;
+- (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel;
+
+- (void)payWithBaseModelInfo:(LSJBaseModel *)baseModel;
 
 @end

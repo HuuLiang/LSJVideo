@@ -21,7 +21,7 @@
 @end
 
 @implementation LSJLechersListVC
-DefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
+QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
 
 - (instancetype)initWithColumn:(LSJLecherColumnsModel *)lecherColumn andIndex:(NSInteger)index
 {

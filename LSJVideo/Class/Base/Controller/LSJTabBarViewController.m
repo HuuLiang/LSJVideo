@@ -35,17 +35,17 @@
                                                        image:[UIImage imageNamed:@"tabbar_welfare_normal"]
                                                selectedImage:[[UIImage imageNamed:@"tabbar_welfare_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
+    LSJLechersViewController *lecherVC = [[LSJLechersViewController alloc] initWithTitle:@"狼友圈"];
+    UINavigationController *lecherNC = [[UINavigationController alloc] initWithRootViewController:lecherVC];
+    lecherNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:lecherVC.title
+                                                        image:[UIImage imageNamed:@"tabbar_lecher_normal"]
+                                                selectedImage:[[UIImage imageNamed:@"tabbar_lecher_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
     LSJHotViewController *hotVC = [[LSJHotViewController alloc] initWithTitle:@"热搜"];
     UINavigationController *hotNC = [[UINavigationController alloc] initWithRootViewController:hotVC];
     hotNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:hotVC.title
                                                          image:[UIImage imageNamed:@"tabbar_hot_normal"]
                                                  selectedImage:[[UIImage imageNamed:@"tabbar_hot_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    
-    LSJLechersViewController *lecherVC = [[LSJLechersViewController alloc] initWithTitle:@"狼友圈"];
-    UINavigationController *lecherNC = [[UINavigationController alloc] initWithRootViewController:lecherVC];
-    lecherNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:lecherVC.title
-                                                       image:[UIImage imageNamed:@"tabbar_lecher_normal"]
-                                               selectedImage:[[UIImage imageNamed:@"tabbar_lecher_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
     LSJMineViewController *mineVC = [[LSJMineViewController alloc] initWithTitle:@"我的"];
     UINavigationController *mineNC = [[UINavigationController alloc] initWithRootViewController:mineVC];
@@ -55,7 +55,7 @@
     
     
     
-    self.viewControllers = @[homeNC,welfareNC,hotNC,lecherNC,mineNC];
+    self.viewControllers = @[homeNC,welfareNC,lecherNC,hotNC,mineNC];
     self.tabBar.translucent = NO;
 }
 

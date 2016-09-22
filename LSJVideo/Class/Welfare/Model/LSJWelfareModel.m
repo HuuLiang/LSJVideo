@@ -14,20 +14,20 @@
     return [LSJColumnModel class];
 }
 
-- (BOOL)fetchWelfareInfoWithCompletionHandler:(LSJCompletionHandler)handler {
+- (BOOL)fetchWelfareInfoWithCompletionHandler:(QBCompletionHandler)handler {
     @weakify(self);
     BOOL success = [self requestURLPath:LSJ_WELFARE_URL
                              withParams:@{@"isProgram":@(YES)}
-                        responseHandler:^(LSJURLResponseStatus respStatus, NSString *errorMessage)
+                        responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {
                         @strongify(self);
                         LSJColumnModel *resp = nil;
-                        if (respStatus == LSJURLResponseSuccess) {
+                        if (respStatus == QBURLResponseSuccess) {
                             resp = self.response;
                         }
                         
                         if (handler) {
-                            handler(respStatus==LSJURLResponseSuccess, resp);
+                            handler(respStatus==QBURLResponseSuccess, resp);
                         }
                     }];
     

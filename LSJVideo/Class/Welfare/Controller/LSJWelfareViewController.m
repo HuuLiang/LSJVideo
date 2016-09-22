@@ -9,6 +9,7 @@
 #import "LSJWelfareViewController.h"
 #import "LSJWelfareModel.h"
 #import "LSJWelfareCell.h"
+#import "LSJDetailVideoVC.h"
 
 //#define kCellHeight (kScreenWidth - 2 *kWidth(20))/3 * 9 / 7 + kWidth(160)
 
@@ -23,8 +24,8 @@ static NSString *const kWelfareCellReusableIdentifier = @"WelfareCellReusableIde
 @end
 
 @implementation LSJWelfareViewController
-DefineLazyPropertyInitialization(LSJWelfareModel, welfareModel)
-DefineLazyPropertyInitialization(LSJColumnModel, response)
+QBDefineLazyPropertyInitialization(LSJWelfareModel, welfareModel)
+QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,29 +75,37 @@ DefineLazyPropertyInitialization(LSJColumnModel, response)
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.response.programList.count;
-    return 10;
+    return self.response.programList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJWelfareCell *welfareCell = [tableView dequeueReusableCellWithIdentifier:kWelfareCellReusableIdentifier forIndexPath:indexPath];
     
-//    if (indexPath.row < self.response.programList.count) {
-//        LSJProgramModel *program = self.response.programList[indexPath.row];
-        welfareCell.timeStr = @"123123";
-        welfareCell.countStr = @"23232";
-        welfareCell.commandStr = @"2324";
-    return welfareCell;
-//    }
-//    return nil;
+    if (indexPath.row < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.row];
+        welfareCell.titleStr = program.title;
+        welfareCell.timeStr = program.spare;
+        welfareCell.commandStr = program.specialDesc;
+        welfareCell.imgAUrlStr = program.imgurls[0];
+        welfareCell.imgBUrlStr = program.imgurls[1];
+        welfareCell.imgCUrlStr = program.imgurls[2];
+        return welfareCell;
+    }
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == self.response.programList.count - 1) {
-    if (indexPath.row == 9) {
+    if (indexPath.row == self.response.programList.count - 1) {
         return kCellHeight - kWidth(20);
     } else {
         return kCellHeight;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.row];
+        [self pushToDetailVideoWithController:self ColumnId:self.response.columnId programId:program];
     }
 }
 

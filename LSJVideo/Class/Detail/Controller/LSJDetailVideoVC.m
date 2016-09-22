@@ -14,6 +14,7 @@
 #import "LSJDetailVideoPhotosCell.h"
 
 #import "LSJDetailImgTextHeaderCell.h"
+#import "LSJDetailImgTextCell.h"
 
 #import "LSJDetailVideoCommandCell.h"
 
@@ -21,13 +22,14 @@
 
 @interface LSJDetailVideoVC ()
 {
-    NSInteger _programId;
+    NSInteger _columnId;
+    LSJProgramModel * _programModel;
     
     LSJDetailVideoHeaderCell * _headerCell;
     LSJDetailVideoDescCell  * _descCell;
     LSJDetailVideoPhotosCell *_photosCell;
     
-    LSJDetailImgTextHeaderCell *_imgTextCell;
+    LSJDetailImgTextHeaderCell *_imgTextHeaderCell;
     
     LSJDetailVideoCommandCell *_commandCell;
     
@@ -36,22 +38,26 @@
     
 }
 @property (nonatomic) LSJDetailModel *detailModel;
+@property (nonatomic) LSJDetailResponse *response;
 @end
 
 @implementation LSJDetailVideoVC
-DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
+QBDefineLazyPropertyInitialization(LSJDetailModel, detailModel)
+QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 
-- (instancetype)initWithProgram:(NSInteger)programId
+- (instancetype)initWithColumnId:(NSInteger)columnId Program:(LSJProgramModel *)program
 {
     self = [super init];
     if (self) {
-        _programId = programId;
+        _columnId = columnId;
+        _programModel = program;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     self.layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     
@@ -74,7 +80,9 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
             [[CRKHudManager manager] showHudWithText:@"非VIP用户不可发表评论"];
             _messageView.textField.text = @"";
             [_messageView.textField resignFirstResponder];
-            [self playVideoWithUrl:@""];
+            LSJBaseModel *model = [[LSJBaseModel alloc] init];
+            
+            [self payWithBaseModelInfo:model];
         }
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -112,10 +120,22 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
             return ;
         }
         if (cell == self->_headerCell) {
-            [self playVideoWithUrl:@""];
+            [self playVideoWithUrl:@""
+                         baseModel:[LSJBaseModel createModelWithProgramId:@1
+                                                              ProgramType:@1
+                                                             RealColumnId:@1
+                                                              ChannelType:@1
+                                                           PrgramLocation:1
+                                                                     Spec:1]];
+            
+            
         }
         
     };
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.title = _programModel.title;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,37 +144,49 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
 }
 
 - (void)loadData {
-//    @weakify(self);
-//    [self.detailModel fetchProgramDetailInfoWithProgramId:_programId CompletionHandler:^(BOOL success, id obj) {
-//        @strongify(self);
-//        if (success) {
-    [self.layoutTableView LSJ_endPullToRefresh];
-            [self initCells];
-//        }
     
-//    }];
+    
+    @weakify(self);
+    [self.detailModel fetchProgramDetailInfoWithColumnId:_columnId ProgramId:_programModel.programId isImageText:_programModel.type == 4 CompletionHandler:^(BOOL success, id obj) {
+        @strongify(self);
+        if (success) {
+            self.response = obj;
+            [self.layoutTableView LSJ_endPullToRefresh];
+            [self initCells];
+        }
+    
+    }];
 }
 
 - (void)initCells {
     NSUInteger section = 0;
-    NSInteger count = 1;
-    if (count == 2) {
+    
+    if (_programModel.type == 1) {
         [self initVideoHeaderCellInSection:section++];
         [self initDescCellInSection:section++];
-        if (1) {
+        if (self.response.programUrlList.count > 0) {
             [self setHeaderHeight:kWidth(1) inSection:section];
             [self initPhotosCellInSection:section++];
         }
-    } else {
-        [self initImageTextCellInSection:section++];
-        
+    } else if (_programModel.type == 4) {
+        [self initImageTextHeaderCellInSection:section++];
+        if (self.response.programUrlList > 0) {
+            for (LSJProgramUrlModel *urlModel in self.response.programUrlList) {
+                [self initImageTextCellInSection:section++ programUrlModel:urlModel];
+            }
+        }
     }
 
     [self setHeaderHeight:kWidth(20) inSection:section];
-    [self initCommandCellInSection:section++];
-    for (NSUInteger count = 0 ; count < 10; count++) {
-        [self initCommandDetailsInSection:section++];
+    
+    if (self.response.comments.count > 0) {
+        [self initCommandCellInSection:section++];
+        for (NSUInteger count = 0 ; count < self.response.comments.count; count++) {
+            LSJCommentModel *commentModel = self.response.comments[count];
+            [self initCommandDetailsInSection:section++ comment:commentModel];
+        }
     }
+
     
     [self.layoutTableView reloadData];
 }
@@ -189,7 +221,15 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
             [self->_messageView.textField resignFirstResponder];
             return ;
         }
-        [self playPhotoUrlWithInfo:nil urlArray:array index:[index integerValue]];
+//        [self playPhotoUrlWithInfo:nil urlArray:array index:[index integerValue]];
+        [self playPhotoUrlWithModel:[LSJBaseModel createModelWithProgramId:@1
+                                                               ProgramType:@1
+                                                              RealColumnId:@1
+                                                               ChannelType:@1
+                                                            PrgramLocation:1
+                                                                      Spec:1]
+                           urlArray:array
+                              index:[index integerValue]];
     };
     
     [self setLayoutCell:_photosCell cellHeight:kWidth(290) inRow:0 andSection:section];
@@ -197,18 +237,30 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
 
 #pragma mark - image-text Detail
 
-- (void)initImageTextCellInSection:(NSUInteger)section {
-    _imgTextCell = [[LSJDetailImgTextHeaderCell alloc] init];
-    _imgTextCell.selectionStyle = UITableViewCellSelectionStyleNone;
+- (void)initImageTextHeaderCellInSection:(NSUInteger)section {
+    _imgTextHeaderCell = [[LSJDetailImgTextHeaderCell alloc] init];
+    _imgTextHeaderCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSString *titlestr = @"asdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasd";
-    _imgTextCell.titleStr = @"asdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasdasdfsdfsdfsdfasdfasdfasd";
-    _imgTextCell.timeStr = @"asdfsdfsdf";
-    _imgTextCell.nameStr = @"asdfasdfsdf";
+    NSString *titlestr = self.response.program.title;
+    _imgTextHeaderCell.titleStr = titlestr;
+    _imgTextHeaderCell.timeStr = _programModel.spare;
+    _imgTextHeaderCell.nameStr = self.response.program.userName;
     
     CGFloat height = [titlestr sizeWithFont:[UIFont systemFontOfSize:kWidth(34)] maxSize:CGSizeMake(kScreenWidth - kWidth(64), MAXFLOAT)].height;
     
-    [self setLayoutCell:_imgTextCell cellHeight:height + kWidth(90) inRow:0 andSection:section];
+    [self setLayoutCell:_imgTextHeaderCell cellHeight:height + kWidth(90) inRow:0 andSection:section];
+}
+
+- (void)initImageTextCellInSection:(NSUInteger)section programUrlModel:(LSJProgramUrlModel *)model {
+    LSJDetailImgTextCell *_imgTextCell = [[LSJDetailImgTextCell alloc] initWithContentType:model.type];
+    CGFloat height = 0;
+    if (model.type == LSJContentType_Text) {
+        height = [model.content sizeWithFont:[UIFont systemFontOfSize:kWidth(30)] maxSize:CGSizeMake(kScreenWidth - kWidth(60), MAXFLOAT)].height + kWidth(15);
+    } else if (model.type == LSJContentType_Image) {
+        height = (kScreenWidth - kWidth(60) * 0.5)+kWidth(15);
+    }
+    _imgTextCell.content = model.content;
+    [self setLayoutCell:_imgTextCell cellHeight:height inRow:0 andSection:section];
 }
 
 
@@ -244,15 +296,15 @@ DefineLazyPropertyInitialization(LSJDetailModel, detailModel)
     [self setLayoutCell:cell cellHeight:kWidth(72) inRow:0 andSection:section];
 }
 
-- (void)initCommandDetailsInSection:(NSUInteger)section {
+- (void)initCommandDetailsInSection:(NSUInteger)section comment:(LSJCommentModel *)comment {
     [self setHeaderHeight:kWidth(1) inSection:section];
-    NSString *str = @"超级美少妇无码中出超级美少妇无码中出超级美少妇无码中出超级美";
+    NSString *str = comment.content;
     CGFloat height = [str sizeWithFont:[UIFont systemFontOfSize:kWidth(30)] maxSize:CGSizeMake(kScreenWidth - kWidth(60), MAXFLOAT)].height;
     
     _commandCell = [[LSJDetailVideoCommandCell alloc] init];
-    _commandCell.userImgUrlStr = @"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg";
-    _commandCell.userNameStr = @"花式撸炮";
-    _commandCell.timeStr = @"asdasd";
+    _commandCell.userImgUrlStr = comment.icon;
+    _commandCell.userNameStr = comment.userName;
+    _commandCell.timeStr = comment.createAt;
     _commandCell.commandStr = str;
     
     [self setLayoutCell:_commandCell cellHeight:kWidth(140)+height inRow:0 andSection:section];
