@@ -16,6 +16,7 @@
     UILabel *_commandCountLabel;
     LSJDayTableView *_dayTableView;
     NSIndexPath * _currentIndexPath;
+    NSInteger _currentIndex;
 }
 @property (nonatomic) NSMutableArray *userContacts;
 @end
@@ -30,8 +31,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
         
         self.backgroundColor = [UIColor clearColor];
         _start = NO;
-        
-        _currentIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+        _currentIndex = 0;
+//        _currentIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
         
         UIView *bgView = [[UIView alloc] init];
         bgView.backgroundColor = [UIColor whiteColor];
@@ -136,18 +137,14 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
     [self.userContacts removeAllObjects];
     [self.userContacts addObjectsFromArray:userComments];
     
-    if (userComments.count > 3) {
-        if (userComments.count == 4) {
-            [self.userContacts addObject:userComments[0]];
-        } else if (userComments.count == 5) {
-            [self.userContacts addObject:userComments[0]];
-            [self.userContacts addObject:userComments[1]];
-        } else if (userComments.count >= 6) {
-            [self.userContacts addObject:userComments[0]];
-            [self.userContacts addObject:userComments[1]];
-            [self.userContacts addObject:userComments[2]];
-        }
-    }
+//    if (userComments.count > 3) {
+        [self.userContacts addObject:userComments[0]];
+        [self.userContacts addObject:userComments[1]];
+        [self.userContacts addObject:userComments[2]];
+//    }
+    
+//    [self.userContacts removeAllObjects];
+//    [self.userContacts addObjectsFromArray:@[@"1111111",@"222222",@"333333",@"444444",@"5555555",@"666666",@"1111111",@"222222",@"333333"]];
     
     [_dayTableView reloadData];
 }
@@ -167,16 +164,30 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
         return;
     }
     
-    if (_currentIndexPath.row == _userContacts.count - 1) {
-        _currentIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-        _currentIndexPath = [NSIndexPath indexPathForRow:_currentIndexPath.row + 1 inSection:0];
-        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    const CGFloat cellHeight = _dayTableView.frame.size.height / 3;
+    
+//    QBLog(@"_currentIndex:%ld _userContact:%ld",_currentIndex,_userContacts.count);
+    
+    if (_currentIndex == _userContacts.count - 2) {
+        _currentIndex = 0;
+        [_dayTableView setContentOffset:CGPointMake(0, _currentIndex++ * cellHeight) animated:NO];
+        [_dayTableView setContentOffset:CGPointMake(0, _currentIndex++ * cellHeight) animated:YES];
     } else {
-        _currentIndexPath = [NSIndexPath indexPathForRow:_currentIndexPath.row + 1 inSection:0];
-        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [_dayTableView setContentOffset:CGPointMake(0, _currentIndex++ * cellHeight) animated:YES];
     }
+//    QBLog(@"%f",_dayTableView.contentOffset.y);
+    
+//    if (_currentIndexPath.row == _userContacts.count - 1) {
+//        _currentIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+//        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+//        _currentIndexPath = [NSIndexPath indexPathForRow:_currentIndexPath.row + 1 inSection:0];
+//        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    } else {
+//        _currentIndexPath = [NSIndexPath indexPathForRow:_currentIndexPath.row + 1 inSection:0];
+//        [_dayTableView scrollToRowAtIndexPath:_currentIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    }
 //    DLog(@"currentIndexPath:%ld",_currentIndexPath.row);
+    
     if (_start) {
         [self performSelector:@selector(scrollTitle) withObject:nil afterDelay:1];
     }
