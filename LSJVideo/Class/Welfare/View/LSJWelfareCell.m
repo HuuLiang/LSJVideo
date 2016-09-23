@@ -37,7 +37,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor colorWithHexString:@"#222222"];
         _titleLabel.font = [UIFont systemFontOfSize:kWidth(32)];
-        _titleLabel.backgroundColor = [UIColor yellowColor];
+        _titleLabel.backgroundColor = [UIColor clearColor];
         [bgView addSubview:_titleLabel];
         
         _imgVA = [[UIImageView alloc] init];
@@ -55,7 +55,7 @@
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _timeLabel.font = [UIFont systemFontOfSize:kWidth(24)];
-        _timeLabel.backgroundColor = [UIColor cyanColor];
+        _timeLabel.backgroundColor = [UIColor clearColor];
         [bgView addSubview:_timeLabel];
         
 //        _countLabel = [[UILabel alloc] init];
@@ -68,7 +68,7 @@
         _commandLabel = [[UILabel alloc] init];
         _commandLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _commandLabel.font = [UIFont systemFontOfSize:kWidth(24)];
-        _commandLabel.backgroundColor = [UIColor brownColor];
+        _commandLabel.backgroundColor = [UIColor clearColor];
         [bgView addSubview:_commandLabel];
         
         

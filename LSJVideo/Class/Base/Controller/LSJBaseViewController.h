@@ -14,7 +14,7 @@
 
 - (instancetype)initWithTitle:(NSString *)title;
 
-- (void)pushToDetailVideoWithController:(UIViewController *)VC ColumnId:(NSInteger)columnId programId:(LSJProgramModel *)program;
+- (void)pushToDetailVideoWithController:(UIViewController *)VC ColumnId:(NSInteger)columnId program:(LSJProgramModel *)program;
 
 - (void)playPhotoUrlWithModel:(LSJBaseModel *)model urlArray:(NSArray *)urlArray index:(NSInteger)index;
 

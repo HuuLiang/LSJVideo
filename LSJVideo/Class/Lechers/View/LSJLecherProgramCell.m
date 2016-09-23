@@ -25,7 +25,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
         
         UIView *_bgView = [[UIView alloc] init];
@@ -55,7 +55,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _titleLabel.font = [UIFont systemFontOfSize:kWidth(24)];
-        _timeLabel.numberOfLines = 0;
+        _titleLabel.numberOfLines = 0;
         [_bgView addSubview:_titleLabel];
         
         UIImageView *_timeImgV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lecher_clock"]];
@@ -108,8 +108,9 @@
             
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_bgImgV.mas_right).offset(kWidth(20));
-                make.top.equalTo(_userImgV.mas_bottom).offset(18);
+                make.top.equalTo(_userImgV.mas_bottom).offset(10);
                 make.right.equalTo(_bgView.mas_right).offset(-kWidth(45));
+//                make.height.mas_equalTo(kWidth(48));
             }];
             
             [_timeImgV mas_makeConstraints:^(MASConstraintMaker *make) {

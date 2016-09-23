@@ -23,7 +23,7 @@
 #define LSJ_WELFARE_URL                 @"/iosvideo/welfare.htm"
 #define LSJ_LECHERS_URL                 @"/iosvideo/forum.htm"
 #define LSJ_HOT_URL                     @"/iosvideo/hotSearch.htm"
-#define LSJ_PROGRAM_URL                 @"/iosvideo/program.htm"
+#define LSJ_PROGRAM_URL                 @"/iosvideo/programForum.htm"
 #define LSJ_COLUMN_URL                  @"/iosvideo/columnProgram.htm"
 #define LSJ_COLUMN_DAY_URL              @"/iosvideo/programComment.htm"
 #define LSJ_DETAIL_URL                  @"/iosvideo/detailsg.htm"

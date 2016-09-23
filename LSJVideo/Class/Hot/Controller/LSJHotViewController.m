@@ -351,7 +351,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
     } else if (collectionView == _layoutDetailCollectionView) {
         if (indexPath.item < self.detailArray.count) {
             LSJProgramModel *program = self.detailArray[indexPath.item];
-            [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
+            [self pushToDetailVideoWithController:self ColumnId:_columnId program:program];
         }
 //        JFBaseModel *baseModel = [[JFBaseModel alloc] init];
 //        baseModel.realColumnId = @(column.realColumnId);

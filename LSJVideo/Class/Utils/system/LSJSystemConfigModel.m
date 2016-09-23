@@ -57,6 +57,8 @@
                                     [LSJSystemConfigModel sharedModel].contactScheme = config.value;
                                 } else if ([config.name isEqualToString:LSJ_SYSTEM_MINE_IMG]) {
                                     [LSJSystemConfigModel sharedModel].mineImgUrl = config.value;
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_PAY_IMG]) {
+                                    [LSJSystemConfigModel sharedModel].vipImg = config.value;
                                 }
                             }];
                         }

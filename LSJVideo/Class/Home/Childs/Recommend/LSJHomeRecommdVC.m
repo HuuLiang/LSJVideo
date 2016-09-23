@@ -242,7 +242,18 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         LSJColumnModel *column = _dataSource[indexPath.section];
         if (indexPath.item < column.programList.count) {
             LSJProgramModel *program = column.programList[indexPath.item];
-            [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
+            if (column.type == 4) {
+                [self playVideoWithUrl:program.videoUrl
+                             baseModel:[LSJBaseModel createModelWithProgramId:@1
+                                                                  ProgramType:@1
+                                                                 RealColumnId:@1
+                                                                  ChannelType:@1
+                                                               PrgramLocation:1
+                                                                         Spec:4]];
+            } else {
+                [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program];
+            }
+            
         }
     }
 }
@@ -330,7 +341,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     for (LSJColumnModel *column in _dataSource) {
         if (column.type == 4 && index < column.programList.count) {
             LSJProgramModel *program = column.programList[index];
-            [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
+            [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program];
         }
     }
 }

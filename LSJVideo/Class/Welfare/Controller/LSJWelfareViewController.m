@@ -105,7 +105,7 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.row];
-        [self pushToDetailVideoWithController:self ColumnId:self.response.columnId programId:program];
+        [self pushToDetailVideoWithController:self ColumnId:self.response.columnId program:program];
     }
 }
 

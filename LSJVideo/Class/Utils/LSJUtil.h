@@ -28,6 +28,7 @@ extern NSString *const kPaymentInfoKeyName;
 + (void)registerSVip;
 + (BOOL)isVip;
 + (BOOL)isSVip;
++ (LSJVipLevel)currentVipLevel;
 
 + (NSUInteger)launchSeq;
 + (void)accumateLaunchSeq;

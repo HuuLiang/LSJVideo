@@ -44,7 +44,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)pushToDetailVideoWithController:(UIViewController *)VC ColumnId:(NSInteger)columnId programId:(LSJProgramModel *)program {
+- (void)pushToDetailVideoWithController:(UIViewController *)VC ColumnId:(NSInteger)columnId program:(LSJProgramModel *)program {
     LSJDetailVideoVC *detailVC = [[LSJDetailVideoVC alloc] initWithColumnId:columnId Program:program];
     [VC.navigationController pushViewController:detailVC animated:YES];
 }
@@ -73,7 +73,7 @@
 }
 
 - (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel {
-    if (![LSJUtil isVip]) {
+    if (![LSJUtil isVip] && baseModel.spec != 4) {
         [self payWithBaseModelInfo:baseModel];
     } else {
         if (baseModel.spec == 4) {
@@ -83,9 +83,7 @@
             UIViewController *videoPlayVC = [self playerVCWithVideo:videoUrlStr];
             videoPlayVC.hidesBottomBarWhenPushed = YES;
             [self presentViewController:videoPlayVC animated:YES completion:nil];
-
         }
-
     }
 }
 

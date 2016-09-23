@@ -31,4 +31,7 @@
 @property (nonatomic) NSArray <LSJCommentModel *> *comments;
 @property (nonatomic) NSArray *imgurls;
 @property (nonatomic) NSString *userName;
+@property (nonatomic) NSString *createAt;
+@property (nonatomic) NSString *icon;
+@property (nonatomic) NSInteger commentNum;
 @end

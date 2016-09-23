@@ -9,6 +9,8 @@
 #import "LSJDetailVideoVC.h"
 #import "LSJDetailModel.h"
 
+#import "LSJDetailTagModel.h"
+
 #import "LSJDetailVideoHeaderCell.h"
 #import "LSJDetailVideoDescCell.h"
 #import "LSJDetailVideoPhotosCell.h"
@@ -120,17 +122,14 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
             return ;
         }
         if (cell == self->_headerCell) {
-            [self playVideoWithUrl:@""
+            [self playVideoWithUrl:self.response.program.videoUrl
                          baseModel:[LSJBaseModel createModelWithProgramId:@1
                                                               ProgramType:@1
                                                              RealColumnId:@1
                                                               ChannelType:@1
                                                            PrgramLocation:1
                                                                      Spec:1]];
-            
-            
         }
-        
     };
 }
 
@@ -179,15 +178,14 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 
     [self setHeaderHeight:kWidth(20) inSection:section];
     
-    if (self.response.comments.count > 0) {
+    if (self.response.commentJson.count > 0) {
         [self initCommandCellInSection:section++];
-        for (NSUInteger count = 0 ; count < self.response.comments.count; count++) {
-            LSJCommentModel *commentModel = self.response.comments[count];
+        for (NSUInteger count = 0 ; count < self.response.commentJson.count; count++) {
+            LSJCommentModel *commentModel = self.response.commentJson[count];
             [self initCommandDetailsInSection:section++ comment:commentModel];
         }
     }
 
-    
     [self.layoutTableView reloadData];
 }
 
@@ -195,24 +193,26 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 
 - (void)initVideoHeaderCellInSection:(NSUInteger)section {
     _headerCell = [[LSJDetailVideoHeaderCell alloc] init];
-    _headerCell.imgUrlStr = @"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg";
+    _headerCell.imgUrlStr = self.response.program.coverImg;
     [self setLayoutCell:_headerCell cellHeight:kScreenWidth * 0.6 inRow:0 andSection:section];
 }
 
 - (void)initDescCellInSection:(NSUInteger)section {
     _descCell = [[LSJDetailVideoDescCell alloc] init];
-    _descCell.titleStr = @"超级美少妇无码中出";
-    _descCell.countStr = @"1111.1万";
-    _descCell.tagAStr = @"偷拍";
-    _descCell.tagBStr = @"巨乳";
-    _descCell.tagAColor = [UIColor colorWithHexString:@"#C63C3C"];
-    _descCell.tagBColor = [UIColor colorWithHexString:@"#4A90E2"];
+    _descCell.titleStr = self.response.program.title;
+    _descCell.countStr = self.response.program.specialDesc;
+    NSDictionary *dicA = [LSJDetailTagModel randomCountFirst];
+    NSDictionary *dicB = [LSJDetailTagModel randomCountSecond:dicA];
+    _descCell.tagAStr = dicA[@"title"];
+    _descCell.tagBStr = dicB[@"title"];
+    _descCell.tagAColor = [UIColor colorWithHexString:dicA[@"color"]];
+    _descCell.tagBColor = [UIColor colorWithHexString:dicB[@"color"]];
     [self setLayoutCell:_descCell cellHeight:kWidth(140) inRow:0 andSection:section];
 }
 
 - (void)initPhotosCellInSection:(NSUInteger)section {
     _photosCell = [[LSJDetailVideoPhotosCell alloc] init];
-    NSArray *array = @[@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg",@"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg"];
+    NSArray *array = self.response.programUrlList;
     _photosCell.dataSource = array;
     @weakify(self);
     _photosCell.selectedIndex = ^(NSNumber *index) {
@@ -221,7 +221,7 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
             [self->_messageView.textField resignFirstResponder];
             return ;
         }
-//        [self playPhotoUrlWithInfo:nil urlArray:array index:[index integerValue]];
+        
         [self playPhotoUrlWithModel:[LSJBaseModel createModelWithProgramId:@1
                                                                ProgramType:@1
                                                               RealColumnId:@1
@@ -257,7 +257,7 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     if (model.type == LSJContentType_Text) {
         height = [model.content sizeWithFont:[UIFont systemFontOfSize:kWidth(30)] maxSize:CGSizeMake(kScreenWidth - kWidth(60), MAXFLOAT)].height + kWidth(15);
     } else if (model.type == LSJContentType_Image) {
-        height = (kScreenWidth - kWidth(60) * 0.5)+kWidth(15);
+        height = (kScreenWidth - kWidth(60)) * 0.6 + kWidth(15);
     }
     _imgTextCell.content = model.content;
     [self setLayoutCell:_imgTextCell cellHeight:height inRow:0 andSection:section];

@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, LSJPaymentPopViewSection) {
     HeaderSection,
     PayPointSection,
     PaymentTypeSection,
-    PaySection,
+//    PaySection,
     SectionCount
 };
 
@@ -30,6 +30,12 @@ typedef NS_ENUM(NSUInteger, LSJDeviceType) {
     LSJDeviceType_iPhone6SP,
     LSJDeviceType_iPhoneSE,
     LSJDeviceType_iPad = 100
+};
+
+typedef NS_ENUM(NSUInteger ,LSJVipLevel) {
+    LSJVipLevelNone,
+    LSJVipLevelVip,
+    LSJVipLevelSVip
 };
 
 
@@ -59,5 +65,6 @@ typedef void (^LSJProgressHandler)(double progress);
 #define LSJ_SYSTEM_MINE_IMG                @"MINE_IMG"
 #define LSJ_SYSTEM_PAY_AMOUNT              @"PAY_AMOUNT"
 #define LSJ_SYSTEM_SVIP_PAY_AMOUNT         @"SVIP_PAY_AMOUNT"
+#define LSJ_SYSTEM_PAY_IMG                 @"PAY_IMG"
 
 #endif /* LSJCommonDef_h */

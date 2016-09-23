@@ -24,6 +24,7 @@ typedef void (^LSJFetchSystemConfigCompletionHandler)(BOOL success);
 @property (nonatomic) NSString *mineImgUrl;
 @property (nonatomic) NSString *contacName;
 @property (nonatomic) NSString *contactScheme;
+@property (nonatomic) NSString *vipImg;
 
 + (instancetype)sharedModel;
 

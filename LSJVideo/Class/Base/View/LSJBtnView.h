@@ -58,4 +58,8 @@ typedef void(^touchAction)(void);
  */
 @property (nonatomic) NSString *selectedTitle;
 
+/**
+ * 修改普通状态下的文字
+ */
+@property (nonatomic) NSString *normalTitle;
 @end

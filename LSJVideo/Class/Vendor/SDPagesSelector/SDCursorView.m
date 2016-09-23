@@ -47,7 +47,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     if (!_rootScrollView) {
         QBLog(@"%@",NSStringFromCGRect(self.bounds));
         
-        UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
+        UIImage * bgImg = [UIImage imageNamed:@"app_bg_1"];
         UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
         [self.parentViewController.view addSubview:imgV];
         {

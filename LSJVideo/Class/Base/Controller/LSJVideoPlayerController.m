@@ -70,7 +70,7 @@
     if ([LSJUtil isVip]) {
         return;
     }
-//    [self payWithBaseModelInfo:]
+    [self payWithBaseModelInfo:[LSJBaseModel createModelWithProgramId:@1 ProgramType:@1 RealColumnId:@1 ChannelType:@1 PrgramLocation:1 Spec:1]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

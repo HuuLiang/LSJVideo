@@ -14,6 +14,6 @@
 @property (nonatomic) NSString *titleStr;
 @property (nonatomic) NSString *sizeStr;
 @property (nonatomic) NSString *countStr;
-@property (nonatomic) NSString *detalStr;
+@property (nonatomic) NSString *detailStr;
 
 @end

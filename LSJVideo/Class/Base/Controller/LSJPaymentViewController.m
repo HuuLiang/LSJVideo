@@ -12,6 +12,9 @@
 #import <QBPaymentManager.h>
 
 @interface LSJPaymentViewController ()
+{
+    UIImageView *_closeImgV;
+}
 @property (nonatomic) LSJPaymentPopView *popView;
 @property (nonatomic,copy) dispatch_block_t completionHandler;
 @property (nonatomic) LSJBaseModel *baseModel;
@@ -173,17 +176,33 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     
     [self.view addSubview:self.popView];
     
+    _closeImgV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vip_close"]];
+    _closeImgV.userInteractionEnabled = YES;
+    [self.view addSubview:_closeImgV];
+    
+    @weakify(self);
+    [_closeImgV bk_whenTapped:^{
+        @strongify(self);
+        [self hidePayment];
+        [_closeImgV removeFromSuperview];
+        _closeImgV = nil;
+    }];
+    
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:PaymentTypeSection];
     [self.popView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
     
     {
         [self.popView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(self.view);
-            
-            const CGFloat width = kScreenWidth * 580/750.;
-            CGFloat height = kScreenHeight * 630 /1334. + (kScreenHeight * 110 / 1334.) * (self.popView.availablePaymentTypes.count - 2.);
-            make.size.mas_equalTo(CGSizeMake(width,height));
+            make.centerX.equalTo(self.view);
+            make.centerY.equalTo(self.view).offset(kWidth(50));
+            make.size.mas_equalTo(CGSizeMake(kWidth(630),kWidth(920)));
+        }];
+        
+        [_closeImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.popView.mas_top);
+            make.right.equalTo(self.popView.mas_right).offset(-kWidth(20));
+            make.size.mas_equalTo(CGSizeMake(kWidth(36), kWidth(80)));
         }];
     }
     

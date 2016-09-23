@@ -112,7 +112,7 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.item];
-        [self pushToDetailVideoWithController:self ColumnId:_columnId programId:program];
+        [self pushToDetailVideoWithController:self ColumnId:_columnId program:program];
     }
 }
 

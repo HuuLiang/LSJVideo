@@ -14,7 +14,7 @@
     UILabel *_titleLabel;
     UILabel *_sizeLabel;
     UILabel *_countLabel;
-    UILabel *_detalLabel;
+    UILabel *_detailLabel;
 }
 @end
 
@@ -52,11 +52,11 @@
         _countLabel.font = [UIFont systemFontOfSize:kWidth(28.)];
         [grayView addSubview:_countLabel];
         
-        _detalLabel = [[UILabel alloc] init];
-        _detalLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-        _detalLabel.numberOfLines = 0;
-        _detalLabel.font = [UIFont systemFontOfSize:kWidth(28)];
-        [grayView addSubview:_detalLabel];
+        _detailLabel = [[UILabel alloc] init];
+        _detailLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+        _detailLabel.numberOfLines = 0;
+        _detailLabel.font = [UIFont systemFontOfSize:kWidth(28)];
+        [grayView addSubview:_detailLabel];
         
         {
             [grayView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,7 +88,7 @@
                 make.height.mas_equalTo(kWidth(40));
             }];
             
-            [_detalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            [_detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_sizeLabel.mas_bottom).offset(kWidth(15));
                 make.left.equalTo(_imgV.mas_right).offset(kWidth(20));
                 make.right.equalTo(grayView).offset(-kWidth(20));
@@ -118,8 +118,8 @@
     _countLabel.text = [NSString stringWithFormat:@"下载量:%@",countStr];
 }
 
-- (void)setDetalStr:(NSString *)detalStr {
-    _detalLabel.text = detalStr;
+- (void)setDetailStr:(NSString *)detailStr {
+    _detailLabel.text = detailStr;
 }
 
 

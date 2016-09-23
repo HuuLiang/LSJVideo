@@ -15,7 +15,7 @@
 @end
 
 @interface LSJDetailResponse : QBURLResponse
-@property (nonatomic) NSArray <LSJCommentModel *>*comments;
+@property (nonatomic) NSArray <LSJCommentModel *>*commentJson;
 @property (nonatomic) LSJProgramModel *program;
 @property (nonatomic) NSArray <LSJProgramUrlModel *>*programUrlList;
 @end

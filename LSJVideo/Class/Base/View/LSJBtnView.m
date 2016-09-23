@@ -118,6 +118,11 @@
     _selectedTitleStr = selectedTitle;
 }
 
+- (void)setNormalTitle:(NSString *)normalTitle {
+    _normalTitleStr = normalTitle;
+    _titleLabel.text = _normalTitleStr;
+}
+
 - (void)setIsSelected:(BOOL)isSelected {
     _isSelected = isSelected;
     if (isSelected && _selectedImage) {

@@ -88,11 +88,11 @@ QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
     if (indexPath.row < _columnModel.programList.count) {
         LSJProgramModel * program = _columnModel.programList[indexPath.row];
         cell.bgImgUrlStr = program.coverImg;
-        cell.userImgUrlStr = program.coverImg;
-        cell.userNameStr = program.title;
+        cell.userImgUrlStr = program.icon;
+        cell.userNameStr = program.userName;
         cell.titleStr = program.specialDesc;
-        cell.timeStr = @"20160821222222";
-        cell.commandCount = 100;
+        cell.timeStr = program.createAt;
+        cell.commandCount = program.commentNum;
         return cell;
     }
     return nil;
@@ -111,7 +111,7 @@ QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < _columnModel.programList.count) {
         LSJProgramModel * program = _columnModel.programList[indexPath.row];
-        [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId programId:program];
+        [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId program:program];
     }
 }
 

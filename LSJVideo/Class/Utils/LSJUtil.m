@@ -115,6 +115,17 @@ static NSString *const kSVipUserKeyName         = @"LSJ_SVip_UserKey";
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kSVipUserKeyName] isEqualToString:LSJ_SVIP];
 }
 
++ (LSJVipLevel)currentVipLevel {
+    if ([self isSVip]) {
+        return LSJVipLevelSVip;
+    } else if (![self isSVip] && [self isVip]) {
+        return LSJVipLevelVip;
+    } else {
+        return LSJVipLevelNone;
+    }
+}
+
+
 + (NSUInteger)launchSeq {
     NSNumber *launchSeq = [[NSUserDefaults standardUserDefaults] objectForKey:kLaunchSeqKeyName];
     return launchSeq.unsignedIntegerValue;

@@ -15,7 +15,7 @@
 
 @implementation LSJDetailResponse
 
-- (Class)commentsElementClass {
+- (Class)commentJsonElementClass {
     return [LSJCommentModel class];
 }
 
@@ -26,7 +26,6 @@
 - (Class)programClass {
     return [LSJProgramModel class];
 }
-
 @end
 
 

@@ -132,7 +132,7 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
         NSArray *array = [program.spare componentsSeparatedByString:@"|"];
         appCell.sizeStr = array[0];
         appCell.countStr = array[1];
-        appCell.detalStr = array[2];
+        appCell.detailStr = array[2];
         return appCell;
     }
 }
