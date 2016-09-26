@@ -9,7 +9,7 @@
 #ifndef LSJConfig_h
 #define LSJConfig_h
 
-#define LSJ_CHANNEL_NO               @"QUBA_IOS_LAOSIJI_0000001" //@"QB_MFW_IOS_TEST_0000001" //
+#define LSJ_CHANNEL_NO               @"IOS_TTSEQU_0001" //@"QB_MFW_IOS_TEST_0000001" //
 #define LSJ_REST_APPID               @"QUBA_2025"
 #define LSJ_REST_PV                  @"100"
 #define LSJ_PAYMENT_PV               @"100"
@@ -18,7 +18,7 @@
 #define LSJ_REST_APP_VERSION     ((NSString *)([NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]))
 #define LSJ_PAYMENT_RESERVE_DATA [NSString stringWithFormat:@"%@$%@", LSJ_REST_APPID, LSJ_CHANNEL_NO]
 
-#define LSJ_BASE_URL                    @"http://120.24.252.114:8093"//@"http://iv.zcqcmj.com"//////@"http://192.168.1.123:8094/"
+#define LSJ_BASE_URL                    @"http://iv.zcqcmj.com"//@"http://120.24.252.114:8093"//@"http://192.168.1.123:8094/"
 #define LSJ_HOME_URL                    @"/iosvideo/channelRanking.htm"
 #define LSJ_WELFARE_URL                 @"/iosvideo/welfare.htm"
 #define LSJ_LECHERS_URL                 @"/iosvideo/forum.htm"

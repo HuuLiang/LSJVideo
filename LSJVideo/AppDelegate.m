@@ -18,9 +18,8 @@
 
 static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 
-
 @interface AppDelegate ()
-
+@property (nonatomic,retain) UIViewController *rootViewController;
 @end
 
 @implementation AppDelegate
@@ -34,6 +33,15 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     _window.backgroundColor              = [UIColor whiteColor];
     
     return _window;
+}
+
+- (UIViewController *)rootViewController {
+    if (_rootViewController) {
+        return _rootViewController;
+    }
+    LSJTabBarViewController *tabBarVC = [[LSJTabBarViewController alloc] init];
+    _rootViewController = tabBarVC;
+    return _rootViewController;
 }
 
 - (void)setupCommonStyles {
@@ -146,12 +154,17 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    [LSJUtil registerVip];
     
     [QBNetworkingConfiguration defaultConfiguration].RESTAppId = LSJ_REST_APPID;
     [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);
     [QBNetworkingConfiguration defaultConfiguration].channelNo = LSJ_CHANNEL_NO;
     [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
+    
+    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
+
 #ifdef DEBUG
+    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
     [QBNetworkingConfiguration defaultConfiguration].logEnabled = YES;
 #endif
     
@@ -163,6 +176,44 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     
     [self setupMobStatistics];
     [[QBNetworkInfo sharedInfo] startMonitoring];
+    
+    BOOL requestedSystemConfig = NO;
+//#ifdef JF_IMAGE_TOKEN_ENABLED
+    NSString *imageToken = [LSJUtil imageToken];
+    if (imageToken) {
+        [[SDWebImageManager sharedManager].imageDownloader setValue:imageToken forHTTPHeaderField:@"Referer"];
+        self.window.rootViewController = self.rootViewController;
+        [self.window makeKeyAndVisible];
+    } else {
+        self.window.rootViewController = [[UIViewController alloc] init];
+        [self.window makeKeyAndVisible];
+        
+        [self.window beginProgressingWithTitle:@"更新系统配置..." subtitle:nil];
+        requestedSystemConfig = [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
+            [self.window endProgressing];
+            
+            if (success) {
+                NSString *fetchedToken = [LSJSystemConfigModel sharedModel].imageToken;
+                [LSJUtil setImageToken:fetchedToken];
+                if (fetchedToken) {
+                    [[SDWebImageManager sharedManager].imageDownloader setValue:fetchedToken forHTTPHeaderField:@"Referer"];
+                }
+                
+            }
+            
+            self.window.rootViewController = self.rootViewController;
+            
+//            NSUInteger statsTimeInterval = 180;
+//            if ([LSJSystemConfigModel sharedModel].loaded && [LSJSystemConfigModel sharedModel].statsTimeInterval > 0) {
+//                statsTimeInterval = [LSJSystemConfigModel sharedModel].statsTimeInterval;
+//            }
+//            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
+        }];
+    }
+//#else
+//    self.window.rootViewController = self.rootViewController;
+//    [self.window makeKeyAndVisible];
+//#endif
     
     if (![LSJUtil isRegistered]) {
         [[LSJActivateModel sharedModel] activateWithCompletionHandler:^(BOOL success, NSString *userId) {
@@ -178,8 +229,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
         
     }];
     
-    LSJTabBarViewController *tabBarVC = [[LSJTabBarViewController alloc] init];
-    self.window.rootViewController = tabBarVC;
+
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -209,7 +259,6 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[QBPaymentManager sharedManager] applicationWillEnterForeground:application];
 }
-
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;

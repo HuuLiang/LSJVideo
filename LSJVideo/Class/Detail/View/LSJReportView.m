@@ -106,7 +106,7 @@
         _btnView = [[LSJBtnView alloc] initWithTitle:@"发表评论" normalImage:[UIImage imageNamed:@"detail_report"] selectedImage:nil isTitleFirst:NO];
         _btnView.titleColor = [UIColor colorWithHexString:@"#555555"];
         _btnView.titleFont = [UIFont systemFontOfSize:kWidth(32)];
-        _btnView.space = kWidth(20);
+        _btnView.space = kWidth(30);
         [self addSubview:_btnView];
         
         {

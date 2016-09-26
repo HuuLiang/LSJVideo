@@ -15,6 +15,7 @@
     UILabel *_sizeLabel;
     UILabel *_countLabel;
     UILabel *_detailLabel;
+    UIView *_installedView;
 }
 @end
 
@@ -24,7 +25,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         self.backgroundColor = [UIColor clearColor];
         
@@ -57,6 +58,19 @@
         _detailLabel.numberOfLines = 0;
         _detailLabel.font = [UIFont systemFontOfSize:kWidth(28)];
         [grayView addSubview:_detailLabel];
+        
+        _installedView = [[UIView alloc] init];
+        _installedView.backgroundColor = [[UIColor colorWithHexString:@"#000000"] colorWithAlphaComponent:0.5];
+        [grayView addSubview:_installedView];
+        
+        UILabel *installedLabel = [[UILabel alloc] init];
+        installedLabel.text = @"已安装";
+        installedLabel.textAlignment = NSTextAlignmentCenter;
+        installedLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
+        installedLabel.font = [UIFont systemFontOfSize:kWidth(70)];
+        [_installedView addSubview:installedLabel];
+       
+        _installedView.hidden = YES;
         
         {
             [grayView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,6 +108,14 @@
                 make.right.equalTo(grayView).offset(-kWidth(20));
             }];
             
+            [_installedView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(grayView);
+            }];
+            
+            [installedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.center.mas_equalTo(_installedView);
+                make.height.mas_equalTo(kWidth(35));
+            }];
         }
 
         
@@ -122,5 +144,9 @@
     _detailLabel.text = detailStr;
 }
 
+- (void)setInstalled:(BOOL)installed {
+    _installed = installed;
+    _installedView.hidden = !_installed;
+}
 
 @end

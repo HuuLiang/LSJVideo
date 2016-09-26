@@ -63,6 +63,12 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     }];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if (![LSJUtil isSVip]) {
+        [self payWithBaseModelInfo:[LSJBaseModel createModelWithProgramId:@1 ProgramType:@1 RealColumnId:@1 ChannelType:@1 PrgramLocation:1 Spec:1]];
+    }
+}
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -78,6 +84,9 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         cell.dataArr = column.columnList;
         cell.action = ^(NSNumber *index) {
             @strongify(self);
+            if (![LSJUtil isSVip]) {
+                [self payWithBaseModelInfo:[LSJBaseModel createModelWithProgramId:@1 ProgramType:@1 RealColumnId:@1 ChannelType:@1 PrgramLocation:1 Spec:1]];
+            }
             LSJLechersListVC *listVC = [[LSJLechersListVC alloc] initWithColumn:column andIndex:[index integerValue]];
             [self.navigationController pushViewController:listVC animated:YES];
         };
@@ -95,6 +104,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     return;
 }
 

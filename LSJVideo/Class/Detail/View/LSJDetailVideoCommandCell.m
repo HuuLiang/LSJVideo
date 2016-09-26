@@ -86,7 +86,7 @@
 }
 
 - (void)setTimeStr:(NSString *)timeStr {
-    _timeLabel.text = timeStr;
+    _timeLabel.text = [LSJUtil compareCurrentTime:timeStr];
 }
 
 - (void)setUserNameStr:(NSString *)userNameStr {

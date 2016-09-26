@@ -15,5 +15,5 @@
 @property (nonatomic) NSString *sizeStr;
 @property (nonatomic) NSString *countStr;
 @property (nonatomic) NSString *detailStr;
-
+@property (nonatomic) BOOL installed;
 @end

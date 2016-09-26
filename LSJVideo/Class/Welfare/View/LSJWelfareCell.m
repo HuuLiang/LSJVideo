@@ -140,7 +140,7 @@
 }
 
 - (void)setTimeStr:(NSString *)timeStr {
-    _timeLabel.text = timeStr;
+    _timeLabel.text = [LSJUtil UTF8DateStringFromString:timeStr];
 }
 
 - (void)setCommandStr:(NSString *)commandStr {

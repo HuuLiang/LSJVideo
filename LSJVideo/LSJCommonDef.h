@@ -56,7 +56,7 @@ typedef NS_ENUM(NSUInteger ,LSJVipLevel) {
 #define LSJ_VIP         @"IS_LSJ_VIP"
 #define LSJ_SVIP        @"IS_LSJ_SVIP"
 
-typedef void (^LSJSelectionAction)(QBPayType paymentType);
+typedef void (^LSJSelectionAction)(QBPayType payType,QBPaySubType subType);
 typedef void (^LSJProgressHandler)(double progress);
 
 
@@ -66,5 +66,8 @@ typedef void (^LSJProgressHandler)(double progress);
 #define LSJ_SYSTEM_PAY_AMOUNT              @"PAY_AMOUNT"
 #define LSJ_SYSTEM_SVIP_PAY_AMOUNT         @"SVIP_PAY_AMOUNT"
 #define LSJ_SYSTEM_PAY_IMG                 @"PAY_IMG"
+#define LSJ_SYSTEM_SVIP_PAY_IMG            @"SVIP_PAY_IMG"
+#define LSJ_SYSTEM_IMAGE_TOKEN             @"IMG_REFERER"
+
 
 #endif /* LSJCommonDef_h */

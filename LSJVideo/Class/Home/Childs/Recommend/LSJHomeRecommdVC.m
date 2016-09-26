@@ -155,7 +155,6 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     } else {
         return 0;
     }
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -184,10 +183,11 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     LSJRecommdCell *recommendCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRecommendCellReusableIdentifier forIndexPath:indexPath];
     
-    LSJColumnModel *column = _dataSource[indexPath.section];
-    
-    LSJProgramModel *program = column.programList[indexPath.item];
+
     if (collectionView == _layoutCollectionView) {
+        LSJColumnModel *column = _dataSource[indexPath.section];
+        
+        LSJProgramModel *program = column.programList[indexPath.item];
         if (column.type == 4) {
             if (!_bannerCell) {
                 _bannerCell = [collectionView dequeueReusableCellWithReuseIdentifier:kBannerCellReusableIdentifier forIndexPath:indexPath];
@@ -217,9 +217,18 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             return recommendCell;
         }
     } else if (collectionView == _freeCollectionView) {
-        recommendCell.title = program.title;
-        recommendCell.imgUrl = program.coverImg;
-        return recommendCell;
+        for (LSJColumnModel *column in _dataSource) {
+            if (column.type == 5) {
+                if (indexPath.item < column.programList.count) {
+                    LSJProgramModel *program = column.programList[indexPath.item];
+                    recommendCell.title = program.title;
+                    recommendCell.imgUrl = program.coverImg;
+                    return recommendCell;
+                }
+            }
+        }
+        return nil;
+        
     } else {
         return nil;
     }
@@ -284,7 +293,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             return CGSizeMake((long)width, (long)height);
         } else if (column.type == 5 && ![LSJUtil isVip]) {
             width = fullWidth;
-            height = (fullWidth / 2.5) * 9 /7 + kWidth(60);
+            height = (fullWidth / 2.5) * 9 / 7 + kWidth(60);
             return CGSizeMake((long)width, (long)height);
         } else {
             return CGSizeZero;

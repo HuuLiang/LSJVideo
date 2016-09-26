@@ -23,6 +23,9 @@ static NSString *const kUserAccessServicename   = @"LSJ_user_access_service";
 static NSString *const kVipUserKeyName          = @"LSJ_Vip_UserKey";
 static NSString *const kSVipUserKeyName         = @"LSJ_SVip_UserKey";
 
+static NSString *const kImageTokenKeyName = @"safiajfoaiefr$^%^$E&&$*&$*";
+static NSString *const kImageTokenCryptPassword = @"wafei@#$%^%$^$wfsssfsf";
+
 @implementation LSJUtil
 
 + (NSString *)accessId {
@@ -115,6 +118,26 @@ static NSString *const kSVipUserKeyName         = @"LSJ_SVip_UserKey";
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kSVipUserKeyName] isEqualToString:LSJ_SVIP];
 }
 
++ (NSString *)imageToken {
+    NSString *imageToken = [[NSUserDefaults standardUserDefaults] objectForKey:kImageTokenKeyName];
+    if (!imageToken) {
+        return nil;
+    }
+    
+    return [imageToken decryptedStringWithPassword:kImageTokenCryptPassword];
+}
+
++ (void)setImageToken:(NSString *)imageToken {
+    if (imageToken) {
+        imageToken = [imageToken encryptedStringWithPassword:kImageTokenCryptPassword];
+        [[NSUserDefaults standardUserDefaults] setObject:imageToken forKey:kImageTokenKeyName];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kImageTokenKeyName];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 + (LSJVipLevel)currentVipLevel {
     if ([self isSVip]) {
         return LSJVipLevelSVip;
@@ -195,6 +218,51 @@ static NSString *const kSVipUserKeyName         = @"LSJ_SVip_UserKey";
     [fomatter setDateFormat:kDefaultDateFormat];
     return [fomatter stringFromDate:[NSDate date]];
 }
+
++ (NSString *)UTF8DateStringFromString:(NSString *)dateString {
+    NSDateFormatter *dateFormatterA = [[NSDateFormatter alloc] init];
+    [dateFormatterA setDateFormat:@"yyyy-mm-dd hh:mm:ss"];
+    
+    NSDateFormatter *dataFormatterB = [[NSDateFormatter alloc] init];
+    [dataFormatterB setDateFormat:@"yyyy年mm月dd日"];
+    return [dataFormatterB stringFromDate:[dateFormatterA dateFromString:dateString]];
+}
+
++ (NSString *)compareCurrentTime:(NSString *)compareDateString
+{
+    NSDate *compareDate = [self dateFromString:compareDateString];
+    
+    NSTimeInterval  timeInterval = [compareDate timeIntervalSinceNow];
+    //    DLog("%f",timeInterval);
+    timeInterval = -timeInterval;
+    long temp = 0;
+    NSString *result;
+    if (timeInterval < 60) {
+        result = [NSString stringWithFormat:@"刚刚"];
+    }
+    else if((temp = timeInterval/60) <60){
+        result = [NSString stringWithFormat:@"%ld分前",temp];
+    }
+    
+    else if((temp = temp/60) <24){
+        result = [NSString stringWithFormat:@"%ld小前",temp];
+    }
+    
+    else if((temp = temp/24) <30){
+        result = [NSString stringWithFormat:@"%ld天前",temp];
+    }
+    
+    else if((temp = temp/30) <12){
+        result = [NSString stringWithFormat:@"%ld月前",temp];
+    }
+    else{
+        temp = temp/12;
+        result = [NSString stringWithFormat:@"%ld年前",temp];
+    }
+    
+    return  result;
+}
+
 
 + (NSString *)paymentReservedData {
     return [NSString stringWithFormat:@"%@$%@", LSJ_REST_APPID, LSJ_CHANNEL_NO];

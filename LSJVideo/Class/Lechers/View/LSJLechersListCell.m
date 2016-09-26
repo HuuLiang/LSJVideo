@@ -52,7 +52,7 @@
         
         _moreView.titleFont = [UIFont systemFontOfSize:kWidth(24)];
         _moreView.titleColor = [UIColor colorWithHexString:@"#222222"];
-        _moreView.space = kWidth(6);
+        _moreView.space = kWidth(10);
         
         @weakify(self);
         _moreView.action = ^{

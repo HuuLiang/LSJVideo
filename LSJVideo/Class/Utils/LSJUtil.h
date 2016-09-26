@@ -28,6 +28,10 @@ extern NSString *const kPaymentInfoKeyName;
 + (void)registerSVip;
 + (BOOL)isVip;
 + (BOOL)isSVip;
+
++ (NSString *)imageToken;
++ (void)setImageToken:(NSString *)imageToken;
+
 + (LSJVipLevel)currentVipLevel;
 
 + (NSUInteger)launchSeq;
@@ -43,6 +47,10 @@ extern NSString *const kPaymentInfoKeyName;
 + (NSDate *)dateFromString:(NSString *)dateString;
 
 + (NSString *)currentTimeString;
+
++ (NSString *)UTF8DateStringFromString:(NSString *)dateString;
+
++ (NSString *)compareCurrentTime:(NSString *)compareDateString;
 
 + (NSString *)paymentReservedData;
 

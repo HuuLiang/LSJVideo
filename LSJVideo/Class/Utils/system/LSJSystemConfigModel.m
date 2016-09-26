@@ -59,8 +59,13 @@
                                     [LSJSystemConfigModel sharedModel].mineImgUrl = config.value;
                                 } else if ([config.name isEqualToString:LSJ_SYSTEM_PAY_IMG]) {
                                     [LSJSystemConfigModel sharedModel].vipImg = config.value;
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_SVIP_PAY_IMG]) {
+                                    [LSJSystemConfigModel sharedModel].sVipImg = config.value;
+                                } else if ([config.name isEqualToString:LSJ_SYSTEM_IMAGE_TOKEN]) {
+                                    [LSJSystemConfigModel sharedModel].imageToken = config.value;
                                 }
                             }];
+                            _loaded = YES;
                         }
                         
                         if (handler) {

@@ -25,6 +25,9 @@ typedef void (^LSJFetchSystemConfigCompletionHandler)(BOOL success);
 @property (nonatomic) NSString *contacName;
 @property (nonatomic) NSString *contactScheme;
 @property (nonatomic) NSString *vipImg;
+@property (nonatomic) NSString *sVipImg;
+@property (nonatomic) NSString *imageToken;
+@property (nonatomic,readonly) BOOL loaded;
 
 + (instancetype)sharedModel;
 

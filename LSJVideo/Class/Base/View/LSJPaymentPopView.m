@@ -22,6 +22,9 @@
     LSJPayPointCell *_payPointACell;
     LSJPayPointCell *_payPointBCell;
     NSIndexPath *_selectedIndexPath;
+    LSJPaymentTypeCell *_payTypeCell;
+    QBPayType _payType;
+    QBPaySubType _subPayType;
 }
 @end
 
@@ -33,13 +36,29 @@
     if (self) {
         _availablePaymentTypes = availablePaymentTypes;
         
+        _payType = [_availablePaymentTypes[0][@"type"] unsignedIntegerValue];
+        _subPayType = [_availablePaymentTypes[0][@"subType"] unsignedIntegerValue];
+        
         self.delegate = self;
         self.dataSource = self;
         self.scrollEnabled = NO;
         self.layer.cornerRadius = [LSJUtil isIpad] ? 10 : kWidth(10);
         self.layer.masksToBounds = YES;
         [self setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 15)];
-        self.backgroundColor = [UIColor colorWithHexString:@"#6b2073"];
+        if ([LSJUtil currentVipLevel] == LSJVipLevelVip) {
+            UIImageView  *bgImgV = [[UIImageView alloc] init];
+//            [bgImgV setContentMode:UIViewContentModeScaleAspectFill];
+            [self insertSubview:bgImgV atIndex:0];
+            [bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].sVipImg]];
+            {
+                [bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.center.equalTo(self);
+                    make.size.mas_equalTo(CGSizeMake(kWidth(630),kWidth(920)));
+                }];
+            }
+        } else {
+            self.backgroundColor = [UIColor colorWithHexString:@"#6b2073"];
+        }
     }
     return self;
 }
@@ -70,7 +89,13 @@
     if (section == PaymentTypeSection) {
         return _availablePaymentTypes.count;
     } else if (section == PayPointSection) {
-        return 2;
+        if ([LSJUtil currentVipLevel] == LSJVipLevelNone) {
+            return 2;
+        } else if ([LSJUtil currentVipLevel] == LSJVipLevelVip) {
+            return 1;
+        } else {
+            return 0;
+        }
     } else {
         return 1;
     }
@@ -83,46 +108,50 @@
             _headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
             _headerCell.backgroundColor = [UIColor clearColor];
             
-            UIImageView *_bgImgV = [[UIImageView alloc] init];
-            _bgImgV.layer.cornerRadius = kWidth(10);
-            _bgImgV.layer.masksToBounds = YES;
-            [_headerCell addSubview:_bgImgV];
-            
-            [_bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].vipImg] placeholderImage:[UIImage imageNamed:@""]];
-            {
-                [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));
-                }];
+            if ([LSJUtil currentVipLevel] == LSJVipLevelNone) {
+                UIImageView *_bgImgV = [[UIImageView alloc] init];
+                _bgImgV.layer.cornerRadius = kWidth(10);
+                _bgImgV.layer.masksToBounds = YES;
+                [_headerCell addSubview:_bgImgV];
+                
+                [_bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].vipImg] placeholderImage:[UIImage imageNamed:@""]];
+                {
+                    [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));
+                    }];
+                }
             }
         }
         return _headerCell;
     } else if (indexPath.section == PayPointSection) {
         if (indexPath.row == 0) {
             _payPointACell = [[LSJPayPointCell alloc] initWithCurrentVipLevel:[LSJUtil currentVipLevel] IndexPathRow:indexPath.row];
-            
+            @weakify(self);
+            _payPointACell.action = ^(NSNumber * vipLevel) {
+                @strongify(self);
+                self.paymentAction(self->_payType,self->_subPayType,[vipLevel unsignedIntegerValue]);
+            };
             return _payPointACell;
         } else {
             _payPointBCell = [[LSJPayPointCell alloc] initWithCurrentVipLevel:[LSJUtil currentVipLevel] IndexPathRow:indexPath.row];
-            
+            @weakify(self);
+            _payPointBCell.action = ^(NSNumber * vipLevel) {
+                @strongify(self);
+                self.paymentAction(self->_payType,self->_subPayType,[vipLevel unsignedIntegerValue]);
+            };
             return _payPointBCell;
         }
     } else if (indexPath.section == PaymentTypeSection) {
         @weakify(self);
-        for (NSInteger i  = 0; i < _availablePaymentTypes.count; i++) {
-            NSDictionary *dict = _availablePaymentTypes[i];
-            QBPayType type = [dict[@"type"] integerValue];
-            QBPaySubType subType = [dict[@"subType"] integerValue];
-            if (indexPath.row == i) {
-                
-                LSJPaymentTypeCell *cell = [[LSJPaymentTypeCell alloc]initWithPaymentType:type subType:subType];
-                cell.selectionAction = ^(QBPayType paymentType){
-                    @strongify(self);
-                    [self selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-                };
-                
-                return cell;
-            }
-        }
+        _payTypeCell = [[LSJPaymentTypeCell alloc] initWithPaymentTypes:_availablePaymentTypes];
+        
+        _payTypeCell.selectionAction = ^(QBPayType payType,QBPaySubType paySubType) {
+            @strongify(self);
+            self->_payType = payType;
+            self->_subPayType = paySubType;
+        };
+        
+        return _payTypeCell;
     }
 
     return nil;
@@ -132,7 +161,11 @@
     if (indexPath.section == HeaderSection) {
         return kWidth(560);
     } else if (indexPath.section == PayPointSection) {
-        return kWidth(130);
+        if ([LSJUtil currentVipLevel] == LSJVipLevelNone) {
+            return kWidth(130);
+        } else {
+            return kWidth(260);
+        }
     } else if (indexPath.section == PaymentTypeSection) {
         return kWidth(100);
     } else {
@@ -140,19 +173,19 @@
     }
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _selectedIndexPath = [self indexPathForSelectedRow];
-    if (_selectedIndexPath.section == indexPath.section) {
-        _selectedIndexPath = indexPath;
-        return indexPath;
-    } else {
-        return _selectedIndexPath;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section != PaymentTypeSection) {
-        [self selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-    }
-}
+//- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    _selectedIndexPath = [self indexPathForSelectedRow];
+//    if (_selectedIndexPath.section == indexPath.section) {
+//        _selectedIndexPath = indexPath;
+//        return indexPath;
+//    } else {
+//        return _selectedIndexPath;
+//    }
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section != PaymentTypeSection) {
+//        [self selectRowAtIndexPath:_selectedIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+//    }
+//}
 @end

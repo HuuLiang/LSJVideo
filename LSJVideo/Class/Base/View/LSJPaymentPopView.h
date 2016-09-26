@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^LSJPaymentPopViewAction)(QBPayType paymentType,QBPaySubType subType);
+typedef void (^LSJPaymentPopViewAction)(QBPayType paymentType,QBPaySubType subType,LSJVipLevel vipLevel);
 
 @interface LSJPaymentPopView : UITableView
 

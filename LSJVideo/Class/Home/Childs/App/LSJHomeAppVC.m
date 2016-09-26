@@ -10,6 +10,7 @@
 #import "LSJAppCell.h"
 #import "LSJColumnConfigModel.h"
 #import "SDCycleScrollView.h"
+#import "JQKApplicationManager.h"
 
 static NSString *const kAppCellReusableIdentifier = @"AppCellReusableIdentifier";
 static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdentifier";
@@ -133,6 +134,11 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
         appCell.sizeStr = array[0];
         appCell.countStr = array[1];
         appCell.detailStr = array[2];
+        
+        [LSJUtil checkAppInstalledWithBundleId:program.specialDesc completionHandler:^(BOOL isInstalled) {
+            appCell.installed = isInstalled;
+        }];
+        
         return appCell;
     }
 }

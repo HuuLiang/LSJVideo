@@ -42,39 +42,32 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     
     QBPayType wechatPaymentType = [[QBPaymentManager sharedManager] wechatPaymentType];
     if (wechatPaymentType != QBPayTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeVIAPay),@"subType" : @(QBPaySubTypeWeChat)}];
+        [availablePaymentTypes addObject:@{@"type" : @(wechatPaymentType),@"subType" : @(QBPaySubTypeWeChat)}];
     }
     
     QBPayType alipayPaymentType = [[QBPaymentManager sharedManager] alipayPaymentType];
     if (alipayPaymentType != QBPayTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeVIAPay),@"subType" : @(QBPaySubTypeAlipay)}];
+        [availablePaymentTypes addObject:@{@"type" : @(alipayPaymentType),@"subType" : @(QBPaySubTypeAlipay)}];
     }
     
     QBPayType qqPaymentType = [[QBPaymentManager sharedManager] qqPaymentType];
     if (qqPaymentType != QBPayTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeVIAPay),@"subType" : @(QBPaySubTypeQQ)}];
+        [availablePaymentTypes addObject:@{@"type" : @(qqPaymentType),@"subType" : @(QBPaySubTypeQQ)}];
         
     }
     QBPayType cardPaymentType = [[QBPaymentManager sharedManager] cardPayPaymentType];
     if (cardPaymentType != QBPayTypeNone) {
-        [availablePaymentTypes addObject:@{@"type" : @(QBPayTypeIAppPay),@"subType" : @(QBPaySubTypeNone)}];
+        [availablePaymentTypes addObject:@{@"type" : @(cardPaymentType),@"subType" : @(QBPaySubTypeNone)}];
     }
     
     
     _popView = [[LSJPaymentPopView alloc] initWithAvailablePaymentTypes:availablePaymentTypes];
     @weakify(self);
-    _popView.paymentAction = ^(QBPayType payType,QBPaySubType subType) {
+    _popView.paymentAction = ^(QBPayType payType,QBPaySubType subType,LSJVipLevel vipLevel) {
         @strongify(self);
         
-        [self payForPaymentType:payType subPaymentType:subType];
-        //        if (subPayType == LSJPaymentTypeWeChatPay) {
-        //            [self payForPaymentType:wechatPaymentType subPaymentType:subPayType];
-        //        } else if (subPayType == LSJPaymentTypeAlipay) {
-        //            [self payForPaymentType:alipayPaymentType subPaymentType:subPayType];
-        //        }else {
-        //            [self payForPaymentType:cardPaymentType subPaymentType:LSJPaymentTypeNone];
-        //        }
-        
+        [self payForPaymentType:payType subPaymentType:subType vipLevel:vipLevel];
+
         [self hidePayment];
     };
     _popView.closeAction = ^(id sender){
@@ -86,20 +79,10 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     return _popView;
 }
 
-- (void)payForPaymentType:(QBPayType)paymentType subPaymentType:(QBPaySubType)subPaymentType {
+- (void)payForPaymentType:(QBPayType)paymentType subPaymentType:(QBPaySubType)subPaymentType vipLevel:(LSJVipLevel)vipLevel {
+
     
-    
-//    LSJPaymentInfo *paymentInfo = [[LSJPaymentManager sharedManager] startPaymentWithType:paymentType
-//                                                                                subType:subPaymentType
-//                                                                                  price:[LSJSystemConfigModel sharedModel].payAmount
-//                                                                              baseModel:self.baseModel
-//                                                                      completionHandler:^(PAYRESULT payResult, LSJPaymentInfo *paymentInfo)
-//                                  {
-//                                      [self notifyPaymentResult:payResult withPaymentInfo:paymentInfo];
-//                                      
-//                                  }];
-    
-    QBPaymentInfo *paymentInfo = [self createPaymentInfoWithPaymentType:paymentType subPaymentType:subPaymentType];
+    QBPaymentInfo *paymentInfo = [self createPaymentInfoWithPaymentType:paymentType subPaymentType:subPaymentType vipLevel:vipLevel];
     
     [[QBPaymentManager sharedManager] startPaymentWithPaymentInfo:paymentInfo completionHandler:^(QBPayResult payResult, QBPaymentInfo *paymentInfo) {
         
@@ -113,10 +96,20 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     
 }
 
-- (QBPaymentInfo *)createPaymentInfoWithPaymentType:(QBPayType)payType subPaymentType:(QBPaySubType)subPayType {
-    NSUInteger price = 0;
+- (QBPaymentInfo *)createPaymentInfoWithPaymentType:(QBPayType)payType subPaymentType:(QBPaySubType)subPayType vipLevel:(LSJVipLevel)vipLevel {
     
-    price = [LSJSystemConfigModel sharedModel].payAmount;
+    NSUInteger price = 0;
+    if (vipLevel == LSJVipLevelVip) {
+        price = [LSJSystemConfigModel sharedModel].payAmount;
+    } else if (vipLevel == LSJVipLevelSVip) {
+        if (![LSJUtil isVip]) {
+            price = [LSJSystemConfigModel sharedModel].svipPayAmount;
+        } else {
+            price = [LSJSystemConfigModel sharedModel].svipPayAmount - [LSJSystemConfigModel sharedModel].payAmount;
+        }
+    }
+    
+    price = 200;
     
     NSString *channelNo = LSJ_CHANNEL_NO;
     channelNo = [channelNo substringFromIndex:channelNo.length-14];
@@ -160,6 +153,11 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     [self.view beginLoading];
     self.completionHandler = completionHandler;
     self.baseModel = model;
+    
+    if (_popView) {
+        [_popView removeFromSuperview];
+        _popView = nil;
+    }
     
     if (self.view.superview) {
         [self.view removeFromSuperview];

@@ -12,4 +12,6 @@
 
 - (instancetype)initWithCurrentVipLevel:(LSJVipLevel)vipLevel IndexPathRow:(NSInteger)row;
 
+@property (nonatomic) QBAction action;
+
 @end

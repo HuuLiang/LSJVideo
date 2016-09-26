@@ -62,7 +62,7 @@
         {
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(self);
-                make.centerX.equalTo(self.mas_centerX).offset(_normalImageSize.width / 2.* _titleFirst ? -1 : 1);
+                make.centerX.equalTo(self.mas_centerX).offset(_normalImageSize.width*0.75*(_titleFirst ? -1 : 1));
 
             }];
             
@@ -75,7 +75,6 @@
                     } else {
                         make.right.equalTo(_titleLabel.mas_left).offset(0);
                     }
-                    
                 }];
             }
         }
@@ -103,11 +102,11 @@
 - (void)setSpace:(CGFloat)space {
     _space = space;
     if (_imgV) {
-        [_imgV mas_updateConstraints:^(MASConstraintMaker *make) {
+        [_titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             if (_titleFirst) {
-                make.left.equalTo(_titleLabel.mas_right).offset(space);
+                make.right.equalTo(_imgV.mas_left).offset(-space);
             } else {
-                make.right.equalTo(_titleLabel.mas_left).offset(-space);
+                make.left.equalTo(_imgV.mas_right).offset(space);
             }
             
         }];
@@ -139,7 +138,6 @@
                 
             }];
         }
-        
     } else {
         _imgV.image = _normalImage;
         _titleLabel.text = _normalTitleStr;
@@ -151,7 +149,6 @@
                 } else {
                     make.right.equalTo(_titleLabel.mas_left).offset(_space);
                 }
-                
             }];
         }
     }

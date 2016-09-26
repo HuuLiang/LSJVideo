@@ -16,6 +16,9 @@
     UILabel *_detailLabel;
     UILabel *_reduceLabel;
     LSJBtnView *_payBtn;
+    NSUInteger _price;
+    LSJVipLevel _selectedVipLevel;
+    UIView *_shadeView;
 }
 @end
 
@@ -26,6 +29,8 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        
+        
         
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
@@ -66,30 +71,38 @@
                 if (vipLevel == LSJVipLevelNone) {
                     _titleLabel.text = @"普通VIP";
                     _detailLabel.text = @"观看除浪友圈外所有视频";
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",[LSJSystemConfigModel sharedModel].payAmount/100];
+                    _price = [LSJSystemConfigModel sharedModel].payAmount;
+                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
                     _payBtn.backgroundColor = [UIColor colorWithHexString:@"#"];
                     _reduceLabel.text = @"原价88元";
+                    _selectedVipLevel = LSJVipLevelVip;
+                    _payBtn.bgColor = [UIColor colorWithHexString:@"#ff8a44"];
                 } else if (vipLevel == LSJVipLevelVip) {
-                    _titleLabel.text = @"普通VIP";
-                    _detailLabel.text = @"观看除浪友圈外所有视频";
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",[LSJSystemConfigModel sharedModel].payAmount/100];
-                    _reduceLabel.text = @"原价88元";
-                    
-                    bgView.backgroundColor = [[UIColor colorWithHexString:@"#efefef"] colorWithAlphaComponent:0.7];
-                    bgView.userInteractionEnabled = NO;
+                    _titleLabel.text = @"升级黑钻VIP";
+                    _titleLabel.textColor = [UIColor colorWithHexString:@"#000000"];
+                    _detailLabel.text = @"黑钻会员永久有效(定期更新)";
+                    _detailLabel.textColor = [UIColor colorWithHexString:@"#000000"];
+                    _price = [LSJSystemConfigModel sharedModel].svipPayAmount - [LSJSystemConfigModel sharedModel].payAmount;
+                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
+                    _reduceLabel.text = @"原价108元";
+                    _reduceLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+                    _payBtn.bgColor = [UIColor colorWithHexString:@"#e63e61"];
+                    _selectedVipLevel = LSJVipLevelSVip;
+                    _shadeView = [[UIView alloc] init];
+                    _shadeView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+                    [self insertSubview:_shadeView atIndex:0];
                 }
-                _payBtn.backgroundColor = [UIColor colorWithHexString:@"#ff8a44"];
+                
             } else if (row == 1) {
                 if (vipLevel == LSJVipLevelNone) {
                     _titleLabel.text = @"黑钻VIP";
                     _detailLabel.text = @"观看所有视频(定期更新)";
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",[LSJSystemConfigModel sharedModel].svipPayAmount/100];
+                    _price = [LSJSystemConfigModel sharedModel].svipPayAmount;
+                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
                     _reduceLabel.text = @"原价108元";
-                } else if (vipLevel == LSJVipLevelVip) {
-                    _titleLabel.text = @"升级黑钻VIP";
-                    _detailLabel.text = @"观看所有视频(定期更新)";
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",([LSJSystemConfigModel sharedModel].svipPayAmount - [LSJSystemConfigModel sharedModel].payAmount)/100];
-                    _reduceLabel.text = @"原价108元";
+                    _selectedVipLevel = LSJVipLevelSVip;
+                    
+
                 }
                 _payBtn.backgroundColor = [UIColor colorWithHexString:@"#e61e63"];
             }
@@ -125,9 +138,28 @@
             }];
             
             [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), kWidth(20), kWidth(10), kWidth(20)));
+//                make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), kWidth(20), kWidth(10), kWidth(20)));
+                make.left.equalTo(self).offset(kWidth(20));
+                make.right.equalTo(self).offset(-kWidth(20));
+                make.centerY.equalTo(self);
+                make.height.mas_equalTo(kWidth(110));
             }];
+            
+            if (_shadeView) {
+                [_shadeView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(self).offset(kWidth(20));
+                    make.right.equalTo(self).offset(-kWidth(20));
+                    make.centerY.equalTo(self);
+                    make.height.mas_equalTo(kWidth(110));
+                }];
+            }
         }
+        
+        @weakify(self);
+        [bgView bk_whenTapped:^{
+            @strongify(self);
+            self.action(@(self->_selectedVipLevel));
+        }];
         
     }
     return self;
