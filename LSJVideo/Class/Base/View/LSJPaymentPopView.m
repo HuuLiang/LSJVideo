@@ -44,7 +44,7 @@
         self.scrollEnabled = NO;
         self.layer.cornerRadius = [LSJUtil isIpad] ? 10 : kWidth(10);
         self.layer.masksToBounds = YES;
-        [self setSeparatorInset:UIEdgeInsetsMake(0, 15, 0, 15)];
+        [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         if ([LSJUtil currentVipLevel] == LSJVipLevelVip) {
             UIImageView  *bgImgV = [[UIImageView alloc] init];
 //            [bgImgV setContentMode:UIViewContentModeScaleAspectFill];
@@ -67,7 +67,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView hasBorderInSection:(NSUInteger)section {
     if (section == PaymentTypeSection) {
-        return YES;
+        return NO;
     } else {
         return NO;
     }
@@ -86,9 +86,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == PaymentTypeSection) {
-        return _availablePaymentTypes.count;
-    } else if (section == PayPointSection) {
+    if (section == PayPointSection) {
         if ([LSJUtil currentVipLevel] == LSJVipLevelNone) {
             return 2;
         } else if ([LSJUtil currentVipLevel] == LSJVipLevelVip) {

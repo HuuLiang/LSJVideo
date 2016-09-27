@@ -64,9 +64,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if (![LSJUtil isSVip]) {
-        [self payWithBaseModelInfo:nil];
-    }
+    
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -84,10 +82,10 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         cell.dataArr = column.columnList;
         cell.action = ^(NSNumber *index) {
             @strongify(self);
-            if (![LSJUtil isSVip]) {
-                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
-                [self payWithBaseModelInfo:baseModel];
-            }
+//            if (![LSJUtil isSVip]) {
+//                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+//                [self payWithBaseModelInfo:baseModel];
+//            }
             LSJLechersListVC *listVC = [[LSJLechersListVC alloc] initWithColumn:column andIndex:[index integerValue]];
             [self.navigationController pushViewController:listVC animated:YES];
         };
@@ -105,7 +103,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     return;
 }
 

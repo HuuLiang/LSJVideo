@@ -13,7 +13,6 @@ typedef NS_ENUM(NSUInteger, LSJPaymentPopViewSection) {
     HeaderSection,
     PayPointSection,
     PaymentTypeSection,
-//    PaySection,
     SectionCount
 };
 

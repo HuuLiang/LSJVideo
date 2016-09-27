@@ -162,7 +162,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [LSJUtil registerVip];
+//    [LSJUtil registerVip];
     
     [QBNetworkingConfiguration defaultConfiguration].RESTAppId = LSJ_REST_APPID;
     [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);

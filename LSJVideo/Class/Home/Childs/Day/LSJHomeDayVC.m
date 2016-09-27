@@ -120,6 +120,7 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
     if (indexPath.row < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.row];
         LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(self.response.realColumnId) ChannelType:@(self.response.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:0];
+        [self playVideoWithUrl:program.videoUrl baseModel:baseModel];
         [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:0];
     }
 }

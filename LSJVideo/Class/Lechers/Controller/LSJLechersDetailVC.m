@@ -112,7 +112,11 @@ QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
     if (indexPath.row < _columnModel.programList.count) {
         LSJProgramModel * program = _columnModel.programList[indexPath.row];
         LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(_columnModel.realColumnId) ChannelType:@(_columnModel.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:self.currentIndex];
-        [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId program:program baseModel:baseModel];
+        if ([LSJUtil isSVip]) {
+            [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId program:program baseModel:baseModel];
+        } else {
+            [self payWithBaseModelInfo:baseModel];
+        }
     }
 }
 

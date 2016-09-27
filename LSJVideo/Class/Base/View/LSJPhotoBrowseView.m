@@ -27,10 +27,10 @@
         
         _currentIndex = index;
         
-        const CGFloat width = frame.size.width*0.8;
+        const CGFloat width = frame.size.width*0.9;
         const CGFloat heigh = width*9/7;
-        const CGFloat pointX = frame.size.width*0.1;
-        const CGFloat pointY = (frame.size.height - width *9/7)/2;
+        const CGFloat pointX = frame.size.width*0.05;
+        const CGFloat pointY = (frame.size.height - width *9/7)/2-kWidth(50);
         
         
         _photoView = [[SDCycleScrollView alloc] initWithFrame:CGRectMake(pointX, pointY, width, heigh)];

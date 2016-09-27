@@ -30,7 +30,8 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        
+        [self setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
@@ -179,6 +180,17 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     QBLog(@"%@",NSStringFromCGRect(_reduceLabel.frame));
+    
+    CAShapeLayer * lineA = [CAShapeLayer layer];
+    CGMutablePathRef linePathA = CGPathCreateMutable();
+    [lineA setFillColor:[[UIColor clearColor] CGColor]];
+    [lineA setStrokeColor:[[UIColor colorWithHexString:[LSJUtil currentVipLevel] == LSJVipLevelNone ? @"#ffffff" : @"#333333"] CGColor]];
+    lineA.lineWidth = 0.3f;
+    CGPathMoveToPoint(linePathA, NULL, _reduceLabel.frame.origin.x , _reduceLabel.frame.origin.y+_reduceLabel.frame.size.height);
+    CGPathAddLineToPoint(linePathA, NULL, _reduceLabel.frame.origin.x+_reduceLabel.frame.size.width , _reduceLabel.frame.origin.y);
+    [lineA setPath:linePathA];
+    CGPathRelease(linePathA);
+    [self.layer addSublayer:lineA];
 }
 
 @end

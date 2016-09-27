@@ -206,8 +206,11 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 
 - (void)initPhotosCellInSection:(NSUInteger)section {
     _photosCell = [[LSJDetailVideoPhotosCell alloc] init];
-    NSArray *array = self.response.programUrlList;
-    _photosCell.dataSource = array;
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (LSJProgramUrlModel *model in self.response.programUrlList) {
+        [array addObject:model.url];
+    }
+    _photosCell.dataSource = self.response.programUrlList;
     @weakify(self);
     _photosCell.selectedIndex = ^(NSNumber *index) {
         @strongify(self);
