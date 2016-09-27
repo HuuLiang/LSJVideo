@@ -67,20 +67,21 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
         @strongify(self);
         
         [self payForPaymentType:payType subPaymentType:subType vipLevel:vipLevel];
-
+        
         [self hidePayment];
     };
     _popView.closeAction = ^(id sender){
         @strongify(self);
         [self hidePayment];
-//        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:PAYRESULT_UNKNOWN forBaseModel:self.baseModel programLocation:NSNotFound andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
+        //        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:PAYRESULT_UNKNOWN forBaseModel:self.baseModel programLocation:NSNotFound andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
         
+        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:QBPayResultUnknown forBaseModel:self.baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:self.baseModel.subTab];
     };
     return _popView;
 }
 
 - (void)payForPaymentType:(QBPayType)paymentType subPaymentType:(QBPaySubType)subPaymentType vipLevel:(LSJVipLevel)vipLevel {
-
+    
     
     QBPaymentInfo *paymentInfo = [self createPaymentInfoWithPaymentType:paymentType subPaymentType:subPaymentType vipLevel:vipLevel];
     
@@ -91,7 +92,8 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     }];
     
     if (paymentInfo) {
-//        [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo forPayAction:LSJStatsPayActionGoToPay andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
+        //        [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo forPayAction:LSJStatsPayActionGoToPay andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
+        [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo forPayAction:LSJStatsPayActionGoToPay andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:self.baseModel.subTab];
     }
     
 }
@@ -228,13 +230,13 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
 
 - (void)notifyPaymentResult:(QBPayResult)result withPaymentInfo:(QBPaymentInfo *)paymentInfo {
     
-//    NSDateFormatter *dateFormmater = [[NSDateFormatter alloc] init];
-//    [dateFormmater setDateFormat:@"yyyyMMddHHmmss"];
+    //    NSDateFormatter *dateFormmater = [[NSDateFormatter alloc] init];
+    //    [dateFormmater setDateFormat:@"yyyyMMddHHmmss"];
     
-//    paymentInfo.paymentResult = @(result);
-//    paymentInfo.paymentStatus = @(LSJPaymentStatusNotProcessed);
-//    paymentInfo.paymentTime = [dateFormmater stringFromDate:[NSDate date]];
-//    [paymentInfo save];
+    //    paymentInfo.paymentResult = @(result);
+    //    paymentInfo.paymentStatus = @(LSJPaymentStatusNotProcessed);
+    //    paymentInfo.paymentTime = [dateFormmater stringFromDate:[NSDate date]];
+    //    [paymentInfo save];
     
     if (result == QBPayResultSuccess) {
         [LSJUtil registerVip];
@@ -249,10 +251,11 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
         [[CRKHudManager manager] showHudWithText:@"支付失败"];
     }
     
-//    [[LSJPaymentModel sharedModel] commitPaymentInfo:paymentInfo];
-//    [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo
-//                                               forPayAction:LSJStatsPayActionPayBack
-//                                                andTabIndex:[LSJUtil currentTabPageIndex]
-//                                                subTabIndex:[LSJUtil currentSubTabPageIndex]];
+    //    [[LSJPaymentModel sharedModel] commitPaymentInfo:paymentInfo];
+    //    [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo
+    //                                               forPayAction:LSJStatsPayActionPayBack
+    //                                                andTabIndex:[LSJUtil currentTabPageIndex]
+    //                                                subTabIndex:[LSJUtil currentSubTabPageIndex]];
+    [[LSJStatsManager sharedManager] statsPayWithPaymentInfo:paymentInfo forPayAction:LSJStatsPayActionPayBack andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:self.baseModel.subTab];
 }
 @end

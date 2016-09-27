@@ -35,17 +35,17 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
-
-//    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
-//    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
-//    [self.view addSubview:imgV];
-//    {
-//        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.center.equalTo(self.view);
-//            make.size.mas_equalTo(CGSizeMake(kScreenWidth, kScreenWidth*bgImg.size.height/bgImg.size.width));
-//        }];
-//    }
+    //    self.view.backgroundColor = [[UIColor colorWithHexString:@"#ffe100"] colorWithAlphaComponent:0.99];
+    
+    //    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
+    //    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
+    //    [self.view addSubview:imgV];
+    //    {
+    //        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+    //            make.center.equalTo(self.view);
+    //            make.size.mas_equalTo(CGSizeMake(kScreenWidth, kScreenWidth*bgImg.size.height/bgImg.size.width));
+    //        }];
+    //    }
     
     [self create];
 }
@@ -63,11 +63,17 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
     //设置所有子controller
     NSMutableArray *contrors = [NSMutableArray array];
     NSMutableArray *titles = [[NSMutableArray alloc] init];
-    for (LSJColumnModel *column in _lecherColumn.columnList) {
+//    for (LSJColumnModel *column in _lecherColumn.columnList) {
+//        LSJLechersDetailVC *lecherDetailVC = [[LSJLechersDetailVC alloc] initWithColumn:column];    
+//        [contrors addObject:lecherDetailVC];
+//        [titles addObject:column.name];
+//    }
+    [_lecherColumn.columnList enumerateObjectsUsingBlock:^(LSJColumnModel * _Nonnull column, NSUInteger idx, BOOL * _Nonnull stop) {
         LSJLechersDetailVC *lecherDetailVC = [[LSJLechersDetailVC alloc] initWithColumn:column];
+        lecherDetailVC.currentIndex = idx;
         [contrors addObject:lecherDetailVC];
         [titles addObject:column.name];
-    }
+    }];
     _cursorView.titles = titles;
     _cursorView.controllers = [contrors copy];
     //设置字体和颜色
@@ -85,33 +91,33 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
     _cursorView.currentIndex = _index;
     //属性设置完成后，调用此方法绘制界面
     
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - 100, 20, 100, 44)];
-//    view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
-//    [self.view addSubview:view];
-//    
-//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [btn setTitle:@"精品专区" forState:UIControlStateNormal];
-//    btn.titleLabel.font = [UIFont systemFontOfSize:kWidth(24.)];
-//    btn.layer.cornerRadius = kWidth(26.);
-//    btn.layer.masksToBounds = YES;
-//    btn.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-//    [btn setTitleColor:[UIColor colorWithHexString:@"#555555"] forState:UIControlStateNormal];
-//    [view addSubview:btn];
-//    
-//    [btn bk_addEventHandler:^(id sender) {
-//        LSJHomeAppVC *appVC = [[LSJHomeAppVC alloc] initWithTitle:@"精品专区"];
-//        [self.navigationController pushViewController:appVC animated:YES];
-//    } forControlEvents:UIControlEventTouchUpInside];
+    //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth - 100, 20, 100, 44)];
+    //    view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
+    //    [self.view addSubview:view];
+    //    
+    //    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [btn setTitle:@"精品专区" forState:UIControlStateNormal];
+    //    btn.titleLabel.font = [UIFont systemFontOfSize:kWidth(24.)];
+    //    btn.layer.cornerRadius = kWidth(26.);
+    //    btn.layer.masksToBounds = YES;
+    //    btn.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+    //    [btn setTitleColor:[UIColor colorWithHexString:@"#555555"] forState:UIControlStateNormal];
+    //    [view addSubview:btn];
+    //    
+    //    [btn bk_addEventHandler:^(id sender) {
+    //        LSJHomeAppVC *appVC = [[LSJHomeAppVC alloc] initWithTitle:@"精品专区"];
+    //        [self.navigationController pushViewController:appVC animated:YES];
+    //    } forControlEvents:UIControlEventTouchUpInside];
     
     
     _cursorView.collectionViewWidth = ^(CGFloat width) {
-//        view.frame = CGRectMake(width, 20, kScreenWidth - width, 44);
-//        
-//        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerY.equalTo(view);
-//            make.right.equalTo(view).offset(-kWidth(14.));
-//            make.size.mas_equalTo(CGSizeMake(kWidth(128.), kWidth(52.)));
-//        }];
+        //        view.frame = CGRectMake(width, 20, kScreenWidth - width, 44);
+        //        
+        //        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        //            make.centerY.equalTo(view);
+        //            make.right.equalTo(view).offset(-kWidth(14.));
+        //            make.size.mas_equalTo(CGSizeMake(kWidth(128.), kWidth(52.)));
+        //        }];
     };
     
     [_cursorView reloadPages];
@@ -120,7 +126,7 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
 - (void)viewWillAppear:(BOOL)animated {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
-//    [_cursorView selectItemAtIndex:_index];
+    //    [_cursorView selectItemAtIndex:_index];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

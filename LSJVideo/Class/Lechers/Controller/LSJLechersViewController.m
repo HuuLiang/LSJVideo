@@ -65,7 +65,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidAppear:(BOOL)animated {
     if (![LSJUtil isSVip]) {
-        [self payWithBaseModelInfo:[LSJBaseModel createModelWithProgramId:@1 ProgramType:@1 RealColumnId:@1 ChannelType:@1 PrgramLocation:1 Spec:1]];
+        [self payWithBaseModelInfo:nil];
     }
 }
 
@@ -85,7 +85,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         cell.action = ^(NSNumber *index) {
             @strongify(self);
             if (![LSJUtil isSVip]) {
-                [self payWithBaseModelInfo:[LSJBaseModel createModelWithProgramId:@1 ProgramType:@1 RealColumnId:@1 ChannelType:@1 PrgramLocation:1 Spec:1]];
+                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+                [self payWithBaseModelInfo:baseModel];
             }
             LSJLechersListVC *listVC = [[LSJLechersListVC alloc] initWithColumn:column andIndex:[index integerValue]];
             [self.navigationController pushViewController:listVC animated:YES];
@@ -106,6 +107,10 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     return;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex] forSlideCount:1];
 }
 
 @end

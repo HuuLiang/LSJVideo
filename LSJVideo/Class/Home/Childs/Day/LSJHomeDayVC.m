@@ -18,12 +18,12 @@ static NSString *const kDayCellReusableIdentifier = @"kDayCellReusableIdentifier
     UITableView *_layoutTableView;
 }
 @property (nonatomic) LSJColumnDayModel * columnModel;
-@property (nonatomic)NSMutableArray *dataSource;
+@property (nonatomic) LSJColumnModel * response;
 @end
 
 @implementation LSJHomeDayVC
 QBDefineLazyPropertyInitialization(LSJColumnDayModel, columnModel)
-QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
+QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 
 - (instancetype)initWithColumnId:(NSInteger)columnId
 {
@@ -67,8 +67,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [self.columnModel fetchDayInfoWithColumnId:_columnId CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
         if (success) {
-            [self.dataSource removeAllObjects];
-            [self.dataSource addObjectsFromArray:obj];
+            self.response = obj;
             [_layoutTableView reloadData];
             [_layoutTableView LSJ_endPullToRefresh];
         }
@@ -78,13 +77,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataSource.count;
+    return self.response.programList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJDayCell *cell = [tableView dequeueReusableCellWithIdentifier:kDayCellReusableIdentifier forIndexPath:indexPath];
-    if (indexPath.row < _dataSource.count) {
-        LSJProgramModel *program = _dataSource[indexPath.row];
+    if (indexPath.row < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.row];
         cell.imgUrlStr = program.coverImg;
         cell.titleStr = program.title;
         cell.contact = program.spare;
@@ -95,8 +94,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJDayCell * dayCell = (LSJDayCell *)cell;
-    if (indexPath.row < _dataSource.count) {
-        LSJProgramModel *program = _dataSource[indexPath.row];
+    if (indexPath.row < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.row];
         dayCell.userComments = program.comments;
         dayCell.start = YES;
     }
@@ -104,13 +103,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     LSJDayCell *dayCell = (LSJDayCell *)cell;
-    if (indexPath.row < _dataSource.count) {
+    if (indexPath.row < self.response.programList.count) {
         dayCell.start = NO;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == _dataSource.count - 1) {
+    if (indexPath.row == self.response.programList.count - 1) {
         return kScreenWidth * 14 / 15 - kWidth(20);
     } else {
         return kScreenWidth * 14 / 15;
@@ -118,8 +117,14 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row < self.response.programList.count) {
+        LSJProgramModel *program = self.response.programList[indexPath.row];
+        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(self.response.realColumnId) ChannelType:@(self.response.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:0];
+        [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:0];
+    }
 }
 
-
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:0 forSlideCount:1];
+}
 @end

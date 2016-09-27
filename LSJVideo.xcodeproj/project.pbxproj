@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0054B3A0FFA3FC3E745FAFAA /* libPods-LSJVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B6181CA870EEDBDDFDE826 /* libPods-LSJVideo.a */; };
+		B3695F401D9A5DC10048DB8B /* LSJCPCStatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F391D9A5DC10048DB8B /* LSJCPCStatsModel.m */; };
+		B3695F411D9A5DC10048DB8B /* LSJPayStatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3B1D9A5DC10048DB8B /* LSJPayStatsModel.m */; };
+		B3695F421D9A5DC10048DB8B /* LSJStatsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3D1D9A5DC10048DB8B /* LSJStatsBaseModel.m */; };
+		B3695F431D9A5DC10048DB8B /* LSJTabStatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */; };
+		B3A2DB331D9A602000255471 /* LSJStatsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DB321D9A602000255471 /* LSJStatsManager.m */; };
 		EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */; };
 		EC1990EE1D52EC22001B4F52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990ED1D52EC22001B4F52 /* main.m */; };
 		EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990F01D52EC22001B4F52 /* AppDelegate.m */; };
@@ -122,6 +127,16 @@
 		23B6181CA870EEDBDDFDE826 /* libPods-LSJVideo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LSJVideo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7623508634401CB8DF1A56E3 /* Pods-LSJVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSJVideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo.release.xcconfig"; sourceTree = "<group>"; };
 		B17949AE67F4498DA858110A /* Pods-LSJVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSJVideo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo.debug.xcconfig"; sourceTree = "<group>"; };
+		B3695F381D9A5DC10048DB8B /* LSJCPCStatsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCPCStatsModel.h; sourceTree = "<group>"; };
+		B3695F391D9A5DC10048DB8B /* LSJCPCStatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCPCStatsModel.m; sourceTree = "<group>"; };
+		B3695F3A1D9A5DC10048DB8B /* LSJPayStatsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPayStatsModel.h; sourceTree = "<group>"; };
+		B3695F3B1D9A5DC10048DB8B /* LSJPayStatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJPayStatsModel.m; sourceTree = "<group>"; };
+		B3695F3C1D9A5DC10048DB8B /* LSJStatsBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJStatsBaseModel.h; sourceTree = "<group>"; };
+		B3695F3D1D9A5DC10048DB8B /* LSJStatsBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJStatsBaseModel.m; sourceTree = "<group>"; };
+		B3695F3E1D9A5DC10048DB8B /* LSJTabStatsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJTabStatsModel.h; sourceTree = "<group>"; };
+		B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJTabStatsModel.m; sourceTree = "<group>"; };
+		B3A2DB311D9A602000255471 /* LSJStatsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJStatsManager.h; sourceTree = "<group>"; };
+		B3A2DB321D9A602000255471 /* LSJStatsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJStatsManager.m; sourceTree = "<group>"; };
 		EC1976671D99392000B91C4F /* LSJVideoTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVideoTokenManager.h; sourceTree = "<group>"; };
 		EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJVideoTokenManager.m; sourceTree = "<group>"; };
 		EC1990E91D52EC22001B4F52 /* LSJVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSJVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -379,6 +394,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B3695F371D9A5DC10048DB8B /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				B3695F381D9A5DC10048DB8B /* LSJCPCStatsModel.h */,
+				B3695F391D9A5DC10048DB8B /* LSJCPCStatsModel.m */,
+				B3695F3A1D9A5DC10048DB8B /* LSJPayStatsModel.h */,
+				B3695F3B1D9A5DC10048DB8B /* LSJPayStatsModel.m */,
+				B3695F3C1D9A5DC10048DB8B /* LSJStatsBaseModel.h */,
+				B3695F3D1D9A5DC10048DB8B /* LSJStatsBaseModel.m */,
+				B3695F3E1D9A5DC10048DB8B /* LSJTabStatsModel.h */,
+				B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		EC1990E01D52EC21001B4F52 = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +564,7 @@
 		ECD70BDD1D531F6A006929B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3695F371D9A5DC10048DB8B /* Stats */,
 				ECD70DAE1D533DF3006929B1 /* LSJBaseModel.h */,
 				ECD70DAF1D533DF3006929B1 /* LSJBaseModel.m */,
 				EC2F0BAB1D685E1500DE2B7F /* LSJColumnModel.h */,
@@ -728,6 +759,8 @@
 				ECD70D3C1D531FC7006929B1 /* JQKApplicationManager.m */,
 				EC1976671D99392000B91C4F /* LSJVideoTokenManager.h */,
 				EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */,
+				B3A2DB311D9A602000255471 /* LSJStatsManager.h */,
+				B3A2DB321D9A602000255471 /* LSJStatsManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1025,6 +1058,7 @@
 				TargetAttributes = {
 					EC1990E81D52EC22001B4F52 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 7VHT3KAS56;
 					};
 				};
 			};
@@ -1114,6 +1148,7 @@
 			files = (
 				ECF00E2B1D5B49E900FBF1D2 /* LSJHomeModel.m in Sources */,
 				ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */,
+				B3695F401D9A5DC10048DB8B /* LSJCPCStatsModel.m in Sources */,
 				EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */,
 				EC20E99D1D91313B00568666 /* LSJDetailImgTextHeaderCell.m in Sources */,
 				ECD70D981D532E33006929B1 /* LSJUtil.m in Sources */,
@@ -1121,6 +1156,7 @@
 				ECD70D0C1D531F6B006929B1 /* UITableView+Separator.m in Sources */,
 				ECF00E2E1D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m in Sources */,
 				EC66EC701D62E84000ECAC57 /* LSJRankCell.m in Sources */,
+				B3695F421D9A5DC10048DB8B /* LSJStatsBaseModel.m in Sources */,
 				EC85475E1D705CFE00B0F815 /* LSJDetailVideoCommandCell.m in Sources */,
 				EC74E3351D87963F00DEB3F3 /* LSJSystemConfigModel.m in Sources */,
 				EC3456BB1D61A55D00C45F19 /* LSJAppCell.m in Sources */,
@@ -1131,12 +1167,14 @@
 				EC3190431D5C134A00B8E646 /* LSJRecommdCell.m in Sources */,
 				ECD70D0D1D531F6B006929B1 /* UIView+Loading.m in Sources */,
 				EC80DE511D8E99AB00EF943E /* SDCollectionViewCell.m in Sources */,
+				B3695F431D9A5DC10048DB8B /* LSJTabStatsModel.m in Sources */,
 				EC80DE4F1D8E99AB00EF943E /* TADotView.m in Sources */,
 				EC74E3321D87963F00DEB3F3 /* LSJActivateModel.m in Sources */,
 				EC8547551D702BB200B0F815 /* LSJDetailVideoHeaderCell.m in Sources */,
 				EC52B4DA1D93FE46003224CC /* LSJDetailImgTextCell.m in Sources */,
 				ECD70D471D5321EE006929B1 /* LSJLayoutViewController.m in Sources */,
 				EC4258651D6C4D620066C638 /* LSJBtnView.m in Sources */,
+				B3695F411D9A5DC10048DB8B /* LSJPayStatsModel.m in Sources */,
 				ECD70DCB1D5348B6006929B1 /* LSJVideoPlayer.m in Sources */,
 				ECD70D951D532D51006929B1 /* LSJHudManager.m in Sources */,
 				ECD70DC21D534706006929B1 /* LSJPaymentViewController.m in Sources */,
@@ -1201,6 +1239,7 @@
 				ECD70DBC1D534663006929B1 /* LSJWebViewController.m in Sources */,
 				EC80DE531D8E99AB00EF943E /* UIView+SDExtension.m in Sources */,
 				EC52B4D71D93C3C0003224CC /* LSJBannerVipCell.m in Sources */,
+				B3A2DB331D9A602000255471 /* LSJStatsManager.m in Sources */,
 				ECF00E261D5B49E900FBF1D2 /* LSJHomeDayVC.m in Sources */,
 				ECF00E291D5B49E900FBF1D2 /* LSJHomeViewController.m in Sources */,
 				EC2F0BB31D685E5600DE2B7F /* LSJColumnConfigModel.m in Sources */,
@@ -1325,7 +1364,7 @@
 			baseConfigurationReference = B17949AE67F4498DA858110A /* Pods-LSJVideo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Liangliang Hu (4BCCM92FSA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Liangliang Hu (4BCCM92FSA)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1349,7 +1388,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boboyingyuan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "557efb90-5df3-497c-867d-e531ed065ef9";
+				PROVISIONING_PROFILE = "e3e370e0-b650-45fd-aaff-722b3c539cac";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1359,7 +1398,7 @@
 			baseConfigurationReference = 7623508634401CB8DF1A56E3 /* Pods-LSJVideo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., Ltd.";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

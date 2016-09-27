@@ -74,7 +74,7 @@
                         }
                         
                         if (handler) {
-                            handler(respStatus == QBURLResponseSuccess, resp.programList);
+                            handler(respStatus == QBURLResponseSuccess, resp);
                         }
                     }];
     

@@ -41,18 +41,20 @@
 }
 @property (nonatomic) LSJDetailModel *detailModel;
 @property (nonatomic) LSJDetailResponse *response;
+@property (nonatomic) LSJBaseModel *baseModel;
 @end
 
 @implementation LSJDetailVideoVC
 QBDefineLazyPropertyInitialization(LSJDetailModel, detailModel)
 QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 
-- (instancetype)initWithColumnId:(NSInteger)columnId Program:(LSJProgramModel *)program
+- (instancetype)initWithColumnId:(NSInteger)columnId Program:(LSJProgramModel *)program baseModel:(LSJBaseModel *)baseModel
 {
     self = [super init];
     if (self) {
         _columnId = columnId;
         _programModel = program;
+        _baseModel = baseModel;
     }
     return self;
 }
@@ -82,9 +84,9 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
             [[CRKHudManager manager] showHudWithText:@"非VIP用户不可发表评论"];
             _messageView.textField.text = @"";
             [_messageView.textField resignFirstResponder];
-            LSJBaseModel *model = [[LSJBaseModel alloc] init];
+//            LSJBaseModel *model = [[LSJBaseModel alloc] init];
             
-            [self payWithBaseModelInfo:model];
+            [self payWithBaseModelInfo:_baseModel];
         }
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -123,12 +125,7 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
         }
         if (cell == self->_headerCell) {
             [self playVideoWithUrl:self.response.program.videoUrl
-                         baseModel:[LSJBaseModel createModelWithProgramId:@1
-                                                              ProgramType:@1
-                                                             RealColumnId:@1
-                                                              ChannelType:@1
-                                                           PrgramLocation:1
-                                                                     Spec:1]];
+                         baseModel:self.baseModel];
         }
     };
 }
@@ -218,13 +215,8 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
             [self->_messageView.textField resignFirstResponder];
             return ;
         }
-        
-        [self playPhotoUrlWithModel:[LSJBaseModel createModelWithProgramId:@1
-                                                               ProgramType:@1
-                                                              RealColumnId:@1
-                                                               ChannelType:@1
-                                                            PrgramLocation:1
-                                                                      Spec:1]
+//        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(self.response.) ChannelType:<#(NSNumber *)#> PrgramLocation:<#(NSInteger)#> Spec:<#(NSInteger)#> subTab:<#(NSInteger)#>];
+        [self playPhotoUrlWithModel:self.baseModel
                            urlArray:array
                               index:[index integerValue]];
     };

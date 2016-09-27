@@ -138,7 +138,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
                               UIImageView *thisImgV = [aspectInfo instance];
                               [thisImgV setContentMode:UIViewContentModeScaleAspectFill];
                               thisImgV.clipsToBounds = YES;
-    } error:nil];
+                          } error:nil];
 }
 
 - (void)setupMobStatistics {
@@ -162,7 +162,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [LSJUtil registerVip];
+    //    [LSJUtil registerVip];
     
     [QBNetworkingConfiguration defaultConfiguration].RESTAppId = LSJ_REST_APPID;
     [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);
@@ -170,7 +170,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
     
     [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
-
+    
 #ifdef DEBUG
     [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
     [QBNetworkingConfiguration defaultConfiguration].logEnabled = YES;
@@ -186,7 +186,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     [[QBNetworkInfo sharedInfo] startMonitoring];
     
     BOOL requestedSystemConfig = NO;
-//#ifdef JF_IMAGE_TOKEN_ENABLED
+    //#ifdef JF_IMAGE_TOKEN_ENABLED
     NSString *imageToken = [LSJUtil imageToken];
     if (imageToken) {
         [[SDWebImageManager sharedManager].imageDownloader setValue:imageToken forHTTPHeaderField:@"Referer"];
@@ -211,17 +211,17 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
             
             self.window.rootViewController = self.rootViewController;
             
-//            NSUInteger statsTimeInterval = 180;
-//            if ([LSJSystemConfigModel sharedModel].loaded && [LSJSystemConfigModel sharedModel].statsTimeInterval > 0) {
-//                statsTimeInterval = [LSJSystemConfigModel sharedModel].statsTimeInterval;
-//            }
-//            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
+            NSUInteger statsTimeInterval = 20;//180;
+            //            if ([LSJSystemConfigModel sharedModel].loaded && [LSJSystemConfigModel sharedModel].statsTimeInterval > 0) {
+            //                statsTimeInterval = [LSJSystemConfigModel sharedModel].statsTimeInterval;
+            //            }
+            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
         }];
     }
-//#else
-//    self.window.rootViewController = self.rootViewController;
-//    [self.window makeKeyAndVisible];
-//#endif
+    //#else
+    //    self.window.rootViewController = self.rootViewController;
+    //    [self.window makeKeyAndVisible];
+    //#endif
     
     if (![LSJUtil isRegistered]) {
         [[LSJActivateModel sharedModel] activateWithCompletionHandler:^(BOOL success, NSString *userId) {
@@ -232,12 +232,18 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     } else {
         [[LSJUserAccessModel sharedModel] requestUserAccess];
     }
-    
-    [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
+    if (!imageToken) {
         
-    }];
+        [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
+            if (success) {
+                [LSJUtil setImageToken:[LSJSystemConfigModel sharedModel].imageToken];
+            }
+            NSUInteger statsTimeInterval = 20;//180;
+            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
+        }];
+    }
     
-
+    
     [self.window makeKeyAndVisible];
     
     return YES;

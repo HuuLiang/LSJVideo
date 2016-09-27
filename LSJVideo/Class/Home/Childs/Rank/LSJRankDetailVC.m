@@ -105,7 +105,9 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item < self.response.programList.count) {
         LSJProgramModel *program = self.response.programList[indexPath.item];
-        [self pushToDetailVideoWithController:self ColumnId:_columnId program:program];
+        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(self.response.realColumnId) ChannelType:@(self.response.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+        [self pushToDetailVideoWithController:self ColumnId:_columnId program:program baseModel:baseModel];
+        [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:3];
     }
 }
 
@@ -123,7 +125,7 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    //[[LTStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LTUtils currentSubTabPageIndex] forSlideCount:1];
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:3 forSlideCount:1];
 }
 
 @end

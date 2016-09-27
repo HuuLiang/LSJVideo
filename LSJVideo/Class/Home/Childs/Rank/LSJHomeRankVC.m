@@ -117,6 +117,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, widthSource)
     LSJColumnModel *column = self.dataSource[indexPath.item];
     LSJRankDetailVC *rankDetailVC = [[LSJRankDetailVC alloc] initWithColumnId:column.columnId];
     [self.navigationController pushViewController:rankDetailVC animated:YES];
+    LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:3];
+    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:3];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -133,6 +135,6 @@ QBDefineLazyPropertyInitialization(NSMutableArray, widthSource)
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    //[[LTStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LTUtils currentSubTabPageIndex] forSlideCount:1];
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:3 forSlideCount:1];
 }
 @end

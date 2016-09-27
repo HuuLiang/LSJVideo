@@ -111,8 +111,12 @@ QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < _columnModel.programList.count) {
         LSJProgramModel * program = _columnModel.programList[indexPath.row];
-        [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId program:program];
+        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(_columnModel.realColumnId) ChannelType:@(_columnModel.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:self.currentIndex];
+        [self pushToDetailVideoWithController:self ColumnId:_columnModel.columnId program:program baseModel:baseModel];
     }
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:self.currentIndex forSlideCount:1];
+}
 @end

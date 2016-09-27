@@ -11,6 +11,7 @@
 
 @interface LSJLechersDetailVC : LSJBaseViewController
 
+@property (nonatomic)NSInteger currentIndex;
 - (instancetype)initWithColumn:(LSJColumnModel *)column;
 
 @end

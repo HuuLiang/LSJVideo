@@ -11,6 +11,6 @@
 
 @interface LSJDetailVideoVC : LSJLayoutViewController
 
-- (instancetype)initWithColumnId:(NSInteger)columnId Program:(LSJProgramModel *)program;
+- (instancetype)initWithColumnId:(NSInteger)columnId Program:(LSJProgramModel *)program baseModel:(LSJBaseModel *)baseModel;
 
 @end

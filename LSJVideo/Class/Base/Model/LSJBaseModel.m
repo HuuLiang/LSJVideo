@@ -15,14 +15,16 @@
                               RealColumnId:(NSNumber *)realColumnId
                                ChannelType:(NSNumber *)channelType
                             PrgramLocation:(NSInteger)programLocation
-                                      Spec:(NSInteger)spec {
+                                      Spec:(NSInteger)spec
+                                    subTab:(NSInteger)subTab{
     LSJBaseModel *model = [[LSJBaseModel alloc] init];
-    model.programId = programId;
-    model.programType = programType;
-    model.realColumnId = realColumnId;
-    model.channelType = channelType;
+    model.programId = programId.integerValue != 0 ? programId:nil;
+    model.programType = programType.integerValue != 0 ? programType : nil;
+    model.realColumnId = realColumnId.integerValue != 0 ? realColumnId : nil;
+    model.channelType = channelType != 0 ? channelType : nil;
     model.programLocation = programLocation;
     model.spec = spec;
+    model.subTab = subTab;
     return model;
 }
 

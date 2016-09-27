@@ -30,10 +30,11 @@ static NSString *const kHomeSectionHeaderReusableIdentifier = @"HomeSectionHeade
     UICollectionViewCell *_freeCell;
     UICollectionViewCell *_bannerCell;
     SDCycleScrollView *_bannerView;
-
+    
 }
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) LSJColumnConfigModel *programModel;
+@property (nonatomic) LSJColumnModel *bannerColoumnModel;
 @end
 
 @implementation LSJHomeRecommdVC
@@ -62,6 +63,10 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     _bannerView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     _bannerView.delegate = self;
     _bannerView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+    
+    [_bannerView aspect_hookSelector:@selector(scrollViewDidEndDragging:willDecelerate:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, UIScrollView *scrollView, BOOL decelerate){
+        [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:1 forBanner:@(self.bannerColoumnModel.columnId) withSlideCount:1];
+    } error:nil];
     
     
     UICollectionViewFlowLayout *freeLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -135,6 +140,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     for (LSJColumnModel *column in self.dataSource) {
         if (column.type == 4) {
+            self.bannerColoumnModel = column;
             for (LSJProgramModel *program in column.programList) {
                 [imageUrlGroup addObject:program.coverImg];
                 [titlesGroup addObject:program.title];
@@ -183,7 +189,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     LSJRecommdCell *recommendCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRecommendCellReusableIdentifier forIndexPath:indexPath];
     
-
+    
     if (collectionView == _layoutCollectionView) {
         LSJColumnModel *column = _dataSource[indexPath.section];
         
@@ -251,17 +257,15 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         LSJColumnModel *column = _dataSource[indexPath.section];
         if (indexPath.item < column.programList.count) {
             LSJProgramModel *program = column.programList[indexPath.item];
-            if (column.type == 4) {
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+            if (column.type == 5) {
                 [self playVideoWithUrl:program.videoUrl
-                             baseModel:[LSJBaseModel createModelWithProgramId:@1
-                                                                  ProgramType:@1
-                                                                 RealColumnId:@1
-                                                                  ChannelType:@1
-                                                               PrgramLocation:1
-                                                                         Spec:4]];
+                             baseModel:baseModel];
             } else {
-                [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program];
+                [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program baseModel:baseModel];
             }
+            
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
             
         }
     }
@@ -323,7 +327,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             return UIEdgeInsetsZero;
         }
     } else if (collectionView == _freeCollectionView) {
-       return UIEdgeInsetsMake(5., 5., 5., 5.);
+        return UIEdgeInsetsMake(5., 5., 5., 5.);
     } else {
         return UIEdgeInsetsZero;
     }
@@ -350,15 +354,17 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     for (LSJColumnModel *column in _dataSource) {
         if (column.type == 4 && index < column.programList.count) {
             LSJProgramModel *program = column.programList[index];
-            [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program];
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:index Spec:NSNotFound subTab:1];
+            [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program baseModel:baseModel];
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
         }
     }
 }
 
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    [[LTStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LTUtils currentSubTabPageIndex] forSlideCount:1];
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:1 forSlideCount:1];
 }
+
 
 
 @end

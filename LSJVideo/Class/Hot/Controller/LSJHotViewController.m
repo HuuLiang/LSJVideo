@@ -45,6 +45,7 @@ static NSString *const kDetailProgramCellReusableIdentifier = @"DetailProgramCel
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) NSMutableArray *titleWidthArray;
 @property (nonatomic) NSMutableArray *detailArray;
+@property (nonatomic) LSJColumnModel *coloumModel;
 @end
 
 @implementation LSJHotViewController
@@ -108,6 +109,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
         if (success) {
             [self.detailArray removeAllObjects];
             [self.detailArray addObjectsFromArray:obj.programList];
+            self.coloumModel = obj;
             [self initHeaderCell:1 column:column];
             [self initDetailCell:2 column:column];
             
@@ -334,6 +336,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             _selectecIndexPath = indexPath;
             [_layoutTitleCollectionView scrollToItemAtIndexPath:_selectecIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
             [self loadProgramsWithColumnInfo:column];
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
             
 //            JFBaseModel *baseModel = [[JFBaseModel alloc] init];
 //            baseModel.realColumnId = @(column.realColumnId);
@@ -345,19 +349,10 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
     } else if (collectionView == _layoutDetailCollectionView) {
         if (indexPath.item < self.detailArray.count) {
             LSJProgramModel *program = self.detailArray[indexPath.item];
-            [self pushToDetailVideoWithController:self ColumnId:_columnId program:program];
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(self.coloumModel.realColumnId) ChannelType:@(self.coloumModel.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+            [self pushToDetailVideoWithController:self ColumnId:_columnId program:program baseModel:baseModel];
         }
-//        JFBaseModel *baseModel = [[JFBaseModel alloc] init];
-//        baseModel.realColumnId = @(column.realColumnId);
-//        baseModel.channelType = @(column.type);
-//        baseModel.programType = @(program.type);
-//        baseModel.programId = @(program.programId);
-//        baseModel.programLocation = indexPath.item;
-//        JFDetailViewController *detailVC = [[JFDetailViewController alloc] initWithColumnId:_columnId ProgramId:program.programId];
-//        detailVC.baseModel = baseModel;
-//        [self.navigationController pushViewController:detailVC animated:YES];
-//        
-//        [[JFStatsManager sharedManager] statsCPCWithBeseModel:baseModel programLocation:indexPath.item andTabIndex:self.tabBarController.selectedIndex subTabIndex:[JFUtil currentSubTabPageIndex]];
+
     }
 }
 
@@ -384,9 +379,9 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    [[JFStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[JFUtil currentSubTabPageIndex] forSlideCount:1];
-    
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex] forSlideCount:1];
 }
+
 
 
 @end

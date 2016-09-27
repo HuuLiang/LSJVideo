@@ -29,5 +29,6 @@
 #import "LSJHudManager.h"
 #import "LSJUtil.h"
 #import "QBNetworkInfo.h"
+#import "LSJStatsManager.h"
 
 #endif /* LSJPrefixHeader_pch */

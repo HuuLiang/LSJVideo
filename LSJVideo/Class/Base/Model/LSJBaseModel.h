@@ -16,12 +16,14 @@
 @property (nonatomic) NSNumber * channelType;
 @property (nonatomic) NSInteger programLocation;
 @property (nonatomic) NSInteger spec;
+@property (nonatomic) NSInteger subTab;
 
 + (LSJBaseModel *)createModelWithProgramId:(NSNumber *)programId
                                ProgramType:(NSNumber *)programType
                               RealColumnId:(NSNumber *)realColumnId
                                ChannelType:(NSNumber *)channelType
                             PrgramLocation:(NSInteger)programLocation
-                                      Spec:(NSInteger)spec;
+                                      Spec:(NSInteger)spec
+                                    subTab:(NSInteger)subTab;
 
 @end
