@@ -23,7 +23,7 @@
 - (instancetype)initWithUrlsArray:(NSArray *)array andIndex:(NSUInteger)index frame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
         
         _currentIndex = index;
         

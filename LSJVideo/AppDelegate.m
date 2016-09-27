@@ -162,7 +162,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //    [LSJUtil registerVip];
+    [LSJUtil registerVip];
     
     [QBNetworkingConfiguration defaultConfiguration].RESTAppId = LSJ_REST_APPID;
     [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);
@@ -232,8 +232,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     } else {
         [[LSJUserAccessModel sharedModel] requestUserAccess];
     }
-    if (!imageToken) {
-        
+    if (imageToken) {
         [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
             if (success) {
                 [LSJUtil setImageToken:[LSJSystemConfigModel sharedModel].imageToken];
@@ -242,7 +241,6 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
             [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
         }];
     }
-    
     
     [self.window makeKeyAndVisible];
     

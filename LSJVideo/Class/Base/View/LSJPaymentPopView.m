@@ -114,7 +114,7 @@
                 _bgImgV.layer.masksToBounds = YES;
                 [_headerCell addSubview:_bgImgV];
                 
-                [_bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].vipImg] placeholderImage:[UIImage imageNamed:@""]];
+                [_bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].vipImg]];
                 {
                     [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
                         make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));

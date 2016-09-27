@@ -215,7 +215,7 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
             [self->_messageView.textField resignFirstResponder];
             return ;
         }
-//        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(self.response.) ChannelType:<#(NSNumber *)#> PrgramLocation:<#(NSInteger)#> Spec:<#(NSInteger)#> subTab:<#(NSInteger)#>];
+
         [self playPhotoUrlWithModel:self.baseModel
                            urlArray:array
                               index:[index integerValue]];
