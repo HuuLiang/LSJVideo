@@ -22,9 +22,11 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        
         _userImgV = [[UIImageView alloc] init];
+        _userImgV.layer.cornerRadius = kWidth(34);
+        _userImgV.layer.masksToBounds = YES;
         [self addSubview:_userImgV];
-    
         
         _userLabel = [[UILabel alloc] init];
         _userLabel.textColor = [UIColor colorWithHexString:@"#333333"];
@@ -94,7 +96,7 @@
 }
 
 - (void)setCommandStr:(NSString *)commandStr {
-    _commandLabel.text = commandStr;
+    _commandLabel.text = [NSString stringWithFormat:@"    %@",commandStr];
 }
 
 @end

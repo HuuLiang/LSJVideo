@@ -40,26 +40,19 @@
         _titleLabel.font = [UIFont systemFontOfSize:kWidth(32)];
         [bgView addSubview:_titleLabel];
         
-        
-        
-        _moreView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:nil isTitleFirst:YES];
+        @weakify(self);
+        _moreView = [[LSJBtnView alloc] initWithNormalTitle:@"更多" selectedTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:[UIImage imageNamed:@"lecher_into"] space:kWidth(10) isTitleFirst:YES touchAction:^{
+            @strongify(self);
+            self.action(@(0));
+        }];
         _moreView.userInteractionEnabled = YES;
+        _moreView.titleLabel.font = [UIFont systemFontOfSize:kWidth(20)];
         _moreView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
         _moreView.layer.cornerRadius = kWidth(18);
         _moreView.layer.borderColor = [UIColor colorWithHexString:@"#666666"].CGColor;
         _moreView.layer.borderWidth = kWidth(2);
         _moreView.layer.masksToBounds = YES;
-        
-        _moreView.titleFont = [UIFont systemFontOfSize:kWidth(24)];
-        _moreView.titleColor = [UIColor colorWithHexString:@"#222222"];
-        _moreView.space = kWidth(10);
-        
-        @weakify(self);
-        _moreView.action = ^{
-            @strongify(self);
-            self.action(@(0));
-        };
-        
+        _moreView.titleLabel.textColor = [UIColor colorWithHexString:@"#222222"];
         [bgView addSubview:_moreView];
 
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];

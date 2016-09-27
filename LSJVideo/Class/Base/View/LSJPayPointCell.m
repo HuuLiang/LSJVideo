@@ -42,14 +42,6 @@
         _detailLabel.textColor = [[UIColor colorWithHexString:@"#ffffff"] colorWithAlphaComponent:0.7];
         [self addSubview:_detailLabel];
         
-        _payBtn = [[LSJBtnView alloc] initWithTitle:@"" normalImage:[UIImage imageNamed:@"vip_into"] selectedImage:nil isTitleFirst:YES];
-        _payBtn.space = kWidth(4);
-        _payBtn.titleFont = [UIFont systemFontOfSize:kWidth(22)];
-        _payBtn.titleColor = [UIColor colorWithHexString:@"#ffffff"];
-        _payBtn.layer.cornerRadius = kWidth(10);
-        _payBtn.layer.masksToBounds = YES;
-        [self addSubview:_payBtn];
-        
         _reduceLabel = [[UILabel alloc] init];
         _reduceLabel.font = [UIFont systemFontOfSize:kWidth(22)];
         _reduceLabel.textColor = [[UIColor colorWithHexString:@"#ffffff"] colorWithAlphaComponent:0.7];
@@ -67,45 +59,64 @@
         [self addSubview:bgView];
         
         {
+            NSString *payBtnTitle = nil;
+            UIColor *bgColor = nil;
+            
             if (row == 0) {
                 if (vipLevel == LSJVipLevelNone) {
                     _titleLabel.text = @"普通VIP";
                     _detailLabel.text = @"观看除浪友圈外所有视频";
-                    _price = [LSJSystemConfigModel sharedModel].payAmount;
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
-                    _payBtn.backgroundColor = [UIColor colorWithHexString:@"#"];
                     _reduceLabel.text = @"原价88元";
                     _selectedVipLevel = LSJVipLevelVip;
-                    _payBtn.bgColor = [UIColor colorWithHexString:@"#ff8a44"];
+                    
+                    _price = [LSJSystemConfigModel sharedModel].payAmount;
+                    payBtnTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
+                    bgColor = [UIColor colorWithHexString:@"#ff8a44"];
+                    
                 } else if (vipLevel == LSJVipLevelVip) {
                     _titleLabel.text = @"升级黑钻VIP";
                     _titleLabel.textColor = [UIColor colorWithHexString:@"#000000"];
                     _detailLabel.text = @"黑钻会员永久有效(定期更新)";
                     _detailLabel.textColor = [UIColor colorWithHexString:@"#000000"];
-                    _price = [LSJSystemConfigModel sharedModel].svipPayAmount - [LSJSystemConfigModel sharedModel].payAmount;
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
                     _reduceLabel.text = @"原价108元";
                     _reduceLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-                    _payBtn.bgColor = [UIColor colorWithHexString:@"#e63e61"];
                     _selectedVipLevel = LSJVipLevelSVip;
+                    
                     _shadeView = [[UIView alloc] init];
                     _shadeView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
                     [self insertSubview:_shadeView atIndex:0];
+                    
+                    _price = [LSJSystemConfigModel sharedModel].svipPayAmount - [LSJSystemConfigModel sharedModel].payAmount;
+                    payBtnTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
+                    bgColor = [UIColor colorWithHexString:@"#e63e61"];
+
                 }
                 
             } else if (row == 1) {
                 if (vipLevel == LSJVipLevelNone) {
                     _titleLabel.text = @"黑钻VIP";
                     _detailLabel.text = @"观看所有视频(定期更新)";
-                    _price = [LSJSystemConfigModel sharedModel].svipPayAmount;
-                    _payBtn.normalTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
                     _reduceLabel.text = @"原价108元";
                     _selectedVipLevel = LSJVipLevelSVip;
                     
+                    _price = [LSJSystemConfigModel sharedModel].svipPayAmount;
+                    payBtnTitle = [NSString stringWithFormat:@"特价:%ld元",_price/100];
+                    bgColor = [UIColor colorWithHexString:@"#e61e63"];
 
                 }
-                _payBtn.backgroundColor = [UIColor colorWithHexString:@"#e61e63"];
             }
+            
+            
+            _payBtn = [[LSJBtnView alloc] initWithNormalTitle:payBtnTitle selectedTitle:payBtnTitle normalImage:[UIImage imageNamed:@"vip_into"] selectedImage:[UIImage imageNamed:@"vip_into"] space:kWidth(7.5) isTitleFirst:YES touchAction:^{
+                
+            }];
+            _payBtn.layer.cornerRadius = kWidth(10);
+            _payBtn.layer.masksToBounds = YES;
+            _payBtn.titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
+            _payBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(22)];
+            _payBtn.backgroundColor = bgColor;
+            [self insertSubview:_payBtn belowSubview:bgView];
+            
         }
         
         {
@@ -163,6 +174,11 @@
         
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    QBLog(@"%@",NSStringFromCGRect(_reduceLabel.frame));
 }
 
 @end

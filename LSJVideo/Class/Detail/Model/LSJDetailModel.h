@@ -12,6 +12,10 @@
 @interface LSJProgramUrlModel : NSObject
 @property (nonatomic) NSString *content;
 @property (nonatomic) NSInteger type;
+@property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) NSString *url;
+@property (nonatomic) NSString *title;
 @end
 
 @interface LSJDetailResponse : QBURLResponse

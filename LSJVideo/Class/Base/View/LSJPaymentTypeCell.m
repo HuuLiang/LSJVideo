@@ -31,15 +31,10 @@
         
         for (NSDictionary *payDic in availablePaymentTypes) {
             if ([payDic[@"subType"] unsignedIntegerValue] == QBPaySubTypeWeChat) {
-                _wxPay = [[LSJBtnView alloc] initWithTitle:@"微信支付" normalImage:[UIImage imageNamed:@"vip_normal"] selectedImage:[UIImage imageNamed:@"vip_selected"] isTitleFirst:NO];
-                _wxPay.selectedTitle = @"微信支付";
-                _wxPay.titleFont = [UIFont systemFontOfSize:kWidth(22)];
-                _wxPay.titleColor = [UIColor colorWithHexString:@"#ffffff"];
-                [self addSubview:_wxPay];
-                
                 @weakify(self);
-                _wxPay.action = ^ {
+                _wxPay = [[LSJBtnView alloc] initWithNormalTitle:@"微信支付" selectedTitle:@"微信支付" normalImage:[UIImage imageNamed:@"vip_normal"] selectedImage:[UIImage imageNamed:@"vip_selected"] space:kWidth(10) isTitleFirst:NO touchAction:^{
                     @strongify(self);
+                    
                     self.selectionAction([payDic[@"type"] unsignedIntegerValue],[payDic[@"subType"] unsignedIntegerValue]);
                     if (self->_wxPay.isSelected) {
                         return ;
@@ -47,18 +42,15 @@
                         self->_wxPay.isSelected = !self->_wxPay.isSelected;
                         self->_aliPay.isSelected = !self->_aliPay.isSelected;
                     }
-                };
+                }];
+                _wxPay.titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
+                _wxPay.titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
+                [self addSubview:_wxPay];
             }
             
             if ([payDic[@"subType"] unsignedIntegerValue] == QBPaySubTypeAlipay) {
-                _aliPay = [[LSJBtnView alloc] initWithTitle:@"支付宝支付" normalImage:[UIImage imageNamed:@"vip_normal"] selectedImage:[UIImage imageNamed:@"vip_selected"] isTitleFirst:NO];
-                _aliPay.selectedTitle = @"支付宝支付";
-                _aliPay.titleFont = [UIFont systemFontOfSize:kWidth(22)];
-                _aliPay.titleColor = [UIColor colorWithHexString:@"#ffffff"];
-                [self addSubview:_aliPay];
-                
                 @weakify(self);
-                _aliPay.action = ^ {
+                _aliPay = [[LSJBtnView alloc] initWithNormalTitle:@"支付宝支付" selectedTitle:@"支付宝支付" normalImage:[UIImage imageNamed:@"vip_normal"] selectedImage:[UIImage imageNamed:@"vip_selected"] space:kWidth(10) isTitleFirst:NO touchAction:^{
                     @strongify(self);
                     self.selectionAction([payDic[@"type"] unsignedIntegerValue],[payDic[@"subType"] unsignedIntegerValue]);
                     if (self->_aliPay.isSelected) {
@@ -67,7 +59,10 @@
                         self->_wxPay.isSelected = !self->_wxPay.isSelected;
                         self->_aliPay.isSelected = !self->_aliPay.isSelected;
                     }
-                };
+                }];
+                _aliPay.titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
+                _aliPay.titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
+                [self addSubview:_aliPay];
             }
         }
         

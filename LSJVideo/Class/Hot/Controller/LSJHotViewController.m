@@ -186,15 +186,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
     [_layoutTitleCollectionView registerClass:[LSJHotTitleCell class] forCellWithReuseIdentifier:kHotTitleCellReusableIdentifier];
     [_titleCell addSubview:_layoutTitleCollectionView];
     
-    _btnView = [[LSJBtnView alloc] initWithTitle:@"更多" normalImage:[UIImage imageNamed:@"hot_more_icon"] selectedImage:[UIImage imageNamed:@"hot_less_icon"] isTitleFirst:YES];
-//    _btnView.backgroundColor = [UIColor cyanColor];
-    _btnView.titleFont = [UIFont systemFontOfSize:kWidth(30)];
-    _btnView.selectedTitle = @"收起 ";
-    _btnView.space = kWidth(10);
-    [_titleCell addSubview:_btnView];
-    
     @weakify(self);
-    _btnView.action = ^{
+    _btnView = [[LSJBtnView alloc] initWithNormalTitle:@"更多" selectedTitle:@"收起" normalImage:[UIImage imageNamed:@"hot_more_icon"] selectedImage:[UIImage imageNamed:@"hot_less_icon"] space:kWidth(10) isTitleFirst:YES touchAction:^{
         @strongify(self);
         if (!self->_btnView.isSelected) {
             self->_btnView.isSelected = !self->_btnView.isSelected;
@@ -222,9 +215,10 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             
             [self->_layoutTitleCollectionView scrollToItemAtIndexPath:self->_selectecIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         }
-        
-    };
-    
+    }];
+    _btnView.titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
+    [_titleCell addSubview:_btnView];
+
     {
         [_layoutTitleCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(_titleCell);

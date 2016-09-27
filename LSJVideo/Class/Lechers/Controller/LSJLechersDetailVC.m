@@ -90,7 +90,7 @@ QBDefineLazyPropertyInitialization(LSJProgramConfigModel, programModel)
         cell.bgImgUrlStr = program.coverImg;
         cell.userImgUrlStr = program.icon;
         cell.userNameStr = program.userName;
-        cell.titleStr = program.specialDesc;
+        cell.titleStr = program.title;
         cell.timeStr = program.createAt;
         cell.commandCount = program.commentNum;
         return cell;

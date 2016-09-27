@@ -131,6 +131,14 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
          BOOL bShow = NO;
          [[aspectInfo originalInvocation] setReturnValue:&bShow];
      } error:nil];
+    
+    [UIImageView aspect_hookSelector:@selector(init)
+                         withOptions:AspectPositionAfter
+                          usingBlock:^(id<AspectInfo> aspectInfo) {
+                              UIImageView *thisImgV = [aspectInfo instance];
+                              [thisImgV setContentMode:UIViewContentModeScaleAspectFill];
+                              thisImgV.clipsToBounds = YES;
+    } error:nil];
 }
 
 - (void)setupMobStatistics {

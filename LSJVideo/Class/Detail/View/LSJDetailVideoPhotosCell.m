@@ -7,6 +7,7 @@
 //
 
 #import "LSJDetailVideoPhotosCell.h"
+#import "LSJDetailModel.h"
 
 static NSString *const kPhotosCollectionCellReusableIdentifier = @"kPhotosCollectionCellReusableIdentifier";
 
@@ -100,7 +101,8 @@ static NSString *const kPhotosCollectionCellReusableIdentifier = @"kPhotosCollec
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LSJDetailVideoPhotosCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotosCollectionCellReusableIdentifier forIndexPath:indexPath];
     if (indexPath.item < _dataSource.count) {
-        cell.imgUrlStr = @"http://apkcdn.mquba.com/wysy/tuji/img_pic/20151112labc.jpg";
+        LSJProgramUrlModel * model = _dataSource[indexPath.item];
+        cell.imgUrlStr = model.url;
         return cell;
     }
     return nil;

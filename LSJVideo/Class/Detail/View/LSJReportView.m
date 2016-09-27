@@ -103,24 +103,22 @@
         
         self.backgroundColor = [UIColor colorWithHexString:@"#ffe203"];
 
-        _btnView = [[LSJBtnView alloc] initWithTitle:@"发表评论" normalImage:[UIImage imageNamed:@"detail_report"] selectedImage:nil isTitleFirst:NO];
-        _btnView.titleColor = [UIColor colorWithHexString:@"#555555"];
-        _btnView.titleFont = [UIFont systemFontOfSize:kWidth(32)];
-        _btnView.space = kWidth(30);
+        @weakify(self);
+        _btnView = [[LSJBtnView alloc] initWithNormalTitle:@"发表评论" selectedTitle:@"发表评论" normalImage:[UIImage imageNamed:@"detail_report"] selectedImage:[UIImage imageNamed:@"detail_report"] space:kWidth(20) isTitleFirst:NO touchAction:^{
+            @strongify(self);
+            self.popKeyboard();
+        }];
+        _btnView.titleLabel.font = [UIFont systemFontOfSize:kWidth(32)];
+
         [self addSubview:_btnView];
         
         {
             [_btnView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(self).offset(kWidth(20));
+                make.centerX.equalTo(self);
                 make.centerY.equalTo(self);
                 make.size.mas_equalTo(CGSizeMake(kWidth(200), kWidth(80)));
             }];
         }
-        @weakify(self);
-        _btnView.action = ^ {
-            @strongify(self);
-            self.popKeyboard();
-        };
         
         [self bk_whenTapped:^{
             @strongify(self);

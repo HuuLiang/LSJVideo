@@ -143,8 +143,6 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 }
 
 - (void)loadData {
-    
-    
     @weakify(self);
     [self.detailModel fetchProgramDetailInfoWithColumnId:_columnId ProgramId:_programModel.programId isImageText:_programModel.type == 4 CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
@@ -153,7 +151,6 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
             [self.layoutTableView LSJ_endPullToRefresh];
             [self initCells];
         }
-    
     }];
 }
 
@@ -193,7 +190,7 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 
 - (void)initVideoHeaderCellInSection:(NSUInteger)section {
     _headerCell = [[LSJDetailVideoHeaderCell alloc] init];
-    _headerCell.imgUrlStr = self.response.program.coverImg;
+    _headerCell.imgUrlStr = self.response.program.detailsCoverImg;
     [self setLayoutCell:_headerCell cellHeight:kScreenWidth * 0.6 inRow:0 andSection:section];
 }
 
