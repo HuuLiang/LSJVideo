@@ -253,22 +253,30 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section < _dataSource.count) {
-        LSJColumnModel *column = _dataSource[indexPath.section];
-        if (indexPath.item < column.programList.count) {
-            LSJProgramModel *program = column.programList[indexPath.item];
-            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
-            if (column.type == 5) {
-                [self playVideoWithUrl:program.videoUrl
-                             baseModel:baseModel];
-            } else {
-                [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program baseModel:baseModel];
+    if (collectionView == _layoutCollectionView) {
+        if (indexPath.section < _dataSource.count) {
+            LSJColumnModel *column = _dataSource[indexPath.section];
+            if (indexPath.item < column.programList.count) {
+                LSJProgramModel *program = column.programList[indexPath.item];
+                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:4 subTab:NSNotFound];
+                if (column.type != 5) {
+                    [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program baseModel:baseModel];
+                }
+                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
             }
-            
-            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
-            
+        }
+    } else if (collectionView == _freeCollectionView) {
+        for (LSJColumnModel *column in _dataSource) {
+            if (column.type == 5) {
+                LSJProgramModel *program = column.programList[indexPath.item];
+                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:4 subTab:NSNotFound];
+                [self playVideoWithUrl:program.videoUrl baseModel:baseModel];
+                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
+            }
         }
     }
+    
+
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
