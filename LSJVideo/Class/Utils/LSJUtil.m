@@ -106,6 +106,8 @@ static NSString *const kImageTokenCryptPassword = @"wafei@#$%^%$^$wfsssfsf";
 }
 
 + (void)registerSVip {
+    [self registerVip];
+    
     [[NSUserDefaults standardUserDefaults] setObject:LSJ_SVIP forKey:kSVipUserKeyName];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -221,10 +223,14 @@ static NSString *const kImageTokenCryptPassword = @"wafei@#$%^%$^$wfsssfsf";
 
 + (NSString *)UTF8DateStringFromString:(NSString *)dateString {
     NSDateFormatter *dateFormatterA = [[NSDateFormatter alloc] init];
-    [dateFormatterA setDateFormat:@"yyyy-mm-dd hh:mm:ss"];
+    [dateFormatterA setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDateFormatter *dataFormatterB = [[NSDateFormatter alloc] init];
-    [dataFormatterB setDateFormat:@"yyyy年mm月dd日"];
+    [dataFormatterB setDateFormat:@"yyyy年MM月dd日"];
+    
+    QBLog(@"%@",[dateFormatterA dateFromString:dateString]);
+    QBLog(@"%@",[dataFormatterB stringFromDate:[dateFormatterA dateFromString:dateString]]);
+    
     return [dataFormatterB stringFromDate:[dateFormatterA dateFromString:dateString]];
 }
 

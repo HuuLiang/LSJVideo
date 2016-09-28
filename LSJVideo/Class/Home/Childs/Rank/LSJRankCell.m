@@ -120,7 +120,7 @@
 }
 
 - (void)setImgUrl:(NSString *)imgUrl {
-    [_bgImgV sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+    [_bgImgV sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"place_79"]];
 }
 
 - (void)setTitleStr:(NSString *)titleStr {

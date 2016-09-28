@@ -29,7 +29,7 @@
                                                        image:[UIImage imageNamed:@"tabbar_home_normal"]
                                                selectedImage:[[UIImage imageNamed:@"tabbar_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     
-    LSJWelfareViewController *welfareVC = [[LSJWelfareViewController alloc] initWithTitle:@"福利"];
+    LSJWelfareViewController *welfareVC = [[LSJWelfareViewController alloc] initWithTitle:@"福利区"];
     UINavigationController *welfareNC = [[UINavigationController alloc] initWithRootViewController:welfareVC];
     welfareNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:welfareVC.title
                                                        image:[UIImage imageNamed:@"tabbar_welfare_normal"]

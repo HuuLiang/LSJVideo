@@ -95,6 +95,12 @@
             make.edges.equalTo(self.view);
         }];
     }
+    @weakify(self);
+    _videoPlayer.endPlayAction = ^(id obj) {
+        @strongify(self);
+        [self dismissAndPopPayment];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
     
 //#ifdef YYK_DISPLAY_VIDEO_URL
     NSString *url = videoUrl.absoluteString;

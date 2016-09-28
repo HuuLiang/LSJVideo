@@ -43,7 +43,7 @@
             
             [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_userLabel.mas_right);
-                make.top.right.bottom.equalTo(self);
+                make.top.bottom.equalTo(self);
             }];
         }
     }
@@ -69,15 +69,12 @@
 {
     self = [super initWithFrame:frame style:style];
     if (self) {
-        
         self.backgroundColor = [UIColor clearColor];
-        
         [self registerClass:[LSJDayTableViewCell class] forCellReuseIdentifier:kDayTableViewCellReusableIdentifier];
         [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.userInteractionEnabled = NO;
-        
     }
     return self;
 }

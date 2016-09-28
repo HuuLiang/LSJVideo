@@ -12,5 +12,5 @@
 
 @property (nonatomic) NSString *imgUrl;
 @property (nonatomic) NSString *title;
-
+@property (nonatomic) BOOL isFree;
 @end

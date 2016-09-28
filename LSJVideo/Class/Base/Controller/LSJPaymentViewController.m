@@ -126,7 +126,7 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     paymentInfo.contentLocation = @(self.baseModel.programLocation + 1);
     paymentInfo.columnId = self.baseModel.realColumnId;
     paymentInfo.columnType = self.baseModel.channelType;
-    paymentInfo.payPointType = 1;
+    paymentInfo.payPointType = vipLevel;
     paymentInfo.paymentTime = [LSJUtil currentTimeString];
     paymentInfo.paymentType = payType;
     paymentInfo.paymentSubType = subPayType;
@@ -202,7 +202,7 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
         [_closeImgV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.popView.mas_top);
             make.right.equalTo(self.popView.mas_right).offset(-kWidth(20));
-            make.size.mas_equalTo(CGSizeMake(kWidth(36), kWidth(80)));
+            make.size.mas_equalTo(CGSizeMake(kWidth(72), kWidth(80)));
         }];
     }
     
@@ -240,6 +240,12 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     
     if (result == QBPayResultSuccess) {
         [LSJUtil registerVip];
+        if (paymentInfo.payPointType == LSJVipLevelVip) {
+            [LSJUtil registerVip];
+        } else if (paymentInfo.payPointType == LSJVipLevelSVip) {
+            [LSJUtil registerSVip];
+        }
+        
         [self hidePayment];
         [[CRKHudManager manager] showHudWithText:@"支付成功"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPaidNotificationName object:paymentInfo];

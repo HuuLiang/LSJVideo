@@ -80,6 +80,7 @@
                 make.size.mas_equalTo(CGSizeMake(kWidth(150), kWidth(50)));
             }];
         } else if ((_wxPay && !_aliPay) || (!_wxPay && _aliPay))  {
+            
             if (_wxPay) {
                 _wxPay.isSelected = YES;
                 _wxPay.userInteractionEnabled = NO;
@@ -88,18 +89,16 @@
                     make.size.mas_equalTo(CGSizeMake(kWidth(150), kWidth(50)));
                 }];
             }
+            
             if (_aliPay) {
                 _aliPay.isSelected = YES;
                 _aliPay.userInteractionEnabled = NO;
-                [_wxPay mas_makeConstraints:^(MASConstraintMaker *make) {
+                [_aliPay mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.center.equalTo(self);
                     make.size.mas_equalTo(CGSizeMake(kWidth(150), kWidth(50)));
                 }];
             }
-            
         }
-        
-        
     }
     return self;
 }

@@ -40,6 +40,12 @@
         _vipBtn.layer.masksToBounds = YES;
         [self addSubview:_vipBtn];
         
+        @weakify(self);
+        [_vipBtn bk_addEventHandler:^(id sender) {
+            @strongify(self);
+            self.action();
+        } forControlEvents:UIControlEventTouchUpInside];
+        
         {
             [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.edges.equalTo(self);

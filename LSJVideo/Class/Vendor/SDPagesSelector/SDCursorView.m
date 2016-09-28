@@ -128,8 +128,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     CGFloat width = 0.0f;
     for (NSString *title in _titles) {
         CGSize size = [title sizeWithAttributes:@{NSFontAttributeName:self.selectedFont}];
-        width = width+ size.width+kWidth(30);
-        [self.sizeArray addObject:@(size.width+kWidth(30))];
+        width = width+ size.width+kWidth(40);
+        [self.sizeArray addObject:@(size.width+kWidth(40))];
     }
     if (self.collectionViewWidth && _isHomeView) {
         self.collectionViewWidth(width);

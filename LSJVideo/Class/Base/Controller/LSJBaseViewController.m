@@ -142,8 +142,8 @@
     return retVC;
 }
 
-- (void)payWithBaseModelInfo:(LSJBaseModel *)baseMdel {
-    [[LSJPaymentViewController sharedPaymentVC] popupPaymentInView:self.view.window baseModel:baseMdel withCompletionHandler:nil];
+- (void)payWithBaseModelInfo:(LSJBaseModel *)baseModel {
+    [[LSJPaymentViewController sharedPaymentVC] popupPaymentInView:self.view.window baseModel:baseModel withCompletionHandler:nil];
 }
 
 - (BOOL)shouldAutorotate {

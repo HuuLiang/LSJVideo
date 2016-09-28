@@ -79,7 +79,8 @@
             }];
             
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.top.right.equalTo(bgView);
+                make.top.right.equalTo(bgView);
+                make.left.equalTo(self).offset(kWidth(15));
                 make.height.mas_equalTo(kWidth(80));
             }];
             
@@ -128,15 +129,15 @@
 }
 
 - (void)setImgAUrlStr:(NSString *)imgAUrlStr {
-    [_imgVA sd_setImageWithURL:[NSURL URLWithString:imgAUrlStr]];
+    [_imgVA sd_setImageWithURL:[NSURL URLWithString:imgAUrlStr] placeholderImage:[UIImage imageNamed:@"palce_79"]];
 }
 
 - (void)setImgBUrlStr:(NSString *)imgBUrlStr {
-    [_imgVB sd_setImageWithURL:[NSURL URLWithString:imgBUrlStr]];
+    [_imgVB sd_setImageWithURL:[NSURL URLWithString:imgBUrlStr] placeholderImage:[UIImage imageNamed:@"palce_79"]];
 }
 
 - (void)setImgCUrlStr:(NSString *)imgCUrlStr {
-    [_imgVC sd_setImageWithURL:[NSURL URLWithString:imgCUrlStr]];
+    [_imgVC sd_setImageWithURL:[NSURL URLWithString:imgCUrlStr] placeholderImage:[UIImage imageNamed:@"palce_79"]];
 }
 
 - (void)setTimeStr:(NSString *)timeStr {

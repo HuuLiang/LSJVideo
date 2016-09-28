@@ -161,5 +161,14 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
     }
 }
 
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+    for (LSJColumnModel *column in _dataSource) {
+        if (column.type == 4) {
+            LSJProgramModel *program = column.programList[index];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
+        }
+    }
+}
+
 
 @end

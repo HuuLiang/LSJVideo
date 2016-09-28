@@ -122,7 +122,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
 }
 
 - (void)setImgUrlStr:(NSString *)imgUrlStr {
-    [_imgV sd_setImageWithURL:[NSURL URLWithString:imgUrlStr]];
+    [_imgV sd_setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholderImage:[UIImage imageNamed:@"place_21"]];
 }
 
 - (void)setTitleStr:(NSString *)titleStr {

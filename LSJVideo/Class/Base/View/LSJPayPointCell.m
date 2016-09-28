@@ -49,8 +49,6 @@
         _reduceLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:_reduceLabel];
         
-        UIImageView *_lineImgV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vip_line"]];
-        [self addSubview:_lineImgV];
         
         UIView *bgView = [[UIView alloc] init];
         bgView.userInteractionEnabled = YES;
@@ -143,10 +141,6 @@
                 make.centerY.equalTo(self);
                 make.right.equalTo(_payBtn.mas_left).offset(-kWidth(20));
                 make.height.mas_equalTo(kWidth(30));
-            }];
-            
-            [_lineImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo(_reduceLabel);
             }];
             
             [bgView mas_makeConstraints:^(MASConstraintMaker *make) {

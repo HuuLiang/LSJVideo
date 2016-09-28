@@ -24,6 +24,8 @@
         
         self.backgroundColor = [UIColor clearColor];
         
+        _isFree = NO;
+        
         _bgImgV = [[UIImageView alloc] init];
         _bgImgV.layer.cornerRadius = kWidth(4);
         _bgImgV.layer.masksToBounds = YES;
@@ -51,11 +53,26 @@
 }
 
 - (void)setImgUrl:(NSString *)imgUrl {
-    [_bgImgV sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+    [_bgImgV sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"place_79"]];
 }
 
 - (void)setTitle:(NSString *)title {
     _titleLabel.text = title;
 }
 
+- (void)setIsFree:(BOOL)isFree {
+    if (isFree) {
+        UIImage *freeImg = [UIImage imageNamed:@"free_play"];
+        
+        UIImageView *freeImgV = [[UIImageView alloc] initWithImage:freeImg];
+        [self addSubview:freeImgV];
+        
+        {
+            [freeImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.top.equalTo(self);
+                make.size.mas_equalTo(CGSizeMake(freeImg.size.width, freeImg.size.height));
+            }];
+        }
+    }
+}
 @end

@@ -57,7 +57,7 @@
     if (_contentType == LSJContentType_Text) {
         _label.text = content;
     } else if (_contentType == LSJContentType_Image) {
-        [_imgV sd_setImageWithURL:[NSURL URLWithString:content]];
+        [_imgV sd_setImageWithURL:[NSURL URLWithString:content] placeholderImage:[UIImage imageNamed:@"place_53-1"]];
     }
 }
 

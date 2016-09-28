@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^touchBtn)(void);
+
 @interface LSJBannerVipCell : UITableViewCell
 
 @property (nonatomic) NSString *bgUrl;
+@property (nonatomic) touchBtn action;
 
 @end

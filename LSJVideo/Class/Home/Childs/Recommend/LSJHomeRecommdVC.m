@@ -229,6 +229,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
                     LSJProgramModel *program = column.programList[indexPath.item];
                     recommendCell.title = program.title;
                     recommendCell.imgUrl = program.coverImg;
+                    recommendCell.isFree = YES;
                     return recommendCell;
                 }
             }
