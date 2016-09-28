@@ -111,8 +111,6 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
         }
     }
     
-    price = 200;
-    
     NSString *channelNo = LSJ_CHANNEL_NO;
     channelNo = [channelNo substringFromIndex:channelNo.length-14];
     NSString *uuid = [[NSUUID UUID].UUIDString.md5 substringWithRange:NSMakeRange(8, 16)];

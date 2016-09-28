@@ -163,14 +163,14 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [LSJUtil registerVip];
+
     
     [QBNetworkingConfiguration defaultConfiguration].RESTAppId = LSJ_REST_APPID;
     [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);
     [QBNetworkingConfiguration defaultConfiguration].channelNo = LSJ_CHANNEL_NO;
     [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
     
-    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
+//    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
     
 #ifdef DEBUG
     [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];

@@ -39,7 +39,7 @@
                     {
                         @strongify(self);
                         
-                        QBLog("%ld %@",respStatus,errorMessage);
+                        QBLog(@"%ld %@",respStatus,errorMessage);
                         
                         if (respStatus == QBURLResponseSuccess) {
                             LSJSystemConfigResponse *resp = self.response;
@@ -73,6 +73,5 @@
                         }
                     }];
     return success;
-    
 }
 @end

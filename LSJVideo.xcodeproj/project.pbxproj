@@ -1388,7 +1388,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boboyingyuan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e3e370e0-b650-45fd-aaff-722b3c539cac";
+				PROVISIONING_PROFILE = "557efb90-5df3-497c-867d-e531ed065ef9";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;

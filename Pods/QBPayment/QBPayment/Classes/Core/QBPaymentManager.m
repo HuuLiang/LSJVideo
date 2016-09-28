@@ -314,8 +314,6 @@ QBDefineLazyPropertyInitialization(QBOrderQueryModel, orderQueryModel)
     [paymentInfo save];
     self.paymentInfo = paymentInfo;
     self.completionHandler = completionHandler;
-    QBSafelyCallBlock(completionHandler, QBPayResultSuccess, paymentInfo);
-    return YES;
     
     @weakify(self);
     QBPaymentCompletionHandler paymentHandler = ^(QBPayResult payResult, QBPaymentInfo *paymentInfo) {

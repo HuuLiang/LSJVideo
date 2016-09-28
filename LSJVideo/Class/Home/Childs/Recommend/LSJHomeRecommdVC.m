@@ -117,16 +117,18 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
         if (success) {
             [self.dataSource removeAllObjects];
-            for (LSJColumnModel *model in obj) {
-                if (model.showNumber == 6) {
-                    model.showMode = 1;
-                } else if (model.showNumber == 10) {
-                    model.showMode = 2;
-                }
-                if ((model.type == 3 && [LSJUtil isVip]) || (model.type == 5 && ![LSJUtil isVip]) || model.type == 1 || model.type == 4) {
-                    [self.dataSource addObject:model];
-                }
-            }
+            [self.dataSource addObjectsFromArray:obj];
+//            for (LSJColumnModel *model in obj) {
+//                if (model.showNumber == 6) {
+//                    model.showMode = 1;
+//                } else if (model.showNumber == 10) {
+//                    model.showMode = 2;
+//                }
+//                if ((model.type == 3 && [LSJUtil isVip]) || (model.type == 5 && ![LSJUtil isVip]) || model.type == 1 || model.type == 4) {
+//                    [self.dataSource addObject:model];
+//                }
+//            }
+
             [_layoutCollectionView LSJ_endPullToRefresh];
             [self refreshBannerView];
             [_layoutCollectionView reloadData];
@@ -298,7 +300,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             } else {
                 width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing) / 2;
                 height = width * 0.6 + kWidth(68);
-                return CGSizeMake((long)width, (long)height);
+                return CGSizeMake(width, height);
             }
         } else if (column.type == 1 && column.showMode == 2) {
             width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 3;
