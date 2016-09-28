@@ -64,7 +64,7 @@
             if (row == 0) {
                 if (vipLevel == LSJVipLevelNone) {
                     _titleLabel.text = @"普通VIP";
-                    _detailLabel.text = @"观看除浪友圈外所有视频";
+                    _detailLabel.text = @"观看除狼友圈外所有视频";
                     _reduceLabel.text = @"原价88元";
                     _selectedVipLevel = LSJVipLevelVip;
                     

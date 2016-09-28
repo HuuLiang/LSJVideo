@@ -114,7 +114,7 @@
             
             [installedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.center.mas_equalTo(_installedView);
-                make.height.mas_equalTo(kWidth(35));
+                make.height.mas_equalTo(kWidth(75));
             }];
         }
 
