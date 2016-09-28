@@ -33,7 +33,7 @@
 #define LSJ_ACCESS_URL                  @"/iosvideo/userAccess.htm"
 #define LSJ_SYSTEM_CONFIG_URL           @"/iosvideo/systemConfig.htm"
 
-#define LSJ_STATS_BASE_URL              @"http://stats.iqu8.cn"//@"http://120.24.252.114"
+#define LSJ_STATS_BASE_URL              @"http://stats.iqu8.cn"//@"http://120.24.252.114"//
 #define LSJ_STATS_CPC_URL               @"/stats/cpcs.service"
 #define LSJ_STATS_TAB_URL               @"/stats/tabStat.service"
 #define LSJ_STATS_PAY_URL               @"/stats/payRes.service"
