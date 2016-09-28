@@ -75,7 +75,7 @@
 
 - (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel {
     
-    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
+//    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
     
     if (![LSJUtil isVip] && baseModel.spec != 4) {
         [self payWithBaseModelInfo:baseModel];
