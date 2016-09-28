@@ -261,7 +261,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             LSJColumnModel *column = _dataSource[indexPath.section];
             if (indexPath.item < column.programList.count) {
                 LSJProgramModel *program = column.programList[indexPath.item];
-                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:4 subTab:NSNotFound];
+                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:0 subTab:NSNotFound];
                 if (column.type != 5) {
                     [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program baseModel:baseModel];
                 }

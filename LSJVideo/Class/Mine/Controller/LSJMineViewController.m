@@ -11,6 +11,8 @@
 #import "LSJWebViewController.h"
 #import "LSJBannerVipCell.h"
 #import "LSJSystemConfigModel.h"
+#import "LSJAppSpreadBannerModel.h"
+#import "LSJAppCell.h"
 @interface LSJMineViewController ()
 {
     LSJBannerVipCell *_bannerCell;
@@ -29,9 +31,7 @@
     self.layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     
     self.layoutTableView.hasSectionBorder = NO;
-//    self.layoutTableView.hasRowSeparator = NO;
-    
-//    [self.layoutTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+
     [self.layoutTableView setSeparatorInset:UIEdgeInsetsMake(0, kWidth(30), 0, kWidth(30))];
     
     {
@@ -51,13 +51,7 @@
         if (cell == self->_vipCell || cell == self->_bannerCell) {
             LSJBaseModel *model = [[LSJBaseModel alloc] init];
             [self payWithBaseModelInfo:model];
-        }
-//        else if (cell == self->_statementCell) {
-//            LSJWebViewController *webVC = [[LSJWebViewController alloc] initWithURL:[NSURL URLWithString:LSJ_STATEMENT_URL]];
-//            webVC.title = @"免责声明";
-//            [self.navigationController pushViewController:webVC animated:YES];
-//        }
-        else if (cell == self->_protocolCell) {
+        } else if (cell == self->_protocolCell) {
             LSJWebViewController *webVC = [[LSJWebViewController alloc] initWithURL:[NSURL URLWithString:LSJ_PROTOCOL_URL]];
             webVC.title = @"用户协议";
             [self.navigationController pushViewController:webVC animated:YES];
@@ -119,22 +113,13 @@
     };
     
     [self setLayoutCell:_bannerCell cellHeight:kScreenWidth*0.4 inRow:0 andSection:section++];
-    
-//    [self setHeaderHeight:10 inSection:section];
-    
-//    _statementCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_statement"] title:@"免责声明"];
-//    _statementCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    _statementCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-//    [self setLayoutCell:_statementCell cellHeight:44 inRow:0 andSection:section];
+
     
     _protocolCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_protocol"] title:@"用户协议"];
     _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section];
-    
-//    UITableViewCell *lineCell = [[UITableViewCell alloc] init];
-//    lineCell.backgroundColor = [UIColor colorWithHexString:@"#575757"];
-//    [self setLayoutCell:lineCell cellHeight:0.5 inRow:0 andSection:section++];
+
     
     if ([LSJUtil isVip]) {
         _telCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_tel"] title:@"客服热线"];
@@ -143,9 +128,25 @@
         [self setLayoutCell:_telCell cellHeight:44 inRow:1 andSection:section];
     }
     
+    if ([LSJAppSpreadBannerModel sharedModel].fetchedSpreads.count > 0) {
+        for (LSJProgramModel *program in [LSJAppSpreadBannerModel sharedModel].fetchedSpreads) {
+            LSJAppCell *appCell = [[LSJAppCell alloc] init];
+            appCell.imgUrlStr = program.coverImg;
+            appCell.titleStr = program.title;
+            NSArray *array = [program.spare componentsSeparatedByString:@"|"];
+            appCell.sizeStr = array[0];
+            appCell.countStr = array[1];
+            appCell.detailStr = array[2];
+        }
+        
+    }
+    
     [self.layoutTableView reloadData];
     [self.layoutTableView LSJ_endPullToRefresh];
 }
+
+
+
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex] forSlideCount:1];

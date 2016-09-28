@@ -33,6 +33,8 @@
 #define LSJ_ACCESS_URL                  @"/iosvideo/userAccess.htm"
 #define LSJ_SYSTEM_CONFIG_URL           @"/iosvideo/systemConfig.htm"
 
+#define LSJ_APP_SPREAD_BANNER_URL       @"/iosvideo/appSpreadBanner.htm"
+
 #define LSJ_STATS_BASE_URL              @"http://stats.iqu8.cn"//@"http://120.24.252.114"//
 #define LSJ_STATS_CPC_URL               @"/stats/cpcs.service"
 #define LSJ_STATS_TAB_URL               @"/stats/tabStat.service"
@@ -52,10 +54,10 @@
 #define LSJ_PROTOCOL_URL                @"http://iv.zcqcmj.com/iosvideo/laosiji-agreement.html"
 #define LSJ_STATEMENT_URL               @""
 
-#define LSJ_KSCRASH_APP_ID              @"866b5d57e592c42ca988943a6124238e"
+#define LSJ_KSCRASH_APP_ID              @"72d15c0abe9178a79e7ab9856edf3d26"
 
 #define LSJ_DB_VERSION                  (1)
 
-#define LSJ_UMENG_APP_ID                @"5790992ce0f55a0da9003033"
+#define LSJ_UMENG_APP_ID                @"57ebc899e0f55a52a8002e6a"
 
 #endif /* LSJConfig_h */

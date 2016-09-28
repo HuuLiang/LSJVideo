@@ -13,6 +13,9 @@
 #import "JQKApplicationManager.h"
 #import "LSJBaseViewController.h"
 
+#import "LSJAppSpreadBannerModel.h"
+#import "LSJSpreadBannerViewController.h"
+
 NSString *const kPaymentInfoKeyName             = @"LSJ_paymentinfo_keyname";
 
 static NSString *const kLaunchSeqKeyName        = @"LSJ_launchseq_keyname";
@@ -306,5 +309,36 @@ static NSString *const kImageTokenCryptPassword = @"wafei@#$%^%$^$wfsssfsf";
     }
     return NSNotFound;
 }
+
++ (void)showSpreadBanner {
+    
+    if ([LSJAppSpreadBannerModel sharedModel].fetchedSpreads) {
+        [self showBanner];
+    }else{
+        [[LSJAppSpreadBannerModel sharedModel] fetchAppSpreadWithCompletionHandler:^(BOOL success, id obj) {
+            if (success) {
+                [self showBanner];
+            }
+        }];
+    }
+}
+
++ (void)showBanner {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSArray *spreads = [LSJAppSpreadBannerModel sharedModel].fetchedSpreads;
+        NSArray *allInstalledAppIds = [[JQKApplicationManager defaultManager] allInstalledAppIdentifiers];
+        NSArray *uninstalledSpreads = [spreads bk_select:^BOOL(id obj) {
+            return ![allInstalledAppIds containsObject:[obj specialDesc]];
+        }];
+        
+        if (uninstalledSpreads.count > 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                LSJSpreadBannerViewController *spreadVC = [[LSJSpreadBannerViewController alloc] initWithSpreads:uninstalledSpreads];
+                [spreadVC showInViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+            });
+        }
+    });
+}
+
 
 @end

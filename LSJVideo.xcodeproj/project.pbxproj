@@ -121,6 +121,8 @@
 		ECF00E2B1D5B49E900FBF1D2 /* LSJHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E1C1D5B49E900FBF1D2 /* LSJHomeModel.m */; };
 		ECF00E2E1D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF00E231D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m */; };
 		ECF3AC361D6EE50D009E7A54 /* LSJDetailVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF3AC351D6EE50D009E7A54 /* LSJDetailVideoVC.m */; };
+		ECF8EA841D9C027800B3220D /* LSJAppSpreadBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF8EA831D9C027800B3220D /* LSJAppSpreadBannerModel.m */; };
+		ECF8EA871D9C029500B3220D /* LSJSpreadBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF8EA861D9C029500B3220D /* LSJSpreadBannerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -353,6 +355,10 @@
 		ECF00E231D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJHomeSectionHeaderView.m; sourceTree = "<group>"; };
 		ECF3AC341D6EE50D009E7A54 /* LSJDetailVideoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJDetailVideoVC.h; sourceTree = "<group>"; };
 		ECF3AC351D6EE50D009E7A54 /* LSJDetailVideoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJDetailVideoVC.m; sourceTree = "<group>"; };
+		ECF8EA821D9C027800B3220D /* LSJAppSpreadBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJAppSpreadBannerModel.h; sourceTree = "<group>"; };
+		ECF8EA831D9C027800B3220D /* LSJAppSpreadBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJAppSpreadBannerModel.m; sourceTree = "<group>"; };
+		ECF8EA851D9C029500B3220D /* LSJSpreadBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJSpreadBannerViewController.h; sourceTree = "<group>"; };
+		ECF8EA861D9C029500B3220D /* LSJSpreadBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJSpreadBannerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -741,6 +747,7 @@
 		ECD70C4A1D531F6B006929B1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ECF8EA7B1D9C012600B3220D /* Ad */,
 				EC74E3231D87963F00DEB3F3 /* system */,
 				ECD70C8C1D531F6B006929B1 /* rac_extobjc */,
 				ECD70C4D1D531F6B006929B1 /* DataBase */,
@@ -1024,6 +1031,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		ECF8EA7B1D9C012600B3220D /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				ECF8EA821D9C027800B3220D /* LSJAppSpreadBannerModel.h */,
+				ECF8EA831D9C027800B3220D /* LSJAppSpreadBannerModel.m */,
+				ECF8EA851D9C029500B3220D /* LSJSpreadBannerViewController.h */,
+				ECF8EA861D9C029500B3220D /* LSJSpreadBannerViewController.m */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1210,6 +1228,7 @@
 				ECDD6B371D6D84B1001F08DD /* LSJDayTableView.m in Sources */,
 				ECD70DBF1D5346A3006929B1 /* LSJVideoPlayerController.m in Sources */,
 				ECD70D051D531F6B006929B1 /* NSString+StringHeight.m in Sources */,
+				ECF8EA841D9C027800B3220D /* LSJAppSpreadBannerModel.m in Sources */,
 				EC8547521D70210E00B0F815 /* LSJDetailModel.m in Sources */,
 				ECD70D091D531F6B006929B1 /* UIImage+Utilities.m in Sources */,
 				EC7684A31D64097700AC3708 /* LSJWelfareModel.m in Sources */,
@@ -1246,6 +1265,7 @@
 				ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */,
 				EC80DE3C1D8E92B800EF943E /* LSJPhotoBrowseView.m in Sources */,
 				ECD70D0A1D531F6B006929B1 /* UIImageView+YPBAnimation.m in Sources */,
+				ECF8EA871D9C029500B3220D /* LSJSpreadBannerViewController.m in Sources */,
 				EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */,
 				EC85475B1D70486100B0F815 /* LSJDetailVideoPhotosCell.m in Sources */,
 				EC2F0BB01D685E1500DE2B7F /* LSJProgramModel.m in Sources */,

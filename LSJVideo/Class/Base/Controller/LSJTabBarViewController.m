@@ -21,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"%ld",[LSJUtil launchSeq]);
+//    if ([LSJUtil launchSeq] == 1) {
+        [LSJUtil showSpreadBanner];
+//    }
     // Do any additional setup after loading the view.
     
     LSJHomeViewController *homeVC = [[LSJHomeViewController alloc] initWithTitle:@"首页"];
