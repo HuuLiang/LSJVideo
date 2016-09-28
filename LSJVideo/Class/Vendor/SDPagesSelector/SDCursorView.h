@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SDCursorViewDelegate <NSObject>
+
+@optional
+- (void)sendOriginalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex;
+
+@end
+
 typedef void(^collectionViewWidth)(CGFloat width);
 
 @interface SDCursorView : UIView
+
+/**
+ *  数据统计代理获取当前和上一次的idex
+ */
+@property (nonatomic,weak)id <SDCursorViewDelegate>delegate;
 
 @property (nonatomic) collectionViewWidth collectionViewWidth;
 @property (nonatomic) BOOL isHomeView;
@@ -71,4 +83,6 @@ typedef void(^collectionViewWidth)(CGFloat width);
  *  必须调用此方法来绘制界面
  */
 -(void)reloadPages;
+
+
 @end

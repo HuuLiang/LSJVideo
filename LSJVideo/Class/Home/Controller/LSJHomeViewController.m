@@ -18,7 +18,7 @@
 
 #import "SDCursorView.h"
 
-@interface LSJHomeViewController ()
+@interface LSJHomeViewController ()<SDCursorViewDelegate>
 {
     SDCursorView *_cursorView;
 }
@@ -64,6 +64,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     _cursorView = [[SDCursorView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     _cursorView.isHomeView = YES;
+    _cursorView.delegate = self;
     //设置子页面容器的高度
     _cursorView.contentViewHeight = kScreenHeight - 44 - 49 - 20;
     _cursorView.cursorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -162,6 +163,12 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma SDCursorViewDelegate
+- (void)sendOriginalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
+    [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:self.tabBarController.selectedIndex subTabIndex:originalIndex];
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:targetIndex forClickCount:1];
 }
 
 @end
