@@ -189,9 +189,9 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     }];
     
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:PaymentTypeSection];
-    [self.popView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-    
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:PaymentTypeSection];
+//    [self.popView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+//    
     {
         [self.popView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.view);

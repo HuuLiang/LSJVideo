@@ -18,7 +18,7 @@
 
 static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 
-@interface AppDelegate ()
+@interface AppDelegate () <UITabBarControllerDelegate>
 @property (nonatomic,retain) UIViewController *rootViewController;
 @end
 
@@ -40,6 +40,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
         return _rootViewController;
     }
     LSJTabBarViewController *tabBarVC = [[LSJTabBarViewController alloc] init];
+    tabBarVC.delegate = self;
     _rootViewController = tabBarVC;
     return _rootViewController;
 }
@@ -267,7 +268,6 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     return YES;
 }
 
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[QBPaymentManager sharedManager] applicationWillEnterForeground:application];
 }
@@ -275,5 +275,14 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;
 }
+#pragma mark - UITabBarControllerDelegate
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    [[LSJStatsManager sharedManager] statsTabIndex:tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex] forClickCount:1];
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex]];
+    return YES;
+}
 @end

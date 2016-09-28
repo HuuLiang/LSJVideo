@@ -13,7 +13,7 @@
 #import "LSJLechersViewController.h"
 #import "LSJMineViewController.h"
 
-@interface LSJTabBarViewController ()
+@interface LSJTabBarViewController () 
 
 @end
 
@@ -59,16 +59,7 @@
     self.tabBar.translucent = NO;
 }
 
-#pragma mark - UITabBarControllerDelegate
 
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    [[LSJStatsManager sharedManager] statsTabIndex:tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex] forClickCount:1];
-}
-
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex]];
-    return YES;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -59,6 +59,25 @@
         _imageV = [[UIImageView alloc] initWithImage:_isSelected? _selectedImage: _normalImage];
         [self addSubview:_imageV];
         
+        CGSize imageSize = (_isSelected ? _selectedImage : _normalImage).size;
+
+        
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.top.equalTo(self);
+            make.centerX.equalTo(self.mas_centerX).offset((_titleFirst? -1 : 1)  *  (_space + imageSize.width * 2 )/2 + (_titleFirst? 1 : -1)* kWidth(7.5));
+        }];
+        
+        [_imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(kWidth(imageSize.width * 2), kWidth(imageSize.height * 2)));
+            make.centerY.equalTo(self);
+            if (_titleFirst) {
+                make.left.equalTo(_titleLabel.mas_right).offset(_space);
+            } else {
+                make.right.equalTo(_titleLabel.mas_left).offset(-_space);
+            }
+        }];
+        
+        
         [self bk_whenTapped:^{
             action();
         }];
@@ -71,15 +90,10 @@
     _isSelected = isSelected;
     _titleLabel.text = _isSelected ? _selectedTitle : _normalTitle;
     _imageV.image = _isSelected? _selectedImage: _normalImage;
-    [self layoutSubviews];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
     
     CGSize imageSize = (_isSelected ? _selectedImage : _normalImage).size;
     
-//    CGFloat titleWidth = [_titleLabel.text sizeWithFont:_titleLabel.font maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)].height;
+    
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.top.equalTo(self);
         make.centerX.equalTo(self.mas_centerX).offset((_titleFirst? -1 : 1)  *  (_space + imageSize.width * 2 )/2 + (_titleFirst? 1 : -1)* kWidth(7.5));
@@ -96,5 +110,45 @@
     }];
 }
 
+//- (void)layoutSublayersOfLayer:(CALayer *)layer {
+//        CGSize imageSize = (_isSelected ? _selectedImage : _normalImage).size;
+//    
+//        CGFloat titleWidth = [_titleLabel.text sizeWithFont:_titleLabel.font maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)].height;
+//        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.top.equalTo(self);
+//            make.centerX.equalTo(self.mas_centerX).offset((_titleFirst? -1 : 1)  *  (_space + imageSize.width * 2 )/2 + (_titleFirst? 1 : -1)* kWidth(7.5));
+//        }];
+//    
+//        [_imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(kWidth(imageSize.width * 2), kWidth(imageSize.height * 2)));
+//            make.centerY.equalTo(self);
+//            if (_titleFirst) {
+//                make.left.equalTo(_titleLabel.mas_right).offset(_space);
+//            } else {
+//                make.right.equalTo(_titleLabel.mas_left).offset(-_space);
+//            }
+//        }];
+//}
+//
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
 
+//    CGSize imageSize = (_isSelected ? _selectedImage : _normalImage).size;
+    
+//    CGFloat titleWidth = [_titleLabel.text sizeWithFont:_titleLabel.font maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)].height;
+//    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.top.equalTo(self);
+//        make.centerX.equalTo(self.mas_centerX).offset((_titleFirst? -1 : 1)  *  (_space + imageSize.width * 2 )/2 + (_titleFirst? 1 : -1)* kWidth(7.5));
+//    }];
+//    
+//    [_imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(kWidth(imageSize.width * 2), kWidth(imageSize.height * 2)));
+//        make.centerY.equalTo(self);
+//        if (_titleFirst) {
+//            make.left.equalTo(_titleLabel.mas_right).offset(_space);
+//        } else {
+//            make.right.equalTo(_titleLabel.mas_left).offset(-_space);
+//        }
+//    }];
+//}
 @end

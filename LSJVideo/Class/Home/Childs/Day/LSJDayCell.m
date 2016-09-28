@@ -88,7 +88,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
             
             [playImgV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.center.equalTo(shadeView);
-                make.size.mas_equalTo(CGSizeMake(kWidth(playImage.size.width*2), kWidth(playImage.size.height*2)));
+                make.size.mas_equalTo(CGSizeMake(kWidth(playImage.size.width*3), kWidth(playImage.size.height*3)));
             }];
             
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -155,7 +155,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
     }
     _start = start;
     if (_start) {
-        [self performSelector:@selector(scrollTitle) withObject:nil afterDelay:1];
+        [self performSelector:@selector(scrollTitle) withObject:nil afterDelay:3];
     }
 }
 
@@ -189,7 +189,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, userContacts)
 //    DLog(@"currentIndexPath:%ld",_currentIndexPath.row);
     
     if (_start) {
-        [self performSelector:@selector(scrollTitle) withObject:nil afterDelay:1];
+        [self performSelector:@selector(scrollTitle) withObject:nil afterDelay:3];
     }
 }
 

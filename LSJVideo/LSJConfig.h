@@ -33,13 +33,13 @@
 #define LSJ_ACCESS_URL                  @"/iosvideo/userAccess.htm"
 #define LSJ_SYSTEM_CONFIG_URL           @"/iosvideo/systemConfig.htm"
 
-#define LSJ_STATS_BASE_URL              @"http://120.24.252.114"//@"http://stats.iqu8.cn"//
+#define LSJ_STATS_BASE_URL              @"http://stats.iqu8.cn"//@"http://120.24.252.114"
 #define LSJ_STATS_CPC_URL               @"/stats/cpcs.service"
 #define LSJ_STATS_TAB_URL               @"/stats/tabStat.service"
 #define LSJ_STATS_PAY_URL               @"/stats/payRes.service"
 
 
-#define LSJ_PAYMENT_CONFIG_URL           @"http://120.24.252.114:8084/paycenter/appPayConfig.json"//@"http://pay.zcqcmj.com/paycenter/appPayConfig.json"
+#define LSJ_PAYMENT_CONFIG_URL           @"http://pay.zcqcmj.com/paycenter/appPayConfig.json"//@"http://120.24.252.114:8084/paycenter/appPayConfig.json"
 #define LSJ_PAYMENT_COMMIT_URL           @"http://pay.zcqcmj.com/paycenter/qubaPr.json"//@"http://120.24.252.114:8084/paycenter/qubaPr.json"
 #define LSJ_STANDBY_PAYMENT_CONFIG_URL  @"http://appcdn.mqu8.com/static/iosvideo/payConfig_%@.json"
 

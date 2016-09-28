@@ -12,4 +12,6 @@
 
 -(CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
 
+-(CGSize)sizeAndLineSpaceWithFont:(UIFont *)font maxSize:(CGSize)maxSize attrs:(NSDictionary *)attrs;
+
 @end

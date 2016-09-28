@@ -29,7 +29,7 @@
         [self addSubview:_imgV];
         
         UIView *shadeView = [[UIView alloc] init];
-        shadeView.backgroundColor = [[UIColor colorWithHexString:@"#000000"] colorWithAlphaComponent:0.25];
+        shadeView.backgroundColor = [[UIColor colorWithHexString:@"#000000"] colorWithAlphaComponent:0.3];
         [self addSubview:shadeView];
         
         _titleLabel = [[UILabel alloc] init];

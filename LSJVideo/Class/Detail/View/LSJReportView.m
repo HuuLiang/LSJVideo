@@ -9,10 +9,11 @@
 #import "LSJReportView.h"
 #import "LSJBtnView.h"
 
-@interface LSJMessageView () <UITextFieldDelegate>
+@interface LSJMessageView () <UITextViewDelegate>
 {
-//    UITextField *_textField;
+//    UITextField *_textView;
 //    UIButton *_sendBtn;
+    CGFloat offsetY;
 }
 
 @end
@@ -24,68 +25,102 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor cyanColor];
+        self.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
         
-        _textField = [[UITextField alloc] init];
-        _textField.returnKeyType = UIReturnKeyDone;
-        _textField.delegate = self;
-        [self addSubview:_textField];
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(kWidth(30), kWidth(10), kScreenWidth-kWidth(60), kWidth(120))];
+        _textView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+        _textView.textColor = [UIColor colorWithHexString:@"#000000"];
+        _textView.returnKeyType = UIReturnKeyDone;
+        _textView.delegate = self;
+        [self addSubview:_textView];
         
         _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _sendBtn.frame = CGRectMake(kScreenWidth - kWidth(150), kWidth(150), kWidth(120), kWidth(50));
         [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-        _sendBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
-        _sendBtn.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+        _sendBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(32)];
+        [_sendBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];
+        _sendBtn.backgroundColor = [UIColor clearColor];
+        _sendBtn.layer.borderColor = [UIColor colorWithHexString:@"#666666"].CGColor;
+        _sendBtn.layer.borderWidth = 1.;
+        
         [self addSubview:_sendBtn];
         
         {
-            [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(self);
-                make.left.equalTo(self).offset(kWidth(10));
-                make.size.mas_equalTo(CGSizeMake(kWidth(250), kWidth(60)));
-            }];
+//            [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.top.equalTo(self).offset(kWidth(20));
+//                make.left.equalTo(self).offset(kWidth(30));
+//                make.right.equalTo(self).offset(-kWidth(30));
+//                make.height.mas_equalTo(self).offset(kWidth(120));
+//            }];
             
-            [_sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.centerY.equalTo(self);
-                make.right.equalTo(self).offset(-kWidth(10));
-                make.size.mas_equalTo(CGSizeMake(kWidth(100), kWidth(60)));
-            }];
+//            [_sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.size.mas_equalTo(CGSizeMake(kWidth(120), kWidth(50)));
+//                make.bottom.equalTo(self.mas_bottom).offset(-kWidth(10));
+//                make.right.equalTo(self).offset(-kWidth(30));
+//            }];
         }
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardAction:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardAction:) name:UIKeyboardWillHideNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardActionShow:) name:UIKeyboardWillShowNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardActionHide:) name:UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
         
     }
     return self;
 }
 
-- (void)handleKeyBoardAction:(NSNotification *)notification {
-    NSLog(@"%@",notification);
+//- (void)handleKeyBoardActionShow:(NSNotification *)notification {
+////    NSLog(@"%@",notification);
+//
+//    CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+//    CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    
+//    CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
+//    
+//    CGFloat frameY = kScreenHeight -64;
+//    frameY += detalY;
+//    offsetY = frameY;
+//    
+//    self.frame = CGRectMake(0, frameY - self.frame.size.height, self.frame.size.width, kWidth(210));
+//}
+//
+//- (void)handleKeyBoardActionHide:(NSNotification *)notification {
+////    NSLog(@"%@",notification);
+//    
+//    CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+//    CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    
+//    CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
+//    
+//    CGFloat frameY = kScreenHeight - 64;
+//    frameY += detalY;
+//    
+//    self.frame = CGRectMake(0, frameY + self.frame.size.height, self.frame.size.width, kWidth(210));
+//}
 
+- (void)handleKeyBoardChangeFrame:(NSNotification *)notification {
+    NSLog(@"%@",notification);
     CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if (beginFrame.origin.y != kScreenHeight && endFrame.origin.y != kScreenHeight) {
+        return;
+    }
     
     CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
     
-    CGFloat frame = self.frame.origin.y;
-    frame += detalY;
-    self.frame = CGRectMake(0, frame, self.frame.size.width, 40);
+    CGFloat frameY = kScreenHeight - 64;
+    frameY += detalY;
+    
+    self.frame = CGRectMake(0, frameY + (detalY > 0 ? 1 : -1)*self.frame.size.height, self.frame.size.width, kWidth(210));
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-}
 
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [_textField resignFirstResponder];
+    [_textView resignFirstResponder];
     return YES;
 }
 @end
-
-
-
 
 @interface LSJReportView ()
 {

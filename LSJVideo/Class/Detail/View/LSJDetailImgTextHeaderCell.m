@@ -25,18 +25,18 @@
     if (self) {
         
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:kWidth(34)];
+        _titleLabel.font = [UIFont systemFontOfSize:kWidth(40)];
         _titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
         _titleLabel.numberOfLines = 0;
         [self addSubview:_titleLabel];
         
         _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = [UIFont systemFontOfSize:kWidth(22)];
+        _timeLabel.font = [UIFont systemFontOfSize:kWidth(28)];
         _timeLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         [self addSubview:_timeLabel];
         
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.font = [UIFont systemFontOfSize:kWidth(22)];
+        _nameLabel.font = [UIFont systemFontOfSize:kWidth(28)];
         _nameLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         [self addSubview:_nameLabel];
         

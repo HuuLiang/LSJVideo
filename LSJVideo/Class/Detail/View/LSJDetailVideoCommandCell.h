@@ -15,6 +15,5 @@
 @property (nonatomic) NSString *userImgUrlStr;
 @property (nonatomic) NSString *timeStr;
 @property (nonatomic) NSString *userNameStr;
-@property (nonatomic) NSString *commandStr;
-
+@property (nonatomic) NSAttributedString *commandAttriStr;
 @end

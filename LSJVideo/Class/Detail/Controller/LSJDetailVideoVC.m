@@ -22,6 +22,7 @@
 
 #import "LSJReportView.h"
 
+#import "LSJBtnView.h"
 @interface LSJDetailVideoVC ()
 {
     NSInteger _columnId;
@@ -32,12 +33,14 @@
     LSJDetailVideoPhotosCell *_photosCell;
     
     LSJDetailImgTextHeaderCell *_imgTextHeaderCell;
+    UITableViewCell *_imageVipCell;
     
     LSJDetailVideoCommandCell *_commandCell;
     
     LSJReportView *_reportView;
     LSJMessageView *_messageView;
     
+    LSJBtnView *_btnView;
 }
 @property (nonatomic) LSJDetailModel *detailModel;
 @property (nonatomic) LSJDetailResponse *response;
@@ -69,23 +72,23 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     self.layoutTableView.hasRowSeparator = NO;
     
     
-    _messageView = [[LSJMessageView alloc] initWithFrame:CGRectMake(0, kScreenHeight-64-kWidth(80), kScreenWidth, kWidth(80))];
+    _messageView = [[LSJMessageView alloc] initWithFrame:CGRectMake(0, kScreenHeight-64, kScreenWidth, kWidth(210))];
     [self.view addSubview:_messageView];
     
     [_messageView.sendBtn bk_addEventHandler:^(id sender) {
-        [_messageView.textField becomeFirstResponder];
+        [_messageView.textView becomeFirstResponder];
         if ([LSJUtil isVip]) {
-            if (_messageView.textField.text.length < 1) {
+            if (_messageView.textView.text.length < 1) {
                 [[CRKHudManager manager] showHudWithText:@"您输入的评论过短"];
+            } else {
+                [[CRKHudManager manager] showHudWithText:@"请等待审核"];
+                _messageView.textView.text = @"";
+                [_messageView.textView resignFirstResponder];
             }
-            [[CRKHudManager manager] showHudWithText:@"请等待审核"];
-            _messageView.textField.text = @"";
         } else {
             [[CRKHudManager manager] showHudWithText:@"非VIP用户不可发表评论"];
-            _messageView.textField.text = @"";
-            [_messageView.textField resignFirstResponder];
-//            LSJBaseModel *model = [[LSJBaseModel alloc] init];
-            
+            _messageView.textView.text = @"";
+            [_messageView.textView resignFirstResponder];            
             [self payWithBaseModelInfo:_baseModel];
         }
     } forControlEvents:UIControlEventTouchUpInside];
@@ -95,7 +98,7 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     @weakify(self);
     _reportView.popKeyboard = ^{
         @strongify(self);
-        [self->_messageView.textField becomeFirstResponder];
+        [self->_messageView.textView becomeFirstResponder];
     };
     [self.view addSubview:_reportView];
     
@@ -119,8 +122,8 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     
     self.layoutTableViewAction = ^(NSIndexPath *indexPath, UITableViewCell *cell) {
         @strongify(self);
-        if ([self->_messageView.textField isFirstResponder]) {
-            [self->_messageView.textField resignFirstResponder];
+        if ([self->_messageView.textView isFirstResponder]) {
+            [self->_messageView.textView resignFirstResponder];
             return ;
         }
         if (cell == self->_headerCell) {
@@ -128,6 +131,16 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
                          baseModel:self.baseModel];
         }
     };
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:kPaidNotificationName object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kPaidNotificationName object:nil];
+}
+
+- (void)refreshView {
+    [self.layoutTableView LSJ_triggerPullToRefresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -164,8 +177,14 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     } else if (_programModel.type == 4) {
         [self initImageTextHeaderCellInSection:section++];
         if (self.response.programUrlList > 0) {
+            NSInteger count = 0;
             for (LSJProgramUrlModel *urlModel in self.response.programUrlList) {
+                if (count == 3 && ![LSJUtil isVip]) {
+                    [self initImageVipNotiCellInSection:section++];
+                    break;
+                }
                 [self initImageTextCellInSection:section++ programUrlModel:urlModel];
+                count++;
             }
         }
     }
@@ -214,8 +233,8 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     @weakify(self);
     _photosCell.selectedIndex = ^(NSNumber *index) {
         @strongify(self);
-        if ([self->_messageView.textField isFirstResponder]) {
-            [self->_messageView.textField resignFirstResponder];
+        if ([self->_messageView.textView isFirstResponder]) {
+            [self->_messageView.textView resignFirstResponder];
             return ;
         }
 
@@ -255,6 +274,30 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     [self setLayoutCell:_imgTextCell cellHeight:height inRow:0 andSection:section];
 }
 
+- (void)initImageVipNotiCellInSection:(NSUInteger)section {
+    _imageVipCell = [[UITableViewCell alloc] init];
+    _imageVipCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _imageVipCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+    
+    @weakify(self);
+    _btnView = [[LSJBtnView alloc] initWithNormalTitle:@"点击查看全文" selectedTitle:@"点击查看全文" normalImage:[UIImage imageNamed:@"detail_all"] selectedImage:[UIImage imageNamed:@"detail_all"] space:kWidth(15) isTitleFirst:NO touchAction:^{
+        @strongify(self);
+        [self payWithBaseModelInfo:self.baseModel];
+    }];
+    _btnView.titleLabel.textColor = [UIColor colorWithHexString:@"#0876f6"];
+    _btnView.titleLabel.font = [UIFont systemFontOfSize:kWidth(36)];
+    [_imageVipCell addSubview:_btnView];
+    {
+        [_btnView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_imageVipCell);
+            make.centerY.equalTo(_imageVipCell.mas_centerY).offset(-kWidth(10));
+            make.size.mas_equalTo(CGSizeMake(kWidth(270), kWidth(60)));
+        }];
+    }
+    
+    [self setLayoutCell:_imageVipCell cellHeight:kWidth(100) inRow:0 andSection:section];
+}
+
 
 #pragma mark - common Detail
 
@@ -291,14 +334,20 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
 - (void)initCommandDetailsInSection:(NSUInteger)section comment:(LSJCommentModel *)comment {
     [self setHeaderHeight:kWidth(1) inSection:section];
     NSString *str = comment.content;
-    CGFloat height = [str sizeWithFont:[UIFont systemFontOfSize:kWidth(30)] maxSize:CGSizeMake(kScreenWidth - kWidth(60), MAXFLOAT)].height;
+    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    style.lineSpacing = kWidth(7);
+    NSDictionary *attrs = @{NSFontAttributeName : [UIFont systemFontOfSize:kWidth(36)],
+                            NSParagraphStyleAttributeName:style};
+    CGFloat height = [str sizeAndLineSpaceWithFont:[UIFont systemFontOfSize:kWidth(36)] maxSize:CGSizeMake(kScreenWidth - kWidth(143), MAXFLOAT) attrs:attrs].height;
+    
+    NSAttributedString *attriStr = [[NSAttributedString alloc] initWithString:str attributes:attrs];
     
     _commandCell = [[LSJDetailVideoCommandCell alloc] init];
     _commandCell.userImgUrlStr = comment.icon;
     _commandCell.userNameStr = comment.userName;
     _commandCell.timeStr = comment.createAt;
-    _commandCell.commandStr = str;
+    _commandCell.commandAttriStr = attriStr;
     
-    [self setLayoutCell:_commandCell cellHeight:kWidth(140)+height inRow:0 andSection:section];
+    [self setLayoutCell:_commandCell cellHeight:kWidth(152)+height inRow:0 andSection:section];
 }
 @end

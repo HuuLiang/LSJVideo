@@ -16,4 +16,8 @@
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
+-(CGSize)sizeAndLineSpaceWithFont:(UIFont *)font maxSize:(CGSize)maxSize attrs:(NSDictionary *)attrs {
+    return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
 @end

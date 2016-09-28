@@ -43,7 +43,7 @@
         
         _commandLabel = [[UILabel alloc] init];
         _commandLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-        _commandLabel.font = [UIFont systemFontOfSize:kWidth(30)];
+        _commandLabel.font = [UIFont systemFontOfSize:kWidth(36)];
         _commandLabel.numberOfLines = 0;
         [self addSubview:_commandLabel];
         
@@ -73,8 +73,8 @@
             }];
             
             [_commandLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self).offset(kWidth(20));
-                make.top.equalTo(_userImgV.mas_bottom).offset(kWidth(20));
+                make.left.equalTo(_userImgV.mas_right).offset(kWidth(15));
+                make.top.equalTo(_userImgV.mas_bottom).offset(kWidth(32));
                 make.right.equalTo(self).offset(-kWidth(40));
 //                make.height.mas_equalTo(height);
             }];
@@ -96,7 +96,11 @@
 }
 
 - (void)setCommandStr:(NSString *)commandStr {
-    _commandLabel.text = [NSString stringWithFormat:@"    %@",commandStr];
+    _commandLabel.text = [NSString stringWithFormat:@"%@",commandStr];
+}
+
+-(void)setCommandAttriStr:(NSAttributedString *)commandAttriStr {
+    _commandLabel.attributedText = commandAttriStr;
 }
 
 @end

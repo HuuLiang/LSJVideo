@@ -47,7 +47,7 @@
         [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         if ([LSJUtil currentVipLevel] == LSJVipLevelVip) {
             UIImageView  *bgImgV = [[UIImageView alloc] init];
-//            [bgImgV setContentMode:UIViewContentModeScaleAspectFill];
+            [bgImgV setContentMode:UIViewContentModeScaleToFill];
             [self insertSubview:bgImgV atIndex:0];
             [bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].sVipImg]];
             {
@@ -109,6 +109,7 @@
             if ([LSJUtil currentVipLevel] == LSJVipLevelNone) {
                 UIImageView *_bgImgV = [[UIImageView alloc] init];
                 _bgImgV.layer.cornerRadius = kWidth(10);
+                _bgImgV.contentMode = UIViewContentModeScaleToFill;
                 _bgImgV.layer.masksToBounds = YES;
                 [_headerCell addSubview:_bgImgV];
                 

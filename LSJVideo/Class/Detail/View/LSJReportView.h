@@ -13,7 +13,7 @@ typedef void(^popKeyboard)(void);
 
 @interface LSJMessageView : UIView
 @property (nonatomic) UIButton *sendBtn;
-@property (nonatomic) UITextField *textField;
+@property (nonatomic) UITextView *textView;
 @end
 
 

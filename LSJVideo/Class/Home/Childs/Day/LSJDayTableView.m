@@ -43,6 +43,7 @@
             
             [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(_userLabel.mas_right);
+                make.right.equalTo(self.mas_right).offset(-kWidth(20));
                 make.top.bottom.equalTo(self);
             }];
         }
@@ -52,6 +53,10 @@
 
 - (void)setUserStr:(NSString *)userStr {
     _userLabel.text = [NSString stringWithFormat:@"%@:",userStr];
+    CGFloat width = [_userLabel.text sizeWithFont:[UIFont systemFontOfSize:kWidth(30)] maxSize:CGSizeMake(MAXFLOAT, self.frame.size.height)].width;
+    [_userLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(width+kWidth(5));
+    }];
 }
 
 - (void)setContent:(NSString *)content {
@@ -59,8 +64,6 @@
 }
 
 @end
-
-
 
 
 @implementation LSJDayTableView

@@ -37,16 +37,17 @@
         
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-        _titleLabel.font = [UIFont systemFontOfSize:kWidth(32)];
+        _titleLabel.font = [UIFont systemFontOfSize:kWidth(36)];
+//        _titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:kWidth(36)];
         [bgView addSubview:_titleLabel];
         
         @weakify(self);
-        _moreView = [[LSJBtnView alloc] initWithNormalTitle:@"更多" selectedTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:[UIImage imageNamed:@"lecher_into"] space:kWidth(10) isTitleFirst:YES touchAction:^{
+        _moreView = [[LSJBtnView alloc] initWithNormalTitle:@"更多" selectedTitle:@"更多" normalImage:[UIImage imageNamed:@"lecher_into"] selectedImage:[UIImage imageNamed:@"lecher_into"] space:kWidth(7) isTitleFirst:YES touchAction:^{
             @strongify(self);
             self.action(@(0));
         }];
         _moreView.userInteractionEnabled = YES;
-        _moreView.titleLabel.font = [UIFont systemFontOfSize:kWidth(20)];
+        _moreView.titleLabel.font = [UIFont systemFontOfSize:kWidth(24)];
         _moreView.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
         _moreView.layer.cornerRadius = kWidth(18);
         _moreView.layer.borderColor = [UIColor colorWithHexString:@"#666666"].CGColor;

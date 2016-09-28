@@ -39,8 +39,9 @@
         
         {
             [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.bottom.right.equalTo(self);
-                make.height.mas_equalTo(kWidth(60));
+                make.bottom.right.equalTo(self);
+                make.left.equalTo(self).offset(kWidth(10));
+                make.height.mas_equalTo(kWidth(68));
             }];
             
             [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -29,8 +29,8 @@
         
         if (_contentType == LSJContentType_Text) {
             _label = [[UILabel alloc] init];
-            _label.textColor = [UIColor colorWithHexString:@"#666666"];
-            _label.font = [UIFont systemFontOfSize:kWidth(30)];
+            _label.textColor = [UIColor colorWithHexString:@"#444444"];
+            _label.font = [UIFont systemFontOfSize:kWidth(36)];
             _label.numberOfLines = 0;
             [self addSubview:_label];
             

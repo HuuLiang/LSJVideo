@@ -293,20 +293,20 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         } else if (column.type == 1 && column.showMode == 1) {
             if (indexPath.item == 0) {
                 width = fullWidth - insets.left - insets.right;
-                height = width / 3 + kWidth(60);
+                height = width / 3 + kWidth(68);
                 return CGSizeMake((long)width, (long)height);
             } else {
                 width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing) / 2;
-                height = width * 0.6 + kWidth(60);
+                height = width * 0.6 + kWidth(68);
                 return CGSizeMake((long)width, (long)height);
             }
         } else if (column.type == 1 && column.showMode == 2) {
             width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 3;
-            height = width * 9 / 7. + kWidth(60);
+            height = width * 9 / 7. + kWidth(68);
             return CGSizeMake((long)width, (long)height);
         } else if (column.type == 5 && ![LSJUtil isVip]) {
             width = fullWidth;
-            height = (fullWidth / 2.5) * 9 / 7 + kWidth(60);
+            height = (fullWidth / 2.5) * 9 / 7 + kWidth(68);
             return CGSizeMake((long)width, (long)height);
         } else {
             return CGSizeZero;
@@ -318,7 +318,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         CGFloat width;
         CGFloat height;
         width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing * 2) / 2.5;
-        height = width * 9 /7 + kWidth(60);
+        height = width * 9 /7 + kWidth(68);
         return CGSizeMake((long)width, (long)height);
     } else {
         return CGSizeZero;
