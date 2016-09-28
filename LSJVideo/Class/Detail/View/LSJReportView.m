@@ -44,73 +44,25 @@
         _sendBtn.layer.borderWidth = 1.;
         
         [self addSubview:_sendBtn];
-        
-        {
-//            [_textView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.top.equalTo(self).offset(kWidth(20));
-//                make.left.equalTo(self).offset(kWidth(30));
-//                make.right.equalTo(self).offset(-kWidth(30));
-//                make.height.mas_equalTo(self).offset(kWidth(120));
-//            }];
-            
-//            [_sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.size.mas_equalTo(CGSizeMake(kWidth(120), kWidth(50)));
-//                make.bottom.equalTo(self.mas_bottom).offset(-kWidth(10));
-//                make.right.equalTo(self).offset(-kWidth(30));
-//            }];
-        }
-        
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardActionShow:) name:UIKeyboardWillShowNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardActionHide:) name:UIKeyboardWillHideNotification object:nil];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardActionHide:) name:UIKeyboardWillHideNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyBoardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
         
     }
     return self;
 }
 
-//- (void)handleKeyBoardActionShow:(NSNotification *)notification {
-////    NSLog(@"%@",notification);
-//
-//    CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-//    CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    
-//    CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
-//    
-//    CGFloat frameY = kScreenHeight -64;
-//    frameY += detalY;
-//    offsetY = frameY;
-//    
-//    self.frame = CGRectMake(0, frameY - self.frame.size.height, self.frame.size.width, kWidth(210));
-//}
-//
-//- (void)handleKeyBoardActionHide:(NSNotification *)notification {
-////    NSLog(@"%@",notification);
-//    
-//    CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-//    CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    
-//    CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
-//    
-//    CGFloat frameY = kScreenHeight - 64;
-//    frameY += detalY;
-//    
-//    self.frame = CGRectMake(0, frameY + self.frame.size.height, self.frame.size.width, kWidth(210));
-//}
+
+- (void)handleKeyBoardActionHide:(NSNotification *)notification {
+    self.frame = CGRectMake(0, kScreenHeight - 64, self.frame.size.width, kWidth(210));
+}
 
 - (void)handleKeyBoardChangeFrame:(NSNotification *)notification {
-    NSLog(@"%@",notification);
-    CGRect beginFrame = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+
     CGRect endFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    if (beginFrame.origin.y != kScreenHeight && endFrame.origin.y != kScreenHeight) {
-        return;
-    }
+    NSLog(@"%@",NSStringFromCGRect(endFrame));
     
-    CGFloat detalY = endFrame.origin.y - beginFrame.origin.y;
-    
-    CGFloat frameY = kScreenHeight - 64;
-    frameY += detalY;
-    
-    self.frame = CGRectMake(0, frameY + (detalY > 0 ? 1 : -1)*self.frame.size.height, self.frame.size.width, kWidth(210));
+    self.frame = CGRectMake(0, endFrame.origin.y - kWidth(210) - 64, self.frame.size.width, kWidth(210));
 }
 
 

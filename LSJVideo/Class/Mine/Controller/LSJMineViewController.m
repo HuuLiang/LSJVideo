@@ -70,6 +70,12 @@
         NSString *baseURLString = [LSJ_BASE_URL stringByReplacingCharactersInRange:NSMakeRange(0, LSJ_BASE_URL.length-6) withString:@"******"];
         [[CRKHudManager manager] showHudWithText:[NSString stringWithFormat:@"Server:%@\nChannelNo:%@\nPackageCertificate:%@\npV:%@/%@", baseURLString, LSJ_CHANNEL_NO, LSJ_PACKAGE_CERTIFICATE, LSJ_REST_PV, LSJ_PAYMENT_PV]];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:kPaidNotificationName object:nil];
+}
+
+- (void)refreshView {
+    [self.layoutTableView LSJ_triggerPullToRefresh];
 }
 
 - (void)contactCustomerService {
@@ -97,6 +103,8 @@
 }
 
 - (void)initCells {
+    [self removeAllLayoutCells];
+    
     NSUInteger section = 0;
     
     _bannerCell = [[LSJBannerVipCell alloc] init];
@@ -128,12 +136,12 @@
 //    lineCell.backgroundColor = [UIColor colorWithHexString:@"#575757"];
 //    [self setLayoutCell:lineCell cellHeight:0.5 inRow:0 andSection:section++];
     
-//    if ([LSJUtil isVip]) {
+    if ([LSJUtil isVip]) {
         _telCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_tel"] title:@"客服热线"];
         _telCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         _telCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
         [self setLayoutCell:_telCell cellHeight:44 inRow:1 andSection:section];
-//    }
+    }
     
     [self.layoutTableView reloadData];
     [self.layoutTableView LSJ_endPullToRefresh];
