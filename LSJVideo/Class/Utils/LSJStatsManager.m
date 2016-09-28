@@ -140,7 +140,7 @@ QBDefineLazyPropertyInitialization(LSJPayStatsModel, payStats)
             }
         }];
     }
-}
+} 
 
 - (void)statsCPCWithBaseModel:(LSJBaseModel *)baseModel inTabIndex:(NSUInteger)tabIndex {
     LSJStatsInfo *statsInfo = [[LSJStatsInfo alloc] init];

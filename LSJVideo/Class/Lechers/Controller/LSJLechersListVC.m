@@ -11,7 +11,7 @@
 
 #import "SDCursorView.h"
 
-@interface LSJLechersListVC ()
+@interface LSJLechersListVC ()<SDCursorViewDelegate>
 {
     NSArray *_array;
     NSInteger _index;
@@ -54,6 +54,7 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
     
     _cursorView = [[SDCursorView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kWidth(70))];
     _cursorView.isHomeView = NO;
+    _cursorView.delegate = self;
     //设置子页面容器的高度
     _cursorView.contentViewHeight = kScreenHeight - kWidth(70) - 64;
     _cursorView.cursorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -135,4 +136,11 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}@end
+}
+
+#pragma SDCursorViewDelegate
+- (void)sendOriginalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
+    [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:self.tabBarController.selectedIndex subTabIndex:originalIndex];
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:targetIndex forClickCount:1];
+}
+@end

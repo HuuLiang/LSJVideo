@@ -14,8 +14,8 @@ static NSString *const cellIdentifier = @"selectorCell";
 @interface SDCursorView ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
-
 @property (nonatomic, strong) NSMutableArray *sizeArray;
+@property (nonatomic)NSInteger lastIndex;
 @end
 
 @implementation SDCursorView
@@ -33,8 +33,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         _lineEdgeInsets = UIEdgeInsetsMake(0, 3, 2, 3);
         _cursorEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
         
-//        UIViewController *VC = self.parentViewController;
-
+        //        UIViewController *VC = self.parentViewController;
+        
         
     }
     return self;
@@ -60,13 +60,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         
         
         _rootScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds)+ (_isHomeView ? 20 :0), CGRectGetWidth(self.bounds), self.contentViewHeight)];
-////        _rootScrollView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.99];
-////        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app_bg"]];
-//        if (!_isHomeView) {
-////            _rootScrollView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
-//        }
+        ////        _rootScrollView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.99];
+        ////        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app_bg"]];
+        //        if (!_isHomeView) {
+        ////            _rootScrollView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
+        //        }
         _rootScrollView.backgroundColor = [UIColor clearColor];
-//        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app_bg"]];
+        //        _rootScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"app_bg"]];
         _rootScrollView.pagingEnabled = YES;
         _rootScrollView.delegate = self;
         _rootScrollView.alwaysBounceHorizontal = YES;
@@ -76,13 +76,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         _rootScrollView.bounces = YES;
         [self.parentViewController.view addSubview:_rootScrollView];
         
-
+        
         
         NSAssert(self.parentViewController, @"self.parentViewController must has a value");
         
     }
     
-//    [_rootScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    //    [_rootScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     
     return _rootScrollView;
 }
@@ -133,14 +133,14 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     }
     if (self.collectionViewWidth && _isHomeView) {
         self.collectionViewWidth(width);
-         _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
+        _collectionView.frame = CGRectMake(_cursorEdgeInsets.left, _cursorEdgeInsets.top, width, CGRectGetHeight(self.bounds)-_cursorEdgeInsets.top-_cursorEdgeInsets.bottom);
     }
     
     NSAssert(_titles.count == _controllers.count, @"titles' count is not equal to controllerNames' count");
     [self.collectionView reloadData];
     
     [self addChildViewController];
-//    [self selectItemAtIndex:_currentIndex];
+    //    [self selectItemAtIndex:_currentIndex];
 }
 
 -(void)setTitles:(NSArray *)titles
@@ -166,11 +166,11 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
         [self.rootScrollView addSubview:controller.view];
         [controller didMoveToParentViewController:self.parentViewController];
     }
-
+    
     [self.rootScrollView setContentOffset:CGPointMake(startX, 0) animated:NO];
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-
+    
 }
 
 /**
@@ -223,12 +223,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
  */
 -(void)selectItemAtIndex:(NSInteger)index
 {
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:_currentIndex inSection:0];
     [self.collectionView selectItemAtIndexPath:indexPath
                                       animated:YES
                                 scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     [self selectItemAtIndexPath:indexPath];
-
+    
 }
 /**
  *  设置计算选中的item状态
@@ -237,6 +238,9 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
  */
 -(void)selectItemAtIndexPath:(NSIndexPath*)indexPath
 {
+    if ([self.delegate respondsToSelector:@selector(sendOriginalIndex:targetIndex:)]) {
+        [self.delegate sendOriginalIndex:self.lastIndex targetIndex:indexPath.item];
+    }
     SDSelectorCell *cell = (SDSelectorCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     
     
@@ -250,6 +254,8 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
     [self setContentOffsetWithCellFrame:rect];
     [self resizeLineViewWihtCellFrame:rect animated:YES];
     
+    
+    
     [self addChildViewController];
 }
 /**
@@ -259,6 +265,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
  */
 -(void)deselectItemAtIndex:(NSInteger)index
 {
+    self.lastIndex = index;//记录上一个index
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
     SDSelectorCell *cell = (SDSelectorCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
@@ -326,6 +333,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, sizeArray)
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.lastIndex = indexPath.item;//记录上一个index
     SDSelectorCell *cell = (SDSelectorCell*)[collectionView cellForItemAtIndexPath:indexPath];
     cell.selected = NO;
 }
