@@ -93,7 +93,7 @@
                 }
                 [self.view endProgressing];
                 
-                [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr] cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+//                [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr] cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
 
                 
                 if (success) {

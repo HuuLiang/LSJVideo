@@ -103,8 +103,8 @@
     };
     
 //#ifdef YYK_DISPLAY_VIDEO_URL
-    NSString *url = videoUrl.absoluteString;
-    [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:url cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+//    NSString *url = videoUrl.absoluteString;
+//    [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:url cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
 //#endif
 }
 
