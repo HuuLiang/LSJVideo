@@ -48,6 +48,7 @@
         if ([LSJUtil currentVipLevel] == LSJVipLevelVip) {
             UIImageView  *bgImgV = [[UIImageView alloc] init];
             [bgImgV setContentMode:UIViewContentModeScaleToFill];
+            bgImgV.clipsToBounds = NO;
             [self insertSubview:bgImgV atIndex:0];
             [bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].sVipImg]];
             {
@@ -110,13 +111,15 @@
                 UIImageView *_bgImgV = [[UIImageView alloc] init];
                 _bgImgV.layer.cornerRadius = kWidth(10);
                 _bgImgV.contentMode = UIViewContentModeScaleToFill;
-                _bgImgV.layer.masksToBounds = YES;
+                _bgImgV.clipsToBounds = NO;
                 [_headerCell addSubview:_bgImgV];
                 
                 [_bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].vipImg]];
                 {
                     [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-                        make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));
+                        make.edges.equalTo(_headerCell).insets(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));
+//                        make.center.equalTo(_headerCell);
+//                        make.size.mas_equalTo(CGSizeMake(kWidth(610), kWidth(540)));
                     }];
                 }
             }

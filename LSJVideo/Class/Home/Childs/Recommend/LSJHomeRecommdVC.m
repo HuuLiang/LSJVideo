@@ -106,7 +106,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         @strongify(self);
         [self loadChannels];
     }];
-    [_layoutCollectionView LSJ_triggerPullToRefresh];    
+    [_layoutCollectionView LSJ_triggerPullToRefresh];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:kPaidNotificationName object:nil];
+}
+
+- (void)refreshView {
+    [_layoutCollectionView LSJ_triggerPullToRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
