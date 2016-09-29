@@ -95,6 +95,10 @@ static NSString *const kStatsInfoFileName = @"stats";
     return @"statsId";
 }
 
+- (void)setSubTabpageId:(NSNumber *)subTabpageId {
+    _subTabpageId = subTabpageId;
+}
+
 - (BOOL)save {
     if (_statsId == 0) {
         _statsId = @([LSJStatsInfoMeta sharedMeta].nextId);

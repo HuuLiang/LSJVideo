@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LSJVideo/Class/Utils/LSJStatsManager.m"
-            timestampString = "496841942.958246"
+            timestampString = "496849028.526062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "-statsPayWithPaymentInfo:forPayAction:andTabIndex:subTabIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -22,15 +22,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LSJVideo/Class/Utils/LSJStatsManager.m"
-            timestampString = "496841946.094995"
+            timestampString = "496849028.526062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-statsPayWithOrderNo:payAction:payResult:forBaseModel:andTabIndex:subTabIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -38,16 +38,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LSJVideo/Class/Utils/LSJStatsManager.m"
-            timestampString = "496843108.790569"
+            filePath = "LSJVideo/Class/Base/Model/Stats/LSJCPCStatsModel.m"
+            timestampString = "496844871.269921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-statsCPCWithBaseModel:andTabIndex:subTabIndex:"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-statsCPCWithStatsInfos:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

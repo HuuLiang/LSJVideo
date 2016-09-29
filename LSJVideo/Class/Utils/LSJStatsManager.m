@@ -145,7 +145,9 @@ QBDefineLazyPropertyInitialization(LSJPayStatsModel, payStats)
 - (void)statsCPCWithBaseModel:(LSJBaseModel *)baseModel inTabIndex:(NSUInteger)tabIndex {
     LSJStatsInfo *statsInfo = [[LSJStatsInfo alloc] init];
     statsInfo.tabpageId = @(tabIndex+1);
-    statsInfo.subTabpageId = @(baseModel.subTab +1);
+    if (baseModel.subTab != NSNotFound) {
+        statsInfo.subTabpageId = @(baseModel.subTab +1);
+    }
     statsInfo.columnId = baseModel.realColumnId;
     statsInfo.columnType = baseModel.channelType;
     statsInfo.statsType = @(LSJStatsTypeColumnCPC);
@@ -155,8 +157,8 @@ QBDefineLazyPropertyInitialization(LSJPayStatsModel, payStats)
 }
 
 - (void)statsCPCWithBaseModel:(LSJBaseModel *)baseModel
-                andTabIndex:(NSUInteger)tabIndex
-                subTabIndex:(NSUInteger)subTabIndex
+                  andTabIndex:(NSUInteger)tabIndex
+                  subTabIndex:(NSUInteger)subTabIndex
 {
     LSJStatsInfo *statsInfo = [[LSJStatsInfo alloc] init];
     if (baseModel) {
@@ -334,7 +336,7 @@ QBDefineLazyPropertyInitialization(LSJPayStatsModel, payStats)
         } else {
             return ;
         }
-    
+        
         statsInfo.paySeq = @([LSJUtil launchSeq]);
         statsInfo.statsType = @(LSJStatsTypePay);
         statsInfo.network = @([QBNetworkInfo sharedInfo].networkStatus);

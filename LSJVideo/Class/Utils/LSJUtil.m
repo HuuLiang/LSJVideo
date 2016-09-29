@@ -347,7 +347,8 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 + (NSInteger)gerCurrentHomeSub {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCurrentSubTab] integerValue];
+    NSString *homeSub = [[NSUserDefaults standardUserDefaults] objectForKey:kHomeCurrentSubTab];
+    return homeSub.integerValue;
 }
 
 @end
