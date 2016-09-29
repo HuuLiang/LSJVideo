@@ -84,7 +84,7 @@
 }
 
 - (void)setUserImgUrlStr:(NSString *)userImgUrlStr {
-    [_userImgV sd_setImageWithURL:[NSURL URLWithString:userImgUrlStr]];
+    [_userImgV sd_setImageWithURL:[NSURL URLWithString:userImgUrlStr] placeholderImage:[UIImage imageNamed:@"detail_user"]];
 }
 
 - (void)setTimeStr:(NSString *)timeStr {
