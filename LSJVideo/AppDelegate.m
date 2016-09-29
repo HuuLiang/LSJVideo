@@ -15,6 +15,7 @@
 #import <KSCrash/KSCrashInstallationStandard.h>
 #import <QBPaymentManager.h>
 #import "QBNetworkingConfiguration.h"
+#import "LSJLaunchView.h"
 
 static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
 
@@ -192,7 +193,6 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     if (imageToken) {
         [[SDWebImageManager sharedManager].imageDownloader setValue:imageToken forHTTPHeaderField:@"Referer"];
         self.window.rootViewController = self.rootViewController;
-        [self.window makeKeyAndVisible];
     } else {
         self.window.rootViewController = [[UIViewController alloc] init];
         [self.window makeKeyAndVisible];
@@ -209,20 +209,11 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
                 }
                 
             }
-            
             self.window.rootViewController = self.rootViewController;
-            
             NSUInteger statsTimeInterval = 20;//180;
-            //            if ([LSJSystemConfigModel sharedModel].loaded && [LSJSystemConfigModel sharedModel].statsTimeInterval > 0) {
-            //                statsTimeInterval = [LSJSystemConfigModel sharedModel].statsTimeInterval;
-            //            }
             [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
         }];
     }
-    //#else
-    //    self.window.rootViewController = self.rootViewController;
-    //    [self.window makeKeyAndVisible];
-    //#endif
     
     if (![LSJUtil isRegistered]) {
         [[LSJActivateModel sharedModel] activateWithCompletionHandler:^(BOOL success, NSString *userId) {
@@ -233,7 +224,7 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     } else {
         [[LSJUserAccessModel sharedModel] requestUserAccess];
     }
-    if (imageToken) {
+    if (!requestedSystemConfig) {
         [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
             if (success) {
                 [LSJUtil setImageToken:[LSJSystemConfigModel sharedModel].imageToken];
@@ -244,8 +235,13 @@ static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
     }
     
     [self.window makeKeyAndVisible];
-    
+    [self addLaunchView];    
     return YES;
+}
+
+- (void)addLaunchView {
+    LSJLaunchView *view = [[LSJLaunchView alloc] init];
+    [view show];
 }
 
 - (BOOL)application:(UIApplication *)application

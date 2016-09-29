@@ -13,6 +13,7 @@
 #import "LSJLechersViewController.h"
 #import "LSJMineViewController.h"
 
+
 @interface LSJTabBarViewController () 
 
 @end
@@ -22,11 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%ld",[LSJUtil launchSeq]);
-//    if ([LSJUtil launchSeq] == 1) {
-        [LSJUtil showSpreadBanner];
-//    }
-    // Do any additional setup after loading the view.
+    [LSJUtil showSpreadBanner];
     
     LSJHomeViewController *homeVC = [[LSJHomeViewController alloc] initWithTitle:@"首页"];
     UINavigationController *homeNC = [[UINavigationController alloc] initWithRootViewController:homeVC];

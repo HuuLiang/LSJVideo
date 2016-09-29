@@ -50,6 +50,8 @@
 		EC66EC731D630C8600ECAC57 /* LSJCategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC721D630C8600ECAC57 /* LSJCategoryDetailVC.m */; };
 		EC66EC761D63145500ECAC57 /* LSJCategoryDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */; };
 		EC716D361D9CB1B6003C3228 /* LSJMineAppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC716D351D9CB1B6003C3228 /* LSJMineAppCell.m */; };
+		EC716D3A1D9CC9CE003C3228 /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC716D391D9CC9CE003C3228 /* launch.jpg */; };
+		EC716D3D1D9CCBAB003C3228 /* LSJLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC716D3C1D9CCBAB003C3228 /* LSJLaunchView.m */; };
 		EC74E3321D87963F00DEB3F3 /* LSJActivateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3251D87963F00DEB3F3 /* LSJActivateModel.m */; };
 		EC74E3341D87963F00DEB3F3 /* LSJSystemConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E3291D87963F00DEB3F3 /* LSJSystemConfig.m */; };
 		EC74E3351D87963F00DEB3F3 /* LSJSystemConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E32B1D87963F00DEB3F3 /* LSJSystemConfigModel.m */; };
@@ -212,6 +214,9 @@
 		EC66EC751D63145500ECAC57 /* LSJCategoryDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJCategoryDetailCell.m; sourceTree = "<group>"; };
 		EC716D341D9CB1B6003C3228 /* LSJMineAppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJMineAppCell.h; sourceTree = "<group>"; };
 		EC716D351D9CB1B6003C3228 /* LSJMineAppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJMineAppCell.m; sourceTree = "<group>"; };
+		EC716D391D9CC9CE003C3228 /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch.jpg; sourceTree = "<group>"; };
+		EC716D3B1D9CCBAB003C3228 /* LSJLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJLaunchView.h; sourceTree = "<group>"; };
+		EC716D3C1D9CCBAB003C3228 /* LSJLaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLaunchView.m; sourceTree = "<group>"; };
 		EC74E3241D87963F00DEB3F3 /* LSJActivateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJActivateModel.h; sourceTree = "<group>"; };
 		EC74E3251D87963F00DEB3F3 /* LSJActivateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJActivateModel.m; sourceTree = "<group>"; };
 		EC74E3281D87963F00DEB3F3 /* LSJSystemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJSystemConfig.h; sourceTree = "<group>"; };
@@ -442,6 +447,7 @@
 				EC1990EF1D52EC22001B4F52 /* AppDelegate.h */,
 				EC1990F01D52EC22001B4F52 /* AppDelegate.m */,
 				EC1990F81D52EC22001B4F52 /* Assets.xcassets */,
+				EC716D381D9CC9B9003C3228 /* Resources */,
 				EC1990EC1D52EC22001B4F52 /* Supporting Files */,
 				ECD70BD01D531F6A006929B1 /* Class */,
 			);
@@ -471,6 +477,14 @@
 				EC1F93621D59BC2E00E0B1F4 /* SDSelectorCell.m */,
 			);
 			path = SDPagesSelector;
+			sourceTree = "<group>";
+		};
+		EC716D381D9CC9B9003C3228 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC716D391D9CC9CE003C3228 /* launch.jpg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		EC74E3231D87963F00DEB3F3 /* system */ = {
@@ -597,6 +611,8 @@
 				ECD70DCD1D534912006929B1 /* LSJTableViewCell.m */,
 				EC4258631D6C4D620066C638 /* LSJBtnView.h */,
 				EC4258641D6C4D620066C638 /* LSJBtnView.m */,
+				EC716D3B1D9CCBAB003C3228 /* LSJLaunchView.h */,
+				EC716D3C1D9CCBAB003C3228 /* LSJLaunchView.m */,
 				ECD70DC91D5348B6006929B1 /* LSJVideoPlayer.h */,
 				ECD70DCA1D5348B6006929B1 /* LSJVideoPlayer.m */,
 				EC80DE3A1D8E92B800EF943E /* LSJPhotoBrowseView.h */,
@@ -1111,6 +1127,7 @@
 				EC1990FC1D52EC22001B4F52 /* LaunchScreen.storyboard in Resources */,
 				EC1990F91D52EC22001B4F52 /* Assets.xcassets in Resources */,
 				EC1990F71D52EC22001B4F52 /* Main.storyboard in Resources */,
+				EC716D3A1D9CC9CE003C3228 /* launch.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,6 +1271,7 @@
 				ECD70D3E1D531FC7006929B1 /* JQKApplicationManager.m in Sources */,
 				EC74E3341D87963F00DEB3F3 /* LSJSystemConfig.m in Sources */,
 				EC2F0BAF1D685E1500DE2B7F /* LSJColumnModel.m in Sources */,
+				EC716D3D1D9CCBAB003C3228 /* LSJLaunchView.m in Sources */,
 				EC1F936A1D59BE6F00E0B1F4 /* LSJHotViewController.m in Sources */,
 				EC2F0BB61D685E6900DE2B7F /* LSJProgramConfigModel.m in Sources */,
 				ECD70D3D1D531FC7006929B1 /* JQKApplication.m in Sources */,
