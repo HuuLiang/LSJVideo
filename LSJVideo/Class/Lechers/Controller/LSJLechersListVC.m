@@ -144,7 +144,7 @@ QBDefineLazyPropertyInitialization(LSJLecherColumnsModel, lecherColumn)
     [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:targetIndex forClickCount:1];
     if (targetIndex < _lecherColumn.columnList.count) {
         LSJColumnModel *columnModel = _lecherColumn.columnList[targetIndex];
-        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(columnModel.realColumnId) ChannelType:@(columnModel.type) PrgramLocation:targetIndex Spec:NSNotFound subTab:NSNotFound];
+        LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(columnModel.realColumnId) ChannelType:@(columnModel.type) PrgramLocation:targetIndex Spec:NSNotFound subTab:targetIndex];
         [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
     }
 }
