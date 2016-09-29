@@ -10,6 +10,8 @@
 #import "LSJProgramModel.h"
 
 @interface LSJAppSpreadBannerResponse : QBURLResponse
+@property(nonatomic)NSNumber *realColumnId;
+@property (nonatomic)NSNumber *type;
 @property (nonatomic,retain) NSArray<LSJProgramModel *> *programList;
 @end
 
@@ -20,5 +22,6 @@
 + (instancetype)sharedModel;
 
 - (BOOL)fetchAppSpreadWithCompletionHandler:(QBCompletionHandler)handler;
-
+@property(nonatomic)NSNumber *realColumnId;
+@property (nonatomic)NSNumber *type;
 @end

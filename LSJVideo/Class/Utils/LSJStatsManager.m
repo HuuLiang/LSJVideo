@@ -145,6 +145,7 @@ QBDefineLazyPropertyInitialization(LSJPayStatsModel, payStats)
 - (void)statsCPCWithBaseModel:(LSJBaseModel *)baseModel inTabIndex:(NSUInteger)tabIndex {
     LSJStatsInfo *statsInfo = [[LSJStatsInfo alloc] init];
     statsInfo.tabpageId = @(tabIndex+1);
+    statsInfo.subTabpageId = @(baseModel.subTab +1);
     statsInfo.columnId = baseModel.realColumnId;
     statsInfo.columnType = baseModel.channelType;
     statsInfo.statsType = @(LSJStatsTypeColumnCPC);

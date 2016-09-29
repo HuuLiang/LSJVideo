@@ -118,7 +118,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, widthSource)
     LSJRankDetailVC *rankDetailVC = [[LSJRankDetailVC alloc] initWithColumnId:column.columnId];
     [self.navigationController pushViewController:rankDetailVC animated:YES];
     LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:3];
-    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:3];
+    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

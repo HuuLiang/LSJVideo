@@ -29,6 +29,8 @@ static NSString *const kSVipUserKeyName         = @"LSJ_SVip_UserKey";
 static NSString *const kImageTokenKeyName = @"safiajfoaiefr$^%^$E&&$*&$*";
 static NSString *const kImageTokenCryptPassword = @"wafei@#$%^%$^$wfsssfsf";
 
+static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
+
 @implementation LSJUtil
 
 + (NSString *)accessId {
@@ -340,5 +342,12 @@ static NSString *const kImageTokenCryptPassword = @"wafei@#$%^%$^$wfsssfsf";
     });
 }
 
++ (void)setCurrenthHomenSub:(NSInteger)currenSubTab {
+    [[NSUserDefaults standardUserDefaults] setObject:@(currenSubTab) forKey:kHomeCurrentSubTab];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++ (NSInteger)gerCurrentHomeSub {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCurrentSubTab] integerValue];
+}
 
 @end

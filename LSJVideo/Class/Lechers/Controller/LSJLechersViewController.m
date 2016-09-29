@@ -89,7 +89,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             LSJLechersListVC *listVC = [[LSJLechersListVC alloc] initWithColumn:column andIndex:[index integerValue]];
             [self.navigationController pushViewController:listVC animated:YES];
             
-            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:NSNotFound];
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:index.integerValue];
             [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
         };
         return cell;

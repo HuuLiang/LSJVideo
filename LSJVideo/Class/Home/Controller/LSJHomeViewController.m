@@ -149,6 +149,9 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)skipAppSpreadView {
     LSJHomeAppVC *appVC = [[LSJHomeAppVC alloc] initWithTitle:@"精品专区"];
     [self.navigationController pushViewController:appVC animated:YES];
+    [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:self.tabBarController.selectedIndex subTabIndex:[LSJUtil gerCurrentHomeSub]];
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:4 forClickCount:1];
+    [LSJUtil setCurrenthHomenSub:4];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -169,6 +172,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (void)sendOriginalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
     [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:self.tabBarController.selectedIndex subTabIndex:originalIndex];
     [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:targetIndex forClickCount:1];
+    [LSJUtil setCurrenthHomenSub:originalIndex];
 }
 
 @end

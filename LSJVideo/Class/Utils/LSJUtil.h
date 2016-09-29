@@ -62,4 +62,6 @@ extern NSString *const kPaymentInfoKeyName;
 + (void)showSpreadBanner;
 + (void)showBanner;
 
++ (NSInteger)gerCurrentHomeSub;
++ (void)setCurrenthHomenSub:(NSInteger)currenSubTab;
 @end

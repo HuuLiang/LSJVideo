@@ -46,6 +46,8 @@
                         LSJAppSpreadBannerResponse *resp = self.response;
                         _fetchedSpreads = resp.programList;
                         fetchedSpreads = _fetchedSpreads;
+                        self.realColumnId = resp.realColumnId;
+                        self.type = resp.type;
                     }
                     
                     if (handler) {

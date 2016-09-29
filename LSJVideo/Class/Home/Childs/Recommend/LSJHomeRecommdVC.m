@@ -261,7 +261,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             LSJColumnModel *column = _dataSource[indexPath.section];
             if (indexPath.item < column.programList.count) {
                 LSJProgramModel *program = column.programList[indexPath.item];
-                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:0 subTab:NSNotFound];
+                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:0 subTab:1];
                 if (column.type != 5) {
                     [self pushToDetailVideoWithController:self ColumnId:column.columnId program:program baseModel:baseModel];
                 }
@@ -274,7 +274,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
                 LSJProgramModel *program = column.programList[indexPath.item];
                 LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:4 subTab:1];
                 [self playVideoWithUrl:program.videoUrl baseModel:baseModel];
-//                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
+                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
             }
         }
     }

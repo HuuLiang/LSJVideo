@@ -44,7 +44,9 @@
         @weakify(self);
         [_vipBtn bk_addEventHandler:^(id sender) {
             @strongify(self);
-            self.action();
+            if (self.action) {
+                self.action();
+            }
         } forControlEvents:UIControlEventTouchUpInside];
         
         {

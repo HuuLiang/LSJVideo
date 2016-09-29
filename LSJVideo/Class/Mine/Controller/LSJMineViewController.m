@@ -31,7 +31,7 @@
     self.layoutTableView.backgroundColor = [UIColor colorWithHexString:@"#efefef"];
     
     self.layoutTableView.hasSectionBorder = NO;
-
+    
     [self.layoutTableView setSeparatorInset:UIEdgeInsetsMake(0, kWidth(30), 0, kWidth(30))];
     
     {
@@ -113,13 +113,13 @@
     };
     
     [self setLayoutCell:_bannerCell cellHeight:kScreenWidth*0.4 inRow:0 andSection:section++];
-
+    
     
     _protocolCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_protocol"] title:@"用户协议"];
     _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
     [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section++];
-
+    
     
     if ([LSJUtil isVip]) {
         _telCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_tel"] title:@"客服热线"];
@@ -129,6 +129,7 @@
     }
     
     if ([LSJAppSpreadBannerModel sharedModel].fetchedSpreads.count > 0) {
+        NSInteger count = 0;
         for (LSJProgramModel *program in [LSJAppSpreadBannerModel sharedModel].fetchedSpreads) {
             LSJMineAppCell *appCell = [[LSJMineAppCell alloc] init];
             appCell.imgUrl = program.spare;
@@ -137,8 +138,11 @@
             }];
             [self setLayoutCell:appCell cellHeight:kScreenWidth/5+kWidth(10) inRow:0 andSection:section++];
             
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:[LSJAppSpreadBannerModel sharedModel].realColumnId ChannelType:[LSJAppSpreadBannerModel sharedModel].type PrgramLocation:count++ Spec:NSNotFound subTab:NSNotFound];
+            
             [appCell bk_whenTapped:^{
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
+                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:NSNotFound];
             }];
         }
         

@@ -23,11 +23,17 @@ static NSString *const kBannerCellReusableIdentifier = @"BannerCellReusableIdent
 }
 @property (nonatomic) NSMutableArray *dataSource;
 @property (nonatomic) LSJColumnConfigModel *programModel;
+@property (nonatomic) NSNumber *bannerColumId;
 @end
 
 @implementation LSJHomeAppVC
 QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[LSJStatsManager sharedManager] statsStopDurationAtTabIndex:self.tabBarController.selectedIndex subTabIndex:4];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +47,9 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
     _bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _bannerView.delegate = self;
     _bannerView.backgroundColor = [UIColor whiteColor];
+    [_bannerView aspect_hookSelector:@selector(scrollViewDidEndDragging:willDecelerate:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, UIScrollView *scrollView, BOOL decelerate){
+        [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:1 forBanner:self.bannerColumId withSlideCount:1];
+    } error:nil];
     
     _layoutTableView = [[UITableView alloc] initWithFrame:CGRectZero];
     [_layoutTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -83,6 +92,7 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
     
     for (LSJColumnModel *column in _dataSource) {
         if (column.type == 4) {
+            self.bannerColumId = @(column.columnId);
             for (LSJProgramModel *program in column.programList) {
                 [imageUrlGroup addObject:program.coverImg];
                 [titlesGroup addObject:program.title];
@@ -157,6 +167,8 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
         if (indexPath.row < column.programList.count) {
             LSJProgramModel * program = column.programList[indexPath.item];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.row Spec:NSNotFound subTab:4];
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:4];
         }
     }
 }
@@ -166,9 +178,13 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
         if (column.type == 4) {
             LSJProgramModel *program = column.programList[index];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
+            LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:index Spec:NSNotFound subTab:4];
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:4];
         }
     }
 }
-
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:4 forSlideCount:1];
+}
 
 @end
