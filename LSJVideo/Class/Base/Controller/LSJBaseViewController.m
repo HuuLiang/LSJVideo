@@ -81,6 +81,7 @@
     } else {
         if (baseModel.spec == 4) {
             LSJVideoPlayerController *videoVC = [[LSJVideoPlayerController alloc] initWithVideo:videoUrlStr];
+            videoVC.baseModel = baseModel;
             [self presentViewController:videoVC animated:YES completion:nil];
         } else {
             

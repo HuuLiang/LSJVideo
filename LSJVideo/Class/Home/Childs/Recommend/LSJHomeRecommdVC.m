@@ -168,11 +168,18 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView == _layoutCollectionView) {
         LSJColumnModel *model = self.dataSource[section];
-        if (model.type == 4 || model.type == 3 || model.type == 5) {
+        if (model.type == 4 || model.type == 3) {
             return 1;
         } else if (model.type == 1) {
             return model.programList.count;
-        } else {
+        } else if (model.type == 5) {
+            if ([LSJUtil isVip]) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        else {
             return 0;
         }
     } else if (collectionView == _freeCollectionView) {
@@ -190,7 +197,6 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     LSJRecommdCell *recommendCell = [collectionView dequeueReusableCellWithReuseIdentifier:kRecommendCellReusableIdentifier forIndexPath:indexPath];
-    
     
     if (collectionView == _layoutCollectionView) {
         LSJColumnModel *column = _dataSource[indexPath.section];
@@ -295,7 +301,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         } else if (column.type == 1 && column.showMode == 1) {
             if (indexPath.item == 0) {
                 width = fullWidth - insets.left - insets.right;
-                height = width / 3 + kWidth(68);
+                height = floorf(width / 3 + kWidth(68));
                 return CGSizeMake((long)width, (long)height);
             } else {
                 width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing) / 2;
