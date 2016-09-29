@@ -120,7 +120,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
         }
         _isRefresh = NO;
     }];
-
+    
     _lastSelectedIndexPath = _selectecIndexPath;
 }
 
@@ -220,7 +220,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
     }];
     _btnView.titleLabel.font = [UIFont systemFontOfSize:kWidth(30)];
     [_titleCell addSubview:_btnView];
-
+    
     {
         [_layoutTitleCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(_titleCell);
@@ -339,21 +339,22 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
             [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
             
-//            JFBaseModel *baseModel = [[JFBaseModel alloc] init];
-//            baseModel.realColumnId = @(column.realColumnId);
-//            baseModel.channelType = @(column.type);
-//            baseModel.programLocation = indexPath.item;
-//            
-//            [[JFStatsManager sharedManager] statsCPCWithBeseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
+            //            JFBaseModel *baseModel = [[JFBaseModel alloc] init];
+            //            baseModel.realColumnId = @(column.realColumnId);
+            //            baseModel.channelType = @(column.type);
+            //            baseModel.programLocation = indexPath.item;
+            //            
+            //            [[JFStatsManager sharedManager] statsCPCWithBeseModel:baseModel inTabIndex:self.tabBarController.selectedIndex];
         }
     } else if (collectionView == _layoutDetailCollectionView) {
         if (indexPath.item < self.detailArray.count) {
             LSJProgramModel *program = self.detailArray[indexPath.item];
             LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(self.coloumModel.realColumnId) ChannelType:@(self.coloumModel.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
-            [self pushToDetailVideoWithController:self ColumnId:_columnId program:program baseModel:baseModel];
             [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:NSNotFound];
+            [self pushToDetailVideoWithController:self ColumnId:_columnId program:program baseModel:baseModel];
+            
         }
-
+        
     }
 }
 

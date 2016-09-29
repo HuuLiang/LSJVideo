@@ -301,7 +301,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         } else if (column.type == 1 && column.showMode == 1) {
             if (indexPath.item == 0) {
                 width = fullWidth - insets.left - insets.right;
-                height = floorf(width / 3 + kWidth(68));
+                height = width / 3 + kWidth(68);
                 return CGSizeMake((long)width, (long)height);
             } else {
                 width = (fullWidth - insets.left - insets.right - layout.minimumInteritemSpacing) / 2;
