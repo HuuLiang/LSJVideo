@@ -9,9 +9,9 @@
 #ifndef LSJConfig_h
 #define LSJConfig_h
 
-#define LSJ_CHANNEL_NO               @"IOS_TTSEQU_0001" //@"QB_MFW_IOS_TEST_0000001" //
+#define LSJ_CHANNEL_NO               @"IOS_A_I00000092"//@"IOS_TTSEQU_0001" //@"QB_MFW_IOS_TEST_0000001" //
 #define LSJ_REST_APPID               @"QUBA_2025"
-#define LSJ_REST_PV                  @"100"
+#define LSJ_REST_PV                  @"193"
 #define LSJ_PAYMENT_PV               @"100"
 #define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., LSJd."
 
