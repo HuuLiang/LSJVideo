@@ -55,6 +55,7 @@
         [UIAlertView bk_showAlertViewWithTitle:@"非VIP用户只能浏览小图哦" message:@"开通VIP,高清大图即刻欣赏" cancelButtonTitle:@"再考虑看看" otherButtonTitles:@[@"立即开通"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 //支付弹窗
+                model.programType = @(2);
                 [self payWithBaseModelInfo:model];
             }
         }];
@@ -74,9 +75,7 @@
 }
 
 - (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel {
-    
-//    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
-    
+//    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:baseModel.subTab];
     if (![LSJUtil isVip] && baseModel.spec != 4) {
         [self payWithBaseModelInfo:baseModel];
     } else {
@@ -93,8 +92,8 @@
                 }
                 [self.view endProgressing];
                 
-//                [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr] cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-
+                //                [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr] cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+                
                 
                 if (success) {
                     UIViewController *videoPlayVC = [self playerVCWithVideo:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr]];
@@ -105,10 +104,10 @@
                     }];
                 }
             }];
-//            
-//            UIViewController *videoPlayVC = [self playerVCWithVideo:videoUrlStr];
-//            videoPlayVC.hidesBottomBarWhenPushed = YES;
-//            [self presentViewController:videoPlayVC animated:YES completion:nil];
+            //            
+            //            UIViewController *videoPlayVC = [self playerVCWithVideo:videoUrlStr];
+            //            videoPlayVC.hidesBottomBarWhenPushed = YES;
+            //            [self presentViewController:videoPlayVC animated:YES completion:nil];
         }
     }
 }

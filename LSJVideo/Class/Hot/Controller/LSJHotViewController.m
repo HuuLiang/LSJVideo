@@ -351,6 +351,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             LSJProgramModel *program = self.detailArray[indexPath.item];
             LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(self.coloumModel.realColumnId) ChannelType:@(self.coloumModel.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
             [self pushToDetailVideoWithController:self ColumnId:_columnId program:program baseModel:baseModel];
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:NSNotFound];
         }
 
     }

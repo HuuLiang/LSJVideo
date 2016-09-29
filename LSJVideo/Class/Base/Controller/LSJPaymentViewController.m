@@ -74,8 +74,8 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
         @strongify(self);
         [self hidePayment];
         //        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:PAYRESULT_UNKNOWN forBaseModel:self.baseModel programLocation:NSNotFound andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:[LSJUtil currentSubTabPageIndex]];
-        
-        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:QBPayResultUnknown forBaseModel:self.baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:self.baseModel.subTab];
+//        
+//        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:QBPayResultUnknown forBaseModel:self.baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:self.baseModel.subTab];
     };
     return _popView;
 }
@@ -182,6 +182,7 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     [_closeImgV bk_whenTapped:^{
         @strongify(self);
         [self hidePayment];
+        [[LSJStatsManager sharedManager] statsPayWithOrderNo:nil payAction:LSJStatsPayActionClose payResult:QBPayResultUnknown forBaseModel:self.baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:self.baseModel.subTab];
         [_closeImgV removeFromSuperview];
         _closeImgV = nil;
     }];
