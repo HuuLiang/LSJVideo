@@ -12,7 +12,7 @@
 #import "LSJBannerVipCell.h"
 #import "LSJSystemConfigModel.h"
 #import "LSJAppSpreadBannerModel.h"
-#import "LSJAppCell.h"
+#import "LSJMineAppCell.h"
 @interface LSJMineViewController ()
 {
     LSJBannerVipCell *_bannerCell;
@@ -118,7 +118,7 @@
     _protocolCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_protocol"] title:@"用户协议"];
     _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section];
+    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section++];
 
     
     if ([LSJUtil isVip]) {
@@ -130,13 +130,16 @@
     
     if ([LSJAppSpreadBannerModel sharedModel].fetchedSpreads.count > 0) {
         for (LSJProgramModel *program in [LSJAppSpreadBannerModel sharedModel].fetchedSpreads) {
-            LSJAppCell *appCell = [[LSJAppCell alloc] init];
-            appCell.imgUrlStr = program.coverImg;
-            appCell.titleStr = program.title;
-            NSArray *array = [program.spare componentsSeparatedByString:@"|"];
-            appCell.sizeStr = array[0];
-            appCell.countStr = array[1];
-            appCell.detailStr = array[2];
+            LSJMineAppCell *appCell = [[LSJMineAppCell alloc] init];
+            appCell.imgUrl = program.spare;
+            [LSJUtil checkAppInstalledWithBundleId:program.specialDesc completionHandler:^(BOOL isInstalled) {
+                appCell.isInstalled = isInstalled;
+            }];
+            [self setLayoutCell:appCell cellHeight:kScreenWidth/5+kWidth(10) inRow:0 andSection:section++];
+            
+            [appCell bk_whenTapped:^{
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
+            }];
         }
         
     }
@@ -144,9 +147,6 @@
     [self.layoutTableView reloadData];
     [self.layoutTableView LSJ_endPullToRefresh];
 }
-
-
-
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:[LSJUtil currentSubTabPageIndex] forSlideCount:1];

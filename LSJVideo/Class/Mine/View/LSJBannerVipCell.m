@@ -24,6 +24,7 @@
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
         
         _bgImgV = [[UIImageView alloc] init];
         [self addSubview:_bgImgV];
