@@ -272,9 +272,9 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         for (LSJColumnModel *column in _dataSource) {
             if (column.type == 5) {
                 LSJProgramModel *program = column.programList[indexPath.item];
-                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:4 subTab:NSNotFound];
+                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:4 subTab:1];
                 [self playVideoWithUrl:program.videoUrl baseModel:baseModel];
-                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
+//                [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:1];
             }
         }
     }

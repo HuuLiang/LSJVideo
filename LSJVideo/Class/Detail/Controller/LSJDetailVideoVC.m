@@ -129,6 +129,9 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
         if (cell == self->_headerCell) {
             [self playVideoWithUrl:self.response.program.videoUrl
                          baseModel:self.baseModel];
+            LSJBaseModel *baseModel = self.baseModel;
+            baseModel.programLocation = 0;
+            [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:self.baseModel.subTab];
         }
     };
     
@@ -241,6 +244,10 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
         [self playPhotoUrlWithModel:self.baseModel
                            urlArray:array
                               index:[index integerValue]];
+        LSJBaseModel *baseModel = self.baseModel;
+        baseModel.programLocation = 1;
+        baseModel.programType = @(2);
+        [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:self.tabBarController.selectedIndex subTabIndex:self.baseModel.subTab];
     };
     
     [self setLayoutCell:_photosCell cellHeight:kWidth(290) inRow:0 andSection:section];
@@ -350,4 +357,9 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
     
     [self setLayoutCell:_commandCell cellHeight:kWidth(152)+height inRow:0 andSection:section];
 }
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [[LSJStatsManager sharedManager] statsTabIndex:self.tabBarController.selectedIndex subTabIndex:_baseModel.subTab forSlideCount:1];
+}
+
 @end
