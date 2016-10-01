@@ -7,7 +7,7 @@
 //
 
 #import "LSJErrorHandler.h"
-#import "QBURLRequest.h"
+#import <QBURLRequest.h>
 
 NSString *const kNetworkErrorNotification = @"LTNetworkErrorNotification";
 NSString *const kNetworkErrorCodeKey = @"LTNetworkErrorCodeKey";
