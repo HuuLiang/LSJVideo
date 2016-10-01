@@ -53,25 +53,12 @@ PODS:
   - QBPayment/IappPay (0.0.22):
     - QBPayment/Core
     - QBPayment/CorePay
-  - QBPayment/MTDLPay (0.0.22):
-    - MBProgressHUD (~> 0.9.2)
-    - QBPayment/Core
-    - QBPayment/CorePay
-  - QBPayment/VIAPay (0.0.22):
-    - QBPayment/Core
-    - QBPayment/CorePay
-  - QBPayment/WFTPay (0.0.22):
-    - MBProgressHUD (~> 0.9.2)
-    - QBPayment/Core
-    - QBPayment/CorePay
-    - XMLReader-Arc (~> 1.1)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - SFHFKeychainUtils (0.0.1)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
-  - XMLReader-Arc (1.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.0.3)
@@ -79,11 +66,9 @@ DEPENDENCIES:
   - DACircularProgress (~> 2.3.1)
   - FMDB (~> 2.6.2)
   - Masonry (~> 0.6.3)
+  - MBProgressHUD (~> 0.9.2)
   - MJRefresh (~> 2.4.12)
   - QBPayment/IappPay (~> 0.0.17)
-  - QBPayment/MTDLPay (~> 0.0.17)
-  - QBPayment/VIAPay (~> 0.0.17)
-  - QBPayment/WFTPay (~> 0.0.17)
   - SDWebImage (= 3.7.3)
   - SFHFKeychainUtils (~> 0.0.1)
   - TSMessages (~> 0.9.12)
@@ -106,8 +91,7 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SFHFKeychainUtils: 9576b411a79a058f4d5381ace6f3242b9a62e664
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
-  XMLReader-Arc: 7832c527346fc26511fd6c05ebcee18008c34d6d
 
-PODFILE CHECKSUM: 4ac27f398235058b9d953435781eb74374182ec9
+PODFILE CHECKSUM: 87e9ab3e8872f9957eabbe72c85d3d0cccd1cc42
 
 COCOAPODS: 1.0.1
