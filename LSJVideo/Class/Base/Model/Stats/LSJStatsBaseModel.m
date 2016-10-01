@@ -7,7 +7,6 @@
 //
 
 #import "LSJStatsBaseModel.h"
-#import "NSString+crypt.h"
 
 //static NSString *const kSignKey = @"qd^%$#stats^&";
 static NSString *const kEncryptionPassword = @"qb%stats_2016&";

@@ -79,14 +79,14 @@ QBDefineLazyPropertyInitialization(LSJDetailResponse, response)
         [_messageView.textView becomeFirstResponder];
         if ([LSJUtil isVip]) {
             if (_messageView.textView.text.length < 1) {
-                [[CRKHudManager manager] showHudWithText:@"您输入的评论过短"];
+                [[LSJHudManager manager] showHudWithText:@"您输入的评论过短"];
             } else {
-                [[CRKHudManager manager] showHudWithText:@"请等待审核"];
+                [[LSJHudManager manager] showHudWithText:@"请等待审核"];
                 _messageView.textView.text = @"";
                 [_messageView.textView resignFirstResponder];
             }
         } else {
-            [[CRKHudManager manager] showHudWithText:@"非VIP用户不可发表评论"];
+            [[LSJHudManager manager] showHudWithText:@"非VIP用户不可发表评论"];
             _messageView.textView.text = @"";
             [_messageView.textView resignFirstResponder];            
             [self payWithBaseModelInfo:_baseModel];
