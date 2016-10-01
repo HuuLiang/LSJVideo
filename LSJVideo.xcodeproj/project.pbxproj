@@ -13,6 +13,8 @@
 		B3695F421D9A5DC10048DB8B /* LSJStatsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3D1D9A5DC10048DB8B /* LSJStatsBaseModel.m */; };
 		B3695F431D9A5DC10048DB8B /* LSJTabStatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */; };
 		B3A2DB331D9A602000255471 /* LSJStatsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DB321D9A602000255471 /* LSJStatsManager.m */; };
+		BC8FA5601D9FAF5300471EF0 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC8FA55F1D9FAF5300471EF0 /* config.plist */; };
+		BC8FA5631D9FAF6600471EF0 /* LSJConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */; };
 		EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */; };
 		EC1990EE1D52EC22001B4F52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990ED1D52EC22001B4F52 /* main.m */; };
 		EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990F01D52EC22001B4F52 /* AppDelegate.m */; };
@@ -134,6 +136,9 @@
 		B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJTabStatsModel.m; sourceTree = "<group>"; };
 		B3A2DB311D9A602000255471 /* LSJStatsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJStatsManager.h; sourceTree = "<group>"; };
 		B3A2DB321D9A602000255471 /* LSJStatsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJStatsManager.m; sourceTree = "<group>"; };
+		BC8FA55F1D9FAF5300471EF0 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		BC8FA5611D9FAF6600471EF0 /* LSJConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJConfiguration.h; sourceTree = "<group>"; };
+		BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJConfiguration.m; sourceTree = "<group>"; };
 		EC1976671D99392000B91C4F /* LSJVideoTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVideoTokenManager.h; sourceTree = "<group>"; };
 		EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJVideoTokenManager.m; sourceTree = "<group>"; };
 		EC1990E91D52EC22001B4F52 /* LSJVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSJVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -436,6 +441,7 @@
 				EC1990F51D52EC22001B4F52 /* Main.storyboard */,
 				EC1990FA1D52EC22001B4F52 /* LaunchScreen.storyboard */,
 				EC1990FD1D52EC22001B4F52 /* Info.plist */,
+				BC8FA55F1D9FAF5300471EF0 /* config.plist */,
 				EC1990ED1D52EC22001B4F52 /* main.m */,
 				ECD70BCC1D531CCA006929B1 /* LSJPrefixHeader.pch */,
 				ECD70BCE1D531D1A006929B1 /* LSJConfig.h */,
@@ -749,6 +755,8 @@
 				EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */,
 				B3A2DB311D9A602000255471 /* LSJStatsManager.h */,
 				B3A2DB321D9A602000255471 /* LSJStatsManager.m */,
+				BC8FA5611D9FAF6600471EF0 /* LSJConfiguration.h */,
+				BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1070,6 +1078,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8FA5601D9FAF5300471EF0 /* config.plist in Resources */,
 				EC1990FC1D52EC22001B4F52 /* LaunchScreen.storyboard in Resources */,
 				EC1990F91D52EC22001B4F52 /* Assets.xcassets in Resources */,
 				EC1990F71D52EC22001B4F52 /* Main.storyboard in Resources */,
@@ -1148,6 +1157,7 @@
 			files = (
 				ECF00E2B1D5B49E900FBF1D2 /* LSJHomeModel.m in Sources */,
 				ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */,
+				BC8FA5631D9FAF6600471EF0 /* LSJConfiguration.m in Sources */,
 				B3695F401D9A5DC10048DB8B /* LSJCPCStatsModel.m in Sources */,
 				EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */,
 				EC20E99D1D91313B00568666 /* LSJDetailImgTextHeaderCell.m in Sources */,
