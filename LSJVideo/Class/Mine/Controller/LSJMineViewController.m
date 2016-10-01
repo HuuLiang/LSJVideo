@@ -118,14 +118,16 @@
     _protocolCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_protocol"] title:@"用户协议"];
     _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section++];
+    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section];
     
     
     if ([LSJUtil isVip]) {
         _telCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_tel"] title:@"客服热线"];
         _telCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         _telCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-        [self setLayoutCell:_telCell cellHeight:44 inRow:1 andSection:section];
+        [self setLayoutCell:_telCell cellHeight:44 inRow:1 andSection:section++];
+    } else {
+        section++;
     }
     
     if ([LSJAppSpreadBannerModel sharedModel].fetchedSpreads.count > 0) {
