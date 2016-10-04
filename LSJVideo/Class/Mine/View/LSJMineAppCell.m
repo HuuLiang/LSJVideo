@@ -25,12 +25,10 @@
         
         _imgV = [[UIImageView alloc] init];
         _imgV.contentMode = UIViewContentModeScaleToFill;
-        _imgV.clipsToBounds = NO;
         [self addSubview:_imgV];
         
         {
             [_imgV mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.edges.mas_equalTo(UIEdgeInsetsMake(kWidth(10), 0, 0, 0));
                 make.edges.equalTo(self).insets(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));
             }];
         }

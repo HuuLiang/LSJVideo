@@ -175,7 +175,7 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     for (LSJColumnModel *column in _dataSource) {
-        if (column.type == 4) {
+        if (column.type == 4 && index < column.programList.count) {
             LSJProgramModel *program = column.programList[index];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:program.videoUrl]];
             LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:@(program.programId) ProgramType:@(program.type) RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:index Spec:NSNotFound subTab:4];
