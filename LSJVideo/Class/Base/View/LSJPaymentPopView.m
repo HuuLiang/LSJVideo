@@ -49,13 +49,14 @@
             UIImageView  *bgImgV = [[UIImageView alloc] init];
             [bgImgV setContentMode:UIViewContentModeScaleToFill];
             bgImgV.clipsToBounds = NO;
-            [self insertSubview:bgImgV atIndex:0];
+            //                        [self insertSubview:bgImgV atIndex:0];
             [bgImgV sd_setImageWithURL:[NSURL URLWithString:[LSJSystemConfigModel sharedModel].sVipImg]];
+            self.backgroundView = bgImgV;
             {
-                [bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.center.equalTo(self);
-                    make.size.mas_equalTo(CGSizeMake(kWidth(630),kWidth(920)));
-                }];
+                //                            [bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                //                                                    make.center.equalTo(self);
+                //                                                    make.size.mas_equalTo(CGSizeMake(kWidth(630),kWidth(920)));
+                //                            }];
             }
         } else {
             self.backgroundColor = [UIColor colorWithHexString:@"#6b2073"];
@@ -118,8 +119,8 @@
                 {
                     [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
                         make.edges.equalTo(_headerCell).insets(UIEdgeInsetsMake(kWidth(10), kWidth(10), kWidth(10), kWidth(10)));
-//                        make.center.equalTo(_headerCell);
-//                        make.size.mas_equalTo(CGSizeMake(kWidth(610), kWidth(540)));
+                        //                        make.center.equalTo(_headerCell);
+                        //                        make.size.mas_equalTo(CGSizeMake(kWidth(610), kWidth(540)));
                     }];
                 }
             }
@@ -155,7 +156,7 @@
         
         return _payTypeCell;
     }
-
+    
     return nil;
 }
 

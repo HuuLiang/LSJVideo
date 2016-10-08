@@ -50,7 +50,11 @@
         @strongify(self);
         if (cell == self->_vipCell || cell == self->_bannerCell) {
             LSJBaseModel *model = [[LSJBaseModel alloc] init];
-            [self payWithBaseModelInfo:model];
+            if (![LSJUtil isSVip]) {    
+                [self payWithBaseModelInfo:model];
+            }else {
+                [[CRKHudManager manager] showHudWithText:@"您已经是VIP用户"];
+            }
         } else if (cell == self->_protocolCell) {
             LSJWebViewController *webVC = [[LSJWebViewController alloc] initWithURL:[NSURL URLWithString:LSJ_PROTOCOL_URL]];
             webVC.title = @"用户协议";
@@ -109,7 +113,12 @@
     _bannerCell.action = ^ {
         @strongify(self);
         LSJBaseModel *model = [[LSJBaseModel alloc] init];
-        [self payWithBaseModelInfo:model];
+        if (![LSJUtil isSVip]) {
+            
+            [self payWithBaseModelInfo:model];
+        }else {
+            [[CRKHudManager manager] showHudWithText:@"您已经是VIP用户"];
+        }
     };
     
     [self setLayoutCell:_bannerCell cellHeight:kScreenWidth*0.4 inRow:0 andSection:section++];

@@ -118,10 +118,12 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
 }
 
 + (BOOL)isVip {
+    //    return YES;
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kVipUserKeyName] isEqualToString:LSJ_VIP];
 }
 
 + (BOOL)isSVip {
+    //    return YES;
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kSVipUserKeyName] isEqualToString:LSJ_SVIP];
 }
 
@@ -180,13 +182,13 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
 }
 
 + (NSArray<QBPaymentInfo *> *)allPaymentInfos {
-//    NSArray<NSDictionary *> *paymentInfoArr = [[NSUserDefaults standardUserDefaults] objectForKey:kPaymentInfoKeyName];
-//    
-//    NSMutableArray *paymentInfos = [NSMutableArray array];
-//    [paymentInfoArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        QBPaymentInfo *paymentInfo = [QBPaymentInfo paymentInfoFromDictionary:obj];
-//        [paymentInfos addObject:paymentInfo];
-//    }];
+    //    NSArray<NSDictionary *> *paymentInfoArr = [[NSUserDefaults standardUserDefaults] objectForKey:kPaymentInfoKeyName];
+    //    
+    //    NSMutableArray *paymentInfos = [NSMutableArray array];
+    //    [paymentInfoArr enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    //        QBPaymentInfo *paymentInfo = [QBPaymentInfo paymentInfoFromDictionary:obj];
+    //        [paymentInfos addObject:paymentInfo];
+    //    }];
     return [QBPaymentInfo allPaymentInfos];
 }
 
