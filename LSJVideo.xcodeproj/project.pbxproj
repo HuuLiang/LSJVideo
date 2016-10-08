@@ -1097,7 +1097,7 @@
 				TargetAttributes = {
 					EC1990E81D52EC22001B4F52 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 7VHT3KAS56;
+						DevelopmentTeam = NS6846Q9KM;
 					};
 				};
 			};
@@ -1161,7 +1161,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		97F0208CEBFB3D0FF69790FE /* [CP] Embed Pods Frameworks */ = {
@@ -1409,7 +1409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Liangliang Hu (4BCCM92FSA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1430,9 +1430,9 @@
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/WeChatSDK",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/DunXingTianXia",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.boboyingyuan.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiantiansq.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "557efb90-5df3-497c-867d-e531ed065ef9";
+				PROVISIONING_PROFILE = "5d811bb8-253a-4998-a93a-91836af1bcb5";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1442,8 +1442,8 @@
 			baseConfigurationReference = 7623508634401CB8DF1A56E3 /* Pods-LSJVideo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Huazhong Hengtai Network Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Huazhong Hengtai Network Technology Co., Ltd.";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1464,9 +1464,9 @@
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/WeChatSDK",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/DunXingTianXia",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.boboyingyuan.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiantiansq.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "df90544f-bce3-46dd-804c-47ddc26dfef1";
+				PROVISIONING_PROFILE = "ae0c7d1c-8796-429d-b0e4-d8b04c74601c";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

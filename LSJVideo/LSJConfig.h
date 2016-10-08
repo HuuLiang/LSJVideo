@@ -13,7 +13,7 @@
 #define LSJ_REST_APPID               @"QUBA_2025"
 #define LSJ_REST_PV                  @"193"
 #define LSJ_PAYMENT_PV               @"100"
-#define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Neijiang Fenghuang Enterprise (Group) Co., LSJd."
+#define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Beijing Huazhong Hengtai Network Technology Co., Ltd."
 
 #define LSJ_REST_APP_VERSION     ((NSString *)([NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]))
 #define LSJ_PAYMENT_RESERVE_DATA [NSString stringWithFormat:@"%@$%@", LSJ_REST_APPID, LSJ_CHANNEL_NO]

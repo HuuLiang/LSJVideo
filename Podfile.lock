@@ -41,7 +41,7 @@ PODS:
   - MJRefresh (2.4.12)
   - OpenSSL (1.0.208)
   - QBExtensions (0.0.7)
-  - QBNetworking (0.0.6):
+  - QBNetworking (0.0.7):
     - AFNetworking (~> 3.1.0)
     - QBExtensions (~> 0.0.3)
   - QBPayment/Core (0.0.22):
@@ -101,7 +101,7 @@ SPEC CHECKSUMS:
   MJRefresh: ca8e9589895977df32d379d46e6b8a5450b3ff44
   OpenSSL: b187269d386b07452f56af273764ea0636dd5da8
   QBExtensions: a32e8ae6e371c208e2efe2b2eec7251c36187b90
-  QBNetworking: a276bc3d93154a0b86a0c5ea68667bbe852d991a
+  QBNetworking: b428ef65416c672982454952323cdb86163b8c39
   QBPayment: d676fc6d0d2f8cd6c56c986f6320e2b535bdb184
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SFHFKeychainUtils: 9576b411a79a058f4d5381ace6f3242b9a62e664
@@ -110,4 +110,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 4ac27f398235058b9d953435781eb74374182ec9
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.beta.2

@@ -17,7 +17,7 @@
 #import "QBNetworkingConfiguration.h"
 #import "LSJLaunchView.h"
 
-static NSString *const kIappPaySchemeUrl = @"comLSJyingyuanappAliPayUrlScheme";
+static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrlScheme";
 
 @interface AppDelegate () <UITabBarControllerDelegate>
 @property (nonatomic,retain) UIViewController *rootViewController;
