@@ -53,7 +53,7 @@
             if (![LSJUtil isSVip]) {    
                 [self payWithBaseModelInfo:model];
             }else {
-                [[CRKHudManager manager] showHudWithText:@"您已经是VIP用户"];
+                [[LSJHudManager manager] showHudWithText:@"您已经是VIP用户"];
             }
         } else if (cell == self->_protocolCell) {
             LSJWebViewController *webVC = [[LSJWebViewController alloc] initWithURL:[NSURL URLWithString:LSJ_PROTOCOL_URL]];
@@ -117,7 +117,7 @@
             
             [self payWithBaseModelInfo:model];
         }else {
-            [[CRKHudManager manager] showHudWithText:@"您已经是VIP用户"];
+            [[LSJHudManager manager] showHudWithText:@"您已经是VIP用户"];
         }
     };
     
