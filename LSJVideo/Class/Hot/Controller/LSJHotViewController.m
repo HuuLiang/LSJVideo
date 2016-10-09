@@ -115,7 +115,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             
         }
         if (!success || obj.programList.count == 0) {
-            [[CRKHudManager manager] showHudWithText:@"数据加载失败,请稍后再试"];
+            [[LSJHudManager manager] showHudWithText:@"数据加载失败,请稍后再试"];
             
         }
         _isRefresh = NO;

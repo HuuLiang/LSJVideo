@@ -12,10 +12,8 @@
 #import "LSJActivateModel.h"
 #import "LSJUserAccessModel.h"
 #import "LSJSystemConfigModel.h"
-#import <KSCrash/KSCrashInstallationStandard.h>
 #import <QBPaymentManager.h>
 #import "QBNetworkingConfiguration.h"
-#import "LSJLaunchView.h"
 
 static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrlScheme";
 
@@ -153,13 +151,13 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     }
     [MobClick startWithAppkey:LSJ_UMENG_APP_ID reportPolicy:BATCH channelId:LSJ_CHANNEL_NO];
 }
-
-- (void)setupCrashReporter {
-    KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
-    installation.url = [NSURL URLWithString:[NSString stringWithFormat:@"https://collector.bughd.com/kscrash?key=%@", LSJ_KSCRASH_APP_ID]];
-    [installation install];
-    [installation sendAllReportsWithCompletion:nil];
-}
+//
+//- (void)setupCrashReporter {
+//    KSCrashInstallationStandard* installation = [KSCrashInstallationStandard sharedInstance];
+//    installation.url = [NSURL URLWithString:[NSString stringWithFormat:@"https://collector.bughd.com/kscrash?key=%@", LSJ_KSCRASH_APP_ID]];
+//    [installation install];
+//    [installation sendAllReportsWithCompletion:nil];
+//}
 
 #pragma mark - AppDelegate
 
@@ -175,7 +173,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     
 #ifdef DEBUG
     [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
-    [QBNetworkingConfiguration defaultConfiguration].logEnabled = YES;
+//    [QBNetworkingConfiguration defaultConfiguration].logEnabled = YES;
 #endif
     
     
@@ -236,13 +234,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     }
     
     [self.window makeKeyAndVisible];
-    [self addLaunchView];    
     return YES;
-}
-
-- (void)addLaunchView {
-    LSJLaunchView *view = [[LSJLaunchView alloc] init];
-    [view show];
 }
 
 - (BOOL)application:(UIApplication *)application

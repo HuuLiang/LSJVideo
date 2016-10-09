@@ -7,7 +7,7 @@
 //
 
 #import "LSJErrorHandler.h"
-#import "QBURLRequest.h"
+#import <QBURLRequest.h>
 
 NSString *const kNetworkErrorNotification = @"LTNetworkErrorNotification";
 NSString *const kNetworkErrorCodeKey = @"LTNetworkErrorCodeKey";
@@ -37,9 +37,9 @@ NSString *const kNetworkErrorMessageKey = @"LTNetworkErrorMessageKey";
     QBURLResponseStatus resp = (QBURLResponseStatus)(((NSNumber *)userInfo[kNetworkErrorCodeKey]).unsignedIntegerValue);
     
     if (resp == QBURLResponseFailedByInterface) {
-        LSJShowError(@"网络数据返回失败");
+        [[LSJHudManager manager] showHudWithText:@"网络数据返回失败"];
     } else if (resp == QBURLResponseFailedByNetwork) {
-        LSJShowError(@"网络错误，请检查网络连接");
+        [[LSJHudManager manager] showHudWithText:@"网络错误，请检查网络连接"];
     }
 }
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CRKHudManager : NSObject
+@interface LSJHudManager : NSObject
 
 @property (nonatomic,retain,readonly) UIView *hudView;
 

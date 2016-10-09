@@ -6,7 +6,7 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "QBEncryptedURLRequest.h"
+#import <QBEncryptedURLRequest.h>
 #import "LSJProgramModel.h"
 
 @interface LSJProgramUrlModel : NSObject

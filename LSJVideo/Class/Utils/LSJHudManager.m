@@ -9,18 +9,18 @@
 #import "LSJHudManager.h"
 #import "MBProgressHUD.h"
 
-@interface CRKHudManager ()
+@interface LSJHudManager ()
 @property (nonatomic,retain) MBProgressHUD *textHud;
 @property (nonatomic,retain) MBProgressHUD *progressHud;
 @end
 
-@implementation CRKHudManager
+@implementation LSJHudManager
 
 +(instancetype)manager {
-    static CRKHudManager *_instance;
+    static LSJHudManager *_instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [[CRKHudManager alloc] init];
+        _instance = [[LSJHudManager alloc] init];
     });
     return _instance;
 }

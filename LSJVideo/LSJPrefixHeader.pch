@@ -20,12 +20,13 @@
 #import <UIButton+WebCache.h>
 
 #import <QBDefines.h>
+#import "LSJConfiguration.h"
 #import "QBPaymentInfo.h"
 #import "LSJCommonDef.h"
 #import "LSJConfig.h"
 #import "LSJExtensions.h"
 #import "LSJErrorHandler.h"
-#import "LSJMessageCenter.h"
+//#import "LSJMessageCenter.h"
 #import "LSJHudManager.h"
 #import "LSJUtil.h"
 #import "QBNetworkInfo.h"

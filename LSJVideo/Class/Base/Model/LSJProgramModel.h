@@ -6,7 +6,7 @@
 //  Copyright © 2016年 iqu8. All rights reserved.
 //
 
-#import "QBEncryptedURLRequest.h"
+#import <QBEncryptedURLRequest.h>
 
 @interface LSJCommentModel : NSObject
 @property (nonatomic) NSString *content;

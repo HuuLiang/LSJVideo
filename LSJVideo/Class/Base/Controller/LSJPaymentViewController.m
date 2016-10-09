@@ -165,7 +165,7 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
     self.view.frame = view.bounds;
     self.view.alpha = 0;
     
-    UIView *hudView = [CRKHudManager manager].hudView;
+    UIView *hudView = [LSJHudManager manager].hudView;
     if (view == [UIApplication sharedApplication].keyWindow) {
         [view insertSubview:self.view belowSubview:hudView];
     } else {
@@ -246,14 +246,14 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
         }
         
         [self hidePayment];
-        [[CRKHudManager manager] showHudWithText:@"支付成功"];
+        [[LSJHudManager manager] showHudWithText:@"支付成功"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPaidNotificationName object:paymentInfo];
         
         // [self.popView reloadData];
     } else if (result == QBPayResultFailure) {
-        [[CRKHudManager manager] showHudWithText:@"支付取消"];
+        [[LSJHudManager manager] showHudWithText:@"支付取消"];
     } else {
-        [[CRKHudManager manager] showHudWithText:@"支付失败"];
+        [[LSJHudManager manager] showHudWithText:@"支付失败"];
     }
     
     //    [[LSJPaymentModel sharedModel] commitPaymentInfo:paymentInfo];
