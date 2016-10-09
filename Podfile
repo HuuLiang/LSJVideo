@@ -12,13 +12,13 @@ target 'LSJVideo' do
     pod 'MJRefresh', '~> 2.4.12'
     pod 'BlocksKit', '~> 2.2.5'
     pod 'ActionSheetPicker-3.0', '~> 2.0.3'
-    #pod 'MBProgressHUD', '~> 0.9.2'
+    pod 'MBProgressHUD', '~> 0.9.2'
     pod 'DACircularProgress', '~> 2.3.1'
     #pod 'SDCycleScrollView', '~> 1.3'
     pod 'TSMessages', '~> 0.9.12'
     pod 'FMDB', '~> 2.6.2'
     pod 'SFHFKeychainUtils', '~> 0.0.1'
-    pod 'QBPayment', '~> 0.0.17' ,:subspecs => ['VIAPay','IappPay','WFTPay','MTDLPay']
+    pod 'QBPayment', '~> 0.0.17' ,:subspecs => ['IappPay']
 end
 
 
