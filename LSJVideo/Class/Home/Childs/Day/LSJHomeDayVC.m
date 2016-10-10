@@ -56,6 +56,15 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
     }];
     
     [_layoutTableView LSJ_triggerPullToRefresh];
+    @weakify(self);
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self->_layoutTableView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self->_layoutTableView LSJ_triggerPullToRefresh];
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,10 +75,18 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
     @weakify(self);
     [self.columnModel fetchDayInfoWithColumnId:_columnId CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
+        [self removeCurrentRefreshBtn];
+        [_layoutTableView LSJ_endPullToRefresh];
         if (success) {
             self.response = obj;
             [_layoutTableView reloadData];
-            [_layoutTableView LSJ_endPullToRefresh];
+        }else {
+            if (self.response.programList.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self->_layoutTableView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }

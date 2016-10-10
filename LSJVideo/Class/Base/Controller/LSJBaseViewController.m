@@ -15,11 +15,13 @@
 #import <AVKit/AVKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "LSJVideoTokenManager.h"
+#import "LSJSystemConfigModel.h"
 
 @interface LSJBaseViewController ()
 {
     LSJPhotoBrowseView *_photoBrowseView;
 }
+@property (nonatomic,weak) UIButton *refreshBtn;
 @end
 
 @implementation LSJBaseViewController
@@ -75,7 +77,7 @@
 }
 
 - (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel {
-//    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:baseModel.subTab];
+    //    [[LSJStatsManager sharedManager] statsCPCWithBaseModel:baseModel andTabIndex:[LSJUtil currentTabPageIndex] subTabIndex:baseModel.subTab];
     if (![LSJUtil isVip] && baseModel.spec != 4) {
         [self payWithBaseModelInfo:baseModel];
     } else {
@@ -152,6 +154,40 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)addRefreshBtnWithCurrentView:(UIView *)view withAction:(QBAction) action;{
+    UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.refreshBtn = refreshBtn;
+    //    [refreshBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    refreshBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(18.)];
+    [refreshBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [refreshBtn setTitle:@"点击刷新" forState:UIControlStateNormal];
+    refreshBtn.frame = CGRectMake(kScreenWidth/2.-kWidth(40.), (kScreenHeight-113.)/2. -kWidth(40.), kWidth(80.),kWidth(80.));
+    refreshBtn.backgroundColor = [UIColor clearColor];
+    [view addSubview:refreshBtn];
+    [UIView animateWithDuration:0.4 animations:^{
+        //       refreshBtn.frame = CGRectMake(kScreenWidth/2.-kWidth(40.), (kScreenHeight-108.)/2.-kWidth(40.), kWidth(80.), kWidth(80.));
+        refreshBtn.transform = CGAffineTransformMakeScale(1.8, 1.8);
+        //        refreshBtn.frame
+    }];
+    [refreshBtn bk_addEventHandler:^(id sender) {
+        if (action) {
+            action(refreshBtn);
+        }
+        //        [refreshBtn removeFromSuperview];
+        //        refreshBtn.enabled = NO;
+        if (![LSJSystemConfigModel sharedModel].loaded) {
+            [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:nil];
+        }
+        
+    } forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)removeCurrentRefreshBtn{
+    if (self.refreshBtn) {
+        [self.refreshBtn removeFromSuperview];
+    }
+    
 }
 
 @end

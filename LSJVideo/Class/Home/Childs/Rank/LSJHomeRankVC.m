@@ -65,20 +65,38 @@ QBDefineLazyPropertyInitialization(NSMutableArray, widthSource)
         [self loadData];
     }];
     [_layoutCollectionView LSJ_triggerPullToRefresh];
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self->_layoutCollectionView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+        });
+    }];
 }
 
 - (void)loadData {
+    @weakify(self);
     [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
+        @strongify(self);
+        [_layoutCollectionView LSJ_endPullToRefresh];
+        [self removeCurrentRefreshBtn];
         if (success) {
             [self.dataSource removeAllObjects];
             [self.widthSource removeAllObjects];
-            [_layoutCollectionView LSJ_endPullToRefresh];
             for (LSJColumnModel *column in obj) {
                 CGSize size = [column.name sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kWidth(30)]}];
                 [self.widthSource addObject:@(size.width)];
                 [self.dataSource addObject:column];
             }
             [_layoutCollectionView reloadData];
+        }else {
+            if (self.dataSource.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }

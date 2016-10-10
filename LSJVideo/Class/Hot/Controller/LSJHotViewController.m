@@ -74,6 +74,14 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
         [self loadData];
     }];
     [self.layoutTableView LSJ_triggerPullToRefresh];
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self.layoutTableView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.layoutTableView LSJ_triggerPullToRefresh];
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,6 +94,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
     [self.hotModel fetchHotInfoWithCompletionHadler:^(BOOL success, id obj) {
         @strongify(self);
         [self.layoutTableView LSJ_endPullToRefresh];
+        [self removeCurrentRefreshBtn];
         if (success) {
             _isRefresh = YES;
             [self.dataSource removeAllObjects];
@@ -93,6 +102,13 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             [self titleItemWidth:obj];
             [self.dataSource addObjectsFromArray:obj];
             [self reloadUI];
+        }else {
+            if (self.dataSource.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self.layoutTableView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }

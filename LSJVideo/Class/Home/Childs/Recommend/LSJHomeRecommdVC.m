@@ -109,6 +109,14 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [_layoutCollectionView LSJ_triggerPullToRefresh];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:kPaidNotificationName object:nil];
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self->_layoutCollectionView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+        });
+    }];
 }
 
 - (void)refreshView {
@@ -120,24 +128,33 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)loadChannels {
+    @weakify(self);
     [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
+        @strongify(self);
+        [self removeCurrentRefreshBtn];
+        [_layoutCollectionView LSJ_endPullToRefresh];
         if (success) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:obj];
-//            for (LSJColumnModel *model in obj) {
-//                if (model.showNumber == 6) {
-//                    model.showMode = 1;
-//                } else if (model.showNumber == 10) {
-//                    model.showMode = 2;
-//                }
-//                if ((model.type == 3 && [LSJUtil isVip]) || (model.type == 5 && ![LSJUtil isVip]) || model.type == 1 || model.type == 4) {
-//                    [self.dataSource addObject:model];
-//                }
-//            }
-
-            [_layoutCollectionView LSJ_endPullToRefresh];
+            //            for (LSJColumnModel *model in obj) {
+            //                if (model.showNumber == 6) {
+            //                    model.showMode = 1;
+            //                } else if (model.showNumber == 10) {
+            //                    model.showMode = 2;
+            //                }
+            //                if ((model.type == 3 && [LSJUtil isVip]) || (model.type == 5 && ![LSJUtil isVip]) || model.type == 1 || model.type == 4) {
+            //                    [self.dataSource addObject:model];
+            //                }
+            //            }
             [self refreshBannerView];
             [_layoutCollectionView reloadData];
+        }else {
+            if (self.dataSource.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }
@@ -291,7 +308,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         }
     }
     
-
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

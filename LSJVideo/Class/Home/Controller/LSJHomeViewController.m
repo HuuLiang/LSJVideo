@@ -38,20 +38,36 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
     [self.view addSubview:view];
     
-//    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
-//    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
-//    [self.view addSubview:imgV];
-//    {
-//        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.center.equalTo(self.view);
-//            make.size.mas_equalTo(CGSizeMake(kScreenWidth*0.8, kScreenWidth*0.8*bgImg.size.height/bgImg.size.width));
-//        }];
-//    }
-    
+    //    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
+    //    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
+    //    [self.view addSubview:imgV];
+    //    {
+    //        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+    //            make.center.equalTo(self.view);
+    //            make.size.mas_equalTo(CGSizeMake(kScreenWidth*0.8, kScreenWidth*0.8*bgImg.size.height/bgImg.size.width));
+    //        }];
+    //    }
+    [self loadModel];
+    @weakify(self);
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self loadModel];
+    }];
+}
+
+- (void)loadModel {
+    @weakify(self);
     [self.homeModel fetchHomeInfoWithCompletionHandler:^(BOOL success, id obj) {
+        @strongify(self);
+        [self removeCurrentRefreshBtn];
         if (success) {
             self.dataSource = [NSMutableArray arrayWithArray:obj];
             [self create];
+        }else {
+            [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                @strongify(self);
+                [self loadModel];
+            }];
         }
     }];
 }
@@ -91,7 +107,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             [contrors addObject:rankVC];
         }
     }
-
+    
     _cursorView.controllers = [contrors copy];
     //设置字体和颜色
     _cursorView.normalColor = [UIColor colorWithHexString:@"#555555"];
@@ -113,7 +129,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
     [self.view addSubview:view];
     
-
+    
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:@"精品专区" forState:UIControlStateNormal];

@@ -90,6 +90,10 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
         return LSJDeviceType_iPhone6SP;
     } else if ([deviceName rangeOfString:@"iPhone8,4"].location == 0) {
         return LSJDeviceType_iPhoneSE;
+    }else if ([deviceName rangeOfString:@"iPhone9,1"].location == 0){
+        return LSJDeviceType_iPhone7;
+    }else if ([deviceName rangeOfString:@"iPhone9,2"].location == 0){
+        return LSJDeviceType_iPhone7P;
     } else if ([deviceName rangeOfString:@"iPad"].location == 0) {
         return LSJDeviceType_iPad;
     } else {

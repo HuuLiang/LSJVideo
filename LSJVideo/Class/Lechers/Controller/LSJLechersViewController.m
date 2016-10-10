@@ -46,6 +46,15 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         [self loadData];
     }];
     [_layoutTableView LSJ_triggerPullToRefresh];
+    @weakify(self);
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self->_layoutTableView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self->_layoutTableView LSJ_triggerPullToRefresh];
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,12 +62,22 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 }
 
 - (void)loadData {
+    @weakify(self);
     [self.lecherModel fetchLechersInfoWithCompletionHandler:^(BOOL success, id obj) {
+        @strongify(self);
+        [_layoutTableView LSJ_endPullToRefresh];
+        [self removeCurrentRefreshBtn];
         if (success) {
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:obj];
             [_layoutTableView reloadData];
-            [_layoutTableView LSJ_endPullToRefresh];
+        }else{
+            if (self.dataSource.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self->_layoutTableView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }
@@ -82,10 +101,10 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
         cell.dataArr = column.columnList;
         cell.action = ^(NSNumber *index) {
             @strongify(self);
-//            if (![LSJUtil isSVip]) {
-//                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
-//                [self payWithBaseModelInfo:baseModel];
-//            }
+            //            if (![LSJUtil isSVip]) {
+            //                LSJBaseModel *baseModel = [LSJBaseModel createModelWithProgramId:nil ProgramType:nil RealColumnId:@(column.realColumnId) ChannelType:@(column.type) PrgramLocation:indexPath.item Spec:NSNotFound subTab:NSNotFound];
+            //                [self payWithBaseModelInfo:baseModel];
+            //            }
             LSJLechersListVC *listVC = [[LSJLechersListVC alloc] initWithColumn:column andIndex:[index integerValue]];
             [self.navigationController pushViewController:listVC animated:YES];
             

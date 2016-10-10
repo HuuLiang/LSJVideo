@@ -65,17 +65,35 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     }];
     [_layoutCollectionView LSJ_triggerPullToRefresh];
     
-    
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self->_layoutCollectionView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+        });
+    }];
     
 }
 
 - (void)loadData {
+    @weakify(self);
     [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
+        @strongify(self);
+        [self removeCurrentRefreshBtn];
+        [_layoutCollectionView LSJ_endPullToRefresh];
         if (success) {
             [self.dataSource removeAllObjects];
             [_layoutCollectionView LSJ_endPullToRefresh];
             [self.dataSource addObjectsFromArray:obj];
             [_layoutCollectionView reloadData];
+        }else {
+            if (self.dataSource.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }
@@ -98,7 +116,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     
     LSJCategoryCell *categoryCell = [collectionView dequeueReusableCellWithReuseIdentifier:kCategoryCellReusableIdentifier forIndexPath:indexPath];
     LSJColumnModel *column = _dataSource[indexPath.item];
-//    LSJProgramModel *program = column.programList[indexPath.item];
+    //    LSJProgramModel *program = column.programList[indexPath.item];
     if (indexPath.item < self.dataSource.count) {
         categoryCell.title = column.name;
         categoryCell.imgUrl = column.columnImg;

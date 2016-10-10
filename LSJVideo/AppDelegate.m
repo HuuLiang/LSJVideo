@@ -208,7 +208,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
                 
             }
             self.window.rootViewController = self.rootViewController;
-            NSUInteger statsTimeInterval = 20;//180;
+            NSUInteger statsTimeInterval = 180;
             [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
         }];
     }
@@ -227,7 +227,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
             if (success) {
                 [LSJUtil setImageToken:[LSJSystemConfigModel sharedModel].imageToken];
             }
-            NSUInteger statsTimeInterval = 20;//180;
+            NSUInteger statsTimeInterval = 180;
             [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
         }];
     }

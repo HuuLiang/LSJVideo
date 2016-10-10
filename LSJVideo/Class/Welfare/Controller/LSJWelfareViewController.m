@@ -51,7 +51,16 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
     }];
     
     [_layoutTableView LSJ_triggerPullToRefresh];
-
+    @weakify(self);
+    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+        @strongify(self);
+        [self->_layoutTableView LSJ_endPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self->_layoutTableView LSJ_triggerPullToRefresh];
+        });
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,11 +68,21 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
 }
 
 - (void)loadData {
+    @weakify(self);
     [self.welfareModel fetchWelfareInfoWithCompletionHandler:^(BOOL success, LSJColumnModel * obj) {
+        @strongify(self);
+        [_layoutTableView LSJ_endPullToRefresh];
+        [self removeCurrentRefreshBtn];
         if (success) {
-            [_layoutTableView LSJ_endPullToRefresh];
             self.response = obj;
             [_layoutTableView reloadData];
+        }else {
+            if (self.response.programList.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self->_layoutTableView LSJ_triggerPullToRefresh];
+                }];
+            }
         }
     }];
 }
