@@ -122,7 +122,6 @@
         @strongify(self);
         LSJBaseModel *model = [[LSJBaseModel alloc] init];
         if (![LSJUtil isSVip]) {
-            
             [self payWithBaseModelInfo:model];
         }else {
             [[LSJHudManager manager] showHudWithText:@"您已经是VIP用户"];
