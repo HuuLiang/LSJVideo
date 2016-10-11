@@ -157,8 +157,13 @@
 }
 
 - (void)addRefreshBtnWithCurrentView:(UIView *)view withAction:(QBAction) action;{
+    if (self.refreshBtn) {
+        return;
+    }
+    
     UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.refreshBtn = refreshBtn;
+    
     //    [refreshBtn setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     refreshBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(18.)];
     [refreshBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -167,16 +172,14 @@
     refreshBtn.backgroundColor = [UIColor clearColor];
     [view addSubview:refreshBtn];
     [UIView animateWithDuration:0.4 animations:^{
-        //       refreshBtn.frame = CGRectMake(kScreenWidth/2.-kWidth(40.), (kScreenHeight-108.)/2.-kWidth(40.), kWidth(80.), kWidth(80.));
         refreshBtn.transform = CGAffineTransformMakeScale(1.8, 1.8);
-        //        refreshBtn.frame
     }];
     [refreshBtn bk_addEventHandler:^(id sender) {
         if (action) {
             action(refreshBtn);
+            [refreshBtn removeFromSuperview];
+            [self removeCurrentRefreshBtn];
         }
-        //        [refreshBtn removeFromSuperview];
-        //        refreshBtn.enabled = NO;
         if (![LSJSystemConfigModel sharedModel].loaded) {
             [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:nil];
         }

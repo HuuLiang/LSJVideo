@@ -1399,7 +1399,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tiantiansequ.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fcb5dc67-88f8-4f05-8812-b41a79798dfd";
 				PROVISIONING_PROFILE_SPECIFIER = TianTianSeQuDevProvisioningProfile;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -1436,7 +1436,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tiantiansequ.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0fe2332c-06f9-4c9b-809e-f919195c9f70";
 				PROVISIONING_PROFILE_SPECIFIER = TianTianSeQuInHouseProvisioningProfile;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};

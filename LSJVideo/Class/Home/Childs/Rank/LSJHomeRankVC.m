@@ -65,14 +65,16 @@ QBDefineLazyPropertyInitialization(NSMutableArray, widthSource)
         [self loadData];
     }];
     [_layoutCollectionView LSJ_triggerPullToRefresh];
-    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-        @strongify(self);
-        [self->_layoutCollectionView LSJ_endPullToRefresh];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [self->_layoutCollectionView LSJ_triggerPullToRefresh];
-        });
-    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.dataSource.count == 0) {
+            [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                @strongify(self);
+                [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+            }];
+        }
+    });
+
 }
 
 - (void)loadData {

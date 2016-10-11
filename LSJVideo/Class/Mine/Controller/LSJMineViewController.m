@@ -85,15 +85,23 @@
     }
     
     [UIAlertView bk_showAlertViewWithTitle:nil
-                                   message:[NSString stringWithFormat:@"是否联系客服%@？", contactName ?: @""]
-                         cancelButtonTitle:@"取消"
-                         otherButtonTitles:@[@"确认"]
+                                   message:@"本产品所有支付均在软件内进行，绝不会在QQ、微信及其他信息平台进行收费！！！请勿随意添加陌生人的QQ号和QQ群！非本产品的支付行为，本产品无法给予保障，请知悉！"
+                         cancelButtonTitle:nil
+                         otherButtonTitles:@[@"我知道了"]
                                    handler:^(UIAlertView *alertView, NSInteger buttonIndex)
      {
-         if (buttonIndex == 1) {
-             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:contactScheme]];
-         }
+         [UIAlertView bk_showAlertViewWithTitle:nil
+                                        message:[NSString stringWithFormat:@"是否联系客服%@？", contactName ?: @""]
+                              cancelButtonTitle:@"取消"
+                              otherButtonTitles:@[@"确认"]
+                                        handler:^(UIAlertView *alertView, NSInteger buttonIndex)
+          {
+              if (buttonIndex == 1) {
+                  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:contactScheme]];
+              }
+          }];
      }];
+
 }
 
 - (void)didReceiveMemoryWarning {

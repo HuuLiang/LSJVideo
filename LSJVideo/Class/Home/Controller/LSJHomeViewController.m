@@ -38,21 +38,18 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     view.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
     [self.view addSubview:view];
     
-    //    UIImage * bgImg = [UIImage imageNamed:@"app_bg"];
-    //    UIImageView *imgV = [[UIImageView alloc] initWithImage:bgImg];
-    //    [self.view addSubview:imgV];
-    //    {
-    //        [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
-    //            make.center.equalTo(self.view);
-    //            make.size.mas_equalTo(CGSizeMake(kScreenWidth*0.8, kScreenWidth*0.8*bgImg.size.height/bgImg.size.width));
-    //        }];
-    //    }
+
     [self loadModel];
+    
     @weakify(self);
-    [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-        @strongify(self);
-        [self loadModel];
-    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.dataSource.count == 0) {
+            [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                @strongify(self);
+                [self loadModel];
+            }];
+        }
+    });
 }
 
 - (void)loadModel {
@@ -64,10 +61,12 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             self.dataSource = [NSMutableArray arrayWithArray:obj];
             [self create];
         }else {
-            [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                @strongify(self);
-                [self loadModel];
-            }];
+            if (self.dataSource.count == 0) {
+                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+                    @strongify(self);
+                    [self loadModel];
+                }];
+            }
         }
     }];
 }
