@@ -88,20 +88,21 @@ QBDefineLazyPropertyInitialization(LSJColumnConfigModel, programModel)
     @weakify(self);
     [self.programModel fetchColumnsInfoWithColumnId:0 IsProgram:YES CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
-        [self removeCurrentRefreshBtn];
         [_layoutTableView LSJ_endPullToRefresh];
         if (success) {
+            [self removeCurrentRefreshBtn];
             [self.dataSource addObjectsFromArray:obj];
             [self refreshBannerView];
             [_layoutTableView reloadData];
-        }else {
-            if (self.dataSource.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self->_layoutTableView LSJ_triggerPullToRefresh];
-                }];
-            }
         }
+//        else {
+//            if (self.dataSource.count == 0) {
+//                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+//                    @strongify(self);
+//                    [self->_layoutTableView LSJ_triggerPullToRefresh];
+//                }];
+//            }
+//        }
     }];
 }
 

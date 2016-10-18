@@ -56,18 +56,20 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     @weakify(self);
     [self.homeModel fetchHomeInfoWithCompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
-        [self removeCurrentRefreshBtn];
+       
         if (success) {
             self.dataSource = [NSMutableArray arrayWithArray:obj];
+             [self removeCurrentRefreshBtn];
             [self create];
-        }else {
-            if (self.dataSource.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self loadModel];
-                }];
-            }
         }
+//        else {
+//            if (self.dataSource.count == 0) {
+//                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+//                    @strongify(self);
+//                    [self loadModel];
+//                }];
+//            }
+//        }
     }];
 }
 

@@ -80,21 +80,22 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     @weakify(self);
     [self.programModel fetchColumnsInfoWithColumnId:_columnId IsProgram:NO CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
-        [self removeCurrentRefreshBtn];
         [_layoutCollectionView LSJ_endPullToRefresh];
         if (success) {
+            [self removeCurrentRefreshBtn];
             [self.dataSource removeAllObjects];
             [_layoutCollectionView LSJ_endPullToRefresh];
             [self.dataSource addObjectsFromArray:obj];
             [_layoutCollectionView reloadData];
-        }else {
-            if (self.dataSource.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self->_layoutCollectionView LSJ_triggerPullToRefresh];
-                }];
-            }
         }
+//        else {
+//            if (self.dataSource.count == 0) {
+//                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+//                    @strongify(self);
+//                    [self->_layoutCollectionView LSJ_triggerPullToRefresh];
+//                }];
+//            }
+//        }
     }];
 }
 

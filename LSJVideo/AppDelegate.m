@@ -226,21 +226,6 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
             self.window.rootViewController = self.rootViewController;
         }];
         
-//        requestedSystemConfig = [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
-//            [self.window endProgressing];
-//            
-//            if (success) {
-//                NSString *fetchedToken = [LSJSystemConfigModel sharedModel].imageToken;
-//                [LSJUtil setImageToken:fetchedToken];
-//                if (fetchedToken) {
-//                    [[SDWebImageManager sharedManager].imageDownloader setValue:fetchedToken forHTTPHeaderField:@"Referer"];
-//                }
-//                
-//            }
-//            self.window.rootViewController = self.rootViewController;
-//            NSUInteger statsTimeInterval = 180;
-//            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
-//        }];
     }
 
     if (!requestedSystemConfig) {

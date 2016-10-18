@@ -72,18 +72,19 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
     [self.welfareModel fetchWelfareInfoWithCompletionHandler:^(BOOL success, LSJColumnModel * obj) {
         @strongify(self);
         [_layoutTableView LSJ_endPullToRefresh];
-        [self removeCurrentRefreshBtn];
         if (success) {
+            [self removeCurrentRefreshBtn];
             self.response = obj;
             [_layoutTableView reloadData];
-        }else {
-            if (self.response.programList.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self->_layoutTableView LSJ_triggerPullToRefresh];
-                }];
-            }
         }
+//        else {
+//            if (self.response.programList.count == 0) {
+//                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+//                    @strongify(self);
+//                    [self->_layoutTableView LSJ_triggerPullToRefresh];
+//                }];
+//            }
+//        }
     }];
 }
 

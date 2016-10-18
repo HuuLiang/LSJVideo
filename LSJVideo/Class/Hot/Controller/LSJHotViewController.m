@@ -95,22 +95,23 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
     [self.hotModel fetchHotInfoWithCompletionHadler:^(BOOL success, id obj) {
         @strongify(self);
         [self.layoutTableView LSJ_endPullToRefresh];
-        [self removeCurrentRefreshBtn];
         if (success) {
+            [self removeCurrentRefreshBtn];
             _isRefresh = YES;
             [self.dataSource removeAllObjects];
             [self.titleWidthArray removeAllObjects];
             [self titleItemWidth:obj];
             [self.dataSource addObjectsFromArray:obj];
             [self reloadUI];
-        }else {
-            if (self.dataSource.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self.layoutTableView LSJ_triggerPullToRefresh];
-                }];
-            }
         }
+//        else {
+//            if (self.dataSource.count == 0) {
+//                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+//                    @strongify(self);
+//                    [self.layoutTableView LSJ_triggerPullToRefresh];
+//                }];
+//            }
+//        }
     }];
 }
 

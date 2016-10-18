@@ -157,10 +157,7 @@
 }
 
 - (void)addRefreshBtnWithCurrentView:(UIView *)view withAction:(QBAction) action;{
-    if (self.refreshBtn) {
-        return;
-    }
-    
+
     UIButton *refreshBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.refreshBtn = refreshBtn;
     
@@ -177,9 +174,12 @@
     [refreshBtn bk_addEventHandler:^(id sender) {
         if (action) {
             action(refreshBtn);
-            [refreshBtn removeFromSuperview];
-            [self removeCurrentRefreshBtn];
         }
+        refreshBtn.transform = CGAffineTransformMakeScale(0.56, 0.56);
+        [UIView animateWithDuration:0.4 animations:^{
+              refreshBtn.transform = CGAffineTransformMakeScale(1.8, 1.8);
+        }];
+//        [refreshBtn removeFromSuperview];
         if (![LSJSystemConfigModel sharedModel].loaded) {
             [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:nil];
         }

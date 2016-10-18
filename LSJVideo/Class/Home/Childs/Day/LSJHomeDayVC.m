@@ -78,19 +78,13 @@ QBDefineLazyPropertyInitialization(LSJColumnModel, response)
     @weakify(self);
     [self.columnModel fetchDayInfoWithColumnId:_columnId CompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
-        [self removeCurrentRefreshBtn];
         [_layoutTableView LSJ_endPullToRefresh];
         if (success) {
+                [self removeCurrentRefreshBtn];
             self.response = obj;
             [_layoutTableView reloadData];
-        }else {
-            if (self.response.programList.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self->_layoutTableView LSJ_triggerPullToRefresh];
-                }];
-            }
         }
+
     }];
 }
 

@@ -21,6 +21,7 @@
 - (void)playVideoWithUrl:(NSString *)videoUrlStr baseModel:(LSJBaseModel *)baseModel;
 
 - (void)payWithBaseModelInfo:(LSJBaseModel *)baseModel;
+
 - (void)addRefreshBtnWithCurrentView:(UIView *)view withAction:(QBAction) action;
 - (void)removeCurrentRefreshBtn;
 @end

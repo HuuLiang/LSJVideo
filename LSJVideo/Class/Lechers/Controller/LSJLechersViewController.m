@@ -67,19 +67,20 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
     [self.lecherModel fetchLechersInfoWithCompletionHandler:^(BOOL success, id obj) {
         @strongify(self);
         [_layoutTableView LSJ_endPullToRefresh];
-        [self removeCurrentRefreshBtn];
         if (success) {
+            [self removeCurrentRefreshBtn];
             [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:obj];
             [_layoutTableView reloadData];
-        }else{
-            if (self.dataSource.count == 0) {
-                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
-                    @strongify(self);
-                    [self->_layoutTableView LSJ_triggerPullToRefresh];
-                }];
-            }
         }
+//        else{
+//            if (self.dataSource.count == 0) {
+//                [self addRefreshBtnWithCurrentView:self.view withAction:^(id obj) {
+//                    @strongify(self);
+//                    [self->_layoutTableView LSJ_triggerPullToRefresh];
+//                }];
+//            }
+//        }
     }];
 }
 
