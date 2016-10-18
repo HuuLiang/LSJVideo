@@ -242,16 +242,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
 //            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
 //        }];
     }
-    
-    if (![LSJUtil isRegistered]) {
-        [[LSJActivateModel sharedModel] activateWithCompletionHandler:^(BOOL success, NSString *userId) {
-            if (success) {
-                [LSJUtil setRegisteredWithUserId:userId];
-            }
-        }];
-    } else {
-        [[LSJUserAccessModel sharedModel] requestUserAccess];
-    }
+
     if (!requestedSystemConfig) {
         [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
             if (success) {
