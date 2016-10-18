@@ -170,10 +170,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     
 //    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
     
-#ifdef DEBUG
-    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
-//    [QBNetworkingConfiguration defaultConfiguration].logEnabled = YES;
-#endif
+
     
     
     [LSJUtil accumateLaunchSeq];
@@ -181,6 +178,33 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     [self setupCommonStyles];
     
     [[QBPaymentManager sharedManager] registerPaymentWithAppId:LSJ_REST_APPID paymentPv:@([LSJ_PAYMENT_PV integerValue]) channelNo:LSJ_CHANNEL_NO urlScheme:kIappPaySchemeUrl];
+    
+    [QBNetworkInfo sharedInfo].reachabilityChangedAction = ^(BOOL reachable) {
+        if (reachable && ![LSJSystemConfigModel sharedModel].loaded) {
+            [self fetchSystemConfigWithCompletionHandler:nil];
+        }
+        if (reachable && ![LSJUtil isRegistered]) {
+            [[LSJActivateModel sharedModel] activateWithCompletionHandler:^(BOOL success, NSString *userId) {
+                if (success) {
+                    [LSJUtil setRegisteredWithUserId:userId];
+                    [[LSJUserAccessModel sharedModel] requestUserAccess];
+                }
+            }];
+        } else {
+            [[LSJUserAccessModel sharedModel] requestUserAccess];
+        }
+        if ([QBNetworkInfo sharedInfo].networkStatus <= QBNetworkStatusNotReachable && (![LSJUtil isRegistered] || ![LSJSystemConfigModel sharedModel].loaded)) {
+            [UIAlertView bk_showAlertViewWithTitle:@"很抱歉!" message:@"您的应用未连接到网络,请检查您的网络设置" cancelButtonTitle:@"稍后" otherButtonTitles:@[@"设置"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex == 1) {
+                    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                    if([[UIApplication sharedApplication] canOpenURL:url]) {
+                        [[UIApplication sharedApplication] openURL:url];
+                    }
+                }
+            }];
+        }
+    };
+
     
     [self setupMobStatistics];
     [[QBNetworkInfo sharedInfo] startMonitoring];
@@ -196,21 +220,27 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
         [self.window makeKeyAndVisible];
         
         [self.window beginProgressingWithTitle:@"更新系统配置..." subtitle:nil];
-        requestedSystemConfig = [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
-            [self.window endProgressing];
-            
-            if (success) {
-                NSString *fetchedToken = [LSJSystemConfigModel sharedModel].imageToken;
-                [LSJUtil setImageToken:fetchedToken];
-                if (fetchedToken) {
-                    [[SDWebImageManager sharedManager].imageDownloader setValue:fetchedToken forHTTPHeaderField:@"Referer"];
-                }
-                
-            }
+        
+        requestedSystemConfig = [self fetchSystemConfigWithCompletionHandler:^(BOOL success) {
+             [self.window endProgressing];
             self.window.rootViewController = self.rootViewController;
-            NSUInteger statsTimeInterval = 180;
-            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
         }];
+        
+//        requestedSystemConfig = [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
+//            [self.window endProgressing];
+//            
+//            if (success) {
+//                NSString *fetchedToken = [LSJSystemConfigModel sharedModel].imageToken;
+//                [LSJUtil setImageToken:fetchedToken];
+//                if (fetchedToken) {
+//                    [[SDWebImageManager sharedManager].imageDownloader setValue:fetchedToken forHTTPHeaderField:@"Referer"];
+//                }
+//                
+//            }
+//            self.window.rootViewController = self.rootViewController;
+//            NSUInteger statsTimeInterval = 180;
+//            [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
+//        }];
     }
     
     if (![LSJUtil isRegistered]) {
@@ -235,6 +265,24 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     [self.window makeKeyAndVisible];
     return YES;
 }
+- (BOOL)fetchSystemConfigWithCompletionHandler:(void (^)(BOOL success))completionHandler {
+    return [[LSJSystemConfigModel sharedModel] fetchSystemConfigWithCompletionHandler:^(BOOL success) {
+        if (success) {
+            NSString *fetchedToken = [LSJSystemConfigModel sharedModel].imageToken;
+            [LSJUtil setImageToken:fetchedToken];
+            if (fetchedToken) {
+                [[SDWebImageManager sharedManager].imageDownloader setValue:fetchedToken forHTTPHeaderField:@"Referer"];
+            }
+            
+        }
+        
+        NSUInteger statsTimeInterval = 180;
+        [[LSJStatsManager sharedManager] scheduleStatsUploadWithTimeInterval:statsTimeInterval];
+        
+        QBSafelyCallBlock(completionHandler, success);
+    }];
+}
+
 
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url {
