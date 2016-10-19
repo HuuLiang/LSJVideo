@@ -321,11 +321,11 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
 + (void)showSpreadBanner {
     
     if ([LSJAppSpreadBannerModel sharedModel].fetchedSpreads) {
-        [self showBanner];
+//        [self showBanner];
     }else{
         [[LSJAppSpreadBannerModel sharedModel] fetchAppSpreadWithCompletionHandler:^(BOOL success, id obj) {
             if (success) {
-                [self showBanner];
+//                [self showBanner];
             }
         }];
     }
