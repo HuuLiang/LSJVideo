@@ -167,16 +167,11 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     [QBNetworkingConfiguration defaultConfiguration].RESTpV = @([LSJ_REST_PV integerValue]);
     [QBNetworkingConfiguration defaultConfiguration].channelNo = LSJ_CHANNEL_NO;
     [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
-    
-//    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];
-    
 
-    
-    
     [LSJUtil accumateLaunchSeq];
     [LSJUtil setCurrenthHomenSub:1];
     [self setupCommonStyles];
-    
+//    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];//测试支付
     [[QBPaymentManager sharedManager] registerPaymentWithAppId:LSJ_REST_APPID paymentPv:@([LSJ_PAYMENT_PV integerValue]) channelNo:LSJ_CHANNEL_NO urlScheme:kIappPaySchemeUrl];
     
     [QBNetworkInfo sharedInfo].reachabilityChangedAction = ^(BOOL reachable) {
