@@ -13,12 +13,14 @@
 #import "LSJSystemConfigModel.h"
 #import "LSJAppSpreadBannerModel.h"
 #import "LSJMineAppCell.h"
+#import "LSJManualActivationManager.h"
 @interface LSJMineViewController ()
 {
     LSJBannerVipCell *_bannerCell;
     LSJTableViewCell *_vipCell;
     LSJTableViewCell *_statementCell;
     LSJTableViewCell *_protocolCell;
+    LSJTableViewCell *_activateCell;
     LSJTableViewCell *_telCell;
 }
 @end
@@ -55,6 +57,9 @@
             }else {
                 [[LSJHudManager manager] showHudWithText:@"您已经是VIP用户"];
             }
+        }else if (cell == self->_activateCell){
+            [[LSJManualActivationManager sharedManager] doActivation];
+            
         } else if (cell == self->_protocolCell) {
             LSJWebViewController *webVC = [[LSJWebViewController alloc] initWithURL:[NSURL URLWithString:LSJ_PROTOCOL_URL]];
             webVC.title = @"用户协议";
@@ -130,18 +135,24 @@
     
     [self setLayoutCell:_bannerCell cellHeight:kScreenWidth*0.4 inRow:0 andSection:section++];
     
-    
+    NSInteger rows = 0;
+    if (![LSJUtil isSVip]) {
+        _activateCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_activate"] title:@"自助激活"];
+        _activateCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        _activateCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+        [self setLayoutCell:_activateCell cellHeight:44 inRow:rows++ andSection:section];
+    }
     _protocolCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_protocol"] title:@"用户协议"];
     _protocolCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     _protocolCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-    [self setLayoutCell:_protocolCell cellHeight:44 inRow:0 andSection:section];
+    [self setLayoutCell:_protocolCell cellHeight:44 inRow:rows++ andSection:section];
     
     
     if ([LSJUtil isVip]) {
         _telCell = [[LSJTableViewCell alloc] initWithImage:[UIImage imageNamed:@"mine_tel"] title:@"客服热线"];
         _telCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         _telCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-        [self setLayoutCell:_telCell cellHeight:44 inRow:1 andSection:section++];
+        [self setLayoutCell:_telCell cellHeight:44 inRow:rows andSection:section++];
     } else {
         section++;
     }

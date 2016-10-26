@@ -122,12 +122,12 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
 }
 
 + (BOOL)isVip {
-    //    return YES;
+//        return YES;
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kVipUserKeyName] isEqualToString:LSJ_VIP];
 }
 
 + (BOOL)isSVip {
-    //    return YES;
+//        return YES;
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kSVipUserKeyName] isEqualToString:LSJ_SVIP];
 }
 
@@ -214,6 +214,16 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
     return [self.allPaymentInfos bk_match:^BOOL(id obj) {
         QBPaymentInfo *paymentInfo = obj;
         if (paymentInfo.paymentResult == QBPayResultSuccess) {
+            return YES;
+        }
+        return NO;
+    }];
+}
+
++ (NSArray<QBPaymentInfo *> *)allUnsuccessfulPaymentInfos {
+    return [self.allPaymentInfos bk_select:^BOOL(id obj) {
+        QBPaymentInfo *paymentInfo = obj;
+        if (paymentInfo.paymentResult != QBPayResultSuccess) {
             return YES;
         }
         return NO;

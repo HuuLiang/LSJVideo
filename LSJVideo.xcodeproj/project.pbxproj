@@ -12,6 +12,7 @@
 		B3695F421D9A5DC10048DB8B /* LSJStatsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3D1D9A5DC10048DB8B /* LSJStatsBaseModel.m */; };
 		B3695F431D9A5DC10048DB8B /* LSJTabStatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */; };
 		B3A2DB331D9A602000255471 /* LSJStatsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DB321D9A602000255471 /* LSJStatsManager.m */; };
+		B3D3A01B1DC05EE90056DA24 /* LSJManualActivationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D3A01A1DC05EE90056DA24 /* LSJManualActivationManager.m */; };
 		BC8FA5601D9FAF5300471EF0 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC8FA55F1D9FAF5300471EF0 /* config.plist */; };
 		BC8FA5631D9FAF6600471EF0 /* LSJConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */; };
 		C15ACF4FEBF32A369971E46F /* libPods-LSJVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 873E02D48D7A7FE712859BA4 /* libPods-LSJVideo.a */; };
@@ -135,6 +136,8 @@
 		B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJTabStatsModel.m; sourceTree = "<group>"; };
 		B3A2DB311D9A602000255471 /* LSJStatsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJStatsManager.h; sourceTree = "<group>"; };
 		B3A2DB321D9A602000255471 /* LSJStatsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJStatsManager.m; sourceTree = "<group>"; };
+		B3D3A0191DC05EE90056DA24 /* LSJManualActivationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJManualActivationManager.h; sourceTree = "<group>"; };
+		B3D3A01A1DC05EE90056DA24 /* LSJManualActivationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJManualActivationManager.m; sourceTree = "<group>"; };
 		BC8FA55F1D9FAF5300471EF0 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		BC8FA5611D9FAF6600471EF0 /* LSJConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJConfiguration.h; sourceTree = "<group>"; };
 		BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJConfiguration.m; sourceTree = "<group>"; };
@@ -748,6 +751,8 @@
 				B3A2DB321D9A602000255471 /* LSJStatsManager.m */,
 				BC8FA5611D9FAF6600471EF0 /* LSJConfiguration.h */,
 				BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */,
+				B3D3A0191DC05EE90056DA24 /* LSJManualActivationManager.h */,
+				B3D3A01A1DC05EE90056DA24 /* LSJManualActivationManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1147,6 +1152,7 @@
 				EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */,
 				EC20E99D1D91313B00568666 /* LSJDetailImgTextHeaderCell.m in Sources */,
 				ECD70D981D532E33006929B1 /* LSJUtil.m in Sources */,
+				B3D3A01B1DC05EE90056DA24 /* LSJManualActivationManager.m in Sources */,
 				ECD70DB01D533DF3006929B1 /* LSJBaseModel.m in Sources */,
 				ECD70D0C1D531F6B006929B1 /* UITableView+Separator.m in Sources */,
 				ECF00E2E1D5B49E900FBF1D2 /* LSJHomeSectionHeaderView.m in Sources */,
