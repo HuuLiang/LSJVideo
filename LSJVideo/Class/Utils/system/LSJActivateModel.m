@@ -47,7 +47,8 @@ static NSString *const kSuccessResponse = @"SUCCESS";
                              @"appV":[LSJUtil appVersion],
                              @"appVN":@"",
                              @"ccn":LSJ_PACKAGE_CERTIFICATE,
-                             @"operator":[QBNetworkInfo sharedInfo].carriarName ?: @""};
+                             @"operator":[QBNetworkInfo sharedInfo].carriarName ?: @"",
+                             @"systemVersion":[UIDevice currentDevice].systemVersion};
     
     BOOL success = [self requestURLPath:LSJ_ACTIVATION_URL withParams:params responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage) {
         NSString *userId;
