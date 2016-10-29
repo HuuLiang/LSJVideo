@@ -83,6 +83,11 @@ QBDefineLazyPropertyInitialization(NSMutableArray, detailArray)
             }];
         }
     });
+    
+    [self.navigationController.navigationBar bk_whenTouches:1 tapped:5 handler:^{
+        NSString *baseURLString = [LSJ_BASE_URL stringByReplacingCharactersInRange:NSMakeRange(0, LSJ_BASE_URL.length-6) withString:@"******"];
+        [[LSJHudManager manager] showHudWithText:[NSString stringWithFormat:@"Server:%@\nChannelNo:%@\nPackageCertificate:%@\npV:%@/%@", baseURLString, LSJ_CHANNEL_NO, LSJ_PACKAGE_CERTIFICATE, LSJ_REST_PV, LSJ_PAYMENT_PV]];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

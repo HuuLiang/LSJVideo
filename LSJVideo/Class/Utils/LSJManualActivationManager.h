@@ -14,4 +14,6 @@
 
 - (void)doActivation;
 
+- (void)servicesActivationWithOrderId:(NSString *)orderId;
+
 @end
