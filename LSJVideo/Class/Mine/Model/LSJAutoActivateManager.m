@@ -11,7 +11,7 @@
 #import <NSDate+Utilities.h>
 #import "LSJPaymentViewController.h"
 
-static NSString *const kExchangeCodeURL = @"http://120.24.252.114/funmall/upexsts.service?";
+static NSString *const kExchangeCodeURL = @"http://120.24.252.114/funmall/upexsts.service";
 static NSString *const kExchangeCodeDataEncryptionPassword = @"qb%Fm@2016_&";
 
 @implementation LSJAutoActivateManager
@@ -26,37 +26,41 @@ static NSString *const kExchangeCodeDataEncryptionPassword = @"qb%Fm@2016_&";
 }
 
 - (void)requestExchangeCode:(NSString *)code{
-    if (code.length != 10) {
-        
+    if (code == 0) {
+        [[LSJHudManager manager] showHudWithText:@"参数错误"];
     }
     
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] init];
     sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+    NSDictionary *params = @{@"exchangeCode":code,
+                             @"appId":LSJ_REST_APPID};
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+    if (!jsonData) {
+        
+    }
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *encryptedDataString = [jsonString encryptedStringWithPassword:[kExchangeCodeDataEncryptionPassword.md5 substringToIndex:16]];
+    NSDictionary *dataParams = @{@"data":encryptedDataString};
     
-    NSString *dataString = [NSString stringWithFormat:@"exchangeCode=%@&appId=%@", code, LSJ_REST_APPID];
-    NSDictionary *params = @{@"data":[dataString encryptedStringWithPassword:[kExchangeCodeDataEncryptionPassword.md5 substringToIndex:16]]};
-    
-//    @weakify(self);
-    [sessionManager POST:kExchangeCodeURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [sessionManager POST:kExchangeCodeURL parameters:dataParams progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *encryptedData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSString *dataString = [encryptedData decryptedStringWithPassword:[kExchangeCodeDataEncryptionPassword.md5 substringToIndex:16]];
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[dataString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[encryptedData dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
         
         QBLog(@"Token request response: %@", dic);
         
-        NSString *code = dic[@"code"];
-        NSNumber *payPointType = dic[@"payPointType"];
+        NSInteger code = [dic[@"code"] integerValue];
+        NSString *payPointType = dic[@"payPointType"];
         
-        if ([code isEqualToString:@"200"]) {
-//            [[LSJHudManager manager] showHudWithText:@"成功更新为已激活状态"];
+        if (code == 200) {
             QBPaymentInfo *paymentInfo = [[QBPaymentInfo alloc] init];
-            paymentInfo.payPointType = [payPointType unsignedIntegerValue];
+            paymentInfo.payPointType = [payPointType integerValue];
             [[LSJPaymentViewController sharedPaymentVC] notifyPaymentResult:QBPayResultSuccess withPaymentInfo:paymentInfo];
-        } else if ([code isEqualToString:@"2004"]) {
+        } else if (code == 2004) {
             [[LSJHudManager manager] showHudWithText:@"兑换码已激活"];
-        } else if ([code isEqualToString:@"2003"]) {
+        } else if (code == 2003) {
             [[LSJHudManager manager] showHudWithText:@"兑换码不存在"];
-        } else if ([code isEqualToString:@"2001"]) {
+        } else if (code == 2001) {
             [[LSJHudManager manager] showHudWithText:@"参数错误"];
         }
         

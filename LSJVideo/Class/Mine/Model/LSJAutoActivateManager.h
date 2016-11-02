@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^LSJAutoActivateCompletionHandler)(BOOL success, NSString *code);
-
 @interface LSJAutoActivateManager : NSObject
 + (instancetype)sharedManager;
 

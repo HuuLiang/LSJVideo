@@ -103,6 +103,7 @@
     
     @weakify(self);
     [_nonAutoBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
         [[LSJAutoActivateManager sharedManager] requestExchangeCode:self->_textField.text];
     } forControlEvents:UIControlEventTouchUpInside];
     
