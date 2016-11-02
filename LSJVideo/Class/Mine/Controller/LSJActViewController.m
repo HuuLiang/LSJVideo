@@ -8,6 +8,7 @@
 
 #import "LSJActViewController.h"
 #import "LSJManualActivationManager.h"
+#import "LSJAutoActivateManager.h"
 
 @interface LSJActViewController () <UITextFieldDelegate>
 {
@@ -102,8 +103,7 @@
     
     @weakify(self);
     [_nonAutoBtn bk_addEventHandler:^(id sender) {
-        @strongify(self);
-        [[LSJManualActivationManager sharedManager] servicesActivationWithOrderId:self->_textField.text];
+        [[LSJAutoActivateManager sharedManager] requestExchangeCode:self->_textField.text];
     } forControlEvents:UIControlEventTouchUpInside];
     
     {

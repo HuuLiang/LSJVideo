@@ -75,6 +75,7 @@
 		EC85475E1D705CFE00B0F815 /* LSJDetailVideoCommandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC85475D1D705CFE00B0F815 /* LSJDetailVideoCommandCell.m */; };
 		ECAD1A751D66F6A50048727A /* LSJLecherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD1A741D66F6A50048727A /* LSJLecherModel.m */; };
 		ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAD1A771D66FCE50048727A /* LSJLechersListCell.m */; };
+		ECB36DA61DC9E3F000F7034E /* LSJAutoActivateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB36DA51DC9E3F000F7034E /* LSJAutoActivateManager.m */; };
 		ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C4F1D531F6B006929B1 /* DBHandler.m */; };
 		ECD70CFD1D531F6B006929B1 /* DBPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C521D531F6B006929B1 /* DBPersistence.m */; };
 		ECD70CFE1D531F6B006929B1 /* DBTableVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD70C541D531F6B006929B1 /* DBTableVersion.m */; };
@@ -259,6 +260,8 @@
 		ECAD1A741D66F6A50048727A /* LSJLecherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLecherModel.m; sourceTree = "<group>"; };
 		ECAD1A761D66FCE50048727A /* LSJLechersListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJLechersListCell.h; sourceTree = "<group>"; };
 		ECAD1A771D66FCE50048727A /* LSJLechersListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJLechersListCell.m; sourceTree = "<group>"; };
+		ECB36DA41DC9E3F000F7034E /* LSJAutoActivateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJAutoActivateManager.h; sourceTree = "<group>"; };
+		ECB36DA51DC9E3F000F7034E /* LSJAutoActivateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJAutoActivateManager.m; sourceTree = "<group>"; };
 		ECD70BCC1D531CCA006929B1 /* LSJPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJPrefixHeader.pch; sourceTree = "<group>"; };
 		ECD70BCE1D531D1A006929B1 /* LSJConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJConfig.h; sourceTree = "<group>"; };
 		ECD70BCF1D531D71006929B1 /* LSJCommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJCommonDef.h; sourceTree = "<group>"; };
@@ -718,6 +721,8 @@
 		ECD70C441D531F6B006929B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ECB36DA41DC9E3F000F7034E /* LSJAutoActivateManager.h */,
+				ECB36DA51DC9E3F000F7034E /* LSJAutoActivateManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1249,6 +1254,7 @@
 				EC2F0BB31D685E5600DE2B7F /* LSJColumnConfigModel.m in Sources */,
 				ECAD1A781D66FCE50048727A /* LSJLechersListCell.m in Sources */,
 				EC80DE3C1D8E92B800EF943E /* LSJPhotoBrowseView.m in Sources */,
+				ECB36DA61DC9E3F000F7034E /* LSJAutoActivateManager.m in Sources */,
 				ECD70D0A1D531F6B006929B1 /* UIImageView+YPBAnimation.m in Sources */,
 				ECF8EA871D9C029500B3220D /* LSJSpreadBannerViewController.m in Sources */,
 				EC7684A61D64175C00AC3708 /* LSJRankDetailVC.m in Sources */,
