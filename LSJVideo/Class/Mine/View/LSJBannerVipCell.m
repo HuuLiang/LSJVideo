@@ -31,23 +31,30 @@
         
         _vipImgV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mine_vip"]];
         [self addSubview:_vipImgV];
-        
-        _vipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_vipBtn setTitle:@"立即开通VIP" forState:UIControlStateNormal];
-        _vipBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(26)];
-        _vipBtn.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
-        [_vipBtn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-        _vipBtn.layer.cornerRadius = kWidth(8);
-        _vipBtn.layer.masksToBounds = YES;
-        [self addSubview:_vipBtn];
-        
-        @weakify(self);
-        [_vipBtn bk_addEventHandler:^(id sender) {
-            @strongify(self);
-            if (self.action) {
-                self.action();
-            }
-        } forControlEvents:UIControlEventTouchUpInside];
+            
+            _vipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+         if (![LSJUtil isVip] && ![LSJUtil isSVip]) {
+            [_vipBtn setTitle:@"立即开通VIP" forState:UIControlStateNormal];
+         }else if ([LSJUtil isVip] && ![LSJUtil isSVip]){
+          [_vipBtn setTitle:@"升级黑钻VIP" forState:UIControlStateNormal];
+         }
+         else {
+         [_vipBtn setTitle:@"您已经是VIP" forState:UIControlStateNormal];
+         }
+            _vipBtn.titleLabel.font = [UIFont systemFontOfSize:kWidth(26)];
+            _vipBtn.backgroundColor = [UIColor colorWithHexString:@"#ffe100"];
+            [_vipBtn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+            _vipBtn.layer.cornerRadius = kWidth(8);
+            _vipBtn.layer.masksToBounds = YES;
+            [self addSubview:_vipBtn];
+            
+            @weakify(self);
+            [_vipBtn bk_addEventHandler:^(id sender) {
+                @strongify(self);
+                if (self.action) {
+                    self.action();
+                }
+            } forControlEvents:UIControlEventTouchUpInside];
         
         {
             [_bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
