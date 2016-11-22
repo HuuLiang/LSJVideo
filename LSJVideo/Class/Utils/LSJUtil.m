@@ -131,6 +131,11 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
     return [[[NSUserDefaults standardUserDefaults] objectForKey:kSVipUserKeyName] isEqualToString:LSJ_SVIP];
 }
 
++ (BOOL)isAllVip {
+
+    return [self isVip] && [self isSVip];
+}
+
 + (NSString *)imageToken {
     NSString *imageToken = [[NSUserDefaults standardUserDefaults] objectForKey:kImageTokenKeyName];
     if (!imageToken) {
