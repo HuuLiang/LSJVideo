@@ -12,7 +12,7 @@
 #define LSJ_CHANNEL_NO               [LSJConfiguration sharedConfig].channelNo//@"IOS_TTSEQU_0001" //@"QB_MFW_IOS_TEST_0000001" //
 #define LSJ_REST_APPID               @"QUBA_2025"
 #define LSJ_REST_PV                  @"193"
-#define LSJ_PAYMENT_PV               @"200"
+#define LSJ_PAYMENT_PV               @"201"
 #define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Beijing Huazhong Hengtai Network Technology Co., Ltd."
 
 #define LSJ_REST_APP_VERSION     ((NSString *)([NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]))
@@ -35,7 +35,7 @@
 
 #define LSJ_APP_SPREAD_BANNER_URL       @"/iosvideo/appSpreadBanner.htm"
 
-#define LSJ_STATS_BASE_URL              @"http://stats.iqu8.cn"//@"http://120.24.252.114"//
+#define LSJ_STATS_BASE_URL              @"http://stats.dswtg.com"//@"http://120.24.252.114"//
 #define LSJ_STATS_CPC_URL               @"/stats/cpcs.service"
 #define LSJ_STATS_TAB_URL               @"/stats/tabStat.service"
 #define LSJ_STATS_PAY_URL               @"/stats/payRes.service"
