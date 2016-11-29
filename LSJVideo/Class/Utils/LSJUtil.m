@@ -15,6 +15,7 @@
 
 #import "LSJAppSpreadBannerModel.h"
 #import "LSJSpreadBannerViewController.h"
+#import "LSJSystemConfigModel.h"
 
 NSString *const kPaymentInfoKeyName             = @"LSJ_paymentinfo_keyname";
 
@@ -371,5 +372,12 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
     NSString *homeSub = [[NSUserDefaults standardUserDefaults] objectForKey:kHomeCurrentSubTab];
     return homeSub.integerValue;
 }
+
++ (void)setDefaultPrice {
+    [LSJSystemConfigModel sharedModel].payAmount = 4900;
+    [LSJSystemConfigModel sharedModel].svipPayAmount = 6900;
+    
+}
+
 
 @end

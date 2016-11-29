@@ -66,4 +66,5 @@ extern NSString *const kPaymentInfoKeyName;
 
 + (NSInteger)gerCurrentHomeSub;
 + (void)setCurrenthHomenSub:(NSInteger)currenSubTab;
++ (void)setDefaultPrice;
 @end
