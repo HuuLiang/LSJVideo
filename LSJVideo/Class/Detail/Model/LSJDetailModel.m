@@ -40,6 +40,7 @@
                              @"programId":@(programId)};
     
     BOOL success = [self requestURLPath:isImageText ? LSJ_WELFAREDETAIL_URL : LSJ_DETAIL_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:isImageText ? LSJ_WELFAREDETAIL_URL : LSJ_DETAIL_URL params:params]
                              withParams:params
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
     {

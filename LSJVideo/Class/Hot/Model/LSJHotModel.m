@@ -25,6 +25,7 @@
 - (BOOL)fetchHotInfoWithCompletionHadler:(QBCompletionHandler)handler {
     @weakify(self)
     BOOL success = [self requestURLPath:LSJ_HOT_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:LSJ_HOT_URL params:nil]
                              withParams:nil
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
     {

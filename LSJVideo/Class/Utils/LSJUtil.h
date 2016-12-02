@@ -67,4 +67,5 @@ extern NSString *const kPaymentInfoKeyName;
 + (NSInteger)gerCurrentHomeSub;
 + (void)setCurrenthHomenSub:(NSInteger)currenSubTab;
 + (void)setDefaultPrice;
++ (NSString *)getStandByUrlPathWithOriginalUrl:(NSString *)url params:(id)params;
 @end
