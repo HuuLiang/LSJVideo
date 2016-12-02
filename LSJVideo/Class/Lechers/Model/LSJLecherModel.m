@@ -35,6 +35,7 @@
 - (BOOL)fetchLechersInfoWithCompletionHandler:(QBCompletionHandler)handler {
     @weakify(self);
     BOOL success = [self requestURLPath:LSJ_LECHERS_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:LSJ_LECHERS_URL params:nil]
                              withParams:nil
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {

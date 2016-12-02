@@ -17,8 +17,9 @@
     @weakify(self);
     NSDictionary *params = @{@"columnId":@(columnId),
                              @"isProgram":@(isProgram)};
-    
-    BOOL success = [self requestURLPath:LSJ_PROGRAM_URL
+
+    BOOL success = [self requestURLPath:LSJ_COLUMN_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:LSJ_COLUMN_URL params:params]
                              withParams:params
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {

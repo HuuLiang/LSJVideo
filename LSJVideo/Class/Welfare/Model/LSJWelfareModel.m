@@ -17,6 +17,7 @@
 - (BOOL)fetchWelfareInfoWithCompletionHandler:(QBCompletionHandler)handler {
     @weakify(self);
     BOOL success = [self requestURLPath:LSJ_WELFARE_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:LSJ_WELFARE_URL params:nil]
                              withParams:@{@"isProgram":@(YES)}
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {

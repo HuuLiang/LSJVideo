@@ -31,7 +31,9 @@
 
 - (BOOL)fetchHomeInfoWithCompletionHandler:(QBCompletionHandler)handler {
     @weakify(self);
+
     BOOL success = [self requestURLPath:LSJ_HOME_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:LSJ_HOME_URL params:nil]
                              withParams:nil
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {

@@ -33,6 +33,7 @@
     }
     
     BOOL success = [self requestURLPath:urlStr
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:urlStr params:params]
                              withParams:params
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {
@@ -63,7 +64,9 @@
     NSDictionary *params = @{@"columnId":@(columnId)};
     
     @weakify(self);
+ 
     BOOL success = [self requestURLPath:LSJ_COLUMN_DAY_URL
+                         standbyURLPath:[LSJUtil getStandByUrlPathWithOriginalUrl:LSJ_COLUMN_DAY_URL params:params]
                              withParams:params
                         responseHandler:^(QBURLResponseStatus respStatus, NSString *errorMessage)
                     {

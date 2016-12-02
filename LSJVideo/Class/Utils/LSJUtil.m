@@ -379,5 +379,26 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
     
 }
 
++ (NSString *)getStandByUrlPathWithOriginalUrl:(NSString *)url params:(id)params {
+    NSMutableString *standbyUrl = [NSMutableString stringWithString:LSJ_STANDBY_BASE_URL];
+    [standbyUrl appendString:[url substringToIndex:url.length-4]];
+    [standbyUrl appendFormat:@"-%@-%@",LSJ_REST_APPID,LSJ_REST_PV];
+    if (params) {
+        if ([params isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)params;
+            for (int i = 0; i<[dic allKeys].count; i++) {
+                [standbyUrl appendFormat:@"-%@",[dic allValues][i]];
+            }
+        }else if ([params isKindOfClass:[NSArray class]]){
+            NSArray *para = (NSArray *)params;
+            for (int i = 0; i< para.count; i++) {
+                [standbyUrl appendFormat:@"-%@",para[i]];
+            }
+        }
+    }
+    [standbyUrl appendString:@".json"];
+    
+    return standbyUrl;
+}
 
 @end

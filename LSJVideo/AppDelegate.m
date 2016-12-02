@@ -170,12 +170,11 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
 
     [LSJUtil accumateLaunchSeq];
+     [LSJUtil setDefaultPrice];
     [LSJUtil setCurrenthHomenSub:1];
     [self setupCommonStyles];
-    [LSJUtil setDefaultPrice];
 //    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];//测试支付
-//    [[QBPaymentManager sharedManager] registerPaymentWithAppId:LSJ_REST_APPID paymentPv:@([LSJ_PAYMENT_PV integerValue]) channelNo:LSJ_CHANNEL_NO urlScheme:kIappPaySchemeUrl];
-    [[QBPaymentManager sharedManager] registerPaymentWithAppId:LSJ_REST_APPID paymentPv:LSJ_PAYMENT_PV channelNo:LSJ_CHANNEL_NO urlScheme:kIappPaySchemeUrl defaultConfig:[self setDefaultPaymentConfig]];
+    [[QBPaymentManager sharedManager] registerPaymentWithAppId:LSJ_REST_APPID paymentPv:@([LSJ_PAYMENT_PV integerValue]) channelNo:LSJ_CHANNEL_NO urlScheme:kIappPaySchemeUrl defaultConfig:[self setDefaultPaymentConfig]];
     
     [QBNetworkInfo sharedInfo].reachabilityChangedAction = ^(BOOL reachable) {
         if (reachable && ![LSJSystemConfigModel sharedModel].loaded) {
@@ -275,25 +274,26 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     configDetails.iAppPayConfig = iAppPayConfig;
     
     //    //海豚默认配置
-    //    QBHTPayConfig *htpayConfig = [[QBHTPayConfig alloc] init];
-    //    htpayConfig.mchId = @"10014";
-    //    htpayConfig.key = @"55f4f728b7a01c2e57a9f767fd34cb8e";
-    //    htpayConfig.appid = @"wxdea87ffa75dfb0fa";
-    //    htpayConfig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyHtPay.json";
-    //    htpayConfig.payType = @"z";
-    //    configDetails.htpayConfig = htpayConfig;
+    QBHTPayConfig *htpayConfig = [[QBHTPayConfig alloc] init];
+    htpayConfig.mchId = @"10014";
+    htpayConfig.key = @"55f4f728b7a01c2e57a9f767fd34cb8e";
+    htpayConfig.appid = @"wxf1fa52ed49c4c7da";//@"wxdea87ffa75dfb0fa";
+    htpayConfig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyHtPay.json";
+    htpayConfig.payType = @"z";
+    configDetails.htpayConfig = htpayConfig;
     
     //WJPAY
-    QBWJPayConfig *wjPayCofig = [[QBWJPayConfig alloc] init];
-    wjPayCofig.mchId = @"50000009";
-    wjPayCofig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyWujism.json";
-    wjPayCofig.signKey = @"B0C65DF81AA7EA85";
-    configDetails.wjPayConfig = wjPayCofig;
+    //    QBWJPayConfig *wjPayCofig = [[QBWJPayConfig alloc] init];
+    //    wjPayCofig.mchId = @"50000009";
+    //    wjPayCofig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyWujism.json";
+    //    wjPayCofig.signKey = @"B0C65DF81AA7EA85";
+    //    configDetails.wjPayConfig = wjPayCofig;
     
     //支付方式
     QBPaymentConfigSummary *payConfig = [[QBPaymentConfigSummary alloc] init];
     payConfig.alipay = @"IAPPPAY";
-    payConfig.wechat = @"WUJI";
+    payConfig.wechat = @"HAITUN";
+
     
     config.configDetails = configDetails;
     config.payConfig = payConfig;
