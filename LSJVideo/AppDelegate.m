@@ -170,7 +170,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     [QBNetworkingConfiguration defaultConfiguration].baseURL = LSJ_BASE_URL;
 
     [LSJUtil accumateLaunchSeq];
-     [LSJUtil setDefaultPrice];
+//     [LSJUtil setDefaultPrice];
     [LSJUtil setCurrenthHomenSub:1];
     [self setupCommonStyles];
 //    [[QBPaymentManager sharedManager] usePaymentConfigInTestServer:YES];//测试支付
