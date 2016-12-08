@@ -68,6 +68,9 @@
                                 }
                             }];
                             _loaded = YES;
+                        }else {
+                            [LSJSystemConfigModel sharedModel].payAmount = 4900;
+                            [LSJSystemConfigModel sharedModel].svipPayAmount = 6900;
                         }
                         
                         if (handler) {

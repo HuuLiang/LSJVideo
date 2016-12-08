@@ -373,11 +373,11 @@ static NSString *const kHomeCurrentSubTab = @"khoem_current_subtab";
     return homeSub.integerValue;
 }
 
-+ (void)setDefaultPrice {
-    [LSJSystemConfigModel sharedModel].payAmount = 4900;
-    [LSJSystemConfigModel sharedModel].svipPayAmount = 6900;
-    
-}
+//+ (void)setDefaultPrice {
+//    [LSJSystemConfigModel sharedModel].payAmount = 4900;
+//    [LSJSystemConfigModel sharedModel].svipPayAmount = 6900;
+//    
+//}
 
 + (NSString *)getStandByUrlPathWithOriginalUrl:(NSString *)url params:(id)params {
     NSMutableString *standbyUrl = [NSMutableString stringWithString:LSJ_STANDBY_BASE_URL];
