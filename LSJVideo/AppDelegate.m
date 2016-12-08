@@ -274,25 +274,33 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     configDetails.iAppPayConfig = iAppPayConfig;
     
     //    //海豚默认配置
-    QBHTPayConfig *htpayConfig = [[QBHTPayConfig alloc] init];
-    htpayConfig.mchId = @"10014";
-    htpayConfig.key = @"55f4f728b7a01c2e57a9f767fd34cb8e";
-    htpayConfig.appid = @"wx2d28c8f27baeef4a";
-    htpayConfig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyHtPay.json";
-    htpayConfig.payType = @"z";
-    configDetails.htpayConfig = htpayConfig;
+//    QBHTPayConfig *htpayConfig = [[QBHTPayConfig alloc] init];
+//    htpayConfig.mchId = @"10014";
+//    htpayConfig.key = @"55f4f728b7a01c2e57a9f767fd34cb8e";
+//    htpayConfig.appid = @"wx2d28c8f27baeef4a";
+//    htpayConfig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyHtPay.json";
+//    htpayConfig.payType = @"z";
+//    configDetails.htpayConfig = htpayConfig;
     
     //WJPAY
-    //    QBWJPayConfig *wjPayCofig = [[QBWJPayConfig alloc] init];
-    //    wjPayCofig.mchId = @"50000009";
-    //    wjPayCofig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyWujism.json";
-    //    wjPayCofig.signKey = @"B0C65DF81AA7EA85";
-    //    configDetails.wjPayConfig = wjPayCofig;
+//        QBWJPayConfig *wjPayCofig = [[QBWJPayConfig alloc] init];
+//        wjPayCofig.mchId = @"50000009";
+//        wjPayCofig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyWujism.json";
+//        wjPayCofig.signKey = @"B0C65DF81AA7EA85";
+//        configDetails.wjPayConfig = wjPayCofig;
+    
+    //ZhangPay
+    QBZhangPayConfig *zhangPayConfig = [[QBZhangPayConfig alloc] init];
+    zhangPayConfig.key = @"bc1a56fc75dfb0c89631a8598189f3bf";
+    zhangPayConfig.mchId = @"102580055502";
+    zhangPayConfig.appid = @"wx3ec6aaf9bdd25d44";
+    zhangPayConfig.notifyUrl = @"http://phas.zcqcmj.com/pd-has/notifyMly.json";
+    configDetails.zhangPayConfig = zhangPayConfig;
     
     //支付方式
     QBPaymentConfigSummary *payConfig = [[QBPaymentConfigSummary alloc] init];
     payConfig.alipay = @"IAPPPAY";
-    payConfig.wechat = @"HAITUN";
+    payConfig.wechat = @"MLY";//@"HAITUN";
 
     
     config.configDetails = configDetails;
