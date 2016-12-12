@@ -24,6 +24,8 @@
 
 @implementation LSJHomeModel
 
+RequestTimeOutInterval
+
 + (Class)responseClass {
     return [LSJHomeModelResponse class];
 }

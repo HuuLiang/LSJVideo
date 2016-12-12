@@ -28,6 +28,7 @@ typedef void (^LSJFetchSystemConfigCompletionHandler)(BOOL success);
 @property (nonatomic) NSString *sVipImg;
 @property (nonatomic) NSString *imageToken;
 @property (nonatomic,readonly) BOOL loaded;
+@property (nonatomic) NSInteger timeOutInterval;
 
 + (instancetype)sharedModel;
 

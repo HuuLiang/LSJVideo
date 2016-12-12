@@ -10,6 +10,8 @@
 
 @implementation LSJWelfareModel
 
+RequestTimeOutInterval
+
 + (Class)responseClass {
     return [LSJColumnModel class];
 }
