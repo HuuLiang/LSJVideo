@@ -55,6 +55,7 @@
 @end
 
 @implementation LSJColumnDayModel
+RequestTimeOutInterval
 
 + (Class)responseClass {
     return [LSJColumnModel class];

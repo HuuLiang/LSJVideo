@@ -31,6 +31,8 @@
 
 @implementation LSJDetailModel
 
+RequestTimeOutInterval
+
 + (Class)responseClass {
     return [LSJDetailResponse class];
 }

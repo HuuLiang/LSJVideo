@@ -32,5 +32,6 @@
 #import "QBNetworkInfo.h"
 #import "LSJStatsManager.h"
 #import <QBPaymentManager.h>
+#import "LSJSystemConfigModel.h"
 
 #endif /* LSJPrefixHeader_pch */

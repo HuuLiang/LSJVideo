@@ -18,6 +18,8 @@
 
 @implementation LSJHotModel
 
+RequestTimeOutInterval
+
 + (Class)responseClass {
     return [LSJHotModelResponse class];
 }

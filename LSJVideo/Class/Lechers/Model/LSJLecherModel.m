@@ -27,6 +27,7 @@
 
 
 @implementation LSJLecherModel
+RequestTimeOutInterval
 
 + (Class)responseClass {
     return [LSJLecherModelResponse class];

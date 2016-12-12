@@ -9,6 +9,8 @@
 #import "LSJProgramConfigModel.h"
 
 @implementation LSJProgramConfigModel
+RequestTimeOutInterval
+
 +(Class)responseClass {
     return [LSJColumnModel class];
 }
