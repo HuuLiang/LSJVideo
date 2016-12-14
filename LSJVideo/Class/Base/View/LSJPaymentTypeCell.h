@@ -15,7 +15,7 @@
 @property (nonatomic,retain) NSArray *availablePaymentTypes;
 @property (nonatomic) UIButton *chooseBtn;
 
-@property (nonatomic,copy) LSJSelectionAction selectionAction;
+@property (nonatomic,copy) LSJSelectionPayAction selectionAction;
 
 @property (nonatomic)QBPayType payType;
 @property (nonatomic)QBPaySubType subType;

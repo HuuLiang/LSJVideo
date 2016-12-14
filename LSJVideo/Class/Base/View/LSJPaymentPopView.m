@@ -23,8 +23,8 @@
     LSJPayPointCell *_payPointBCell;
     NSIndexPath *_selectedIndexPath;
     LSJPaymentTypeCell *_payTypeCell;
-    QBPayType _payType;
-    QBPaySubType _subPayType;
+    QBOrderPayType _payType;
+//    QBPaySubType _subPayType;
 }
 @end
 
@@ -37,7 +37,7 @@
         _availablePaymentTypes = availablePaymentTypes;
         
         _payType = [_availablePaymentTypes[0][@"type"] unsignedIntegerValue];
-        _subPayType = [_availablePaymentTypes[0][@"subType"] unsignedIntegerValue];
+//        _subPayType = [_availablePaymentTypes[0][@"subType"] unsignedIntegerValue];
         
         self.delegate = self;
         self.dataSource = self;
@@ -132,7 +132,7 @@
             @weakify(self);
             _payPointACell.action = ^(NSNumber * vipLevel) {
                 @strongify(self);
-                self.paymentAction(self->_payType,self->_subPayType,[vipLevel unsignedIntegerValue]);
+                self.paymentAction(self->_payType,[vipLevel unsignedIntegerValue]);
             };
             return _payPointACell;
         } else {
@@ -140,7 +140,7 @@
             @weakify(self);
             _payPointBCell.action = ^(NSNumber * vipLevel) {
                 @strongify(self);
-                self.paymentAction(self->_payType,self->_subPayType,[vipLevel unsignedIntegerValue]);
+                self.paymentAction(self->_payType,[vipLevel unsignedIntegerValue]);
             };
             return _payPointBCell;
         }
@@ -148,10 +148,10 @@
         @weakify(self);
         _payTypeCell = [[LSJPaymentTypeCell alloc] initWithPaymentTypes:_availablePaymentTypes];
         
-        _payTypeCell.selectionAction = ^(QBPayType payType,QBPaySubType paySubType) {
+        _payTypeCell.selectionAction = ^(QBOrderPayType payType) {
             @strongify(self);
             self->_payType = payType;
-            self->_subPayType = paySubType;
+//            self->_subPayType = paySubType;
         };
         
         return _payTypeCell;
