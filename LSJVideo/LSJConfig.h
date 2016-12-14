@@ -12,13 +12,13 @@
 #define LSJ_CHANNEL_NO               [LSJConfiguration sharedConfig].channelNo//@"IOS_TTSEQU_0001" //@"QB_MFW_IOS_TEST_0000001" //
 #define LSJ_REST_APPID               @"QUBA_2025"
 #define LSJ_REST_PV                  @"193"
-#define LSJ_PAYMENT_PV               @"202"
+#define LSJ_PAYMENT_PV               @"200"
 #define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Beijing Huazhong Hengtai Network Technology Co., Ltd."
 
 #define LSJ_REST_APP_VERSION     ((NSString *)([NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]))
 #define LSJ_PAYMENT_RESERVE_DATA [NSString stringWithFormat:@"%@$%@", LSJ_REST_APPID, LSJ_CHANNEL_NO]
 
-#define LSJ_BASE_URL                    @"http://spiv.jlswz.com"//@"http://iv.zcqcmj.com"//@"http://120.24.252.114:8093"//@"http://192.168.1.123:8094/"
+#define LSJ_BASE_URL                    @"http://spiv.jlswz.com"//@"http://120.24.252.114:8093"//
 #define LSJ_STANDBY_BASE_URL            @"http://sfs.dswtg.com"
 
 

@@ -30,12 +30,12 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         for (NSDictionary *payDic in availablePaymentTypes) {
-            if ([payDic[@"subType"] unsignedIntegerValue] == QBPaySubTypeWeChat) {
+            if ([payDic[@"type"] unsignedIntegerValue] == QBOrderPayTypeWeChatPay) {
                 @weakify(self);
                 _wxPay = [[LSJBtnView alloc] initWithNormalTitle:@"微信支付" selectedTitle:@"微信支付" normalImage:[UIImage imageNamed:@"vip_normal"] selectedImage:[UIImage imageNamed:@"vip_selected"] space:kWidth(10) isTitleFirst:NO touchAction:^{
                     @strongify(self);
                     
-                    self.selectionAction([payDic[@"type"] unsignedIntegerValue],[payDic[@"subType"] unsignedIntegerValue]);
+                    self.selectionAction([payDic[@"type"] unsignedIntegerValue]);
                     if (self->_wxPay.isSelected) {
                         return ;
                     } else if (self->_aliPay) {
@@ -48,11 +48,11 @@
                 [self addSubview:_wxPay];
             }
             
-            if ([payDic[@"subType"] unsignedIntegerValue] == QBPaySubTypeAlipay) {
+            if ([payDic[@"type"] unsignedIntegerValue] == QBOrderPayTypeAlipay) {
                 @weakify(self);
                 _aliPay = [[LSJBtnView alloc] initWithNormalTitle:@"支付宝支付" selectedTitle:@"支付宝支付" normalImage:[UIImage imageNamed:@"vip_normal"] selectedImage:[UIImage imageNamed:@"vip_selected"] space:kWidth(10) isTitleFirst:NO touchAction:^{
                     @strongify(self);
-                    self.selectionAction([payDic[@"type"] unsignedIntegerValue],[payDic[@"subType"] unsignedIntegerValue]);
+                    self.selectionAction([payDic[@"type"] unsignedIntegerValue]);
                     if (self->_aliPay.isSelected) {
                         return ;
                     } else if (self->_wxPay) {

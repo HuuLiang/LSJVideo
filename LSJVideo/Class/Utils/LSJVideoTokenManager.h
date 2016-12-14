@@ -16,5 +16,5 @@ typedef void (^LSJVideoTokenCompletionHandler)(BOOL success, NSString *token, NS
 
 - (void)requestTokenWithCompletionHandler:(LSJVideoTokenCompletionHandler)completionHandler;
 - (NSString *)videoLinkWithOriginalLink:(NSString *)originalLink;
-
+- (void)setValue:(NSString *)value forVideoHttpHeader:(NSString *)field;
 @end

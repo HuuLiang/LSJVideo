@@ -18,7 +18,7 @@ target 'LSJVideo' do
     #pod 'TSMessages', '~> 0.9.12'
     pod 'FMDB', '~> 2.6.2'
     pod 'SFHFKeychainUtils', '~> 0.0.1'
-    pod 'QBPayment', '~>44' ,:subspecs => ['VIAPay','IappPay','ZhangPay','WJPay']
+    pod 'QBPayment', '~>49' ,:subspecs => ['VIAPay','IappPay','HTPay']
 
 end
 

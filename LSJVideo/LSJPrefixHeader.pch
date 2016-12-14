@@ -20,8 +20,9 @@
 #import <UIButton+WebCache.h>
 
 #import <QBDefines.h>
+#import <QBOrderInfo.h>
 #import "LSJConfiguration.h"
-#import "QBPaymentInfo.h"
+#import <QBPaymentInfo.h>
 #import "LSJCommonDef.h"
 #import "LSJConfig.h"
 #import "LSJExtensions.h"
