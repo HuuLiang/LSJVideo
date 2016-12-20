@@ -71,6 +71,8 @@ typedef void (^LSJProgressHandler)(double progress);
 #define LSJ_SYSTEM_SVIP_PAY_IMG            @"SVIP_PAY_IMG"
 #define LSJ_SYSTEM_IMAGE_TOKEN             @"IMG_REFERER"
 #define LSJ_SYSTEM_TIME_OUT                 @"TIME_OUT"
+#define LSJ_SYSTEM_VIDEO_SIGN_KEY               @"VIDEO_SIGN_KEY"
+#define LSJ_SYSTEM_VIDEO_EXPIRE_TIME            @"EXPIRE_TIME"
 
 #define RequestTimeOutInterval  \
 - (NSTimeInterval)requestTimeInterval {\

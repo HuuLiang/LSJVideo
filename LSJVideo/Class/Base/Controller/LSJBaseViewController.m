@@ -14,7 +14,7 @@
 #import <AVFoundation/AVPlayer.h>
 #import <AVKit/AVKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "LSJVideoTokenManager.h"
+//#import "LSJVideoTokenManager.h"
 #import "LSJSystemConfigModel.h"
 
 @interface LSJBaseViewController ()
@@ -87,30 +87,30 @@
             [self presentViewController:videoVC animated:YES completion:nil];
         } else {
             
-            @weakify(self);
-            [[LSJVideoTokenManager sharedManager] requestTokenWithCompletionHandler:^(BOOL success, NSString *token, NSString *userId) {
-                @strongify(self);
-                if (!self) {
-                    return ;
-                }
-                [self.view endProgressing];
-                
-                //                [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr] cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
-                
-                
-                if (success) {
-                    UIViewController *videoPlayVC = [self playerVCWithVideo:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr]];
-                    videoPlayVC.hidesBottomBarWhenPushed = YES;
-                    [self presentViewController:videoPlayVC animated:YES completion:nil];
-                } else {
-                    [UIAlertView bk_showAlertViewWithTitle:@"无法获取视频信息" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                    }];
-                }
-            }];
-            //            
-            //            UIViewController *videoPlayVC = [self playerVCWithVideo:videoUrlStr];
-            //            videoPlayVC.hidesBottomBarWhenPushed = YES;
-            //            [self presentViewController:videoPlayVC animated:YES completion:nil];
+//            @weakify(self);
+//            [[LSJVideoTokenManager sharedManager] requestTokenWithCompletionHandler:^(BOOL success, NSString *token, NSString *userId) {
+//                @strongify(self);
+//                if (!self) {
+//                    return ;
+//                }
+//                [self.view endProgressing];
+//                
+//                //                [UIAlertView bk_showAlertViewWithTitle:@"视频链接" message:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr] cancelButtonTitle:@"确定" otherButtonTitles:nil handler:nil];
+//                
+//                
+//                if (success) {
+//                    UIViewController *videoPlayVC = [self playerVCWithVideo:[[LSJVideoTokenManager sharedManager] videoLinkWithOriginalLink:videoUrlStr]];
+//                    videoPlayVC.hidesBottomBarWhenPushed = YES;
+//                    [self presentViewController:videoPlayVC animated:YES completion:nil];
+//                } else {
+//                    [UIAlertView bk_showAlertViewWithTitle:@"无法获取视频信息" message:nil cancelButtonTitle:@"确定" otherButtonTitles:nil handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+//                    }];
+//                }
+//            }];
+            //
+                        UIViewController *videoPlayVC = [self playerVCWithVideo:[LSJUtil encodeVideoUrlWithVideoUrlStr:videoUrlStr]];
+                        videoPlayVC.hidesBottomBarWhenPushed = YES;
+                        [self presentViewController:videoPlayVC animated:YES completion:nil];
         }
     }
 }

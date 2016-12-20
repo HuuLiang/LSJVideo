@@ -12,11 +12,12 @@
 		B3695F421D9A5DC10048DB8B /* LSJStatsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3D1D9A5DC10048DB8B /* LSJStatsBaseModel.m */; };
 		B3695F431D9A5DC10048DB8B /* LSJTabStatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */; };
 		B3A2DB331D9A602000255471 /* LSJStatsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DB321D9A602000255471 /* LSJStatsManager.m */; };
+		B3CDC09F1E09177600F5E255 /* LSJVersionUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CDC09E1E09177600F5E255 /* LSJVersionUpdateViewController.m */; };
+		B3CDC0A21E0917AB00F5E255 /* LSJVersionUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CDC0A11E0917AB00F5E255 /* LSJVersionUpdateModel.m */; };
 		B3D3A01B1DC05EE90056DA24 /* LSJManualActivationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D3A01A1DC05EE90056DA24 /* LSJManualActivationManager.m */; };
 		BC8FA5601D9FAF5300471EF0 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC8FA55F1D9FAF5300471EF0 /* config.plist */; };
 		BC8FA5631D9FAF6600471EF0 /* LSJConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */; };
 		C15ACF4FEBF32A369971E46F /* libPods-LSJVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 873E02D48D7A7FE712859BA4 /* libPods-LSJVideo.a */; };
-		EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */; };
 		EC1990EE1D52EC22001B4F52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990ED1D52EC22001B4F52 /* main.m */; };
 		EC1990F11D52EC22001B4F52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1990F01D52EC22001B4F52 /* AppDelegate.m */; };
 		EC1990F71D52EC22001B4F52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1990F51D52EC22001B4F52 /* Main.storyboard */; };
@@ -138,14 +139,16 @@
 		B3695F3F1D9A5DC10048DB8B /* LSJTabStatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJTabStatsModel.m; sourceTree = "<group>"; };
 		B3A2DB311D9A602000255471 /* LSJStatsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJStatsManager.h; sourceTree = "<group>"; };
 		B3A2DB321D9A602000255471 /* LSJStatsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJStatsManager.m; sourceTree = "<group>"; };
+		B3CDC09D1E09177600F5E255 /* LSJVersionUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVersionUpdateViewController.h; sourceTree = "<group>"; };
+		B3CDC09E1E09177600F5E255 /* LSJVersionUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJVersionUpdateViewController.m; sourceTree = "<group>"; };
+		B3CDC0A01E0917AB00F5E255 /* LSJVersionUpdateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVersionUpdateModel.h; sourceTree = "<group>"; };
+		B3CDC0A11E0917AB00F5E255 /* LSJVersionUpdateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJVersionUpdateModel.m; sourceTree = "<group>"; };
 		B3D3A0191DC05EE90056DA24 /* LSJManualActivationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJManualActivationManager.h; sourceTree = "<group>"; };
 		B3D3A01A1DC05EE90056DA24 /* LSJManualActivationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJManualActivationManager.m; sourceTree = "<group>"; };
 		BC8FA55F1D9FAF5300471EF0 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		BC8FA5611D9FAF6600471EF0 /* LSJConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJConfiguration.h; sourceTree = "<group>"; };
 		BC8FA5621D9FAF6600471EF0 /* LSJConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJConfiguration.m; sourceTree = "<group>"; };
 		E29096AC44AB042622983E53 /* Pods-LSJVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LSJVideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LSJVideo/Pods-LSJVideo.release.xcconfig"; sourceTree = "<group>"; };
-		EC1976671D99392000B91C4F /* LSJVideoTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSJVideoTokenManager.h; sourceTree = "<group>"; };
-		EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSJVideoTokenManager.m; sourceTree = "<group>"; };
 		EC1990E91D52EC22001B4F52 /* LSJVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSJVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1990ED1D52EC22001B4F52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC1990EF1D52EC22001B4F52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				ECD70DBB1D534663006929B1 /* LSJWebViewController.m */,
 				ECD70D491D53262F006929B1 /* LSJTabBarViewController.h */,
 				ECD70D4A1D53262F006929B1 /* LSJTabBarViewController.m */,
+				B3CDC09D1E09177600F5E255 /* LSJVersionUpdateViewController.h */,
+				B3CDC09E1E09177600F5E255 /* LSJVersionUpdateViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -571,6 +576,8 @@
 				EC2F0BB21D685E5600DE2B7F /* LSJColumnConfigModel.m */,
 				EC2F0BB41D685E6900DE2B7F /* LSJProgramConfigModel.h */,
 				EC2F0BB51D685E6900DE2B7F /* LSJProgramConfigModel.m */,
+				B3CDC0A01E0917AB00F5E255 /* LSJVersionUpdateModel.h */,
+				B3CDC0A11E0917AB00F5E255 /* LSJVersionUpdateModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -755,8 +762,6 @@
 				ECD70D3A1D531FC7006929B1 /* JQKApplication.m */,
 				ECD70D3B1D531FC7006929B1 /* JQKApplicationManager.h */,
 				ECD70D3C1D531FC7006929B1 /* JQKApplicationManager.m */,
-				EC1976671D99392000B91C4F /* LSJVideoTokenManager.h */,
-				EC1976681D99392000B91C4F /* LSJVideoTokenManager.m */,
 				B3A2DB311D9A602000255471 /* LSJStatsManager.h */,
 				B3A2DB321D9A602000255471 /* LSJStatsManager.m */,
 				BC8FA5611D9FAF6600471EF0 /* LSJConfiguration.h */,
@@ -1066,7 +1071,7 @@
 					EC1990E81D52EC22001B4F52 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7VHT3KAS56;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1159,7 +1164,6 @@
 				ECD70CFC1D531F6B006929B1 /* DBHandler.m in Sources */,
 				BC8FA5631D9FAF6600471EF0 /* LSJConfiguration.m in Sources */,
 				B3695F401D9A5DC10048DB8B /* LSJCPCStatsModel.m in Sources */,
-				EC1976691D99392000B91C4F /* LSJVideoTokenManager.m in Sources */,
 				EC20E99D1D91313B00568666 /* LSJDetailImgTextHeaderCell.m in Sources */,
 				ECD70D981D532E33006929B1 /* LSJUtil.m in Sources */,
 				B3D3A01B1DC05EE90056DA24 /* LSJManualActivationManager.m in Sources */,
@@ -1185,6 +1189,7 @@
 				EC8547551D702BB200B0F815 /* LSJDetailVideoHeaderCell.m in Sources */,
 				EC52B4DA1D93FE46003224CC /* LSJDetailImgTextCell.m in Sources */,
 				ECD70D471D5321EE006929B1 /* LSJLayoutViewController.m in Sources */,
+				B3CDC0A21E0917AB00F5E255 /* LSJVersionUpdateModel.m in Sources */,
 				EC4258651D6C4D620066C638 /* LSJBtnView.m in Sources */,
 				B3695F411D9A5DC10048DB8B /* LSJPayStatsModel.m in Sources */,
 				ECD70DCB1D5348B6006929B1 /* LSJVideoPlayer.m in Sources */,
@@ -1232,6 +1237,7 @@
 				ECD70D441D53212B006929B1 /* LSJBaseViewController.m in Sources */,
 				EC2F0BA71D68571D00DE2B7F /* LSJLechersListVC.m in Sources */,
 				ECF3AC361D6EE50D009E7A54 /* LSJDetailVideoVC.m in Sources */,
+				B3CDC09F1E09177600F5E255 /* LSJVersionUpdateViewController.m in Sources */,
 				ECDD6B341D6D771C001F08DD /* LSJDayCell.m in Sources */,
 				EC1F93641D59BC2E00E0B1F4 /* SDSelectorCell.m in Sources */,
 				EC7684A91D64185500AC3708 /* LSJRankDetailCell.m in Sources */,
@@ -1379,7 +1385,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7VHT3KAS56;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1400,10 +1406,10 @@
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/WeChatSDK",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/DunXingTianXia",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ttsequ.new;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ttsq.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e31d282a-f5d4-495b-8fe3-b7ebd09ed1ae";
-				PROVISIONING_PROFILE_SPECIFIER = TTSeQuNewDevProvisioningProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -1415,8 +1421,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 7VHT3KAS56;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1437,10 +1443,10 @@
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/WeChatSDK",
 					"$(PROJECT_DIR)/LSJVideo/Class/Vendor/DunXingTianXia",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ttsequ.new;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ttsq.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cc1490c9-8b80-4b32-a3a5-59dd9e9e9194";
-				PROVISIONING_PROFILE_SPECIFIER = TTSeQuNewInHouseProvisioningProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

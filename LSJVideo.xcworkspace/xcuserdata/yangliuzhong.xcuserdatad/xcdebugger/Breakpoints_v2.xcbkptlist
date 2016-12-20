@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LSJVideo/Class/Base/Controller/LSJVideoPlayerController.m"
-            timestampString = "503404179.388363"
+            timestampString = "503913119.888027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-loadVideo:"
             landmarkType = "7">
          </BreakpointContent>

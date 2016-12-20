@@ -17,6 +17,8 @@
 #import "LSJHomeAppVC.h"
 
 #import "SDCursorView.h"
+#import "LSJVersionUpdateViewController.h"
+#import "LSJVersionUpdateModel.h"
 
 @interface LSJHomeViewController ()<SDCursorViewDelegate>
 {
@@ -32,6 +34,7 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self examineUpdate];//检查更新
     self.view.backgroundColor = [[UIColor colorWithHexString:@"#efefef"] colorWithAlphaComponent:0.99];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
@@ -50,6 +53,19 @@ QBDefineLazyPropertyInitialization(NSMutableArray, dataSource)
             }];
         }
     });
+}
+
+- (void)examineUpdate {
+    [[LSJVersionUpdateModel sharedModel] fetchLatestVersionWithCompletionHandler:^(BOOL success, id obj) {
+        if (success) {
+            LSJVersionUpdateInfo *info = obj;
+            if (info.up.boolValue) {
+                LSJVersionUpdateViewController *updateVC = [[LSJVersionUpdateViewController alloc] init];
+                updateVC.linkUrl = info.linkUrl;
+                [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:updateVC animated:YES completion:nil];
+            }
+        }
+    }];
 }
 
 - (void)loadModel {
