@@ -29,6 +29,8 @@ typedef void (^LSJFetchSystemConfigCompletionHandler)(BOOL success);
 @property (nonatomic) NSString *imageToken;
 @property (nonatomic,readonly) BOOL loaded;
 @property (nonatomic) NSInteger timeOutInterval;
+@property (nonatomic) NSString *videoSignKey;
+@property (nonatomic) NSTimeInterval expireTime;
 
 + (instancetype)sharedModel;
 

@@ -68,4 +68,6 @@ extern NSString *const kPaymentInfoKeyName;
 + (void)setCurrenthHomenSub:(NSInteger)currenSubTab;
 //+ (void)setDefaultPrice;
 + (NSString *)getStandByUrlPathWithOriginalUrl:(NSString *)url params:(id)params;
++ (NSString *)encodeVideoUrlWithVideoUrlStr:(NSString *)videoUrlStr;
 @end
+

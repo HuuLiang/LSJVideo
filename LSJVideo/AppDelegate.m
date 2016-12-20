@@ -15,7 +15,9 @@
 #import <QBPaymentManager.h>
 #import "QBNetworkingConfiguration.h"
 #import <QBPaymentConfig.h>
-#import "LSJVideoTokenManager.h"
+//#import "LSJVideoTokenManager.h"
+#import "LSJVersionUpdateViewController.h"
+#import "LSJVersionUpdateModel.h"
 
 static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrlScheme";
 
@@ -216,7 +218,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     NSString *imageToken = [LSJUtil imageToken];
     if (imageToken) {
         [[SDWebImageManager sharedManager].imageDownloader setValue:imageToken forHTTPHeaderField:@"Referer"];
-         [[LSJVideoTokenManager sharedManager] setValue:imageToken forVideoHttpHeader:@"Referer"];
+//         [[LSJVideoTokenManager sharedManager] setValue:imageToken forVideoHttpHeader:@"Referer"];
         self.window.rootViewController = self.rootViewController;
     } else {
         self.window.rootViewController = [[UIViewController alloc] init];
@@ -242,6 +244,8 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
     }
     
     [self.window makeKeyAndVisible];
+    
+   
     return YES;
 }
 - (BOOL)fetchSystemConfigWithCompletionHandler:(void (^)(BOOL success))completionHandler {
@@ -251,7 +255,7 @@ static NSString *const kIappPaySchemeUrl = @"comtiantianyingyuan2016appAliPayUrl
             [LSJUtil setImageToken:fetchedToken];
             if (fetchedToken) {
                 [[SDWebImageManager sharedManager].imageDownloader setValue:fetchedToken forHTTPHeaderField:@"Referer"];
-                 [[LSJVideoTokenManager sharedManager] setValue:fetchedToken forVideoHttpHeader:@"Referer"];
+//                 [[LSJVideoTokenManager sharedManager] setValue:fetchedToken forVideoHttpHeader:@"Referer"];
             }
             
         }
