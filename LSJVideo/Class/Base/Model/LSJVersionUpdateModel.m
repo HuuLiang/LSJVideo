@@ -31,9 +31,9 @@
     return [LSJVersionUpdateInfo class];
 }
 
-- (NSURL *)baseURL {
-    return nil;
-}
+//- (NSURL *)baseURL {
+//    return nil;
+//}
 
 - (BOOL)fetchLatestVersionWithCompletionHandler:(QBCompletionHandler)completionHandler {
     @weakify(self);

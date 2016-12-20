@@ -21,7 +21,7 @@
 #define LSJ_BASE_URL                    @"http://spiv.jlswz.com"//@"http://120.24.252.114:8093"//
 #define LSJ_STANDBY_BASE_URL            @"http://sfs.dswtg.com"
 
-#define LSJ_VERSION_UPDATE_URL          @"http://120.24.252.114:8093/iosvideo/versionCheck.htm"//更新
+#define LSJ_VERSION_UPDATE_URL          @"/iosvideo/versionCheck.htm"//更新
 
 
 #define LSJ_HOME_URL                    @"/iosvideo/channelRanking.htm"
