@@ -12,7 +12,7 @@
 #define LSJ_CHANNEL_NO               [LSJConfiguration sharedConfig].channelNo//@"IOS_TTSEQU_0001" //@"QB_MFW_IOS_TEST_0000001" //
 #define LSJ_REST_APPID               @"QUBA_2025"
 #define LSJ_REST_PV                  @"193"
-#define LSJ_PAYMENT_PV               @"200"
+#define LSJ_PAYMENT_PV               @"203"
 #define LSJ_PACKAGE_CERTIFICATE      @"iPhone Distribution: Beijing Huazhong Hengtai Network Technology Co., Ltd."
 
 #define LSJ_REST_APP_VERSION     ((NSString *)([NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]))

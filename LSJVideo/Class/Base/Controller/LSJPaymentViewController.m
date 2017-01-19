@@ -109,7 +109,7 @@ QBDefineLazyPropertyInitialization(LSJBaseModel, baseModel)
             price = [LSJSystemConfigModel sharedModel].svipPayAmount - [LSJSystemConfigModel sharedModel].payAmount;
         }
     }
-//        price = 200;
+//    price = 200;
     
     orderInfo.orderPrice = price;
     
